@@ -54,8 +54,6 @@ Also you can compile the source code & manually upload/host with your preferred 
 In your terminal, paste these commands:-
 
 ```bash
-git clone https://github.com/soymadip/portosaurus
-cd portosaurus 
 bash .github/compile.sh
 ```
 This will compile the site and put them in `build` dir.

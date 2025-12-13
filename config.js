@@ -4,8 +4,8 @@ exports.usrConf = {
 
   dark_mode: true,
 
-  site_url: "auto",
-  site_path: "auto",
+  site_url: "https://soymadip.github.io",
+  site_path: "/",
 
   srt_url: "${site_url}${site_path}/l",
 
@@ -17,8 +17,8 @@ exports.usrConf = {
   rss: true,
 
   hero_section: {
-    title:       "Soumadip Das",
-    profession:  "FOSS Developer",
+    title: "Soumadip Das",
+    profession: "FOSS Developer",
     description: "I tend to make solutions of real-life problems, that helps to make life less painful.",
     profile_pic: "https://avatars.githubusercontent.com/u/84225810?v=4",
   },
@@ -44,67 +44,67 @@ exports.usrConf = {
   project_shelf: {
     enable: true,
     projects: [
-    {
-      title:   "KireiSakura Kit",
-      state:   'active',
-      desc:    "A framework written in Bash for making powerful shell scripts.",
-      image:   "https://raw.githubusercontent.com/soymadip/KireiSakura-Kit/refs/heads/main/Assets/social-card.png",
-      website: "https://kireisakura.soymadip.me",
-      github:  null,
-      Demo: null,
-      featured: true,
-      tags: ["Bash", "Shell", "CLI"],
-    },
-    {
-      title:   "StaticShort",
-      state:   'actived',
-      featured: true,
-      desc:    "A simple static URL shortener - no backend required, just static hosting.",
-      image:   "https://raw.githubusercontent.com/soymadip/StaticShort/refs/heads/main/Assets/social%20card.png",
-      website: "https://github.com/soymadip/StaticShort",
-      github:  null,
-      Demo:    "https://short.soymadip.me/demo",
-      tags: ["shortener", "static"],
-    },
-    {
-      title:   "Regis",
-      state:   'archived',
-      featured: true,
-      desc:    "The Ultimate Group Admin - Smart Moderation, Auto Filters, File Storage & More.",
-      image:   "https://raw.githubusercontent.com/soymadip/Regis/refs/heads/main/Assets/social%20card.png",
-      website: "https://regis.soymadip.me",
-      github:  null,
-      Demo:    null,
-      tags: ["python", "pyrogram", "bot"],
-    },
-    {
-      title:   "SDMP",
-      state:   'paused',
-      featured: false,
-      desc:    "Student record management system built with PHP and MySQL",
-      image:   "https://raw.githubusercontent.com/soymadip/SDMP/refs/heads/main/app/src/images/social%20card.png",
-      website: null,
-      github:  "https://github.com/soymadip/SDMP",
-      Demo:    null,
-      tags: ["php", "crud", "sql"],
-    },
-    {
-      title:  "Portosaurus",
-      state:  'planned',
-      featured: false,
-      desc:   "Portfolio Website generator built upon Docusaurus",
-      Demo:   null,
-      github: null,
-      website: null,
-      // tags: ["node", "static", "docusaurus", "portfolio"],
-    },
-    {
-      title: "autotitle.py",
-      state: 'planned',
-      desc: 'A python app + package for renaming episodes with proper titles ',
-      github:  "https://github.com/soymadip/autotitle.py",
-    }
-  ],
+      {
+        title: "KireiSakura Kit",
+        state: 'active',
+        desc: "A framework written in Bash for making powerful shell scripts.",
+        image: "https://raw.githubusercontent.com/soymadip/KireiSakura-Kit/refs/heads/main/Assets/social-card.png",
+        website: "https://kireisakura.soymadip.me",
+        github: null,
+        Demo: null,
+        featured: true,
+        tags: ["Bash", "Shell", "CLI"],
+      },
+      {
+        title: "StaticShort",
+        state: 'actived',
+        featured: true,
+        desc: "A simple static URL shortener - no backend required, just static hosting.",
+        image: "https://raw.githubusercontent.com/soymadip/StaticShort/refs/heads/main/Assets/social%20card.png",
+        website: "https://github.com/soymadip/StaticShort",
+        github: null,
+        Demo: "https://short.soymadip.me/demo",
+        tags: ["shortener", "static"],
+      },
+      {
+        title: "Regis",
+        state: 'archived',
+        featured: true,
+        desc: "The Ultimate Group Admin - Smart Moderation, Auto Filters, File Storage & More.",
+        image: "https://raw.githubusercontent.com/soymadip/Regis/refs/heads/main/Assets/social%20card.png",
+        website: "https://regis.soymadip.me",
+        github: null,
+        Demo: null,
+        tags: ["python", "pyrogram", "bot"],
+      },
+      {
+        title: "SDMP",
+        state: 'paused',
+        featured: false,
+        desc: "Student record management system built with PHP and MySQL",
+        image: "https://raw.githubusercontent.com/soymadip/SDMP/refs/heads/main/app/src/images/social%20card.png",
+        website: null,
+        github: "https://github.com/soymadip/SDMP",
+        Demo: null,
+        tags: ["php", "crud", "sql"],
+      },
+      {
+        title: "Portosaurus",
+        state: 'planned',
+        featured: false,
+        desc: "Portfolio Website generator built upon Docusaurus",
+        Demo: null,
+        github: null,
+        website: null,
+        // tags: ["node", "static", "docusaurus", "portfolio"],
+      },
+      {
+        title: "autotitle.py",
+        state: 'planned',
+        desc: 'A python app + package for renaming episodes with proper titles ',
+        github: "https://github.com/soymadip/autotitle.py",
+      }
+    ],
   },
 
 
@@ -112,64 +112,64 @@ exports.usrConf = {
 
     enable: true,
     links: [
-    {
-      name: 'Email',
-      icon: 'mail',
-      desc: 'Send me an email',
-      url: "${srt_url}/mail",
-    },
-    {
-      name: 'LinkedIn',
-      icon: 'linkedin',
-      desc: 'Connect on LinkedIn',
-      url: "${srt_url}/linkedin",
-      pin: true
-    },
-    {
-      name: 'Telegram',
-      icon: 'telegram',
-      desc: 'Reach me on Telegram',
-      url: "${srt_url}/telegram",
-      pin: true
-    },
-    {
-      name: 'Discord',
-      icon: 'discord',
-      desc: 'Become my friend',
-      url: "${srt_url}/discord",
-    },
-    {
-      name: 'Twitter',
-      icon: 'x',
-      desc: 'Find me on Twitter',
-      url:  "${srt_url}/twitter"
-    },
-    {
-      name: 'GitHub',
-      icon: 'githubalt',
-      desc: 'Check out my git repos',
-      url: "${srt_url}/github",
-      pin: true
-    },
-    {
-      name: 'GitLab',
-      icon: 'gitlab',
-      desc: 'View my GitLab profile',
-      url: "${srt_url}/gitlab",
-    },
-    {
-      name: 'Anilist',
-      icon: 'anilist',
-      desc: 'If you are otaku, check out!',
-      url: "${srt_url}/anilist",
-    },
-    {
-      name: 'Simkl',
-      icon: 'simkl',
-      desc: 'I watch Movies & Series too!',
-      url: "${srt_url}/simkl",
-    }
-  ]
+      {
+        name: 'Email',
+        icon: 'mail',
+        desc: 'Send me an email',
+        url: "${srt_url}/mail",
+      },
+      {
+        name: 'LinkedIn',
+        icon: 'linkedin',
+        desc: 'Connect on LinkedIn',
+        url: "${srt_url}/linkedin",
+        pin: true
+      },
+      {
+        name: 'Telegram',
+        icon: 'telegram',
+        desc: 'Reach me on Telegram',
+        url: "${srt_url}/telegram",
+        pin: true
+      },
+      {
+        name: 'Discord',
+        icon: 'discord',
+        desc: 'Become my friend',
+        url: "${srt_url}/discord",
+      },
+      {
+        name: 'Twitter',
+        icon: 'x',
+        desc: 'Find me on Twitter',
+        url: "${srt_url}/twitter"
+      },
+      {
+        name: 'GitHub',
+        icon: 'githubalt',
+        desc: 'Check out my git repos',
+        url: "${srt_url}/github",
+        pin: true
+      },
+      {
+        name: 'GitLab',
+        icon: 'gitlab',
+        desc: 'View my GitLab profile',
+        url: "${srt_url}/gitlab",
+      },
+      {
+        name: 'Anilist',
+        icon: 'anilist',
+        desc: 'If you are otaku, check out!',
+        url: "${srt_url}/anilist",
+      },
+      {
+        name: 'Simkl',
+        icon: 'simkl',
+        desc: 'I watch Movies & Series too!',
+        url: "${srt_url}/simkl",
+      }
+    ]
   },
 
   link_shortener: {
@@ -179,23 +179,23 @@ exports.usrConf = {
     deploy_path: "/l",
 
     short_links: {
-      "mail"         :  "mailto://soumadip377@gmail.com",
-      "github"       :  "https://github.com/soymadip",
-      "gitlab"       :  "https://gitlab.com/soymadip",
-      "linkedin"     :  "https://linkedin.com/in/soymadip",
-      "telegram"     :  "https://telegram.me/soymadip",
-      "reddit"       :  "https://www.reddit.com/user/soymadip",
-      "anilist"      :  "https://anilist.co/user/soymadip/",
-      "mal"          :  "https://myanimelist.net/profile/soymadip",
-      "twitter"      :  "https://x.com/soymadip",
-      "mastodon"     :  "https://mastodon.online/@soymadip",
-      "discord"      :  "https://discord.com/users/778278661811863592",
-      "roadmap"      :  "https://roadmap.sh/u/soymadip",
-      "replit"       :  "https://replit.com/@soymadip",
-      "signal"       :  "https://signal.me/#eu/JxnJ32zIRQxm_lG4PWfkcasdR1zwGd2ln9lY8EXkzm-gy-gwj91PgZz4Qo1CiWpQ",
-      "yt"           :  "https://youtube.com/@soymadip",
-      "instagram"    :  "https://www.instagram.com/soymadip_",
-      "simkl"        :  "https://simkl.com/5929351/"
+      "mail": "mailto://soumadip377@gmail.com",
+      "github": "https://github.com/soymadip",
+      "gitlab": "https://gitlab.com/soymadip",
+      "linkedin": "https://linkedin.com/in/soymadip",
+      "telegram": "https://telegram.me/soymadip",
+      "reddit": "https://www.reddit.com/user/soymadip",
+      "anilist": "https://anilist.co/user/soymadip/",
+      "mal": "https://myanimelist.net/profile/soymadip",
+      "twitter": "https://x.com/soymadip",
+      "mastodon": "https://mastodon.online/@soymadip",
+      "discord": "https://discord.com/users/778278661811863592",
+      "roadmap": "https://roadmap.sh/u/soymadip",
+      "replit": "https://replit.com/@soymadip",
+      "signal": "https://signal.me/#eu/JxnJ32zIRQxm_lG4PWfkcasdR1zwGd2ln9lY8EXkzm-gy-gwj91PgZz4Qo1CiWpQ",
+      "yt": "https://youtube.com/@soymadip",
+      "instagram": "https://www.instagram.com/soymadip_",
+      "simkl": "https://simkl.com/5929351/"
     }
   },
 
