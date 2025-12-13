@@ -265,6 +265,11 @@ replace-content() {
         const src = process.argv[1];
         const dest = process.argv[2];
         
+        if (!fs.existsSync(src)) {
+            console.log("❌ Not Found: " + src);
+            process.exit(0);
+        }
+
         function getChecksum(filePath) {
             if (!fs.existsSync(filePath)) return null;
             const data = fs.readFileSync(filePath);
