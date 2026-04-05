@@ -4,7 +4,7 @@ title: Sets
 sidebar_label: Sets
 sidebar_position: 19
 description: "Concise revision notes for the built-in `set` type."
-source_filename: "19.  sets.py"
+source_filename: "19 - sets.py"
 ---
 
 # Sets

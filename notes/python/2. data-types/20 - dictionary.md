@@ -4,7 +4,7 @@ title: Dictionary
 sidebar_label: Dictionary
 sidebar_position: 20
 description: "Compact reference for dictionaries: creation, access, update, and useful methods."
-source_filename: "20. Dictionary.py"
+source_filename: "20 - dictionary.py"
 ---
 
 # Dictionaries

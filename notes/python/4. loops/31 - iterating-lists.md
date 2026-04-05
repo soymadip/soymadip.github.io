@@ -4,7 +4,7 @@ title: "Iterating lists"
 sidebar_label: "Iterating lists"
 sidebar_position: 31
 description: "Loop over list elements and understand runtime behavior for mixed-type lists."
-source_filename: "31.py"
+source_filename: "31 - iterating-lists.py"
 ---
 
 # Iterating lists

@@ -4,7 +4,7 @@ title: Match-case
 sidebar_label: Match-case
 sidebar_position: 27
 description: "Pattern matching with Python's match-case statement."
-source_filename: "27. match case.py"
+source_filename: "27 - match-case.py"
 ---
 
 # Match-case

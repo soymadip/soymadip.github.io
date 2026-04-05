@@ -4,7 +4,7 @@ title: "While loops"
 sidebar_label: "While loops"
 sidebar_position: 28
 description: "Repeat code until a condition changes and validate input with while loops."
-source_filename: "28. into to llops.py"
+source_filename: "28 - into-to-loops.py"
 ---
 
 # While loops
