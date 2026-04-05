@@ -7,4 +7,4 @@ elif user_input == "medium":
 elif user_input == "large":
     print("price: 50")
 else:
-    print("Unkonw cup size")
+    print("Unknown cup size")

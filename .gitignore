@@ -5,7 +5,9 @@
 /build
 *tmp*
 *temp*
+*cache*
 *favicon/
+test*
 svg/
 TestimonialsSection/
 COMPILER/

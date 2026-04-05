@@ -35,3 +35,12 @@ description: "Index of Python notes sections."
 - Python is used in education to teach programming fundamentals.
 
 Python is a versatile language that is easy to read and useful for small scripts as well as larger projects.
+
+## Topics covered in this section
+
+This section serves as a comprehensive guide to Python fundamentals, moving from data structures to control flow and repetitive logic.
+
+- **Data Types & Collections**: Deep dives into Sets, Dictionaries, and how to manage unique or mapped data efficiently.
+- **Conditional Logic**: Handling user input, normalizing strings, and building multi-way decision trees with `if/elif/else` and `match/case`.
+- **Loops & Iteration**: Mastering `for` and `while` loops, using `enumerate` for indexing, and processing collections.
+- **Practical Exercises**: Real-world scenarios like delivery calculators, billing systems, and task trackers to reinforce syntax through practice.

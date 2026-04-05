@@ -3,7 +3,8 @@ id: 23-conditionals-input
 title: Conditionals & input
 sidebar_label: Conditionals & input
 sidebar_position: 23
-description: "Python conditionals with user input, validation loops, nested branches, and type conversion."
+description: "Python conditionals with user input, nested branches, and type conversion."
+source_filename: ["23 - conditionals-input.py", "24 - chai-price-calc.py", "25 - nested-conditionals.py", "26 - delivery-fees-wager.py"]
 ---
 
 # Conditionals & input
@@ -13,13 +14,14 @@ What to remember
 - `input()` always returns a string; convert it before numeric use.
 - Normalize text with `.strip().lower()` before comparing user input.
 - Use `if` / `elif` / `else` for multi-way decisions.
-- Use `while True` and `break` for retry loops until valid input arrives.
+- Use ternary expressions for simple one-line conditionals.
 - Nest conditionals when one check depends on a previous result.
 
 ## Normalize Input and Branch by Text
 
 ```python
 cup_size: str = input("What size of cup do you need?\n=> ").strip().lower()
+
 if cup_size == "small":
     print("price: 10")
 elif cup_size == "medium":
@@ -30,27 +32,16 @@ else:
     print("Unknown cup size")
 ```
 
-## Retry Invalid Input Until the User Chooses a Valid Option
-
-This pattern keeps asking until the user selects one of the allowed choices.
-
-
-```python
-available_items: set[str] = {"samosa", "burger", "cookies"}
-while True:
-    snack: str = input("Please enter your preferred snack: ").strip().lower()
-    if snack in available_items:
-        print("Good choice, we will be serving you that.")
-        break
-    print("Sorry we don't have that.")
-    print(f"Available items: {available_items}\n")
-```
+:::tip
+Need to keep asking until the user provides a valid choice? Use a [validation loop](../4.%20loops/28-while-loops).
+:::
 
 ## Nested Conditionals for Dependent Checks
 
 ```python
 device_status: str = "active"
 temperature: int = 38
+
 if device_status == "active":
     if temperature > 35:
         print("High temperature!")
@@ -90,7 +81,6 @@ print(delivery_fees)
 ## Why This Grouping Makes Sense
 
 - Input normalization and conditional branches are common together.
-- Validation loops and nested checks are two patterns for robust user-facing logic.
+- Nested checks are a direct extension of basic branching.
 - Converting input to a number is the missing step before numeric comparisons.
 
-*Source files: `23.samosa.py`, `24. Chai price calc.py`, `25.py`, `26. delivery fees waver.py`.*

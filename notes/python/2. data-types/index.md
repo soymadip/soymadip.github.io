@@ -13,4 +13,4 @@ This section explains collection behavior and common patterns for working with v
 Topics in this folder:
 - Sets and unique collections.
 - Dictionaries and key/value lookup.
-- A short exercise on delivery charge calculation.
+- Exercises on delivery charge calculation and customer record manipulation.

@@ -12,6 +12,7 @@ This section explains how to make decisions in Python and how to handle input, v
 
 Topics in this folder:
 - `if`/`else` and nested conditionals.
+- Conditional expressions and simple one-line assignments.
 - Input validation and decision-based feedback.
 - `match`/`case` and menu-based lookup.
 - Short exercises for age verification, loan eligibility, and free offers.

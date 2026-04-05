@@ -11,7 +11,9 @@ Loops are how Python repeats work until a condition is met.
 This section explains common looping patterns and when to choose `for` versus `while`.
 
 Topics in this folder:
-- Iterating list values and mixed-type collections.
-- `while` loops for repeat-until conditions.
-- `for` loops and `range()` for sequence processing.
-- Exercises on multiplication tables and task completion tracking.
+- `for` loops, `range()`, and iterating over lists.
+- `enumerate()` and `zip()` for indexed or parallel iteration.
+- `while` loops for repeat-until conditions and input validation.
+- `break`, `continue`, and `else` clauses for fine-tuned loop control.
+- Expressions, statements, and the walrus operator (`:=`).
+- Exercises on multiplication tables, numbered task lists, student score reports, ATM withdrawals, and parcel scanning.

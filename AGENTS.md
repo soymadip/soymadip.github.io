@@ -17,11 +17,18 @@ Important locations
 Convert `code/` examples into concise, revision-friendly `notes/` pages.
 Write in a direct, practical tone, fix obvious issues, and avoid changing the original intent.
 
-## Workflow
+This guide explains how to turn each source example into a readable note. Follow the workflow first, then use the metadata and style rules to keep notes consistent and easy to review.
+
+When i say "write notes", scan code directory for changes, and write notes. 
+
+## Workflow (strictly follow, specially about merging)
 
 - When asked to write notes, compare source code and existing notes in the same folder first; then write, update, or delete note files to reflect content changes.
 - Review the last 3–4 notes in that directory when the source appears related.
 - Identify the concept or topic taught by the source code.
+- Do not rely on automated file-existence checks alone; decide by concept coverage and whether the note should merge with existing material.
+- **Check whether the exact concept taught by the source code is already documented in any existing note; if it is, expand or merge into that note rather than creating a duplicate.**
+- **If the concept is not written yet, check if any other existing note (especially the last 3–4 notes) suits this topic and write to it.**
 - If the concept already exists, merge into that note instead of creating a duplicate.
 - Prefer updating an existing note over creating a new one when the source clearly matches the same idea.
 - Create a new note only when the source introduces a distinct concept or when no existing note covers the topic.
@@ -47,6 +54,8 @@ Regular notes should focus on understanding a concept, not just solving a specif
 - Start with a short summary or "What to remember" list.
 - Use runnable examples and exact output blocks.
 - Describe patterns and behavior, not commands.
+- Put explanation before each code example; the note should tell the reader what the code is doing first.
+- **Keep notes dense and purposeful: every sentence must add meaning.**
 - Avoid duplicate comments when the prose already explains the intent.
 - Use real-world names like `pending_tasks`, `user_roles`, `visited_nodes`.
 - Avoid pasting entire source files.
@@ -143,3 +152,4 @@ Ask when:
 ## Local development
 
 Use the project README and `mise.toml` for local preview and build commands.
+iew and build commands.
