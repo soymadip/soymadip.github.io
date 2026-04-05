@@ -29,6 +29,7 @@ Tone & scope
 - Read the source code directory and any existing notes in the same folder, and compare for content changes.
 - Identify the concept(s) and topic(s) taught by the source code, not just the story or problem title. check that any concept/topic in the code is not left out add new copcepts in notes if necessary.
 - If there are any questions in code, answer them using callouts.
+- For regular notes, fold question-like comments into the concept narrative or a brief FAQ section.
 - Prefer concept-based filenames over narrative titles.
 - If a concept already exists, merge into that note rather than creating a duplicate.
 - If the source material covers multiple distinct subtopics, split it into longer/separate concept notes instead of one crowded page.
