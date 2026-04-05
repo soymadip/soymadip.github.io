@@ -48,6 +48,7 @@ Tone & scope
 - Confirm the note filename, frontmatter, sidebar label, and index links are consistent.
 - When asked to write notes, compare source code and existing notes in the same folder first; then write, update, or delete note files to reflect content changes.
 - Keep root section `index.md` pages as overview pages only; do not add direct links to individual note files there.
+- Use the language name as the title/sidebar label for top-level note index pages (for example, `Python`).
 
 ## Required conventions (follow these strictly)
 

@@ -1,7 +1,7 @@
 ---
-id: python-notes-index
-title: Python notes index
-sidebar_label: Python notes
+id: python-index
+title: Python
+sidebar_label: Python
 sidebar_position: 1
 description: "Index of Python notes sections."
 ---
