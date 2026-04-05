@@ -1,0 +1,7 @@
+{
+  "name": "soymadip.github.io",
+  "private": true,
+  "dependencies": {
+    "portosaurus": "^1.18.16"
+  }
+}

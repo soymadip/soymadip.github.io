@@ -1,0 +1,11 @@
+[tools]
+bun = "latest"
+uv = "latest"
+
+[tasks.build]
+description = "Build the project"
+run = "bun run build"
+
+[tasks.dev]
+description = "Run the development server"
+run = "bun run dev"
