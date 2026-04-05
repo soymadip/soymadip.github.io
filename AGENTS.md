@@ -27,7 +27,8 @@ Tone & scope
 ## Before writing any note
 
 - Read the source code directory and any existing notes in the same folder, and compare for content changes.
-- Identify the concept(s) and topic(s) taught by the source code, not just the story or problem title.
+- Identify the concept(s) and topic(s) taught by the source code, not just the story or problem title. check that any concept/topic in the code is not left out add new copcepts in notes if necessary.
+- If there are any questions in code, answer them using callouts.
 - Prefer concept-based filenames over narrative titles.
 - If a concept already exists, merge into that note rather than creating a duplicate.
 - If the source material covers multiple distinct subtopics, split it into longer/separate concept notes instead of one crowded page.
@@ -37,6 +38,11 @@ Tone & scope
   Example: `23.5. Exercise 8: Free dessert offer.md`.
 - Include the exercise number in the note `title` and `sidebar_label` for exercise pages.
 - If one of the merged notes includes an exercise, use the merged note's filename prefix for the resulting exercise note.
+- Exercise notes should use explicit `## Problem`, `## Rules`, and `## Solution` sections.
+- When the source file includes a top docstring, use that text as the exercise question.
+- Keep the expected output visible before the solution section.
+- The solution section may hide code in a `<details>` block, but add a note such as "Only view the solution after trying your best."
+- Do not use `What to remember` in exercise notes when a dedicated `Rules` section exists.
 - Use `source_filename` when the note filename is normalized.
 - Confirm the note filename, frontmatter, sidebar label, and index links are consistent.
 - When asked to write notes, compare source code and existing notes in the same folder first; then write, update, or delete note files to reflect content changes.
@@ -91,7 +97,9 @@ source_filename: "19. sets.py"
 - Use a future-facing reference tone: describe patterns and behavior rather than commanding the reader.
 - Use real-world names like `pending_tasks`, `user_roles`, `visited_nodes`.
 - Do not paste entire source files.
-- Use Docusaurus admonition callouts for notices, tips, warnings, or notes: `:::tip`, `:::note`, `:::warning`.
+- Use Docusaurus admonition callouts for important notices, tips, warnings, or notes: `:::tip`, `:::note`, `:::warning`.
+- Keep lower-priority guidance as inline footnote-style text instead of a prominent box.
+- Quote all frontmatter string values.
 - Use title case for callout titles and section headings.
 - If the concept needs longer treatment, create a separate note for the subtopic instead of forcing everything into one page.
 - Use Mermaid, flowcharts, images, or SVGs when they help explain the concept.
@@ -106,7 +114,7 @@ source_filename: "19. sets.py"
 
 #### Python
 
-- Target Python 3.12 and current standard syntax.
+- Target current latest version standard syntax.
 - Use typed examples in Python notes, including function signatures and variable annotations where meaningful.
 - Mention version requirements only when a feature is not supported in Python 3.12.
 - Use version callout notes only for genuinely version-limited syntax or operators.
@@ -121,12 +129,12 @@ source_filename: "19. sets.py"
 - Use language-specific fenced blocks.
 - Keep examples short and focused.
 - Avoid duplicate comments when the prose already explains the intent.
-- Run the example in a real interpreter and verify the output block matches exactly.
+- **Run the example in a real interpreter and verify the output block matches exactly, then add output to note**.
 - Add minimal boilerplate setup code when needed so the example is runnable as shown.
 
 ### 5. Avoid duplication
 
-- Keep one canonical note per concept.
+- Keep one canonical note per concept. link to the note if wanna reference somewhere else.
 - Merge near-duplicates instead of creating extra notes.
 
 ### 6. Sidebar ordering & updates

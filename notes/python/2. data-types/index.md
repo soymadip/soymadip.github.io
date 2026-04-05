@@ -3,7 +3,7 @@ id: 2-data-types-index
 title: Python data types index
 sidebar_label: Data types
 sidebar_position: 2
-description: Index page for the Python data-types notes in this folder.
+description: "Index page for the Python data-types notes in this folder."
 ---
 
 Short index for quick navigation to Python data types notes.
