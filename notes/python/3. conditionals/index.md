@@ -6,6 +6,12 @@ sidebar_position: 3
 description: "Python notes for conditionals, validation loops, and input handling."
 ---
 
-Quick overview for the Python conditionals section.
+Conditionals let code respond differently when values change.
 
-This section collects notes on conditional expressions, validation loops, nested branches, and input handling.
+This section explains how to make decisions in Python and how to handle input, validation, and branching.
+
+Topics in this folder:
+- `if`/`else` and nested conditionals.
+- Input validation and decision-based feedback.
+- `match`/`case` and menu-based lookup.
+- Short exercises for age verification, loan eligibility, and free offers.

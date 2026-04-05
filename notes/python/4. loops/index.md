@@ -6,10 +6,12 @@ sidebar_position: 4
 description: "Overview of Python loop notes in this folder."
 ---
 
-This page is an overview for the Python loops section.
+Loops are how Python repeats work until a condition is met.
 
-The loops section covers repeating tasks with `for` loops and `range()`, plus iteration patterns that are useful for sequence processing.
+This section explains common looping patterns and when to choose `for` versus `while`.
 
-:::tip
-This index page is an overview only; individual notes are organized within the loops section.
-:::
+Topics in this folder:
+- Iterating list values and mixed-type collections.
+- `while` loops for repeat-until conditions.
+- `for` loops and `range()` for sequence processing.
+- Exercises on multiplication tables and task completion tracking.

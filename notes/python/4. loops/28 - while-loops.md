@@ -9,7 +9,7 @@ source_filename: "28 - into-to-loops.py"
 
 # While loops
 
-What to remember
+## What to remember
 
 - `while` repeats until its condition becomes false.
 - `while True` with `break` is a common retry loop pattern.

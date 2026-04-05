@@ -33,6 +33,10 @@ Write in a direct, practical tone, fix obvious issues, and avoid changing the or
 - If a source file is clearly an exercise, map it to the existing exercise note format and avoid adding a duplicate exercise.
 - Answer source-file questions in the note, either inline or as a short FAQ.
 - Keep root section `index.md` pages as overview pages only; do not add direct links to individual note files there.
+- Make top-level language index pages feel like a short language introduction or landing page. (an example is python's index page)
+- Write section index pages with a short intro that explains the topic first.
+- Include a human-friendly list of the topics or note themes present in that section.
+- Also include what should be covered in that section, not just the page purpose.
 - Use the language name for top-level note index pages, e.g. `Python`.
 
 ## Regular notes and metadata
@@ -40,8 +44,8 @@ Write in a direct, practical tone, fix obvious issues, and avoid changing the or
 Regular notes should focus on understanding a concept, not just solving a specific prompt.
 
 - Use concept-driven titles and section headings.
-- Start with a short "What to remember" list.
-- Use short runnable examples and exact output blocks.
+- Start with a short summary or "What to remember" list.
+- Use runnable examples and exact output blocks.
 - Describe patterns and behavior, not commands.
 - Avoid duplicate comments when the prose already explains the intent.
 - Use real-world names like `pending_tasks`, `user_roles`, `visited_nodes`.
@@ -91,6 +95,7 @@ Exercise notes follow all regular note rules, plus these differences:
 - Use `## Problem`, `## Rules`, and `## Solution` sections.
 - If the source has a docstring, use it as the `## Problem` prompt.
 - Keep expected output visible before the solution.
+- Place solution design reasoning inside the hidden `Details` block, not as a separate visible section.
 - The solution may be hidden in `<details>`, but include a note like "Only view the solution after trying your best."
 - Do not use `What to remember` if there is a dedicated `Rules` section.
 - Use `source_filename` when the note filename is normalized.

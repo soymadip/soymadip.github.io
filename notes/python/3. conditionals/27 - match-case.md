@@ -9,7 +9,7 @@ source_filename: "27 - match-case.py"
 
 # Match-case
 
-What to remember
+## What to remember
 
 - `match` evaluates one expression and checks each `case` in order.
 - `case _` is the fallback if no other pattern matches.

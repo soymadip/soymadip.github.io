@@ -9,7 +9,7 @@ source_filename: "31 - iterating-lists.py"
 
 # Iterating lists
 
-What to remember
+## What to remember
 
 - `for item in list` reads each element in order.
 - A Python list can hold mixed types at runtime.

@@ -9,7 +9,7 @@ source_filename: "29 - loops.py"
 
 # For loops
 
-What to remember
+## What to remember
 
 - `for` iterates over any sequence, including `range`.
 - `range(stop)` produces values from `0` to `stop - 1`.

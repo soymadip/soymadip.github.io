@@ -6,15 +6,11 @@ sidebar_position: 2
 description: "Index page for the Python data-types notes in this folder."
 ---
 
-Short index for quick navigation to Python data types notes.
+Data types are the building blocks of Python programs.
 
-What this index contains
+This section explains collection behavior and common patterns for working with values and containers.
 
-- Short, revision-friendly notes for Python data types in this folder.
-
-This section covers notes on sets, dictionaries, and related data-type patterns.
-
-
-:::tip
-This index page is an overview only; individual notes are organized within the data-types section.
-:::
+Topics in this folder:
+- Sets and unique collections.
+- Dictionaries and key/value lookup.
+- A short exercise on delivery charge calculation.
