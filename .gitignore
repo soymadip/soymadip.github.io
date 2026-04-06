@@ -11,6 +11,7 @@ test*
 svg/
 TestimonialsSection/
 COMPILER/
+resume file
 
 # Generated files
 .docusaurus

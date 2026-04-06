@@ -134,13 +134,10 @@ important_spices = frozenset(["cardamom", "cinnamon", "cloves"])
 - Use sets for deduplication, membership tests, and fast caching of seen values.
 - Use `frozenset` when you need a set as a key in another dictionary or a member of another set.
 
-## Mermaid — Conceptual Diagram (Sets)
-
-A compact Mermaid flowchart showing relationships (union, intersection, difference). For a true Venn diagram, consider embedding an SVG.
-
 :::tip
+
 - Use `discard()` when missing elements are normal to avoid exceptions.
 - Use `sorted(s)` for reproducible order when displaying or testing.
 - Use set comprehensions for concise transforms.
 - Use `frozenset` when you need immutability/hashability.
-:::
+  :::

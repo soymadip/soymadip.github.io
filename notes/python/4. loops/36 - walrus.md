@@ -32,15 +32,29 @@ result = 3 + 3
 
 The walrus operator (officially known as the Assignment Expression) lets you assign and return a value in one step.
 
-```python
-# Without walrus:
-data = input("Enter something: ")
-if len(data) > 0:
-    print(f"You typed {len(data)} characters.")
+### Reducing Redundant Checks
 
+Instead of assigning a variable and then checking it, you can do both at once.
+
+```python
 # With walrus:
 if (n := len(input("Enter something: "))) > 0:
     print(f"You typed {n} characters.")
+
+# In complex conditionals
+import os
+if username := os.environ.get("USER_NAME"):
+    print(f"Found username: {username}")
+```
+
+### Efficient While Loops
+
+Use the walrus operator to update a condition variable directly in the `while` header.
+
+```python
+# Loop until the user provides an empty string
+while user_input := input("Next flavour (blank to stop): ").strip().lower():
+    print(f"Adding {user_input} to the list...")
 ```
 
 :::warning Readability
