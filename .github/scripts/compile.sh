@@ -76,12 +76,12 @@ cd "$COMPILER_DIR" || {
     exit 1
 }
 
-npm install || {
+bun install || {
     echo "❌ Deps installation failed. Please check the logs above."
     exit 1
 }
 
-npm run build || {
+bun run build || {
     echo "❌ Compilation failed. Please check the logs above."
     exit 1
 }
