@@ -1,13 +1,13 @@
 ---
 id: 36-expressions-statements-walrus
-title: "Expressions, Statements, and Walrus"
+title: "Walrus: Convert Statements to Expressions"
 sidebar_label: "Expressions, Statements, and Walrus"
 sidebar_position: 36
-description: "Understand the difference between statements and expressions, and use the walrus operator (:=)."
+description: "Understand the use of the walrus operator (:=)."
 source_filename: "36 - walrs.py"
 ---
 
-# Expressions, Statements, and Walrus
+# Walrus Operator
 
 ## What to remember
 
@@ -22,10 +22,10 @@ Most code in Python consists of either statements or expressions.
 
 ```python
 # Statement: Assigns 5 to x, but the line itself has no value.
-x = 5 
+x = 5
 
 # Expression: Evaluates to 6.
-3 + 3 
+3 + 3
 ```
 
 ## The Walrus Operator (`:=`)
@@ -103,8 +103,8 @@ print(f"you choose: {user_flav}")
 ```text
 choose your flavour: mango
 sorry we dont have mango
-choose your flavour: 
-you choose: 
+choose your flavour:
+you choose:
 ```
 
 :::warning Readability
