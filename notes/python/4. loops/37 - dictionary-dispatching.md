@@ -15,24 +15,36 @@ source_filename: "37.py"
 - Using a dictionary is often cleaner and more efficient than long `if/elif` or `match/case` blocks.
 - It is particularly useful for configuration-driven logic where rules are mapped to specific identifiers.
 
-## Why Use Dictionaries for Logic?
+## Comparison: Match-Case vs. Dictionary
 
 When you have multiple cases that result in simple value lookups, a dictionary keeps the code dry and easy to update.
 
-Instead of this:
+### Repetitive Match-Case
+
+Using `match-case` for simple key-to-value mapping requires a new block for every case, which can become verbose.
+
 ```python
-if cupon == "p20":
-    percent = 0.2
-elif cupon == "p60":
-    percent = 0.6
-else:
-    percent = 0
+# Multiple cases for every discount code
+match user["cupon"]:
+    case "p20":
+        percent, flat = (0.2, 0)
+    case "p60":
+        percent, flat = (0.6, 0)
+    case "p50":
+        percent, flat = (0, 10)
+    case _:
+        percent, flat = (0, 0)
 ```
 
-Use this:
+### Clean Dictionary Dispatch
+
+A dictionary collapses those branches into a single line using a lookup table.
+
 ```python
-discounts = {"p20": 0.2, "p60": 0.6}
-percent = discounts.get(cupon, 0)
+discounts = {"p20": (0.2, 0), "p60": (0.6, 0), "p50": (0, 10)}
+
+# Collapses the entire match-case into one clean line
+percent, flat = discounts.get(user["cupon"], (0, 0))
 ```
 
 ## Dispatching in Loops
@@ -50,6 +62,7 @@ discounts = {
 users = [
     {"id": 1, "total": 100, "cupon": "p20"},
     {"id": 2, "total": 100, "cupon": "p60"},
+    {"id": 3, "total": 100, "cupon": "p50"},
 ]
 
 for user in users:
@@ -58,7 +71,9 @@ for user in users:
     
     # Calculate final price
     discount_val = user["total"] * percent + flat
-    print(f"User {user['id']} paid {user['total'] - discount_val} (Discount: {discount_val})")
+    print(
+        f"User {user['id']} paid {user['total'] - discount_val} (Discount: {discount_val})"
+    )
 ```
 
 ```text

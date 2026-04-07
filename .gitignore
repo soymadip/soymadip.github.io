@@ -16,6 +16,7 @@ resume file
 # Generated files
 .docusaurus
 .cache-loader
+.antigravity/
 
 # Misc
 .DS_Store

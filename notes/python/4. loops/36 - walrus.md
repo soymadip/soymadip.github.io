@@ -25,7 +25,7 @@ Most code in Python consists of either statements or expressions.
 x = 5 
 
 # Expression: Evaluates to 6.
-result = 3 + 3 
+3 + 3 
 ```
 
 ## The Walrus Operator (`:=`)
@@ -37,14 +37,53 @@ The walrus operator (officially known as the Assignment Expression) lets you ass
 Instead of assigning a variable and then checking it, you can do both at once.
 
 ```python
-# With walrus:
-if (n := len(input("Enter something: "))) > 0:
-    print(f"You typed {n} characters.")
+# without walrus operator
+remainder = 13 % 5
+if remainder:
+    print("not devisible by 5")
 
-# In complex conditionals
+# with walrus
+if remainder := 13 % 5:
+    print("not divisible by 5")
+```
+
+```text
+not devisible by 5
+not divisible by 5
+```
+
+### Simplifying Logic
+
+It is highly effective when you need to fetch a configuration value or environment variable and immediately check if it exists before using it.
+
+```python
 import os
-if username := os.environ.get("USER_NAME"):
-    print(f"Found username: {username}")
+
+class config:
+    server_username = ""
+
+    def write_output(self, name: str) -> type[str]:
+        return str
+
+dsd_config = config()
+plugin_utils = config()
+
+# without walrus
+def set_server_username():
+    username = os.environ.get("DO_DJANGO_USER")
+    if username:
+        # Use this custom username.
+        dsd_config.server_username = username
+        plugin_utils.write_output(f"  username: {username}")
+        return
+
+# with walrus operator
+def set_server_username2():
+    if username := os.environ.get("DO_DJANGO_USER"):
+        # Use this custom username.
+        dsd_config.server_username = username
+        plugin_utils.write_output(f"  username: {username}")
+        return
 ```
 
 ### Efficient While Loops
@@ -52,9 +91,20 @@ if username := os.environ.get("USER_NAME"):
 Use the walrus operator to update a condition variable directly in the `while` header.
 
 ```python
+flavours: list[str] = ["mint", "lemon", "mirch"]
+
 # Loop until the user provides an empty string
-while user_input := input("Next flavour (blank to stop): ").strip().lower():
-    print(f"Adding {user_input} to the list...")
+while user_flav := input("choose your flavour: ").strip().lower():
+    print(f"sorry we dont have {user_flav}")
+
+print(f"you choose: {user_flav}")
+```
+
+```text
+choose your flavour: mango
+sorry we dont have mango
+choose your flavour: 
+you choose: 
 ```
 
 :::warning Readability
