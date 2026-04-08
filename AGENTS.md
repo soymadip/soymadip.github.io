@@ -18,21 +18,38 @@ Convert `code/` examples into concise, revision-friendly `notes/` pages targeted
 
 This guide explains how to turn each source example into a readable note. Follow the workflow first, then use the metadata and style rules to keep notes consistent and easy to review.
 
-When i say "write notes", scan `code/` for changes, and write notes.
+When I say "write notes", scan `code/` for changes, and write notes.
 
 ## **Workflow (Scan, Compare, Merge)**
 
-- **Topic Folder Pattern:** Organize notes into topic-specific folders within their section (e.g., `notes/python/5. Functions/1. basics/`).
+- **Topic Folder Pattern:** Organize notes into topic-specific folders within their section only when the topic has associated exercises.
   - Each folder must contain an `index.md` which serves as the **Theory** and the "parent" page for that topic.
-  - Exercises related to that topic must be placed **inside** the same folder as sub-pages. This is mandatory: do not put a topic exercise in a different folder.
-- **Scan Before Writing:** When asked to write notes, compare source code with existing notes in the same folder. Review the last 3–4 notes to identify if the topic is already covered.
+  - Folder names follow the `<number> - <name>` pattern (e.g., `5.1 - basics`).
+  - Theory `index.md` files **do not** have a numeric prefix in the filename, but their `sidebar_position` must match the folder's number as a **quoted string** (e.g., `"5.1"`).
+  - Exercises related to that topic must be placed **inside** the same folder as sub-pages.
+  - If a topic has no exercises, a standalone numbered file such as `5.3 - recursion.md` is preferred over a folder.
+
+### **Visual Example (Must Follow)**
+```text
+notes/python/5 - Functions/
+├── index.md                      <-- (frontmatter: sidebar_position: "5")
+├── 5.1 - basics/                 <-- Topic Folder
+│   ├── index.md                  <-- Theory (frontmatter: sidebar_position: "5.1")
+│   └── 5.1.1 - Exercise 19.md    <-- Exercise (frontmatter: sidebar_position: "5.1.1")
+├── 5.2 - scope/                  <-- Topic Folder
+│   ├── index.md                  <-- Theory (frontmatter: sidebar_position: "5.2")
+│   └── 5.2.1 - Exercise 20.md    <-- Exercise (frontmatter: sidebar_position: "5.2.1")
+└── 5.3 - recursion.md            <-- Standalone Note (frontmatter: sidebar_position: "5.3")
+```
+
+- **Scan Before Writing:** Compare source code with existing notes in the same folder. Review the last 3–4 notes to identify if the topic is already covered.
 - **Merge-First Philosophy:** Do not create duplicate notes for the same concept.
   - If a concept exists, expand or merge it into the existing note.
   - If all notes in a directory belong together, consolidate them into one single note.
-  - Create a new note only if the source introduces a distinct concept, not sub concept/part of existing notes.
-- **Maintain Structure:** Always renumber notes and exercise prefixes to maintain a perfect, gap-free sequence in the sidebar.
-  - If a merge creates a gap, renumber all subsequent notes to fill the hole.
-  - Exercises inside a topic folder should use a numeric prefix (e.g., `1. Exercise 19 - ...md`) to stay ordered under the index page.
+  - Create a new note only if the source introduces a distinct concept.
+- **Maintain Structure:** Always renumber notes and prefixes to maintain a perfect, gap-free sequence in the sidebar.
+  - If a merge creates a gap, renumber only the **local siblings** (notes/exercises within that same folder) to fill the hole.
+  - Use sub-numbering (e.g., `5.1`, `5.1.1`) to ensure perfect ordering and easy tracking.
 - **Source Footnote:** At the very end of every note and exercise, add a small italicized line: `---`\n _Source file: <original-filename>.py_.
 - **Exercise Mapping:** Map source files that are clearly exercises to the standard exercise note format.
 - **Answer Questions:** If the source file has questions or comments, fold the answers into the note narrative or a brief FAQ.
@@ -43,56 +60,38 @@ When i say "write notes", scan `code/` for changes, and write notes.
 
 ## Regular Notes and Metadata
 
-Regular notes should focus on idiomatic Python patterns and the "why" behind the code.
+Regular notes focus on idiomatic patterns and the "why" behind the code.
 
-- **Intermediate Focus:** Assume the reader knows basic programming concepts (no "variables are boxes" analogies). Explain language-specific behaviors, "Why/When" context, and "Pythonic vs. Anti-pattern" comparisons.
-- **Wording & Headings:** Keep language simple and direct. Do not include syntax or code in headings (e.g., use `Slicing Syntax`, not `Slicing Syntax [start:stop]`). **Always use Title Case for all headings (H1, H2, H3, etc.).**
-- **Curated Content:** Do not list every possible built-in function; focus on the commonly used ones. Use a callout or dedicated section for "Worth Mentioning" functions if needed.
+- **Intermediate Focus:** Assume the reader knows basic programming concepts. Explain language-specific behaviors and "Why/When" context.
+- **Wording & Headings:** Keep language simple and direct. Do not include syntax or code in headings. **Always use Title Case for all headings.**
 - **Formatting:**
-  - Use `<note no>. <name>` for both top-level section folders and nested topic folders (e.g., `1. basics`). Do not use sub-numbering like `5.1.`.
-  - Use `index.md` for the main theory file within a topic folder.
-  - Use `Exercise <number> - <name>.md` for exercise filenames (e.g., `Exercise 19 - ...md`).
+  - **Directories:** `<number> - <name>/`
+  - **Files:** `<number> - <name>.md` (except `index.md`)
+  - **Index Files:** `index.md`
+  - **Exercises:** `<number> - Exercise <number> - <name>.md`
   - **Sanitize filenames:** replace any colons `:` with hyphens `-`.
-  - Use numeric prefixes and `sidebar_position` for ordering.
+  - **Sidebar Position:** `sidebar_position` must exactly match the numeric prefix as a **quoted string** (e.g., `"5.1.1"`).
   - Preserve original code filenames in `source_filename`.
   - Use Docusaurus callouts (`:::tip`, `:::note`, `:::warning`) with Title Case names.
-  - Keep lower-priority guidance as inline footnote-style text instead of a prominent box.
+
 - **Content & Logic:**
   - **Before the code:** Explain the intent of the pattern.
-  - **After the code:** Point out specific nuances, performance notes, or "clever" parts of the execution.
-  - **Density:** Every sentence must add meaning; avoid duplicate comments if the prose already explains the intent.
-  - **DRY & Linking:** Avoid repeating detailed explanations of concepts covered in other notes (e.g., Type Hinting). Instead, provide a brief, context-specific example and link to the dedicated "master" lesson using Docusaurus Markdown links (e.g., `[Modern Python Types](../1. basics/9. modern-python-types.md)`).
-  - Have a "What to remember" summary list.
-  - Use real-world variable names and runnable examples with exact output blocks.
-  - Use Mermaid, flowcharts, or SVGs, images when they clarify a concept.
-- **Verification:**
-  - _Run every example code block and show the exact output below it._
-    - Use `uv run <file>.py` for running Python examples.
-    - Use `bun run <file>.js` (or `bun <file>.ts`) for JavaScript/TypeScript examples.
-    - Use `gcc` for C and `g++` for C++ examples.
-  - Fold question-like comments into the note narrative or a brief FAQ.
-  - Write enough to make the concept clear in practice, not just a tiny stub.
+  - **After the code:** Point out specific nuances or performance notes.
+  - **Verification:** Run every example code block (`uv run <file>.py`) and show the exact output below it.
 
-### 2. Frontmatter (mandatory)
+### **Frontmatter (Mandatory)**
+Every note must start with Docusaurus frontmatter:
+- `id`: normalized, hyphenated unique identifier.
+- `title`: page title in Title Case.
+- `description`: one-line summary.
+- `sidebar_position`: matches the numeric prefix as a **quoted string** (e.g., `"5.1.1"`).
+- `source_filename`: original code filename.
 
-Every note must start with Docusaurus frontmatter. At minimum include:
-
-- `id` — normalized, hyphenated unique identifier (shouldn't include number at start unless the name has it)
-- `title` — page title in title case
-- `description` — one-line summary
-- `sidebar_position` — derived from the filename prefix
-- Optional: `sidebar_label` — sidebar label if not as same as title
-- Optional: `source_filename` — original code filename when normalized
-
-Notes inside language-specific folders should keep titles concise; do not append a language suffix like ` — Python` or ` — JavaScript` when the note already lives in that language section.
-
-- Keep titles concise inside language folders; don’t append `— Python` or similar.
-
-## Exercise notes
+## Exercise Notes
 
 Exercise notes follow all regular note rules, but focus on hands-on practice.
 
-- **Filenames:** Use `<prefix>. Exercise <number> - <name>.md`.
+- **Filenames:** Use `<number> - Exercise <number> - <name>.md` (e.g., `5.1.1 - Exercise 19 - Student grading system.md`).
 - **Headings:** Use `Ex <number>: <name>` for the main H1. No syntax in headings.
 - **Problem & Rules:**
   - Use `## Problem` to describe the task (often from the source docstring).
@@ -113,49 +112,16 @@ Exercise notes follow all regular note rules, but focus on hands-on practice.
   - Include a "Details" block inside the solution to explain the reasoning, not as a separate visible section.
 - **Metadata:** Use `source_filename` to link back to the original code.
 
-## Language-specific guidance
-
-Keep general rules first and add language-specific notes after.
-
-- Check whether a syntax, method, or pattern is supported by current industry-standard versions.
-- If it is not broadly supported, add a compatibility note.
+## Language-Specific Guidance
 
 ### Python
+- **Use `uv` for running python files.**
+- Use current Python syntax (3.12+) and typed examples.
+- Mention version limits only when a feature is unsupported in 3.12.
 
-- **Use uv for running python files/code**
-- Use current Python syntax and typed examples when meaningful.
-- Mention version limits only when a feature is unsupported in Python 3.12.
-- If a Python source file uses newer syntax or idioms, note compatibility and support status.
+### JavaScript/TypeScript
+- Use `bun` to run files.
 
-### Other languages
+## Gemini
 
-- Add a subheading when a note uses platform- or language-specific idioms.
-- Check support against broadly adopted versions of the language or framework.
-- Document compatibility caveats for nonstandard or emerging syntax.
-- Keep general guidance separate from language-specific conventions.
-- Keep general guidance separate from language-specific conventions.
-
-## Practical checklist
-
-1. Locate the source file in `code/...`.
-2. Read the source and existing notes in the folder.
-3. Create `notes/.../<normalized-filename>.md`.
-4. Add required frontmatter and `source_filename` if normalized.
-5. Add a brief title, a small summary, and focused runnable examples.
-6. Avoid duplicates; merge overlapping concepts.
-7. Confirm sidebar labels, frontmatter, and links are consistent.
-
-## When to ask for clarification
-
-Ask when:
-
-- you want to change site structure beyond content updates
-- the change affects build or deployment behavior
-- you want to rename many `code/` files
-- you need to modify sidebar ordering or navigation
-- you’re unsure about `sidebar_position` for a note without a leading number
-
-## Local development
-
-Use the project README and `mise.toml` for local preview and build commands.
-iew and build commands.
+If you are Gemini, try not to use `generalist` sub-agent as much as possible.

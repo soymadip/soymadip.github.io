@@ -1,0 +1,121 @@
+---
+id: dictionaries
+title: Dictionaries
+sidebar_position: "2.2"
+description: "Hash maps optimized for fast lookups, now with insertion order."
+source_filename: "20 - dictionary.py"
+---
+# Dictionaries
+
+Dictionaries are used to store data as key-value pairs. They are like a real-world dictionary where you look up a word (the key) to find its definition (the value).
+
+## What to Remember
+
+- Dictionaries are **O(1) fast** for lookups and insertions.
+- Since Python 3.7, they **keep the order** in which you add items.
+- Keys must be **immutable** (strings, integers, tuples).
+- Values can be anything, including other lists or dictionaries.
+
+## Creating and Accessing Dictionaries
+
+If you are coming from C or Java, you might be used to manually managing hashmaps. In Python, it's a built-in literal.
+
+```python
+# Type hinting: specify Key and Value types inside dict[]
+# See: [Modern Python Types](../../1 - basics/1.9 - modern-python-types.md) for details
+car: dict[str, str | int] = {"brand": "Tesla", "model": "S", "year": 2022}
+
+# Grabbing a value by its key
+print(car["brand"])
+```
+
+**Output:**
+
+```text
+Tesla
+```
+
+### The .get() Trick
+
+If you try to access a key that doesn't exist (like `car["color"]`), Python will crash with a `KeyError`. Using `.get()` is safer because it returns `None` instead.
+
+```python
+# Safe way to look up a key
+print(car.get("color"))
+
+# You can even provide a default fallback
+print(car.get("color", "Not Available"))
+```
+
+```text
+None
+Not Available
+```
+
+## Modifying Dictionaries
+
+Dictionaries are **mutable**, so you can add, change, or remove items on the fly.
+
+```python
+# Adding or changing items
+car["color"] = "Red"
+car.update({"year": 2024})
+
+# Removing items
+# pop() removes and returns the value
+popped_year = car.pop("year")
+
+print(car)
+print(popped_year)
+```
+
+```text
+{'brand': 'Tesla', 'model': 'S', 'color': 'Red'}
+2024
+```
+
+## Merging Dictionaries (Python 3.9+)
+
+Instead of using `update()`, which changes the original dictionary, you can use the `|` (merge) operator to create a brand-new one.
+
+```python
+A = {"x": 1, "y": 2}
+B = {"y": 3, "z": 4}
+
+# The right-side value wins if there's a collision
+print(A | B)
+```
+
+```text
+{'x': 1, 'y': 3, 'z': 4}
+```
+
+## Worth Mentioning: Initialization and Bulk Creation
+
+- `setdefault()`: Returns the value of a key if it exists; if not, inserts the key with a specified value. Great for initializing nested structures.
+- `fromkeys()`: Creates a new dictionary with keys from a collection and a single value for all.
+- `clear()`: Removes all items from the dictionary.
+
+```python
+# setdefault: helpful for counters
+counts = {"apples": 10}
+counts.setdefault("oranges", 0) # Adds oranges with 0
+counts.setdefault("apples", 0)  # Does nothing (apples exists)
+
+# fromkeys: bulk creation
+users = dict.fromkeys(["alice", "bob", "charlie"], "standard")
+
+print(counts)
+print(users)
+```
+
+**Output:**
+
+```text
+{'apples': 10, 'oranges': 0}
+{'alice': 'standard', 'bob': 'standard', 'charlie': 'standard'}
+```
+
+---
+
+_Source file: 20 - dictionary.py_

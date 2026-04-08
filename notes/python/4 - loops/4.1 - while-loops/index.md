@@ -1,0 +1,69 @@
+---
+id: while-loops
+title: While Loops
+sidebar_position: "4.1"
+description: "Repeating code until a condition changes and using validation loops."
+source_filename: ["28 - into-to-loops.py", "34 - while loops.py", "23 - conditionals-input.py"]
+---
+# While Loops
+
+Unlike a `for` loop which iterates over a sequence, a `while` loop repeats as long as a specific condition is **True**. This makes it ideal for situations where you don't know in advance how many times you need to repeat.
+
+## What to Remember
+
+- `while` loops run until their condition becomes `False`.
+- Use `while True` combined with `break` to create **validation loops**.
+- Always ensure the loop condition eventually fails to avoid an **infinite loop**.
+- `continue` skips the rest of the current iteration and jumps back to the condition check.
+
+## Basic Repetition
+
+If you are coming from C, `while` loops in Python work exactly as you'd expect.
+
+```python
+count = 1
+while count <= 3:
+    print(f"Loop iteration: {count}")
+    count += 1
+```
+
+**Output:**
+
+```text
+Loop iteration: 1
+Loop iteration: 2
+Loop iteration: 3
+```
+
+## Validation Loops: "ask Until Valid"
+
+A common Pythonic pattern for interactive tools is to loop forever until the user provides correct data.
+
+```python
+allowed_options = {"yes", "no", "maybe"}
+
+while True:
+    choice = input("Enter yes/no: ").strip().lower()
+    
+    if choice in allowed_options:
+        print(f"You chose: {choice}")
+        break  # Exit the loop entirely
+        
+    print(f"Invalid choice. Please choose from: {allowed_options}")
+```
+
+**Output:**
+
+```text
+Enter yes/no: okay
+Invalid choice. Please choose from: {'maybe', 'no', 'yes'}
+Enter yes/no: yes
+You chose: yes
+```
+
+### Why Use `while True`?
+Using `while True` with an internal `break` is often cleaner than trying to initialize a dummy variable just to satisfy a standard `while choice not in allowed_options:` condition. It keeps the "ask" logic and the "exit" logic clearly separated.
+
+---
+
+*Source files: 28 - into-to-loops.py, 34 - while loops.py, 23 - conditionals-input.py*

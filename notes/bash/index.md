@@ -1,7 +1,7 @@
 ---
 id: bash
 title: Bash
-sidebar_position: 1
+sidebar_position: "0"
 description: "Bash scripting notes for variables, arithmetic, and logic."
 ---
 Bash is the primary shell and command processor for Linux systems.

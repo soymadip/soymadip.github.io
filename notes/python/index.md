@@ -1,7 +1,7 @@
 ---
 id: python-index
 title: Python
-sidebar_position: 1
+sidebar_position: "0"
 description: "Python: the dynamically typed, interpreted, general-purpose programming language"
 ---
 
