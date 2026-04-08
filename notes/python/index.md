@@ -40,7 +40,8 @@ Python is a versatile language that is easy to read and useful for small scripts
 
 This section serves as a comprehensive guide to Python fundamentals, moving from data structures to control flow and repetitive logic.
 
-- **Data Types & Collections**: Deep dives into Sets, Dictionaries, and how to manage unique or mapped data efficiently.
+- **Basics & Primitives**: Foundation of Python, covering typing, numeric types, strings, and logic.
+- **Derived Data Types**: Deep dives into Lists, Sets, Dictionaries, and how to manage unique or mapped data efficiently.
 - **Conditional Logic**: Handling user input, normalizing strings, and building multi-way decision trees with `if/elif/else` and `match/case`.
 - **Loops & Iteration**: Mastering `for` and `while` loops, using `enumerate` for indexing, and processing collections.
 - **Practical Exercises**: Real-world scenarios like delivery calculators, billing systems, and task trackers to reinforce syntax through practice.
