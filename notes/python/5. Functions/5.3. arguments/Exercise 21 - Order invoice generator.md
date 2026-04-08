@@ -1,8 +1,7 @@
 ---
-id: 3-5-exercise-21-order-invoice-generator
-title: "Exercise 21: Order invoice generator"
-sidebar_label: "Exercise 21: Order invoice generator"
-sidebar_position: 3.5
+id: exercise-21-order-invoice-generator
+title: "Exercise 21: Order Invoice Generator"
+sidebar_position: 1
 description: "Build an automated restaurant invoice system using flexible function arguments."
 source_filename: "42.5 - Ex 21.py"
 ---

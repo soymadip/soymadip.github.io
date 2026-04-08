@@ -1,10 +1,10 @@
 ---
-id: 3-functions-arguments
+id: functions-arguments
 title: Function Arguments
-sidebar_label: Arguments
-sidebar_position: 1
+sidebar_position: 3
 description: "Mastering flexible argument patterns and avoiding common pitfalls with mutable defaults."
-source_filename: ["42 - arguments.py"]
+source_filename:
+    - "42 - arguments.py"
 ---
 
 # Function Arguments

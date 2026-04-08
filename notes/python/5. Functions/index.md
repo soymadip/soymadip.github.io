@@ -1,17 +1,13 @@
 ---
-id: 5-functions
+id: functions
 title: Functions
-sidebar_label: Functions
 sidebar_position: 5
 description: "Python notes for function definitions, scope, arguments, and best practices."
 ---
 
-Functions are the building blocks of reusable code in Python.
+Python functions are named blocks of reusable code designed to perform specific tasks, allowing developers to avoid writing the same logic repeatedly. They are defined using the def keyword, followed by a function name and parentheses, with the code block indented inside.
 
-This section covers how to define functions, manage variable scope, and handle complex argument patterns like `*args` and `**kwargs`.
-
-Topics in this folder:
-
-- **[Basics](./5.1. basics/index.md):** Defining, calling, and return values.
-- **[Scope](./5.2. scope/index.md):** LEGB rules and cross-scope modification.
-- **[Arguments](./5.3. arguments/index.md):** Flexible positional and keyword patterns.
+There are three primary types of functions in Python:
+  - Built-in functions: Predefined functions like print(), len(), and sum() that are always available without importing.
+  - User-defined functions: Custom functions created by the programmer to provide specific functionality.
+  - Module functions: Functions bundled in standard library modules that must be imported to be used. 

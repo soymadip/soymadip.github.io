@@ -1,7 +1,6 @@
 ---
-id: 1-functions-basics
+id: functions-basics
 title: Functions Basics
-sidebar_label: Basics
 sidebar_position: 1
 description: "Understanding how to define, call, and return values from Python functions."
 source_filename: 38 - Functions.py

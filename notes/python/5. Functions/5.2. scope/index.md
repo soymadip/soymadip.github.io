@@ -1,11 +1,11 @@
 ---
-id: 2-functions-scope
+id: functions-scope
 title: Functions Scope
-sidebar_label: Scope
-sidebar_position: 1
+sidebar_position: 2
 description: "Mastering the LEGB scope rule and modifying variables across different levels."
 source_filename:
-  ["40 - Scope & named spaces.py", "41 - non global and global scope.py"]
+  - 40 - Scope & named spaces.py
+  - 41 - non global and global scope.py
 ---
 
 # Functions Scope
