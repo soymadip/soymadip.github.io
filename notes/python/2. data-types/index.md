@@ -1,6 +1,6 @@
 ---
 id: 2-data-types
-title: Python data types
+title: Data Types
 sidebar_label: Data types
 sidebar_position: 2
 description: "Index page for the Python data-types notes in this folder."

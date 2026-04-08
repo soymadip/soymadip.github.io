@@ -14,69 +14,54 @@ Important locations
 
 ## Your role
 
-Convert `code/` examples into concise, revision-friendly `notes/` pages.
-Write in a direct, practical tone, fix obvious issues, and avoid changing the original intent.
+Convert `code/` examples into concise, revision-friendly `notes/` pages targeted at an **intermediate audience** (e.g., someone who knows basics or has a background in languages like C). Write in a direct, simple, and practical tone.
 
 This guide explains how to turn each source example into a readable note. Follow the workflow first, then use the metadata and style rules to keep notes consistent and easy to review.
 
-When i say "write notes", scan code directory for changes, and write notes. 
+When i say "write notes", scan `code/` for changes, and write notes.
 
-## Workflow (strictly follow, specially about merging)
+## **Workflow (Scan, Compare, Merge)**
 
-- When asked to write notes, compare source code and existing notes in the same folder first; then write, update, or delete note files to reflect content changes.
-- Review the last 3–4 notes in that directory when the source appears related.
-- Identify the concept or topic taught by the source code.
-- Do not rely on automated file-existence checks alone; decide by concept coverage and whether the note should merge with existing material.
-- **Check whether the exact concept taught by the source code is already documented in any existing note; if it is, expand or merge into that note rather than creating a duplicate.**
-- **If the concept is not written yet, check if any other existing note (especially the last 3–4 notes) suits this topic and write to it.**
-- If the concept already exists, merge into that note instead of creating a duplicate.
-- Prefer updating an existing note over creating a new one when the source clearly matches the same idea.
-- Create a new note only when the source introduces a distinct concept or when no existing note covers the topic.
-- Merge overlapping examples or closely related content into one stronger note when it makes sense.
-- If all files/notes in a directory belong together, delete the directory and make one note.
-- Keep the directory structure and sidebar order correct after merging.
-- Split distinct subtopics into separate notes when needed.
-- If a note already exists but has incomplete coverage, expand it instead of adding a small stub.
-- If a source file is clearly an exercise, map it to the existing exercise note format and avoid adding a duplicate exercise.
-- Answer source-file questions in the note, either inline or as a short FAQ.
-- Keep root section `index.md` pages as overview pages only; do not add direct links to individual note files there.
-- Make top-level language index pages feel like a short language introduction or landing page. (an example is python's index page)
-- Write section index pages with a short intro that explains the topic first.
-- Include a human-friendly list of the topics or note themes present in that section.
-- Also include what should be covered in that section, not just the page purpose.
-- Use the language name for top-level note index pages, e.g. `Python`.
+- **Scan Before Writing:** When asked to write notes, compare source code with existing notes in the same folder. Review the last 3–4 notes to identify if the topic is already covered.
+- **Merge-First Philosophy:** Do not create duplicate notes for the same concept.
+  - If a concept exists, expand or merge it into the existing note.
+  - If all notes in a directory belong together, consolidate them into one single note.
+  - Create a new note only if the source introduces a distinct concept, not sub concept/part of existing notes.
+- **Maintain Structure:** Always renumber notes and exercise prefixes to maintain a perfect, gap-free sequence in the sidebar.
+  - If a merge creates a gap (e.g., merging 23 into 22), renumber all subsequent notes to fill the hole.
+  - Exercises must update their numeric prefix to stay grouped with their parent topic (e.g., Exercise 24.5 becomes 23.5 if the topic moves from 24 to 23).
+- **Source Footnote:** At the very end of every note and exercise, add a small italicized line: `---`\n _Source file: <original-filename>.py_.
+- **Exercise Mapping:** Map source files that are clearly exercises to the standard exercise note format.
+- **Answer Questions:** If the source file has questions or comments, fold the answers into the note narrative or a brief FAQ.
+- **Index Pages:**
+  - Keep top-level language index pages as landing pages (e.g., Python index).
+  - Write section index pages with a short intro explaining the topic and a list of themes covered in that section.
+  - Do not add direct links to individual note files in index pages.
 
 ## Regular notes and metadata
 
-Regular notes should focus on understanding a concept, not just solving a specific prompt.
+Regular notes should focus on idiomatic Python patterns and the "why" behind the code.
 
-- Use concept-driven titles and section headings.
-- Start with a short summary or "What to remember" list.
-- Use runnable examples and exact output blocks.
-- Describe patterns and behavior, not commands.
-- Put explanation before each code example; the note should tell the reader what the code is doing first.
-- **Keep notes dense and purposeful: every sentence must add meaning.**
-- Avoid duplicate comments when the prose already explains the intent.
-- Use real-world names like `pending_tasks`, `user_roles`, `visited_nodes`.
-- Avoid pasting entire source files.
-- Use callouts for tips and gotchas: `:::tip`, `:::note`, `:::warning`.
-- Use Mermaid for conceptual diagrams; embed SVG/PNG for precise visuals.
-- Use Mermaid, flowcharts, images, or SVGs when they help explain the concept.
-- Use title case for callout and heading names.
-- Add minimal boilerplate setup code when needed so the example is runnable as shown.
-- Add visual aids only when they help clarify the concept.
-- Keep lower-priority guidance as inline footnote-style text instead of a prominent box.
-- Write enough explanation and examples to make the concept clear in practice, not just a tiny stub.
-- Run the example in a real interpreter and verify the output block matches exactly, then add output to the note.
-- Fold question-like comments into the note narrative or a brief FAQ.
-- Use `<note no> - <name>.md` for filenames.
-- Mirror the `code/` folder structure when practical.
-- Prefer concept-driven filenames over narrative names.
-- Keep numeric prefixes for ordering and use `sidebar_position` accordingly.
-- If a merge creates a gap in numbering, do not renumber later notes; keep the next filename at its original number.
-- `sidebar_position` may be a float if you need an intermediate ordering slot.
-- Preserve the original code filename in `source_filename` when the note is normalized.
-- Confirm the note filename, frontmatter, sidebar label, and index links are consistent.
+- **Intermediate Focus:** Assume the reader knows basic programming concepts (no "variables are boxes" analogies). Explain Python-specific behaviors, "Why/When" context, and "Pythonic vs. Anti-pattern" comparisons.
+- **Wording & Headings:** Keep language simple and direct. Do not include syntax or code in headings (e.g., use `Slicing Syntax`, not `Slicing Syntax [start:stop]`).
+- **Curated Content:** Do not list every possible built-in function; focus only on the commonly used ones.
+- **Formatting:**
+  - Use `<note no>. <name>.md` for filenames and mirror the `code/` folder structure.
+  - Use numeric prefixes and `sidebar_position` (floats allowed) for ordering.
+  - Preserve original code filenames in `source_filename`.
+  - Use Docusaurus callouts (`:::tip`, `:::note`, `:::warning`) with Title Case names.
+  - Keep lower-priority guidance as inline footnote-style text instead of a prominent box.
+- **Content & Logic:**
+  - **Before the code:** Explain the intent of the pattern.
+  - **After the code:** Point out specific nuances, performance notes, or "clever" parts of the execution.
+  - **Density:** Every sentence must add meaning; avoid duplicate comments if the prose already explains the intent.
+  - Have a"What to remember" summary list.
+  - Use real-world variable names and runnable examples with exact output blocks.
+  - Use Mermaid, flowcharts, or SVGs, images when they clarify a concept.
+- **Verification:**
+  - _Run examples in a real interpreter to verify output blocks._
+  - Fold question-like comments into the note narrative or a brief FAQ.
+  - Write enough to make the concept clear in practice, not just a tiny stub.
 
 ### 2. Frontmatter (mandatory)
 
@@ -95,24 +80,24 @@ Notes inside language-specific folders should keep titles concise; do not append
 
 ## Exercise notes
 
-Exercise notes follow all regular note rules, plus these differences:
+Exercise notes follow all regular note rules, but focus on hands-on practice.
 
-- File names: `prefix. Exercise <exercise-number>: <exercise topic>.md`.
-- Keep the ordering prefix separate from the exercise sequence.
-- Titles/sidebar labels should use `Exercise <number>: <name>`.
-- Visible H1 headings should use `Ex: <number> - <name>`.
-- Use `## Problem`, `## Rules`, and `## Solution` sections.
-- If the source has a docstring, use it as the `## Problem` prompt.
-- Keep expected output visible before the solution.
-- Place solution design reasoning inside the hidden `Details` block, not as a separate visible section.
-- The solution may be hidden in `<details>`, but include a note like "Only view the solution after trying your best."
-- Do not use `What to remember` if there is a dedicated `Rules` section.
-- Use `source_filename` when the note filename is normalized.
-- Confirm filenames, frontmatter, sidebar labels, and links are consistent.
+- **Filenames:** Use `<prefix>. Exercise <number>: <name>.md`.
+- **Headings:** Use `Ex <number>: <name>` for the main H1. No syntax in headings.
+- **Problem & Rules:**
+  - Use `## Problem` to describe the task (often from the source docstring).
+  - Use `## Rules` to list specific constraints or requirements.
+- **Expected Output:** Always show the exact expected output _before_ the solution.
+- **Solution & Reasoning:**
+  - Place the code solution inside a hidden `<details>` block.
+  - Add a "Only view the solution after trying your best" warning.
+  - Include a "Details" block inside the solution to explain the reasoning, not as a separate visible section.
+- **Metadata:** Use `source_filename` to link back to the original code.
 
 ## Language-specific guidance
 
 Keep general rules first and add language-specific notes after.
+
 - Check whether a syntax, method, or pattern is supported by current industry-standard versions.
 - If it is not broadly supported, add a compatibility note.
 
@@ -143,6 +128,7 @@ Keep general rules first and add language-specific notes after.
 ## When to ask for clarification
 
 Ask when:
+
 - you want to change site structure beyond content updates
 - the change affects build or deployment behavior
 - you want to rename many `code/` files
