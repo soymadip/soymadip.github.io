@@ -46,7 +46,7 @@ Regular notes should focus on idiomatic Python patterns and the "why" behind the
 - **Wording & Headings:** Keep language simple and direct. Do not include syntax or code in headings (e.g., use `Slicing Syntax`, not `Slicing Syntax [start:stop]`).
 - **Curated Content:** Do not list every possible built-in function; focus on the commonly used ones. Use a callout or dedicated section for "Worth Mentioning" functions if needed.
 - **Formatting:**
-  - Use `<note no>. <name>.md` for filenames and mirror the `code/` folder structure.
+  - Use `<note no>. <name>.md` for filenames. **Sanitize filenames:** replace any colons `:` with hyphens `-` (e.g., `Sets - Unique Collections.md`).
   - Use numeric prefixes and `sidebar_position` (floats allowed) for ordering.
   - Preserve original code filenames in `source_filename`.
   - Use Docusaurus callouts (`:::tip`, `:::note`, `:::warning`) with Title Case names.
@@ -86,7 +86,7 @@ Notes inside language-specific folders should keep titles concise; do not append
 
 Exercise notes follow all regular note rules, but focus on hands-on practice.
 
-- **Filenames:** Use `<prefix>. Exercise <number>: <name>.md`.
+- **Filenames:** Use `<prefix>. Exercise <number> - <name>.md`.
 - **Headings:** Use `Ex <number>: <name>` for the main H1. No syntax in headings.
 - **Problem & Rules:**
   - Use `## Problem` to describe the task (often from the source docstring).
