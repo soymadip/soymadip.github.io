@@ -11,7 +11,7 @@ source_filename: "1 - variables.sh"
 
 Bash variables are loosely typed, which means you don't need to declare whether a variable is a number or a string.
 
-## What to remember
+## What to Remember
 
 - **No Spaces Around Equals:** Avoid spaces during assignment (`NAME="Gemini"`, not `NAME = "Gemini"`).
 - **Access with $:** Always use the `$` prefix to read a variable's value (e.g., `$NAME`).
@@ -33,6 +33,7 @@ echo "Hello, I am $NAME version $VERSION."
 ```
 
 **Output:**
+
 ```text
 Hello, I am Gemini version 1.0.
 ```
@@ -51,6 +52,7 @@ echo "After increment: $PRICE"
 ```
 
 **Output:**
+
 ```text
 The total price is: 15
 After increment: 16
@@ -69,6 +71,7 @@ echo "User: $FINAL_USER"
 ```
 
 **Output:**
+
 ```text
 User: guest
 ```
@@ -83,6 +86,7 @@ echo "Today's date is: $CURRENT_DATE"
 ```
 
 **Output:**
+
 ```text
 Today's date is: 2026-04-08
 ```
@@ -93,4 +97,4 @@ Variable names are case-sensitive. It is a common convention to use uppercase fo
 
 ---
 
-*Source file: 1 - variables.sh*
+_Source file: 1 - variables.sh_

@@ -43,7 +43,7 @@ When i say "write notes", scan `code/` for changes, and write notes.
 Regular notes should focus on idiomatic Python patterns and the "why" behind the code.
 
 - **Intermediate Focus:** Assume the reader knows basic programming concepts (no "variables are boxes" analogies). Explain language-specific behaviors, "Why/When" context, and "Pythonic vs. Anti-pattern" comparisons.
-- **Wording & Headings:** Keep language simple and direct. Do not include syntax or code in headings (e.g., use `Slicing Syntax`, not `Slicing Syntax [start:stop]`).
+- **Wording & Headings:** Keep language simple and direct. Do not include syntax or code in headings (e.g., use `Slicing Syntax`, not `Slicing Syntax [start:stop]`). **Always use Title Case for all headings (H1, H2, H3, etc.).**
 - **Curated Content:** Do not list every possible built-in function; focus on the commonly used ones. Use a callout or dedicated section for "Worth Mentioning" functions if needed.
 - **Formatting:**
   - Use `<note no>. <name>.md` for filenames. **Sanitize filenames:** replace any colons `:` with hyphens `-` (e.g., `Sets - Unique Collections.md`).
