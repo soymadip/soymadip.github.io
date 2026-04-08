@@ -1,13 +1,12 @@
 ---
 id: functions-scope
 title: Functions Scope
-sidebar_position: 2
+sidebar_position: 1
 description: "Mastering the LEGB scope rule and modifying variables across different levels."
 source_filename:
   - 40 - Scope & named spaces.py
   - 41 - non global and global scope.py
 ---
-
 # Functions Scope
 
 In Python, understanding how variables are resolved (Scope) is key to writing clean, maintainable logic. The interpreter searches four levels to find a variable name, following the **LEGB** rule.

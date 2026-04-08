@@ -1,14 +1,13 @@
 ---
-id: 3-conditionals
+id: conditionals
 title: Conditionals
-sidebar_label: Conditionals
 sidebar_position: 3
-description: "Python notes for conditionals, validation loops, and input handling."
+description: "Mastering Python's flow control with if/else and pattern matching."
 ---
 
-Conditionals let code respond differently when values change.
+Conditionals allow your program to make decisions.
 
-This section explains how to make decisions in Python and how to handle input, validation, and branching.
+This section covers basic logical branching with `if/elif/else`, user input normalization, and the more advanced `match-case` statement.
 
 Topics in this folder:
 

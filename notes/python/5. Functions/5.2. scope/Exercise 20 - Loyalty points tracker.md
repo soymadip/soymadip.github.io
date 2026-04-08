@@ -1,11 +1,10 @@
 ---
 id: exercise-20-loyalty-points-tracker
 title: "Exercise 20: Loyalty points tracker"
-sidebar_position: 1
+sidebar_position: 2
 description: "Practice using global and nonlocal keywords to track spending and points."
 source_filename: "41.5 - Ex 20.py"
 ---
-
 # Ex 20: Loyalty Points Tracker
 
 ## Problem

@@ -1,12 +1,10 @@
 ---
-id: 2-dictionary
+id: dictionaries
 title: Dictionaries
-sidebar_label: Dictionaries
-sidebar_position: 2
+sidebar_position: 1
 description: "Hash maps optimized for fast lookups, now with insertion order."
 source_filename: "20 - dictionary.py"
 ---
-
 # Dictionaries
 
 Dictionaries are used to store data as key-value pairs. They are like a real-world dictionary where you look up a word (the key) to find its definition (the value).
@@ -24,7 +22,7 @@ If you are coming from C or Java, you might be used to manually managing hashmap
 
 ```python
 # Type hinting: specify Key and Value types inside dict[]
-# See: [Modern Python Types](../1. basics/9. modern-python-types.md) for details
+# See: [Modern Python Types](../../1. basics/9. modern-python-types.md) for details
 car: dict[str, str | int] = {"brand": "Tesla", "model": "S", "year": 2022}
 
 # Grabbing a value by its key

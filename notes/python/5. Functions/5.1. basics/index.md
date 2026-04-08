@@ -5,7 +5,6 @@ sidebar_position: 1
 description: "Understanding how to define, call, and return values from Python functions."
 source_filename: 38 - Functions.py
 ---
-
 # Functions Basics
 
 Functions are the building blocks of reusable code. They allow you to group logic together and call it whenever needed, preventing code duplication.

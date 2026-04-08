@@ -1,8 +1,7 @@
 ---
-id: 6-dictionary-dispatching
+id: dictionary-dispatching
 title: Dictionary Dispatching
-sidebar_label: Dictionary Dispatching
-sidebar_position: 5
+sidebar_position: 1
 description: "Using lookup tables as a clean and efficient alternative to complex conditional chains."
 source_filename: "37.py"
 ---

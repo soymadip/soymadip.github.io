@@ -1,11 +1,10 @@
 ---
 id: exercise-19-student-grading-system
 title: "Exercise 19: Student grading system"
-sidebar_position: 1
+sidebar_position: 2
 description: "Practice nested function calls and return-based grading logic."
 source_filename: "38.5 - Execise 19.py"
 ---
-
 # Ex 19: Student Grading System
 
 ## Problem

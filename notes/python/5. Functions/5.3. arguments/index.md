@@ -1,12 +1,11 @@
 ---
 id: functions-arguments
 title: Function Arguments
-sidebar_position: 3
+sidebar_position: 1
 description: "Mastering flexible argument patterns and avoiding common pitfalls with mutable defaults."
 source_filename:
     - "42 - arguments.py"
 ---
-
 # Function Arguments
 
 Python offers powerful ways to handle functions that take a varying number of inputs. Understanding how to collect and pass arguments efficiently is a key intermediate skill.

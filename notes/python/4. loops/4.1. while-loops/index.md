@@ -1,12 +1,10 @@
 ---
-id: 1-while-loops
+id: while-loops
 title: While Loops
-sidebar_label: While Loops
 sidebar_position: 1
 description: "Repeating code until a condition changes and using validation loops."
 source_filename: ["28 - into-to-loops.py", "34 - while loops.py", "23 - conditionals-input.py"]
 ---
-
 # While Loops
 
 Unlike a `for` loop which iterates over a sequence, a `while` loop repeats as long as a specific condition is **True**. This makes it ideal for situations where you don't know in advance how many times you need to repeat.

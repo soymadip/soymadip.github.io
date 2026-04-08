@@ -1,12 +1,10 @@
 ---
-id: 2-for-loops
+id: for-loops
 title: For Loops
-sidebar_label: For Loops
-sidebar_position: 2
+sidebar_position: 1
 description: "Iterating over sequences like range() and lists in Python."
 source_filename: ["29 - loops.py", "31 - iterating-lists.py"]
 ---
-
 # For Loops
 
 Python does not use C-style `for(i=0; i<10; i++)` loops. Instead, its `for` loop acts as a "for-each" statement that iterates directly over the items of any sequence, such as a list or a `range`.

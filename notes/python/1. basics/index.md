@@ -1,11 +1,9 @@
 ---
-id: 1-basics-index
+id: basics
 title: Basics
-sidebar_label: Basics
 sidebar_position: 1
 description: "Introductory notes covering the absolute essentials of Python programming."
 ---
-
 The **Basics** section is designed for those who have some programming experience (like in C) but need to understand how Python specifically handles foundations.
 
 This section covers:

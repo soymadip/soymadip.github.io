@@ -1,12 +1,10 @@
 ---
-id: 1-variables-and-arithmetic
+id: variables-and-arithmetic
 title: Variables and Arithmetic
-sidebar_label: Variables and Arithmetic
-sidebar_position: 1
+sidebar_position: 2
 description: "How to handle variable assignment, arithmetic expansion, and command substitution in Bash."
 source_filename: "1 - variables.sh"
 ---
-
 # Variables and Arithmetic
 
 Bash variables are loosely typed, which means you don't need to declare whether a variable is a number or a string.

@@ -1,12 +1,16 @@
 ---
-id: 1-conditionals-input
+id: conditionals-and-input
 title: Conditionals and Input
-sidebar_label: Conditionals & Input
 sidebar_position: 1
 description: "Handling multi-way decisions, nested branches, and input normalization."
-source_filename: ["23 - conditionals-input.py", "24 - chai-price-calc.py", "25 - nested-conditionals.py", "26 - delivery-fees-wager.py"]
+source_filename:
+  [
+    "23 - conditionals-input.py",
+    "24 - chai-price-calc.py",
+    "25 - nested-conditionals.py",
+    "26 - delivery-fees-wager.py",
+  ]
 ---
-
 # Conditionals and Input
 
 Conditionals allow your program to make decisions. In Python, we use `if`, `elif`, and `else` to control the flow of execution based on specific conditions.
@@ -37,7 +41,7 @@ print(f"Price: {price}")
 ```
 
 ```text
-Choose a size (Small/Medium/Large):  Medium 
+Choose a size (Small/Medium/Large):  Medium
 Price: 30
 ```
 
@@ -101,4 +105,4 @@ Access granted.
 
 ---
 
-*Source files: 23 - conditionals-input.py, 24 - chai-price-calc.py, 25 - nested-conditionals.py, 26 - delivery-fees-wager.py*
+_Source files: 23 - conditionals-input.py, 24 - chai-price-calc.py, 25 - nested-conditionals.py, 26 - delivery-fees-wager.py_

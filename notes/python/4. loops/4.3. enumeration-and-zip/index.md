@@ -1,12 +1,10 @@
 ---
-id: 3-enumerate-zip
+id: enumerate-and-zip
 title: Enumerate and Zip
-sidebar_label: Enumerate and Zip
-sidebar_position: 3
+sidebar_position: 1
 description: "Parallel and indexed iteration using Python's built-in helpers."
 source_filename: ["32 - enumerate.py", "33 - zip.py"]
 ---
-
 # Enumerate and Zip
 
 If you are coming from C, you might be tempted to use a counter variable or `range(len(list))` to access indices. In Python, we use `enumerate()` and `zip()` to handle these common iteration patterns more cleanly.

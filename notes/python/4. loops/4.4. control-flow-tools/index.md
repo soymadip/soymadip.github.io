@@ -1,12 +1,10 @@
 ---
-id: 4-break-continue-else
-title: Break, Continue, and Else
-sidebar_label: Break, Continue, and Else
-sidebar_position: 4
+id: break-continue-and-else
+title: "Break, Continue, and Else"
+sidebar_position: 1
 description: "Control loop flow and use loop-else for search fallback logic."
 source_filename: "35 - break, continue, skip.py"
 ---
-
 # Break, Continue, and Else
 
 In Python, you can precisely control loop behavior using `break` and `continue`. Additionally, Python features a unique `else` clause for loops that is perfect for "search and find" logic.

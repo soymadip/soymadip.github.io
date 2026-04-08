@@ -1,11 +1,9 @@
 ---
-id: 1-bash
+id: bash
 title: Bash
-sidebar_label: Bash
 sidebar_position: 1
 description: "Bash scripting notes for variables, arithmetic, and logic."
 ---
-
 Bash is the primary shell and command processor for Linux systems.
 
 This section covers common patterns for writing powerful shell scripts, from variable manipulation to automation.

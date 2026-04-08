@@ -22,14 +22,17 @@ When i say "write notes", scan `code/` for changes, and write notes.
 
 ## **Workflow (Scan, Compare, Merge)**
 
+- **Topic Folder Pattern:** Organize notes into topic-specific folders within their section (e.g., `notes/python/5. Functions/1. basics/`).
+  - Each folder must contain an `index.md` which serves as the **Theory** and the "parent" page for that topic.
+  - Exercises related to that topic must be placed **inside** the same folder as sub-pages. This is mandatory: do not put a topic exercise in a different folder.
 - **Scan Before Writing:** When asked to write notes, compare source code with existing notes in the same folder. Review the last 3–4 notes to identify if the topic is already covered.
 - **Merge-First Philosophy:** Do not create duplicate notes for the same concept.
   - If a concept exists, expand or merge it into the existing note.
   - If all notes in a directory belong together, consolidate them into one single note.
   - Create a new note only if the source introduces a distinct concept, not sub concept/part of existing notes.
 - **Maintain Structure:** Always renumber notes and exercise prefixes to maintain a perfect, gap-free sequence in the sidebar.
-  - If a merge creates a gap (e.g., merging 23 into 22), renumber all subsequent notes to fill the hole.
-  - Exercises must update their numeric prefix to stay grouped with their parent topic (e.g., Exercise 24.5 becomes 23.5 if the topic moves from 24 to 23).
+  - If a merge creates a gap, renumber all subsequent notes to fill the hole.
+  - Exercises inside a topic folder should use a numeric prefix (e.g., `1. Exercise 19 - ...md`) to stay ordered under the index page.
 - **Source Footnote:** At the very end of every note and exercise, add a small italicized line: `---`\n _Source file: <original-filename>.py_.
 - **Exercise Mapping:** Map source files that are clearly exercises to the standard exercise note format.
 - **Answer Questions:** If the source file has questions or comments, fold the answers into the note narrative or a brief FAQ.
@@ -38,7 +41,7 @@ When i say "write notes", scan `code/` for changes, and write notes.
   - Write section index pages with a short intro explaining the topic and a list of themes covered in that section.
   - Do not add direct links to individual note files in index pages.
 
-## Regular notes and metadata
+## Regular Notes and Metadata
 
 Regular notes should focus on idiomatic Python patterns and the "why" behind the code.
 
@@ -46,8 +49,11 @@ Regular notes should focus on idiomatic Python patterns and the "why" behind the
 - **Wording & Headings:** Keep language simple and direct. Do not include syntax or code in headings (e.g., use `Slicing Syntax`, not `Slicing Syntax [start:stop]`). **Always use Title Case for all headings (H1, H2, H3, etc.).**
 - **Curated Content:** Do not list every possible built-in function; focus on the commonly used ones. Use a callout or dedicated section for "Worth Mentioning" functions if needed.
 - **Formatting:**
-  - Use `<note no>. <name>.md` for filenames. **Sanitize filenames:** replace any colons `:` with hyphens `-` (e.g., `Sets - Unique Collections.md`).
-  - Use numeric prefixes and `sidebar_position` (floats allowed) for ordering.
+  - Use `<note no>. <name>` for both top-level section folders and nested topic folders (e.g., `1. basics`). Do not use sub-numbering like `5.1.`.
+  - Use `index.md` for the main theory file within a topic folder.
+  - Use `Exercise <number> - <name>.md` for exercise filenames (e.g., `Exercise 19 - ...md`).
+  - **Sanitize filenames:** replace any colons `:` with hyphens `-`.
+  - Use numeric prefixes and `sidebar_position` for ordering.
   - Preserve original code filenames in `source_filename`.
   - Use Docusaurus callouts (`:::tip`, `:::note`, `:::warning`) with Title Case names.
   - Keep lower-priority guidance as inline footnote-style text instead of a prominent box.
@@ -56,7 +62,7 @@ Regular notes should focus on idiomatic Python patterns and the "why" behind the
   - **After the code:** Point out specific nuances, performance notes, or "clever" parts of the execution.
   - **Density:** Every sentence must add meaning; avoid duplicate comments if the prose already explains the intent.
   - **DRY & Linking:** Avoid repeating detailed explanations of concepts covered in other notes (e.g., Type Hinting). Instead, provide a brief, context-specific example and link to the dedicated "master" lesson using Docusaurus Markdown links (e.g., `[Modern Python Types](../1. basics/9. modern-python-types.md)`).
-  - Have a"What to remember" summary list.
+  - Have a "What to remember" summary list.
   - Use real-world variable names and runnable examples with exact output blocks.
   - Use Mermaid, flowcharts, or SVGs, images when they clarify a concept.
 - **Verification:**
@@ -71,11 +77,11 @@ Regular notes should focus on idiomatic Python patterns and the "why" behind the
 
 Every note must start with Docusaurus frontmatter. At minimum include:
 
-- `id` — normalized, hyphenated unique identifier
-- `title` — page title
+- `id` — normalized, hyphenated unique identifier (shouldn't include number at start unless the name has it)
+- `title` — page title in title case
 - `description` — one-line summary
-- `sidebar_label` — sidebar label
 - `sidebar_position` — derived from the filename prefix
+- Optional: `sidebar_label` — sidebar label if not as same as title
 - Optional: `source_filename` — original code filename when normalized
 
 Notes inside language-specific folders should keep titles concise; do not append a language suffix like ` — Python` or ` — JavaScript` when the note already lives in that language section.
