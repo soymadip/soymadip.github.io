@@ -12,8 +12,6 @@ This section covers how to define functions, manage variable scope, and handle c
 
 Topics in this folder:
 
-- Local, global, and nonlocal scope.
-- Function arguments: positional, keyword, and defaults.
-- Handling mutable default arguments (the "mutable default trap").
-- Flexible arguments with `*args` (tuples) and `**kwargs` (dictionaries).
-- Exercises on loyalty point tracking and automated invoice generation.
+- **[Basics](./5.1. basics/index.md):** Defining, calling, and return values.
+- **[Scope](./5.2. scope/index.md):** LEGB rules and cross-scope modification.
+- **[Arguments](./5.3. arguments/index.md):** Flexible positional and keyword patterns.
