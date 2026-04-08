@@ -12,6 +12,7 @@ This section explains collection behavior and common patterns for working with v
 
 Topics in this folder:
 
-- Sets and unique collections.
-- Dictionaries and key/value lookup.
-- Exercises on delivery charge calculation and customer record manipulation.
+- **Lists:** Ordered, mutable sequences.
+- **Dictionaries:** Fast key-value lookups.
+- **Sets:** Unordered unique collections.
+- **Exercises:** Hands-on practice with customer records and delivery calculations.

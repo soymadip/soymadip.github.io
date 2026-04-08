@@ -55,6 +55,7 @@ Regular notes should focus on idiomatic Python patterns and the "why" behind the
   - **Before the code:** Explain the intent of the pattern.
   - **After the code:** Point out specific nuances, performance notes, or "clever" parts of the execution.
   - **Density:** Every sentence must add meaning; avoid duplicate comments if the prose already explains the intent.
+  - **DRY & Linking:** Avoid repeating detailed explanations of concepts covered in other notes (e.g., Type Hinting). Instead, provide a brief, context-specific example and link to the dedicated "master" lesson using Docusaurus Markdown links (e.g., `[Modern Python Types](../1. basics/9. modern-python-types.md)`).
   - Have a"What to remember" summary list.
   - Use real-world variable names and runnable examples with exact output blocks.
   - Use Mermaid, flowcharts, or SVGs, images when they clarify a concept.
