@@ -9,17 +9,19 @@ source_filename: "1 - variables.sh"
 
 # Variables and Arithmetic
 
+Bash variables are loosely typed, which means you don't need to declare whether a variable is a number or a string.
+
 ## What to remember
 
-- **Variable Assignment**: No spaces are allowed around the `=` sign.
-- **Accessing Variables**: Use the `$` prefix to read a variable's value.
-- **Arithmetic Expansion**: Use `(( ... ))` for integer math; it's faster and cleaner than legacy `expr`.
-- **Default Values**: Use `${VAR:-default}` to provide a fallback value if a variable is unset or null.
-- **Command Substitution**: Use `$(command)` to capture the output of any bash command.
+- **No Spaces Around Equals:** Avoid spaces during assignment (`NAME="Gemini"`, not `NAME = "Gemini"`).
+- **Access with $:** Always use the `$` prefix to read a variable's value (e.g., `$NAME`).
+- **Arithmetic Expansion:** Use `(( ... ))` for integer math operations. It's the most modern and readable way.
+- **Capturing Output:** Use `$(command)` to store the result of a command in a variable.
+- **Default Fallbacks:** Use `${VAR:-default}` to provide a value if the variable is empty or unset.
 
 ## Assignment and Access
 
-Bash variables are loosely typed. The key rule is to **avoid spaces around the assignment operator**.
+The key rule in Bash is to **avoid spaces around the assignment operator**.
 
 ```bash
 # Assignment (NO spaces!)
@@ -30,6 +32,7 @@ VERSION=1.0
 echo "Hello, I am $NAME version $VERSION."
 ```
 
+**Output:**
 ```text
 Hello, I am Gemini version 1.0.
 ```
@@ -41,36 +44,45 @@ The `(( ... ))` syntax allows for natural-looking integer arithmetic. It support
 ```bash
 ((PRICE = 10 + 5))
 echo "The total price is: $PRICE"
+
+# Incrementing in place
+((PRICE++))
+echo "After increment: $PRICE"
 ```
 
+**Output:**
 ```text
 The total price is: 15
+After increment: 16
 ```
 
 ## Default Fallbacks
 
-Bash provides built-in syntax for setting a default value when a variable might be empty.
+Bash provides built-in syntax for setting a default value when a variable might be empty. This is great for handling optional arguments or environment variables.
 
 ```bash
+# If USER_INPUT is empty, use 'guest'
 USER_INPUT=""
-# If empty, use 'guest'
 FINAL_USER="${USER_INPUT:-guest}"
+
 echo "User: $FINAL_USER"
 ```
 
+**Output:**
 ```text
 User: guest
 ```
 
 ## Capturing Output with `$( ... )`
 
-Command substitution allows you to assign the result of a command to a variable.
+Command substitution allows you to assign the result of a command to a variable. This is essential for automation.
 
 ```bash
 CURRENT_DATE=$(date +%Y-%m-%d)
 echo "Today's date is: $CURRENT_DATE"
 ```
 
+**Output:**
 ```text
 Today's date is: 2026-04-08
 ```
@@ -78,3 +90,7 @@ Today's date is: 2026-04-08
 :::tip Case Sensitivity
 Variable names are case-sensitive. It is a common convention to use uppercase for environment variables (like `PATH` or `USER`) and lowercase or camelCase for local script variables.
 :::
+
+---
+
+*Source file: 1 - variables.sh*

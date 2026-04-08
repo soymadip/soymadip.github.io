@@ -44,7 +44,7 @@ Regular notes should focus on idiomatic Python patterns and the "why" behind the
 
 - **Intermediate Focus:** Assume the reader knows basic programming concepts (no "variables are boxes" analogies). Explain language-specific behaviors, "Why/When" context, and "Pythonic vs. Anti-pattern" comparisons.
 - **Wording & Headings:** Keep language simple and direct. Do not include syntax or code in headings (e.g., use `Slicing Syntax`, not `Slicing Syntax [start:stop]`).
-- **Curated Content:** Do not list every possible built-in function; focus only on the commonly used ones.
+- **Curated Content:** Do not list every possible built-in function; focus on the commonly used ones. Use a callout or dedicated section for "Worth Mentioning" functions if needed.
 - **Formatting:**
   - Use `<note no>. <name>.md` for filenames and mirror the `code/` folder structure.
   - Use numeric prefixes and `sidebar_position` (floats allowed) for ordering.
@@ -59,7 +59,10 @@ Regular notes should focus on idiomatic Python patterns and the "why" behind the
   - Use real-world variable names and runnable examples with exact output blocks.
   - Use Mermaid, flowcharts, or SVGs, images when they clarify a concept.
 - **Verification:**
-  - _Run examples in a real interpreter to verify output blocks._
+  - _Run every example code block and show the exact output below it._
+    - Use `uv run <file>.py` for running Python examples.
+    - Use `bun run <file>.js` (or `bun <file>.ts`) for JavaScript/TypeScript examples.
+    - Use `gcc` for C and `g++` for C++ examples.
   - Fold question-like comments into the note narrative or a brief FAQ.
   - Write enough to make the concept clear in practice, not just a tiny stub.
 
@@ -87,10 +90,19 @@ Exercise notes follow all regular note rules, but focus on hands-on practice.
 - **Problem & Rules:**
   - Use `## Problem` to describe the task (often from the source docstring).
   - Use `## Rules` to list specific constraints or requirements.
-- **Expected Output:** Always show the exact expected output _before_ the solution.
+- **Boilerplate:**
+  - Provide a boilerplate code block for the user to start with.
+  - Use the heading: `## Boilerplate`
+  - Subtext: `Copy below code and paste to your IDE for head start.`
+  - Include a function stub and the test call.
+- **Expected Output:**
+  - Use the heading: `## Expected output`
+  - Show the exact expected output of the test call in a Python code block.
+  - Verify the output by running the solution code.
 - **Solution & Reasoning:**
   - Place the code solution inside a hidden `<details>` block.
   - Add a "Only view the solution after trying your best" warning.
+  - Do NOT include the output of the solution code here; it belongs in the `## Expected output` section.
   - Include a "Details" block inside the solution to explain the reasoning, not as a separate visible section.
 - **Metadata:** Use `source_filename` to link back to the original code.
 
@@ -103,6 +115,7 @@ Keep general rules first and add language-specific notes after.
 
 ### Python
 
+- **Use uv for running python files/code**
 - Use current Python syntax and typed examples when meaningful.
 - Mention version limits only when a feature is unsupported in Python 3.12.
 - If a Python source file uses newer syntax or idioms, note compatibility and support status.
