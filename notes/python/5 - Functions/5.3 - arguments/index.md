@@ -77,4 +77,4 @@ print(add_item_safe("Banana")) # New list each time
 
 ---
 
-_Source file: 42 - arguments.py_
+_Source file: [42 - arguments.py](/code/python/5.%20Functions/42%20-%20arguments.py)_

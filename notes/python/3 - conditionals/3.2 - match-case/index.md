@@ -44,4 +44,4 @@ If you are just checking if a variable equals one of five strings, `match-case` 
 ### The Wildcard Pattern
 The underscore `_` is a special pattern in Python that matches anything. It is essential for handling unexpected input and preventing your logic from falling through silently.
 ---
-*Source file: 27 - match-case.py*
+*Source file: [27 - match-case.py](/code/python/3.%20conditionals/27%20-%20match-case.py)*

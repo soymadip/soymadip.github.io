@@ -76,4 +76,4 @@ Item: 3.14 | Type: float
 
 ---
 
-*Source files: 29 - loops.py, 31 - iterating-lists.py*
+*Source files: [29 - loops.py](/code/python/4.%20loops/29%20-%20loops.py), [31 - iterating-lists.py](/code/python/4.%20loops/31%20-%20iterating-lists.py)*
