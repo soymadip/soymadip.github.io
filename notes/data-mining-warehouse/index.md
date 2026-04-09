@@ -13,6 +13,6 @@ This section covers the foundational and advanced concepts of Data Warehousing (
 ## Topics in this section
 
 - **Data Warehousing (Unit 1):** Definitions, Features, Architecture, and OLAP operations.
+- **Data Mining Introduction (Unit 2):** KDD process, mining tasks (predictive/descriptive), and trends.
 - **Schemas:** Star, Snowflake, and Galaxy Schema models.
-- **Data Mining:** Techniques, Algorithms, and Real-world applications.
 - **Practice Sets:** MCQ assignments and Subjective question banks.
