@@ -1,8 +1,8 @@
 ---
-id: functions-basics
-title: Functions Basics
+id: "functions-basics"
+title: "Functions Basics"
 description: "Understanding how to define, call, and return values from Python functions."
-source_filename: 38 - Functions.py
+source_filename: "38 - Functions.py"
 ---
 # Functions Basics
 

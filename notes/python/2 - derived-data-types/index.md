@@ -1,6 +1,6 @@
 ---
-id: derived-data-types
-title: Derived Data Types
+id: "derived-data-types"
+title: "Derived Data Types"
 sidebar_label: Derived Data types
 description: "Index page for the Python derived-data-types notes in this folder."
 ---

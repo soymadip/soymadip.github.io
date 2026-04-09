@@ -1,6 +1,6 @@
 ---
-id: conditionals-and-input
-title: Conditionals and Input
+id: "conditionals-and-input"
+title: "Conditionals and Input"
 description: "Handling multi-way decisions, nested branches, and input normalization."
 source_filename:
   [

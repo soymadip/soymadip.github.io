@@ -81,6 +81,7 @@ Regular notes focus on idiomatic patterns and the "why" behind the code.
 
 ### **Frontmatter (Mandatory)**
 Every note must start with Docusaurus frontmatter:
+- **All string values must be wrapped in double quotes** (e.g., `title: "My Note"`).
 - `id`: normalized, hyphenated unique identifier.
 - `title`: page title in Title Case.
 - `description`: one-line summary.

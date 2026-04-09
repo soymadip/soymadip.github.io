@@ -1,6 +1,6 @@
 ---
-id: loops
-title: Loops
+id: "loops"
+title: "Loops"
 description: "Overview of Python loop notes in this folder."
 ---
 

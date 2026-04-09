@@ -1,6 +1,6 @@
 ---
 id: "unit-2"
-title: Unit 2
+title: "Unit 2"
 description: "Introduction to Data Mining, KDD process, and core mining tasks (predictive and descriptive)."
 ---
 

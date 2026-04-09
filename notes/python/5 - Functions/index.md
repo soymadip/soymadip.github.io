@@ -1,6 +1,6 @@
 ---
-id: functions
-title: Functions
+id: "functions"
+title: "Functions"
 description: "Python notes for function definitions, scope, arguments, and best practices."
 ---
 

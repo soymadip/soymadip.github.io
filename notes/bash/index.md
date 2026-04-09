@@ -1,6 +1,6 @@
 ---
-id: bash
-title: Bash
+id: "bash"
+title: "Bash"
 sidebar_position: 2
 description: "Bash scripting notes for variables, arithmetic, and logic."
 ---

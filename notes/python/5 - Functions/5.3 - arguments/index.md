@@ -1,6 +1,6 @@
 ---
-id: functions-arguments
-title: Function Arguments
+id: "functions-arguments"
+title: "Function Arguments"
 description: "Mastering flexible argument patterns and avoiding common pitfalls with mutable defaults."
 source_filename:
     - "42 - arguments.py"

@@ -1,6 +1,6 @@
 ---
-id: functions-scope
-title: Functions Scope
+id: "functions-scope"
+title: "Functions Scope"
 description: "Mastering the LEGB scope rule and modifying variables across different levels."
 source_filename:
   - 40 - Scope & named spaces.py

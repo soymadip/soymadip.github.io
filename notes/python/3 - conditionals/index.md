@@ -1,6 +1,6 @@
 ---
-id: conditionals
-title: Conditionals
+id: "conditionals"
+title: "Conditionals"
 description: "Mastering Python's flow control with if/else and pattern matching."
 ---
 

@@ -1,6 +1,6 @@
 ---
-id: enumerate-and-zip
-title: Enumerate and Zip
+id: "enumerate-and-zip"
+title: "Enumerate and Zip"
 description: "Parallel and indexed iteration using Python's built-in helpers."
 source_filename: ["32 - enumerate.py", "33 - zip.py"]
 ---

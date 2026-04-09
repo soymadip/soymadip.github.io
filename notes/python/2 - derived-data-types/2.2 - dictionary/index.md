@@ -1,6 +1,6 @@
 ---
-id: dictionaries
-title: Dictionaries
+id: "dictionaries"
+title: "Dictionaries"
 description: "Hash maps optimized for fast lookups, now with insertion order."
 source_filename: "20 - dictionary.py"
 ---
