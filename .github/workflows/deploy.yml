@@ -57,7 +57,11 @@ jobs:
 
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
 
       - name: Update Compiler Scripts
         if: github.repository != 'soymadip/tests'
@@ -103,7 +107,7 @@ jobs:
       - name: Download deployment artifact
         uses: actions/download-artifact@v4
         with:
-          name: upstream 
+          name: upstream
           path: .upstream/
 
       - name: Check file changes
@@ -116,7 +120,7 @@ jobs:
         env:
           _HAS_UPDATE: ${{ needs.update-check.outputs.upstream_updated }}
           _LATEST_VERSION: ${{ needs.update-check.outputs.upstream_version }}
-          _LOCAL_VERSION:  ${{ needs.update-check.outputs.local_version }}
+          _LOCAL_VERSION: ${{ needs.update-check.outputs.local_version }}
           _DUMMY_VERSION: ${{ needs.update-check.outputs.dummy_version }}
 
       - name: Commit & Push Changes

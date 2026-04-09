@@ -16,6 +16,19 @@ ROOT_DIR="$(pwd)"
 COMPILER_DIR="${ROOT_DIR}/${COMPILER_DIR_NAME}"
 OUTPUT_DIR="${ROOT_DIR}/${OUTPUT_DIR_NAME}"
 
+# Detect Package Manager (Prefer Bun over NPM)
+if command -v bun >/dev/null 2>&1; then
+    PKG_MANAGER="bun"
+    INSTALL_CMD="install"
+elif command -v npm >/dev/null 2>&1; then
+    PKG_MANAGER="npm"
+    INSTALL_CMD="install"
+else
+    echo "❌ Error: Neither bun nor npm found in PATH."
+    exit 1
+fi
+
+echo -e ">>> Using package manager: $PKG_MANAGER"
 
 if [ ! -d "$COMPILER_DIR" ]; then
     echo -e ">>> Cloning upstream repository...\n"
@@ -76,13 +89,13 @@ cd "$COMPILER_DIR" || {
     exit 1
 }
 
-bun install || {
-    echo "❌ Deps installation failed. Please check the logs above."
+$PKG_MANAGER $INSTALL_CMD || {
+    echo "❌ Deps installation failed via $PKG_MANAGER. Please check the logs above."
     exit 1
 }
 
-bun run build || {
-    echo "❌ Compilation failed. Please check the logs above."
+$PKG_MANAGER run build || {
+    echo "❌ Compilation failed via $PKG_MANAGER. Please check the logs above."
     exit 1
 }
 
