@@ -19,4 +19,4 @@ This section introduces Data Mining, the Knowledge Discovery in Databases (KDD) 
 
 ---
 
-_Source file: [u1 questions.pdf](../../../code/Data%20Mining%20&%20Wearhouse/u1%20questions.pdf)_
+_Source file: [u1 questions.pdf](/code/Data%20Mining%20&%20Wearhouse/u1%20questions.pdf)_

@@ -118,4 +118,4 @@ print(users)
 
 ---
 
-_Source file: [20 - dictionary.py](../../../../code/python/2.%20derived-data-types/20%20-%20dictionary.py)_
+_Source file: [20 - dictionary.py](/code/python/2.%20derived-data-types/20%20-%20dictionary.py)_

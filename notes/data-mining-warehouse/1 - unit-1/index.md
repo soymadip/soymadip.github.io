@@ -19,4 +19,4 @@ This section covers the core concepts of Data Warehousing, including its archite
 
 ---
 
-_Source file: [u1 questions.pdf](../../../code/Data%20Mining%20&%20Wearhouse/u1%20questions.pdf)_
+_Source file: [u1 questions.pdf](/code/Data%20Mining%20&%20Wearhouse/u1%20questions.pdf)_

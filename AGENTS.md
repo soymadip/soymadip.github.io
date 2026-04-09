@@ -51,7 +51,7 @@ notes/python/5 - Functions/
 - **Maintain Structure:** Always renumber notes and prefixes to maintain a perfect, gap-free sequence in the sidebar.
   - If a merge creates a gap, renumber only the **local siblings** (notes/exercises within that same folder) to fill the hole.
   - Use sub-numbering (e.g., `5.1`, `5.1.1`) to ensure perfect ordering and easy tracking.
-- **Source Footnote:** At the very end of every note and exercise, add a small italicized line: `---`\n _Source file: [<original-filename>.py](../../code/<path-to-file>/<original-filename>.py)_. Use **relative markdown links** based on the current file's location.
+- **Source Footnote:** At the very end of every note and exercise, add a small italicized line: `---`\n _Source file: [<original-filename>.py](/code/<path-to-file>/<original-filename>.py)_.
 - **Exercise Mapping:** Map source files that are clearly exercises to the standard exercise note format.
 - **Answer Questions:** If the source file has questions or comments, fold the answers into the note narrative or a brief FAQ.
 - **Index Pages:**
