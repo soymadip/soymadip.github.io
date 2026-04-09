@@ -3,8 +3,9 @@ id: "functions-arguments"
 title: "Function Arguments"
 description: "Mastering flexible argument patterns and avoiding common pitfalls with mutable defaults."
 source_filename:
-    - "42 - arguments.py"
+  - "42 - arguments.py"
 ---
+
 # Function Arguments
 
 Python offers powerful ways to handle functions that take a varying number of inputs. Understanding how to collect and pass arguments efficiently is a key intermediate skill.
@@ -77,4 +78,4 @@ print(add_item_safe("Banana")) # New list each time
 
 ---
 
-_Source file: [42 - arguments.py](../../../../src/code/python/5.%20Functions/42%20-%20arguments.py)_
+_Source file: [42 - arguments.py](../../../../code/python/5.%20Functions/42%20-%20arguments.py)_

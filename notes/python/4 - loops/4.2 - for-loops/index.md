@@ -4,6 +4,7 @@ title: "For Loops"
 description: "Iterating over sequences like range() and lists in Python."
 source_filename: ["29 - loops.py", "31 - iterating-lists.py"]
 ---
+
 # For Loops
 
 Python does not use C-style `for(i=0; i<10; i++)` loops. Instead, its `for` loop acts as a "for-each" statement that iterates directly over the items of any sequence, such as a list or a `range`.
@@ -33,6 +34,7 @@ Iteration #3
 ```
 
 ### Why `range()` Is Memory Efficient
+
 Unlike a list, `range()` does not store all its numbers in memory at once. It generates each number only when the loop asks for it. This means `range(1_000_000)` uses the same tiny amount of memory as `range(10)`.
 
 ## Iterating Over Lists
@@ -76,4 +78,4 @@ Item: 3.14 | Type: float
 
 ---
 
-*Source files: [29 - loops.py](../../../../src/code/python/4.%20loops/29%20-%20loops.py), [31 - iterating-lists.py](../../../../src/code/python/4.%20loops/31%20-%20iterating-lists.py)*
+_Source files: [29 - loops.py](../../../../code/python/4.%20loops/29%20-%20loops.py), [31 - iterating-lists.py](../../../../code/python/4.%20loops/31%20-%20iterating-lists.py)_

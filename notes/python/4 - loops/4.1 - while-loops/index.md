@@ -2,8 +2,10 @@
 id: "while-loops"
 title: "While Loops"
 description: "Repeating code until a condition changes and using validation loops."
-source_filename: ["28 - into-to-loops.py", "34 - while loops.py", "23 - conditionals-input.py"]
+source_filename:
+  ["28 - into-to-loops.py", "34 - while loops.py", "23 - conditionals-input.py"]
 ---
+
 # While Loops
 
 Unlike a `for` loop which iterates over a sequence, a `while` loop repeats as long as a specific condition is **True**. This makes it ideal for situations where you don't know in advance how many times you need to repeat.
@@ -43,11 +45,11 @@ allowed_options = {"yes", "no", "maybe"}
 
 while True:
     choice = input("Enter yes/no: ").strip().lower()
-    
+
     if choice in allowed_options:
         print(f"You chose: {choice}")
         break  # Exit the loop entirely
-        
+
     print(f"Invalid choice. Please choose from: {allowed_options}")
 ```
 
@@ -61,8 +63,9 @@ You chose: yes
 ```
 
 ### Why Use `while True`?
+
 Using `while True` with an internal `break` is often cleaner than trying to initialize a dummy variable just to satisfy a standard `while choice not in allowed_options:` condition. It keeps the "ask" logic and the "exit" logic clearly separated.
 
 ---
 
-*Source files: [28 - into-to-loops.py](../../../../src/code/python/4.%20loops/28%20-%20into-to-loops.py), [34 - while loops.py](../../../../src/code/python/4.%20loops/34%20-%20while%20loops.py), [23 - conditionals-input.py](../../../../src/code/python/3.%20conditionals/23%20-%20conditionals-input.py)*
+_Source files: [28 - into-to-loops.py](../../../../code/python/4.%20loops/28%20-%20into-to-loops.py), [34 - while loops.py](../../../../code/python/4.%20loops/34%20-%20while%20loops.py), [23 - conditionals-input.py](../../../../code/python/3.%20conditionals/23%20-%20conditionals-input.py)_

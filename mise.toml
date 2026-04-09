@@ -1,8 +1,8 @@
 [tools]
 bun = "latest"
 gemini = "latest"
-"pipx:pytest" = "latest"
 uv = "latest"
+"pipx:pytest" = "latest"
 
 [tasks.build]
 description = "Build the project"

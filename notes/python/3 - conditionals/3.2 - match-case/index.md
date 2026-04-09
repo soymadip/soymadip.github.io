@@ -4,6 +4,7 @@ title: "Match-Case"
 description: "Pattern matching with Python's match-case statement for cleaner multi-way decisions."
 source_filename: "27 - match-case.py"
 ---
+
 # Match-case
 
 Introduced in Python 3.10, `match-case` is a powerful alternative to long `if/elif/else` chains. While it looks like a `switch` statement from C, it is actually a pattern matching tool that can handle much more complex logic.
@@ -42,6 +43,7 @@ AC: Climate controlled.
 If you are just checking if a variable equals one of five strings, `match-case` is cleaner and harder to mess up. It explicitly signals that you are branching based on the value of a **single expression**.
 
 ### The Wildcard Pattern
-The underscore `_` is a special pattern in Python that matches anything. It is essential for handling unexpected input and preventing your logic from falling through silently.
----
-*Source file: [27 - match-case.py](../../../../src/code/python/3.%20conditionals/27%20-%20match-case.py)*
+
+## The underscore `_` is a special pattern in Python that matches anything. It is essential for handling unexpected input and preventing your logic from falling through silently.
+
+_Source file: [27 - match-case.py](../../../../code/python/3.%20conditionals/27%20-%20match-case.py)_

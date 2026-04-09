@@ -4,6 +4,7 @@ title: "Functions Basics"
 description: "Understanding how to define, call, and return values from Python functions."
 source_filename: "38 - Functions.py"
 ---
+
 # Functions Basics
 
 Functions are the building blocks of reusable code. They allow you to group logic together and call it whenever needed, preventing code duplication.
@@ -50,4 +51,4 @@ print(result)
 
 ---
 
-_Source file: [38 - Functions.py](../../../../src/code/python/5.%20Functions/38%20-%20Functions.py)_
+_Source file: [38 - Functions.py](../../../../code/python/5.%20Functions/38%20-%20Functions.py)_

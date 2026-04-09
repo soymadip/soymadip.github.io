@@ -6,6 +6,7 @@ source_filename:
   - 40 - Scope & named spaces.py
   - 41 - non global and global scope.py
 ---
+
 # Functions Scope
 
 In Python, understanding how variables are resolved (Scope) is key to writing clean, maintainable logic. The interpreter searches four levels to find a variable name, following the **LEGB** rule.
@@ -90,4 +91,4 @@ Parent name: Bob
 
 ---
 
-_Source files: [40 - Scope & named spaces.py](../../../../src/code/python/5.%20Functions/40%20-%20Scope%20&%20named%20spaces.py), [41 - non global and global scope.py](../../../../src/code/python/5.%20Functions/41%20-%20non%20global%20and%20global%20scope.py)_
+_Source files: [40 - Scope & named spaces.py](../../../../code/python/5.%20Functions/40%20-%20Scope%20&%20named%20spaces.py), [41 - non global and global scope.py](../../../../code/python/5.%20Functions/41%20-%20non%20global%20and%20global%20scope.py)_

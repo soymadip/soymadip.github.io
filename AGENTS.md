@@ -30,6 +30,7 @@ When I say "write notes", scan `code/` for changes, and write notes.
   - If a topic has no exercises, a standalone numbered file such as `5.3 - recursion.md` is preferred over a folder.
 
 ### **Visual Example (Ordering via Numbering)**
+
 ```text
 notes/python/5 - Functions/
 ├── index.md                      <-- (ordered by '5' from dir name)
@@ -50,7 +51,7 @@ notes/python/5 - Functions/
 - **Maintain Structure:** Always renumber notes and prefixes to maintain a perfect, gap-free sequence in the sidebar.
   - If a merge creates a gap, renumber only the **local siblings** (notes/exercises within that same folder) to fill the hole.
   - Use sub-numbering (e.g., `5.1`, `5.1.1`) to ensure perfect ordering and easy tracking.
-- **Source Footnote:** At the very end of every note and exercise, add a small italicized line: `---`\n _Source file: [<original-filename>.py](../../src/code/<path-to-file>/<original-filename>.py)_. Use **relative markdown links** based on the current file's location.
+- **Source Footnote:** At the very end of every note and exercise, add a small italicized line: `---`\n _Source file: [<original-filename>.py](../../code/<path-to-file>/<original-filename>.py)_. Use **relative markdown links** based on the current file's location.
 - **Exercise Mapping:** Map source files that are clearly exercises to the standard exercise note format.
 - **Answer Questions:** If the source file has questions or comments, fold the answers into the note narrative or a brief FAQ.
 - **Index Pages:**
@@ -80,7 +81,9 @@ Regular notes focus on idiomatic patterns and the "why" behind the code.
   - **Verification:** Run every example code block (`uv run <file>.py`) and show the exact output below it.
 
 ### **Frontmatter (Mandatory)**
+
 Every note must start with Docusaurus frontmatter:
+
 - **All string values must be wrapped in double quotes** (e.g., `title: "My Note"`).
 - `id`: normalized, hyphenated unique identifier.
 - `title`: page title in Title Case.
@@ -117,11 +120,13 @@ Exercise notes follow all regular note rules, but focus on hands-on practice.
 ## Language-Specific Guidance
 
 ### Python
+
 - **Use `uv` for running python files.**
 - Use current Python syntax (3.12+) and typed examples.
 - Mention version limits only when a feature is unsupported in 3.12.
 
 ### JavaScript/TypeScript
+
 - Use `bun` to run files.
 
 ## Gemini

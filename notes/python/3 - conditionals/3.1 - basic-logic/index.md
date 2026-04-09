@@ -10,6 +10,7 @@ source_filename:
     "26 - delivery-fees-wager.py",
   ]
 ---
+
 # Conditionals and Input
 
 Conditionals allow your program to make decisions. In Python, we use `if`, `elif`, and `else` to control the flow of execution based on specific conditions.
@@ -104,4 +105,4 @@ Access granted.
 
 ---
 
-_Source files: [23 - conditionals-input.py](../../../../src/code/python/3.%20conditionals/23%20-%20conditionals-input.py), [24 - chai-price-calc.py](../../../../src/code/python/3.%20conditionals/24%20-%20chai-price-calc.py), [25 - nested-conditionals.py](../../../../src/code/python/3.%20conditionals/25%20-%20nested-conditionals.py), [26 - delivery-fees-wager.py](../../../../src/code/python/3.%20conditionals/26%20-%20delivery-fees-wager.py)_
+_Source files: [23 - conditionals-input.py](../../../../code/python/3.%20conditionals/23%20-%20conditionals-input.py), [24 - chai-price-calc.py](../../../../code/python/3.%20conditionals/24%20-%20chai-price-calc.py), [25 - nested-conditionals.py](../../../../code/python/3.%20conditionals/25%20-%20nested-conditionals.py), [26 - delivery-fees-wager.py](../../../../code/python/3.%20conditionals/26%20-%20delivery-fees-wager.py)_

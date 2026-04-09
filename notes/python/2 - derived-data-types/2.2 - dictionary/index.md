@@ -4,6 +4,7 @@ title: "Dictionaries"
 description: "Hash maps optimized for fast lookups, now with insertion order."
 source_filename: "20 - dictionary.py"
 ---
+
 # Dictionaries
 
 Dictionaries are used to store data as key-value pairs. They are like a real-world dictionary where you look up a word (the key) to find its definition (the value).
@@ -117,4 +118,4 @@ print(users)
 
 ---
 
-_Source file: [20 - dictionary.py](../../../../src/code/python/2.%20derived-data-types/20%20-%20dictionary.py)_
+_Source file: [20 - dictionary.py](../../../../code/python/2.%20derived-data-types/20%20-%20dictionary.py)_
