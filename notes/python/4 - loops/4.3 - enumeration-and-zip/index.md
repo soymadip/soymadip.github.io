@@ -79,4 +79,4 @@ for num, char in zip(list_a, list_b):
 
 ---
 
-*Source files: [32 - enumerate.py](/code/python/4.%20loops/32%20-%20enumerate.py), [33 - zip.py](/code/python/4.%20loops/33%20-%20zip.py)*
+*Source files: [32 - enumerate.py](../../../../src/code/python/4.%20loops/32%20-%20enumerate.py), [33 - zip.py](../../../../src/code/python/4.%20loops/33%20-%20zip.py)*
