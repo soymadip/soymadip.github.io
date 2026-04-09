@@ -1,7 +1,6 @@
 ---
 id: data-warehouse-basics
 title: Data Warehouse Basics
-sidebar_position: "1.1"
 description: "Foundational definitions, features, and core architecture of Data Warehousing."
 source_filename: "questions.pdf"
 ---
@@ -19,13 +18,13 @@ A **Data Warehouse (DW)** is a centralized system used to store large amounts of
 
 ## Operational Database vs. Data Warehouse
 
-| Feature | Operational Database (OLTP) | Data Warehouse (OLAP) |
-| :--- | :--- | :--- |
-| **Purpose** | Daily operations (transactions) | Analytical decision-making |
-| **Data Type** | Current, up-to-date data | Historical + Current data |
-| **Usage** | Insert, update, delete | Mainly read and analyze |
-| **Users** | Clerks, applications | Managers, data analysts |
-| **Speed** | Fast transaction processing | Fast query and reporting |
+| Feature       | Operational Database (OLTP)     | Data Warehouse (OLAP)      |
+| :------------ | :------------------------------ | :------------------------- |
+| **Purpose**   | Daily operations (transactions) | Analytical decision-making |
+| **Data Type** | Current, up-to-date data        | Historical + Current data  |
+| **Usage**     | Insert, update, delete          | Mainly read and analyze    |
+| **Users**     | Clerks, applications            | Managers, data analysts    |
+| **Speed**     | Fast transaction processing     | Fast query and reporting   |
 
 ## Data Warehouse Models
 

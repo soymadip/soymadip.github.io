@@ -1,7 +1,6 @@
 ---
 id: while-loops
 title: While Loops
-sidebar_position: "4.1"
 description: "Repeating code until a condition changes and using validation loops."
 source_filename: ["28 - into-to-loops.py", "34 - while loops.py", "23 - conditionals-input.py"]
 ---

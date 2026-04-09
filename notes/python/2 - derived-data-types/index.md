@@ -2,7 +2,6 @@
 id: derived-data-types
 title: Derived Data Types
 sidebar_label: Derived Data types
-sidebar_position: "2"
 description: "Index page for the Python derived-data-types notes in this folder."
 ---
 Derived data types (collections) are data structures used to organize and store multiple values efficiently.

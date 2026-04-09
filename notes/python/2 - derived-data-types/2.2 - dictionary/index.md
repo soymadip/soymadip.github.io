@@ -1,7 +1,6 @@
 ---
 id: dictionaries
 title: Dictionaries
-sidebar_position: "2.2"
 description: "Hash maps optimized for fast lookups, now with insertion order."
 source_filename: "20 - dictionary.py"
 ---

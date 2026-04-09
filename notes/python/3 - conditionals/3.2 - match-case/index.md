@@ -1,7 +1,6 @@
 ---
 id: match-case
 title: Match-Case
-sidebar_position: "3.2"
 description: "Pattern matching with Python's match-case statement for cleaner multi-way decisions."
 source_filename: "27 - match-case.py"
 ---

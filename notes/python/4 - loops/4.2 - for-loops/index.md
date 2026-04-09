@@ -1,7 +1,6 @@
 ---
 id: for-loops
 title: For Loops
-sidebar_position: "4.2"
 description: "Iterating over sequences like range() and lists in Python."
 source_filename: ["29 - loops.py", "31 - iterating-lists.py"]
 ---

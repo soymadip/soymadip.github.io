@@ -25,21 +25,21 @@ When I say "write notes", scan `code/` for changes, and write notes.
 - **Topic Folder Pattern:** Organize notes into topic-specific folders within their section only when the topic has associated exercises.
   - Each folder must contain an `index.md` which serves as the **Theory** and the "parent" page for that topic.
   - Folder names follow the `<number> - <name>` pattern (e.g., `5.1 - basics`).
-  - Theory `index.md` files **do not** have a numeric prefix in the filename, but their `sidebar_position` must match the folder's number as a **quoted string** (e.g., `"5.1"`).
+  - **No `sidebar_position`** is used in these sub-folder `index.md` files; the folder's numeric prefix handles the ordering.
   - Exercises related to that topic must be placed **inside** the same folder as sub-pages.
   - If a topic has no exercises, a standalone numbered file such as `5.3 - recursion.md` is preferred over a folder.
 
-### **Visual Example (Must Follow)**
+### **Visual Example (Ordering via Numbering)**
 ```text
 notes/python/5 - Functions/
-├── index.md                      <-- (frontmatter: sidebar_position: "5")
-├── 5.1 - basics/                 <-- Topic Folder
-│   ├── index.md                  <-- Theory (frontmatter: sidebar_position: "5.1")
-│   └── 5.1.1 - Exercise 19.md    <-- Exercise (frontmatter: sidebar_position: "5.1.1")
-├── 5.2 - scope/                  <-- Topic Folder
-│   ├── index.md                  <-- Theory (frontmatter: sidebar_position: "5.2")
-│   └── 5.2.1 - Exercise 20.md    <-- Exercise (frontmatter: sidebar_position: "5.2.1")
-└── 5.3 - recursion.md            <-- Standalone Note (frontmatter: sidebar_position: "5.3")
+├── index.md                      <-- (ordered by '5' from dir name)
+├── 5.1 - basics/                 <-- Section Folder (ordered by '5.1')
+│   ├── index.md                  <-- Theory (No sidebar_position)
+│   └── 5.1.1 - Exercise 19.md    <-- Exercise (No sidebar_position)
+├── 5.2 - scope/                  <-- Section Folder (ordered by '5.2')
+│   ├── index.md                  <-- Theory (No sidebar_position)
+│   └── 5.2.1 - Exercise 20.md    <-- Exercise (No sidebar_position)
+└── 5.3 - recursion.md            <-- Standalone Note (ordered by '5.3')
 ```
 
 - **Scan Before Writing:** Compare source code with existing notes in the same folder. Review the last 3–4 notes to identify if the topic is already covered.
@@ -54,7 +54,7 @@ notes/python/5 - Functions/
 - **Exercise Mapping:** Map source files that are clearly exercises to the standard exercise note format.
 - **Answer Questions:** If the source file has questions or comments, fold the answers into the note narrative or a brief FAQ.
 - **Index Pages:**
-  - Keep top-level language index pages as landing pages (e.g., Python index).
+  - Keep top-level language index pages as landing pages (e.g., Python index). **These are the only files that use `sidebar_position`.**
   - Write section index pages with a short intro explaining the topic and a list of themes covered in that section.
   - Do not add direct links to individual note files in index pages.
 
@@ -70,7 +70,7 @@ Regular notes focus on idiomatic patterns and the "why" behind the code.
   - **Index Files:** `index.md`
   - **Exercises:** `<number> - Exercise <number> - <name>.md`
   - **Sanitize filenames:** replace any colons `:` with hyphens `-`.
-  - **Sidebar Position:** `sidebar_position` must exactly match the numeric prefix as a **quoted string** (e.g., `"5.1.1"`).
+  - **Sidebar Ordering:** Use numeric prefixes in filenames and directories to control order. Do **not** use `sidebar_position` in the frontmatter of individual notes or sub-section index files.
   - Preserve original code filenames in `source_filename`.
   - Use Docusaurus callouts (`:::tip`, `:::note`, `:::warning`) with Title Case names.
 
@@ -84,8 +84,9 @@ Every note must start with Docusaurus frontmatter:
 - `id`: normalized, hyphenated unique identifier.
 - `title`: page title in Title Case.
 - `description`: one-line summary.
-- `sidebar_position`: matches the numeric prefix as a **quoted string** (e.g., `"5.1.1"`).
 - `source_filename`: original code filename.
+- `sidebar_position`: **(Only for language-level `index.md`)** numeric position.
+- `sidebar_title`: optional. sidebar title to use (if wanna be different from title)
 
 ## Exercise Notes
 

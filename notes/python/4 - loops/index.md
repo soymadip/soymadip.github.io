@@ -1,7 +1,6 @@
 ---
 id: loops
 title: Loops
-sidebar_position: "4"
 description: "Overview of Python loop notes in this folder."
 ---
 

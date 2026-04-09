@@ -1,7 +1,6 @@
 ---
 id: functions
 title: Functions
-sidebar_position: "5"
 description: "Python notes for function definitions, scope, arguments, and best practices."
 ---
 

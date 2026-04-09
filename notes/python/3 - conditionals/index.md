@@ -1,7 +1,6 @@
 ---
 id: conditionals
 title: Conditionals
-sidebar_position: "3"
 description: "Mastering Python's flow control with if/else and pattern matching."
 ---
 

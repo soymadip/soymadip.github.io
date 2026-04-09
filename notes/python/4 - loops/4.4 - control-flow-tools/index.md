@@ -1,7 +1,6 @@
 ---
 id: break-continue-and-else
 title: "Break, Continue, and Else"
-sidebar_position: "4.4"
 description: "Control loop flow and use loop-else for search fallback logic."
 source_filename: "35 - break, continue, skip.py"
 ---
