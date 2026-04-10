@@ -50,7 +50,9 @@ print(customer)
 # Step 6: Print all keys, values, and items
 print(customer.keys)
 print(customer.values)
-print(customer.items)
+print(
+    customer.items
+)  ## Note: items() returns the dict as tuple of key, value, iterable. where only printing the dict prints the dict object, not iterable
 
 # Step 7: Remove and print the last inserted item
 print(customer.popitem)

@@ -13,8 +13,8 @@ Functions are the building blocks of reusable code. They allow you to group logi
 
 - Use the `def` keyword to define a function.
 - A function only runs when it is **called**.
-- Use `return` to send data back to the caller. If no return is specified, it returns `None`.
 - Parameters are variables in the definition; arguments are the values you pass in.
+- Indentation is critical in Python to define the function body.
 
 ## Defining and Calling
 
@@ -29,24 +29,10 @@ def greet_user(name):
 greet_user("Alice")
 ```
 
+**Output:**
+
 ```text
 Hello, Alice!
-```
-
-## Return Values
-
-A function can perform a task (like printing) or calculate a value and send it back using `return`.
-
-```python
-def add_numbers(a, b):
-    return a + b
-
-result = add_numbers(5, 10)
-print(result)
-```
-
-```text
-15
 ```
 
 ---

@@ -107,6 +107,10 @@ users = dict.fromkeys(["alice", "bob", "charlie"], "standard")
 
 print(counts)
 print(users)
+
+# Worth noting: .items() returns a view object (dict_items)
+# which is an iterable of (key, value) tuples.
+print(users.items())
 ```
 
 **Output:**
@@ -114,6 +118,7 @@ print(users)
 ```text
 {'apples': 10, 'oranges': 0}
 {'alice': 'standard', 'bob': 'standard', 'charlie': 'standard'}
+dict_items([('alice', 'standard'), ('bob', 'standard'), ('charlie', 'standard')])
 ```
 
 ---

@@ -12,9 +12,30 @@ Python offers powerful ways to handle functions that take a varying number of in
 
 ## What to Remember
 
+- **Mutable Objects:** Lists and dictionaries are passed by **object reference**, meaning changes inside a function affect the original object.
 - **Flexible Arguments:** `*args` collects extra positional arguments into a **tuple**, while `**kwargs` collects keyword arguments into a **dictionary**.
 - **Mutable Default Trap:** Never use mutable objects (like `[]`) as default arguments. Use `None` instead.
 - **Order Matters:** The standard order is: `positional`, `*args`, `keyword`, `**kwargs`.
+
+## Passing Mutable Objects
+
+When you pass a mutable object like a list or dictionary to a function, Python passes a reference to that object. Modifications made inside the function will persist outside.
+
+```python
+chai_list = ["Black", "Green", "Oolong"]
+
+def edit_chai(cups):
+    cups[1] = "Masala"
+
+edit_chai(chai_list)
+print(chai_list)
+```
+
+**Output:**
+
+```text
+['Black', 'Masala', 'Oolong']
+```
 
 ## Flexible Arguments (\*args and \*\*kwargs)
 
@@ -25,6 +46,8 @@ def build_profile(name, *skills, **details):
     print(f"Name: {name}")
     print(f"Skills (tuple): {skills}")
     print(f"Details (dict): {details}")
+    for key, value in details.items():
+        print(f"Extra Detail: {key}: {value}")
 
 build_profile("Aman", "Python", "C", location="India", role="Dev")
 ```
@@ -35,6 +58,8 @@ build_profile("Aman", "Python", "C", location="India", role="Dev")
 Name: Aman
 Skills (tuple): ('Python', 'C')
 Details (dict): {'location': 'India', 'role': 'Dev'}
+Extra Detail: location: India
+Extra Detail: role: Dev
 ```
 
 ## The Mutable Default Trap

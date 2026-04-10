@@ -4,9 +4,12 @@ title: "Functions"
 description: "Python notes for function definitions, scope, arguments, and best practices."
 ---
 
-Python functions are named blocks of reusable code designed to perform specific tasks, allowing developers to avoid writing the same logic repeatedly. They are defined using the def keyword, followed by a function name and parentheses, with the code block indented inside.
+Python functions are named blocks of reusable code designed to perform specific tasks. This section covers basic definitions, scope management, flexible arguments, and handling multiple return values.
 
-There are three primary types of functions in Python:
-  - Built-in functions: Predefined functions like print(), len(), and sum() that are always available without importing.
-  - User-defined functions: Custom functions created by the programmer to provide specific functionality.
-  - Module functions: Functions bundled in standard library modules that must be imported to be used. 
+## Themes Covered
+
+- **Basics:** Understanding function definitions and calling.
+- **Return Values:** Managing early exits and returning multiple values as tuples.
+- **Variable Scope:** Navigating local vs. global access.
+- **Function Arguments:** Using `*args`, `**kwargs`, and avoiding the mutable default trap.
+ 

@@ -18,7 +18,7 @@ Convert `code/` examples into concise, revision-friendly `notes/` pages targeted
 
 This guide explains how to turn each source example into a readable note. Follow the workflow first, then use the metadata and style rules to keep notes consistent and easy to review.
 
-When I say "write notes", scan `code/` for changes, and write notes.
+When I say "write notes", scan `src/code/` for changes, and write notes.
 
 ## **Workflow (Scan, Compare, Merge)**
 
@@ -28,6 +28,7 @@ When I say "write notes", scan `code/` for changes, and write notes.
   - **No `sidebar_position`** is used in these sub-folder `index.md` files; the folder's numeric prefix handles the ordering.
   - Exercises related to that topic must be placed **inside** the same folder as sub-pages.
   - If a topic has no exercises, a standalone numbered file such as `5.3 - recursion.md` is preferred over a folder.
+  - Do not change code files unless filename change is needed or i told you to.
 
 ### **Visual Example (Ordering via Numbering)**
 

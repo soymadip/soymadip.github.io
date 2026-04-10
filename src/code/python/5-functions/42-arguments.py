@@ -32,9 +32,16 @@ make_chai("Darjeeling", "milk", "Low")  # positional args
 make_chai(tea="green", sugar="medium", milk="no")  # Keywords, no need to maintain order
 
 
+# How to access these?
+# positional Args are stored in `ingredients` variable as LIST.
+# Keyworded  args are stored in `extras`      variable as DICTIONARY.
+#
+## function parameters are positional args by default, but we can pass them as keyworded args too.
 def special_chai(*ingredients, **extras):
     print(ingredients)
     print(extras)
+    for key, value in extras.items():
+        print(f"Extra: {key}: {value}")
 
 
 special_chai("cardimum", "ginger", sweetner="honey", foam="yes")
