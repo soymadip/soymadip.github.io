@@ -117,4 +117,4 @@ It is cleaner and more idiomatic than managing a manual boolean flag. It tells t
 
 ---
 
-_Source file: [35 - break, continue, skip.py](/code/python/4.%20loops/35%20-%20break%2C%20continue%2C%20skip.py)_
+_Source file: [35 - break, continue, skip.py](../../../../src/code/python/4-loops/35-break,-continue,-skip.py)_

@@ -91,4 +91,4 @@ Parent name: Bob
 
 ---
 
-_Source files: [40 - Scope & named spaces.py](/code/python/5.%20Functions/40%20-%20Scope%20%26%20named%20spaces.py), [41 - non global and global scope.py](/code/python/5.%20Functions/41%20-%20non%20global%20and%20global%20scope.py)_
+_Source files: [40 - Scope & named spaces.py](../../../../src/code/python/5-functions/40-scope-named-spaces.py), [41 - non global and global scope.py](../../../../src/code/python/5-functions/41-non-global-and-global-scope.py)_

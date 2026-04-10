@@ -45,7 +45,8 @@ echo -e "\n>>> Adding or replacing files in the compiler...\n"
 
 switch-compiler-branch "compiler"
 
-replace-content "${ROOT_DIR}/src" "${COMPILER_DIR}/static"
+replace-content "${ROOT_DIR}/static" "${COMPILER_DIR}/static"
+replace-content "${ROOT_DIR}/src" "${COMPILER_DIR}/src"
 replace-content "${ROOT_DIR}/blog" "${COMPILER_DIR}/blog"
 replace-content "${ROOT_DIR}/notes" "${COMPILER_DIR}/notes"
 replace-content "${ROOT_DIR}/config.js" "${COMPILER_DIR}/config.js"
