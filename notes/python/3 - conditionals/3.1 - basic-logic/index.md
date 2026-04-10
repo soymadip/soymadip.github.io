@@ -46,7 +46,7 @@ Price: 30
 ```
 
 :::tip
-For repeating a prompt until the user gives a valid answer, see [Validation Loops](../../4 - loops/4.1 - while-loops/index.md).
+For repeating a prompt until the user gives a valid answer, see [Validation Loops](/notes/python/4%20-%20loops/4.1%20-%20while-loops/index.md).
 :::
 
 ## Nested Conditionals
