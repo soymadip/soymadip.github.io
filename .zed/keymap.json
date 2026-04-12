@@ -1,0 +1,8 @@
+[
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-enter": ["task::Spawn", { "task_name": "Run Current file" }],
+    },
+  },
+]
