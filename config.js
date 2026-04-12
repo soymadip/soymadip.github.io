@@ -6,8 +6,8 @@ exports.usrConf = {
   edit_url:
     "https://github.com/soymadip/soymadip.github.io/edit/content/notes/",
 
-  site_url: "auto",
-  site_path: "auto",
+  site_url: "https://example.com",
+  site_path: "/",
 
   srt_url: "${site_url}${site_path}/l",
 

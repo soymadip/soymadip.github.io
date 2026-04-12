@@ -19,3 +19,41 @@ You're building a Function Behavior Analyzer to showcase different types of Pyth
 
     Write a function square_list(nums) that uses a lambda inside map() to return a new list with the squares of the numbers in the input list.
 """
+
+
+def pure_add(a, b):
+    return a + b
+
+
+counter: int = 0
+
+
+def impure_increment(a, b):
+    global counter
+    counter += 1
+    return counter
+
+
+def factorial_recursive(n):
+    if n == 0:
+        return 1
+
+    return n * factorial_recursive(n - 1)
+
+
+def square_list(nums: list[int]) -> list[int]:
+    return list(map(lambda num: num**2, nums))
+
+
+def outer() -> int:
+    count = 0
+
+    def inner() -> int:
+        nonlocal count
+        count += 1
+        return count
+
+    return inner()
+
+
+print(outer())

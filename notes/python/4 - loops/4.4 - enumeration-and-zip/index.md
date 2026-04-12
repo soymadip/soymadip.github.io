@@ -11,7 +11,7 @@ If you are coming from C, you might be tempted to use a counter variable or `ran
 
 ## Enumerate: Iterating with an Index
 
-`enumerate()` adds a counter to an iterable, returning `(index, item)`. Use it when you need the value *and* its position in the list.
+`enumerate()` adds a counter to an iterable, returning `(index, item)`. Use it when you need the value _and_ its position in the list.
 
 ```python
 tech_stack = ["Python", "C", "Bash"]

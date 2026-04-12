@@ -14,7 +14,7 @@ Important locations
 
 ## Your role
 
-Convert `code/` examples into concise, revision-friendly `notes/` pages targeted at an **intermediate audience** (e.g., someone who knows basics or has a background in languages like C). Write in a direct, simple, and practical tone.
+Convert `code/` examples into concise, `notes/` pages targeted at an **intermediate audience** (e.g., someone who knows basics or has a background in languages like C). Write in a direct, simple, and practical tone.
 
 This guide explains how to turn each source example into a readable note. Follow the workflow first, then use the metadata and style rules to keep notes consistent and easy to review.
 
@@ -58,8 +58,7 @@ notes/python/5 - Functions/
 - **Answer Questions:** If the source file has questions or comments (e.g., `# ...?` or `# why this?`), you MUST answer them. Fold the answers directly into the note narrative or use a brief FAQ if they are tangential. Never leave a source question unaddressed.
 - **Index Pages:**
   - Keep top-level language index pages as landing pages (e.g., Python index). **These are the only files that use `sidebar_position`.**
-  - Write section index pages with a short intro explaining the topic and a list of themes covered in that section.
-  - Do not add direct links to individual note files in index pages.
+  - Write section index pages with a short intro explaining the topic.
 
 ## Regular Notes and Metadata
 
