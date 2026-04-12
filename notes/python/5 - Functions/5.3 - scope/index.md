@@ -9,13 +9,7 @@ source_filename:
 
 # Functions Scope
 
-In Python, understanding how variables are resolved (Scope) is key to writing clean, maintainable logic. The interpreter searches four levels to find a variable name, following the **LEGB** rule.
-
-## What to Remember
-
-- **Scope (LEGB):** Python looks for variables in order: **Local** → **Enclosing** → **Global** → **Built-in**.
-- **Global vs Nonlocal:** Use `global` to modify top-level variables and `nonlocal` to modify variables in a parent (enclosing) function.
-- By default, you can **read** outside variables, but you cannot **modify** them without keywords.
+In Python, the interpreter searches four levels to find a variable name, following the **LEGB** rule: **Local** → **Enclosing** → **Global** → **Built-in**. By default, you can **read** outside variables, but you cannot **modify** them without explicit keywords.
 
 ## The LEGB Scope Rule
 
@@ -48,7 +42,7 @@ Global: Global
 
 ## Modifying Outside Variables
 
-To change a variable defined outside the current function's local scope, you must explicitly declare your intent.
+To change a variable defined outside the current function's local scope, you must explicitly declare your intent using `global` or `nonlocal`.
 
 ### Global Keyword
 
@@ -91,4 +85,4 @@ Parent name: Bob
 
 ---
 
-_Source files: [40 - Scope & named spaces.py](../../../../src/code/python/5-functions/40-scope-named-spaces.py), [41 - non global and global scope.py](../../../../src/code/python/5-functions/41-non-global-and-global-scope.py)_
+_Source files: [40 - Scope & named spaces.py](/code/python/5-functions/40-scope-named-spaces.py), [41 - non global and global scope.py](/code/python/5-functions/41-non-global-and-global-scope.py)_

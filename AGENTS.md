@@ -55,7 +55,7 @@ notes/python/5 - Functions/
 - **Source Footnote:** At the very end of every note and exercise, add a small italicized line: `---`\n _Source file: [<original-filename>.<ext>](/code/<slugified-path>/<slugified-filename>.<ext>)_.
   - **Slugification Rule:** Always slugify the URL path in the link (e.g., replace spaces with `-`, remove special characters, and lowercase). The visible label in brackets should remain the original filename for readability.
 - **Exercise Mapping:** Map source files that are clearly exercises to the standard exercise note format.
-- **Answer Questions:** If the source file has questions or comments, fold the answers into the note narrative or a brief FAQ.
+- **Answer Questions:** If the source file has questions or comments (e.g., `# ...?` or `# why this?`), you MUST answer them. Fold the answers directly into the note narrative or use a brief FAQ if they are tangential. Never leave a source question unaddressed.
 - **Index Pages:**
   - Keep top-level language index pages as landing pages (e.g., Python index). **These are the only files that use `sidebar_position`.**
   - Write section index pages with a short intro explaining the topic and a list of themes covered in that section.
@@ -78,7 +78,7 @@ Regular notes focus on idiomatic patterns and the "why" behind the code.
   - Use Docusaurus callouts (`:::tip`, `:::note`, `:::warning`) with Title Case names.
 
 - **Content & Logic:**
-  - **Before the code:** Explain the intent of the pattern.
+  - **Before the code:** Explain the intent of the pattern. Integrate key takeaways directly into this narrative; do not use a "What to Remember" or summary section.
   - **After the code:** Point out specific nuances or performance notes.
   - **Verification:** Run every example code block (`uv run <file>.py`) and show the exact output below it.
 

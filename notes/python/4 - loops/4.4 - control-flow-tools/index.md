@@ -7,16 +7,9 @@ source_filename: "35 - break, continue, skip.py"
 
 # Break, Continue, and Else
 
-In Python, you can precisely control loop behavior using `break` and `continue`. Additionally, Python features a unique `else` clause for loops that is perfect for "search and find" logic.
+In Python, you can precisely control loop behavior using `break` to exit immediately and `continue` to skip the rest of the current iteration. Python also features a unique `else` clause for loops.
 
-## What to Remember
-
-- `break`: Exits the loop immediately.
-- `continue`: Skips the rest of the current iteration and starts the next one.
-- `else`: Runs **only if the loop finished naturally** (without hitting a `break`).
-- Loop `else` is ideal for handling cases where a search failed to find a match.
-
-## Using `break` And `continue`
+## Using `break` and `continue`
 
 Use these to manage how your program handles specific items during iteration.
 
@@ -55,11 +48,8 @@ If you're using nested loops, `break` and `continue` only apply to the **innermo
 
 ### Breaking the Inner Loop
 
-Use `break` to stop searching a row once you've found what you need.
-
 ```python
 # Type hint: a list containing lists of integers
-# See: Modern Python Types for details
 matrix: list[list[int]] = [
     [1, 2, 3],
     [4, 5, 6],
@@ -91,7 +81,7 @@ Stopping the search.
 
 ## The Loop `else` Clause
 
-If you're coming from C, you might be used to using a "found" flag (like `int found = 0;`) when searching. In Python, you can use the loop's `else` block instead.
+The `else` block runs **only if the loop finished naturally** (without hitting a `break`). It is ideal for "search and find" logic to handle fallback cases when no match was found.
 
 ```python
 candidates = [("Amit", 16), ("Zara", 17), ("Raj", 15)]
@@ -117,4 +107,4 @@ It is cleaner and more idiomatic than managing a manual boolean flag. It tells t
 
 ---
 
-_Source file: [35 - break, continue, skip.py](../../../../src/code/python/4-loops/35-break,-continue,-skip.py)_
+_Source file: [35 - break, continue, skip.py](/code/python/4-loops/35-break,-continue,-skip.py)_

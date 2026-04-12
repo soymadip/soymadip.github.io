@@ -7,18 +7,11 @@ source_filename: ["32 - enumerate.py", "33 - zip.py"]
 
 # Enumerate and Zip
 
-If you are coming from C, you might be tempted to use a counter variable or `range(len(list))` to access indices. In Python, we use `enumerate()` and `zip()` to handle these common iteration patterns more cleanly.
-
-## What to Remember
-
-- `enumerate()` adds a counter to an iterable, returning `(index, item)`.
-- `zip()` pairs up elements from multiple iterables, returning tuples.
-- Both functions return **iterators**, meaning they are memory efficient.
-- `zip()` stops at the shortest input iterable.
+If you are coming from C, you might be tempted to use a counter variable or `range(len(list))` to access indices. In Python, we use `enumerate()` and `zip()` to handle these patterns more cleanly. Both functions return **iterators**, making them memory efficient.
 
 ## Enumerate: Iterating with an Index
 
-Use `enumerate()` when you need the value _and_ its position in the list.
+`enumerate()` adds a counter to an iterable, returning `(index, item)`. Use it when you need the value *and* its position in the list.
 
 ```python
 tech_stack = ["Python", "C", "Bash"]
@@ -42,7 +35,7 @@ Writing `for i in range(len(list)): print(list[i])` is considered an anti-patter
 
 ## Zip: Parallel Iteration
 
-Use `zip()` when you have related data stored in two or more separate lists.
+`zip()` pairs up elements from multiple iterables, returning tuples. Use it when you have related data stored in separate lists.
 
 ```python
 users = ["Alice", "Bob", "Charlie"]
@@ -60,9 +53,9 @@ Bob is an Editor
 Charlie is an Guest
 ```
 
-### The "shortest Wins" Rule
+### The "Shortest Wins" Rule
 
-If your lists are different lengths, `zip()` will silently stop as soon as the shortest list is exhausted.
+`zip()` will silently stop as soon as the shortest input iterable is exhausted.
 
 ```python
 list_a = [1, 2, 3]
@@ -82,4 +75,4 @@ for num, char in zip(list_a, list_b):
 
 ---
 
-_Source files: [32 - enumerate.py](../../../../src/code/python/4-loops/32-enumerate.py), [33 - zip.py](../../../../src/code/python/4-loops/33-zip.py)_
+_Source files: [32 - enumerate.py](/code/python/4-loops/32-enumerate.py), [33 - zip.py](/code/python/4-loops/33-zip.py)_

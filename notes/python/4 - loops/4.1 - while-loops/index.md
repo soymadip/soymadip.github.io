@@ -8,18 +8,11 @@ source_filename:
 
 # While Loops
 
-Unlike a `for` loop which iterates over a sequence, a `while` loop repeats as long as a specific condition is **True**. This makes it ideal for situations where you don't know in advance how many times you need to repeat.
-
-## What to Remember
-
-- `while` loops run until their condition becomes `False`.
-- Use `while True` combined with `break` to create **validation loops**.
-- Always ensure the loop condition eventually fails to avoid an **infinite loop**.
-- `continue` skips the rest of the current iteration and jumps back to the condition check.
+A `while` loop repeats as long as a specific condition is **True**, making it ideal for situations where you don't know the iteration count in advance. Always ensure the loop condition eventually becomes **False** to avoid an infinite loop.
 
 ## Basic Repetition
 
-If you are coming from C, `while` loops in Python work exactly as you'd expect.
+`while` loops in Python work exactly as you'd expect. You can use `continue` to skip the rest of the current iteration and jump back to the condition check.
 
 ```python
 count = 1
@@ -36,9 +29,9 @@ Loop iteration: 2
 Loop iteration: 3
 ```
 
-## Validation Loops: "ask Until Valid"
+## Validation Loops: "Ask Until Valid"
 
-A common Pythonic pattern for interactive tools is to loop forever until the user provides correct data.
+A common **Pythonic** pattern is to use `while True` combined with `break` to loop forever until the user provides correct data.
 
 ```python
 allowed_options = {"yes", "no", "maybe"}
@@ -64,8 +57,8 @@ You chose: yes
 
 ### Why Use `while True`?
 
-Using `while True` with an internal `break` is often cleaner than trying to initialize a dummy variable just to satisfy a standard `while choice not in allowed_options:` condition. It keeps the "ask" logic and the "exit" logic clearly separated.
+Using `while True` with an internal `break` is often cleaner than initializing a dummy variable just to satisfy a condition. It keeps the "ask" logic and the "exit" logic clearly separated.
 
 ---
 
-_Source files: [28 - into-to-loops.py](../../../../src/code/python/4-loops/28-into-to-loops.py), [34 - while loops.py](../../../../src/code/python/4-loops/34-while-loops.py), [23 - conditionals-input.py](../../../../src/code/python/3-conditionals/23-conditionals-input.py)_
+_Source files: [28 - into-to-loops.py](/code/python/4-loops/28-into-to-loops.py), [34 - while loops.py](/code/python/4-loops/34-while-loops.py), [23 - conditionals-input.py](/code/python/3-conditionals/23-conditionals-input.py)_

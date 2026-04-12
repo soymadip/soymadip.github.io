@@ -7,18 +7,11 @@ source_filename: "38 - Functions.py"
 
 # Functions Basics
 
-Functions are the building blocks of reusable code. They allow you to group logic together and call it whenever needed, preventing code duplication.
-
-## What to Remember
-
-- Use the `def` keyword to define a function.
-- A function only runs when it is **called**.
-- Parameters are variables in the definition; arguments are the values you pass in.
-- Indentation is critical in Python to define the function body.
+Functions are the building blocks of reusable code. They group logic together so you can call it whenever needed, preventing code duplication. A function only runs when it is **called**.
 
 ## Defining and Calling
 
-In Python, you define a function with a colon and indentation.
+Use the `def` keyword to define a function. Indentation is critical in Python to define the function body. Variables in the definition are called **parameters**, while the values you pass in are called **arguments**.
 
 ```python
 def greet_user(name):
@@ -37,4 +30,4 @@ Hello, Alice!
 
 ---
 
-_Source file: [38 - Functions.py](../../../../src/code/python/5-functions/38-functions.py)_
+_Source file: [38 - Functions.py](/code/python/5-functions/38-functions.py)_

@@ -8,38 +8,11 @@ source_filename:
 
 # Function Arguments
 
-Python offers powerful ways to handle functions that take a varying number of inputs. Understanding how to collect and pass arguments efficiently is a key intermediate skill.
-
-## What to Remember
-
-- **Mutable Objects:** Lists and dictionaries are passed by **object reference**, meaning changes inside a function affect the original object.
-- **Flexible Arguments:** `*args` collects extra positional arguments into a **tuple**, while `**kwargs` collects keyword arguments into a **dictionary**.
-- **Mutable Default Trap:** Never use mutable objects (like `[]`) as default arguments. Use `None` instead.
-- **Order Matters:** The standard order is: `positional`, `*args`, `keyword`, `**kwargs`.
-
-## Passing Mutable Objects
-
-When you pass a mutable object like a list or dictionary to a function, Python passes a reference to that object. Modifications made inside the function will persist outside.
-
-```python
-chai_list = ["Black", "Green", "Oolong"]
-
-def edit_chai(cups):
-    cups[1] = "Masala"
-
-edit_chai(chai_list)
-print(chai_list)
-```
-
-**Output:**
-
-```text
-['Black', 'Masala', 'Oolong']
-```
+Understanding how to collect and pass arguments efficiently is key. In Python, lists and dictionaries are passed by **object reference**, meaning changes made to them inside a function affect the original object.
 
 ## Flexible Arguments (\*args and \*\*kwargs)
 
-These allow your functions to be extremely flexible by accepting any number of inputs.
+These allow your functions to accept any number of inputs. `*args` collects extra positional arguments into a **tuple**, while `**kwargs` collects keyword arguments into a **dictionary**.
 
 ```python
 def build_profile(name, *skills, **details):
@@ -62,9 +35,13 @@ Extra Detail: location: India
 Extra Detail: role: Dev
 ```
 
+:::note Order Matters
+The standard order for arguments is: `positional`, `*args`, `keyword`, and then `**kwargs`.
+:::
+
 ## The Mutable Default Trap
 
-A common mistake is using a list or dictionary as a default argument. In Python, these are created **once** when the function is defined, not every time it's called.
+Never use mutable objects like lists or dictionaries as default arguments. In Python, these are created **once** when the function is defined, not every time it is called, meaning the same object is shared across all calls.
 
 ```python
 # Anti-pattern: The same list is shared across all calls!
@@ -83,7 +60,7 @@ print(add_item("Banana")) # Oops! Shared list
 
 ### The Pythonic Fix
 
-Use `None` as a placeholder and initialize the list inside the function.
+Use `None` as a placeholder and initialize the list inside the function logic.
 
 ```python
 def add_item_safe(item, basket=None):
@@ -103,4 +80,4 @@ print(add_item_safe("Banana")) # New list each time
 
 ---
 
-_Source file: [42 - arguments.py](../../../../src/code/python/5-functions/42-arguments.py)_
+_Source file: [42 - arguments.py](/code/python/5-functions/42-arguments.py)_

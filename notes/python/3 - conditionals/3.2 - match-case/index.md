@@ -7,18 +7,11 @@ source_filename: "27 - match-case.py"
 
 # Match-case
 
-Introduced in Python 3.10, `match-case` is a powerful alternative to long `if/elif/else` chains. While it looks like a `switch` statement from C, it is actually a pattern matching tool that can handle much more complex logic.
-
-## What to Remember
-
-- `match` evaluates an expression and compares it against multiple `case` patterns.
-- `case _` acts as the mandatory "wildcard" or fallback if nothing else matches.
-- It is much more readable than `if/elif` when checking a single variable against many known values.
-- Matches are checked in order from top to bottom.
+Introduced in Python 3.10, `match-case` is a powerful alternative to long `if/elif/else` chains. It evaluates an expression and compares it against multiple `case` patterns, checking them in order from top to bottom.
 
 ## Basic Pattern Matching
 
-Use `match-case` for menu-driven logic or command-line tools where a variable can have several distinct literal values.
+Use `match-case` for menu-driven logic where a variable can have several distinct literal values. It is much more readable than `if/elif` when branching based on a **single expression**.
 
 ```python
 seat_type = "ac"
@@ -38,12 +31,10 @@ match seat_type:
 AC: Climate controlled.
 ```
 
-## Why Use Match-case Over If/elif?
+## The Wildcard Pattern
 
-If you are just checking if a variable equals one of five strings, `match-case` is cleaner and harder to mess up. It explicitly signals that you are branching based on the value of a **single expression**.
+The underscore `_` is a special pattern that matches anything. It acts as the mandatory "wildcard" or fallback if nothing else matches, preventing your logic from falling through silently.
 
-### The Wildcard Pattern
+---
 
-## The underscore `_` is a special pattern in Python that matches anything. It is essential for handling unexpected input and preventing your logic from falling through silently.
-
-_Source file: [27 - match-case.py](../../../../src/code/python/3-conditionals/27-match-case.py)_
+_Source file: [27 - match-case.py](/code/python/3-conditionals/27-match-case.py)_

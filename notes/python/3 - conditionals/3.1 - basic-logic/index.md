@@ -13,18 +13,11 @@ source_filename:
 
 # Conditionals and Input
 
-Conditionals allow your program to make decisions. In Python, we use `if`, `elif`, and `else` to control the flow of execution based on specific conditions.
-
-## What to Remember
-
-- Use `.strip().lower()` to normalize user input before comparing it.
-- `if` / `elif` / `else` handles multiple branches; only the first true branch runs.
-- **Ternary Operators** allow for simple one-line `if/else` assignments.
-- Nesting `if` statements is useful for checks that depend on a previous result.
+Conditionals allow your program to make decisions using `if`, `elif`, and `else` to control the flow of execution. Only the first **True** branch in a chain will execute.
 
 ## Normalizing Input
 
-When accepting text from a user, always clean it up first. This prevents bugs caused by extra spaces or unexpected capitalization.
+When accepting text from a user, always use `.strip().lower()` to clean it up first. This prevents bugs caused by extra spaces or unexpected capitalization during comparisons.
 
 ```python
 # Assuming user enters " Medium "
@@ -51,7 +44,7 @@ For repeating a prompt until the user gives a valid answer, see [Validation Loop
 
 ## Nested Conditionals
 
-Use nested `if` statements when the second check only matters if the first one passed.
+Use nested `if` statements for checks that depend on a previous result.
 
 ```python
 device_status = "active"
@@ -72,7 +65,7 @@ Warning: High temperature!
 
 ## The Ternary Operator
 
-For simple assignments, a one-line ternary expression is more Pythonic than a full `if/else` block. It reads almost like an English sentence.
+For simple assignments, a one-line ternary expression is more **Pythonic**. It allows for simple `if/else` assignments that read like an English sentence.
 
 ```python
 order_total = 320
@@ -89,7 +82,7 @@ Delivery fee: 0
 
 ## Converting Types for Comparisons
 
-Remember that `input()` always returns a string. If you need to compare it against a number, you must cast it first.
+Remember that `input()` always returns a string. You must explicitly cast it for numeric comparisons.
 
 ```python
 # Assuming user enters "20"
@@ -105,4 +98,4 @@ Access granted.
 
 ---
 
-_Source files: [23 - conditionals-input.py](../../../../src/code/python/3-conditionals/23-conditionals-input.py), [24 - chai-price-calc.py](../../../../src/code/python/3-conditionals/24-chai-price-calc.py), [25 - nested-conditionals.py](../../../../src/code/python/3-conditionals/25-nested-conditionals.py), [26 - delivery-fees-wager.py](../../../../src/code/python/3-conditionals/26-delivery-fees-wager.py)_
+_Source files: [23 - conditionals-input.py](/code/python/3-conditionals/23-conditionals-input.py), [24 - chai-price-calc.py](/code/python/3-conditionals/24-chai-price-calc.py), [25 - nested-conditionals.py](/code/python/3-conditionals/25-nested-conditionals.py), [26 - delivery-fees-wager.py](/code/python/3-conditionals/26-delivery-fees-wager.py)_
