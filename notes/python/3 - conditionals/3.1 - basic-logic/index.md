@@ -98,4 +98,4 @@ Access granted.
 
 ---
 
-_Source files: [23 - conditionals-input.py](/code/python/3-conditionals/23-conditionals-input.py), [24 - chai-price-calc.py](/code/python/3-conditionals/24-chai-price-calc.py), [25 - nested-conditionals.py](/code/python/3-conditionals/25-nested-conditionals.py), [26 - delivery-fees-wager.py](/code/python/3-conditionals/26-delivery-fees-wager.py)_
+_Source files: [23 - conditionals-input.py](../../../../src/code/python/3-conditionals/23-conditionals-input.py), [24 - chai-price-calc.py](../../../../src/code/python/3-conditionals/24-chai-price-calc.py), [25 - nested-conditionals.py](../../../../src/code/python/3-conditionals/25-nested-conditionals.py), [26 - delivery-fees-wager.py](../../../../src/code/python/3-conditionals/26-delivery-fees-wager.py)_

@@ -119,4 +119,4 @@ dict_items([('alice', 'standard'), ('bob', 'standard'), ('charlie', 'standard')]
 
 ---
 
-_Source file: [20 - dictionary.py](/code/python/2-derived-data-types/20-dictionary.py)_
+_Source file: [20 - dictionary.py](../../../../src/code/python/2-derived-data-types/20-dictionary.py)_

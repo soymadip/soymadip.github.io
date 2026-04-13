@@ -61,4 +61,4 @@ Using `while True` with an internal `break` is often cleaner than initializing a
 
 ---
 
-_Source files: [28 - into-to-loops.py](/code/python/4-loops/28-into-to-loops.py), [34 - while loops.py](/code/python/4-loops/34-while-loops.py), [23 - conditionals-input.py](/code/python/3-conditionals/23-conditionals-input.py)_
+_Source files: [28 - into-to-loops.py](../../../../src/code/python/4-loops/28-into-to-loops.py), [34 - while loops.py](../../../../src/code/python/4-loops/34-while-loops.py), [23 - conditionals-input.py](../../../../src/code/python/3-conditionals/23-conditionals-input.py)_

@@ -28,4 +28,4 @@ In the following notes, we will dive deep into each type with practical examples
 
 ---
 
-_Source file: [47-index.py](/code/python/6-comprehensions/47-index.py)_
+_Source file: [47-index.py](../../../src/code/python/6-comprehensions/47-index.py)_

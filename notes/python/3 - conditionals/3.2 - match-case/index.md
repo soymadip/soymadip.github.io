@@ -37,4 +37,4 @@ The underscore `_` is a special pattern that matches anything. It acts as the ma
 
 ---
 
-_Source file: [27 - match-case.py](/code/python/3-conditionals/27-match-case.py)_
+_Source file: [27 - match-case.py](../../../../src/code/python/3-conditionals/27-match-case.py)_
