@@ -6,4 +6,4 @@ description: "Index page for the Python derived-data-types notes in this folder.
 ---
 Derived data types (collections) are data structures used to organize and store multiple values efficiently.
 
-While basic types like integers and strings hold single values, these collections allow you to group related data together using different rules for ordering, uniqueness, and lookup.
+While basic types like integers and strings hold single values, these collections allow us to group related data together using different rules for ordering, uniqueness, and lookup.

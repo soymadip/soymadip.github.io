@@ -7,11 +7,11 @@ source_filename: "20 - dictionary.py"
 
 # Dictionaries
 
-Dictionaries are used to store data as key-value pairs. They are like a real-world dictionary where you look up a word (the key) to find its definition (the value). Keys must be **immutable** (strings, integers, tuples), while values can be anything.
+Dictionaries are used to store data as key-value pairs. They are like a real-world dictionary where we look up a word (the key) to find its definition (the value). Keys must be **immutable** (strings, integers, tuples), while values can be anything.
 
 ## Creating and Accessing Dictionaries
 
-Dictionaries are **O(1) fast** for lookups and insertions. Since Python 3.7, they **keep the order** in which you add items.
+Dictionaries are **O(1) fast** for lookups and insertions. Since Python 3.7, they **keep the order** in which we add items.
 
 ```python
 # Type hinting: specify Key and Value types inside dict[]
@@ -30,13 +30,13 @@ Tesla
 
 ### The .get() Trick
 
-If you try to access a key that doesn't exist (like `car["color"]`), Python will crash with a `KeyError`. Using `.get()` is safer because it returns `None` (or a default fallback) instead of crashing.
+If we try to access a key that doesn't exist (like `car["color"]`), Python will crash with a `KeyError`. Using `.get()` is safer because it returns `None` (or a default fallback) instead of crashing.
 
 ```python
 # Safe way to look up a key
 print(car.get("color"))
 
-# You can even provide a default fallback
+# We can even provide a default fallback
 print(car.get("color", "Not Available"))
 ```
 
@@ -47,7 +47,7 @@ Not Available
 
 ## Modifying Dictionaries
 
-Dictionaries are **mutable**, so you can add, change, or remove items on the fly.
+Dictionaries are **mutable**, so we can add, change, or remove items on the fly.
 
 ```python
 # Adding or changing items
@@ -69,7 +69,7 @@ print(popped_year)
 
 ## Merging Dictionaries (Python 3.9+)
 
-Instead of using `update()`, which changes the original dictionary, you can use the `|` (merge) operator to create a brand-new one. The right-side value wins if there's a collision (the second dictionary's value overrides the first).
+Instead of using `update()`, which changes the original dictionary, we can use the `|` (merge) operator to create a brand-new one. The right-side value wins if there's a collision (the second dictionary's value overrides the first).
 
 ```python
 A = {"x": 1, "y": 2}
@@ -83,7 +83,7 @@ print(A | B)
 ```
 
 :::note Bitwise AND
-Unlike sets, dictionaries do not support the bitwise AND (`&`) operator directly. To find common keys, you would need to intersect the sets of their keys: `a.keys() & b.keys()`.
+Unlike sets, dictionaries do not support the bitwise AND (`&`) operator directly. To find common keys, we would need to intersect the sets of their keys: `a.keys() & b.keys()`.
 :::
 
 ## Worth Mentioning: Initialization and Bulk Creation

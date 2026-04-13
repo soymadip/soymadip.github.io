@@ -9,11 +9,11 @@ source_filename:
 
 # Functions Scope
 
-In Python, the interpreter searches four levels to find a variable name, following the **LEGB** rule: **Local** → **Enclosing** → **Global** → **Built-in**. By default, you can **read** outside variables, but you cannot **modify** them without explicit keywords.
+In Python, the interpreter searches four levels to find a variable name, following the **LEGB** rule: **Local** → **Enclosing** → **Global** → **Built-in**. By default, we can **read** outside variables, but we cannot **modify** them without explicit keywords.
 
 ## The LEGB Scope Rule
 
-Python's scope rules might feel broader if you are coming from C.
+Python's scope rules might feel broader if we are coming from C.
 
 ```python
 x = "Global"
@@ -42,7 +42,7 @@ Global: Global
 
 ## Modifying Outside Variables
 
-To change a variable defined outside the current function's local scope, you must explicitly declare your intent using `global` or `nonlocal`.
+To change a variable defined outside the current function's local scope, we must explicitly declare our intent using `global` or `nonlocal`.
 
 ### Global Keyword
 

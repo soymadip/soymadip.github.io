@@ -33,7 +33,7 @@ AC: Climate controlled.
 
 ## The Wildcard Pattern
 
-The underscore `_` is a special pattern that matches anything. It acts as the mandatory "wildcard" or fallback if nothing else matches, preventing your logic from falling through silently.
+The underscore `_` is a special pattern that matches anything. It acts as the mandatory "wildcard" or fallback if nothing else matches, preventing our logic from falling through silently.
 
 ---
 

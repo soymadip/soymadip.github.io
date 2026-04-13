@@ -13,7 +13,7 @@ source_filename:
 
 # Conditionals and Input
 
-Conditionals allow your program to make decisions using `if`, `elif`, and `else` to control the flow of execution. Only the first **True** branch in a chain will execute.
+Conditionals allow our program to make decisions using `if`, `elif`, and `else` to control the flow of execution. Only the first **True** branch in a chain will execute.
 
 ## Normalizing Input
 
@@ -82,17 +82,17 @@ Delivery fee: 0
 
 ## Converting Types for Comparisons
 
-Remember that `input()` always returns a string. You must explicitly cast it for numeric comparisons.
+Remember that `input()` always returns a string. We must explicitly cast it for numeric comparisons.
 
 ```python
 # Assuming user enters "20"
-age = int(input("Enter your age: "))
+age = int(input("Enter our age: "))
 if age >= 18:
     print("Access granted.")
 ```
 
 ```text
-Enter your age: 20
+Enter our age: 20
 Access granted.
 ```
 

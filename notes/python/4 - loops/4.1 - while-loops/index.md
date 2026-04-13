@@ -8,11 +8,11 @@ source_filename:
 
 # While Loops
 
-A `while` loop repeats as long as a specific condition is **True**, making it ideal for situations where you don't know the iteration count in advance. Always ensure the loop condition eventually becomes **False** to avoid an infinite loop.
+A `while` loop repeats as long as a specific condition is **True**, making it ideal for situations where we don't know the iteration count in advance. Always ensure the loop condition eventually becomes **False** to avoid an infinite loop.
 
 ## Basic Repetition
 
-`while` loops in Python work exactly as you'd expect. You can use `continue` to skip the rest of the current iteration and jump back to the condition check.
+`while` loops in Python work exactly as we'd expect. We can use `continue` to skip the rest of the current iteration and jump back to the condition check.
 
 ```python
 count = 1
@@ -40,7 +40,7 @@ while True:
     choice = input("Enter yes/no: ").strip().lower()
 
     if choice in allowed_options:
-        print(f"You chose: {choice}")
+        print(f"We chose: {choice}")
         break  # Exit the loop entirely
 
     print(f"Invalid choice. Please choose from: {allowed_options}")
@@ -52,7 +52,7 @@ while True:
 Enter yes/no: okay
 Invalid choice. Please choose from: {'maybe', 'no', 'yes'}
 Enter yes/no: yes
-You chose: yes
+We chose: yes
 ```
 
 ### Why Use `while True`?

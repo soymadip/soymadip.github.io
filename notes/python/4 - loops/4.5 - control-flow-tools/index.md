@@ -7,11 +7,11 @@ source_filename: "35 - break, continue, skip.py"
 
 # Break, Continue, and Else
 
-In Python, you can precisely control loop behavior using `break` to exit immediately and `continue` to skip the rest of the current iteration. Python also features a unique `else` clause for loops.
+In Python, we can precisely control loop behavior using `break` to exit immediately and `continue` to skip the rest of the current iteration. Python also features a unique `else` clause for loops.
 
 ## Using `break` and `continue`
 
-Use these to manage how your program handles specific items during iteration.
+Use these to manage how our program handles specific items during iteration.
 
 ```python
 stock = {"Ginger": "out", "Lemon": "in-stock", "Mint": "discontinued"}
@@ -21,7 +21,7 @@ while True:
     status = stock.get(choice, "not-available")
 
     if status == "in-stock":
-        print(f"Adding {choice} to your order.")
+        print(f"Adding {choice} to our order.")
         break  # We found what we need, stop asking
 
     if status == "out":
@@ -39,12 +39,12 @@ Sorry, we're out of that. Pick another.
 Enter flavor: Apple
 Flavor not recognized.
 Enter flavor: Lemon
-Adding Lemon to your order.
+Adding Lemon to our order.
 ```
 
 ## Nested Loop Control
 
-If you're using nested loops, `break` and `continue` only apply to the **innermost** loop they are in.
+If we're using nested loops, `break` and `continue` only apply to the **innermost** loop they are in.
 
 ### Breaking the Inner Loop
 

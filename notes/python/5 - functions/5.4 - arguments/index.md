@@ -8,11 +8,14 @@ source_filename:
 
 # Function Arguments
 
-Understanding how to collect and pass arguments efficiently is key. In Python, lists and dictionaries are passed by **object reference**, meaning changes made to them inside a function affect the original object.
+In Python, lists and dictionaries are passed by **object reference**, meaning changes made to them inside a function affect the original object.
 
 ## Flexible Arguments (\*args and \*\*kwargs)
 
-These allow your functions to accept any number of inputs. `*args` collects extra positional arguments into a **tuple**, while `**kwargs` collects keyword arguments into a **dictionary**.
+These allow our functions to accept any number of inputs.
+
+- `*args` collects extra positional arguments into a **tuple**, while
+- `**kwargs` collects keyword arguments into a **dictionary**.
 
 ```python
 def build_profile(name, *skills, **details):
@@ -41,7 +44,8 @@ The standard order for arguments is: `positional`, `*args`, `keyword`, and then 
 
 ## The Mutable Default Trap
 
-Never use mutable objects like lists or dictionaries as default arguments. In Python, these are created **once** when the function is defined, not every time it is called, meaning the same object is shared across all calls.
+**Never use mutable objects like lists or dictionaries as default arguments.**  
+In Python, these are created **once** when the function is defined, not every time it is called, meaning the same object is shared across all calls.
 
 ```python
 # Anti-pattern: The same list is shared across all calls!

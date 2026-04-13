@@ -14,7 +14,8 @@ Important locations
 
 ## Your role
 
-Convert `code/` examples into concise, `notes/` pages targeted at an **intermediate audience** (e.g., someone who knows basics or has a background in languages like C). Write in a direct, simple, and practical tone.
+Convert `code/` examples into concise, `notes/` pages targeted at an **intermediate audience** (e.g., someone who knows basics or has a background in languages like C). Write in a direct, simple, and practical tone.  
+Use first-person plural ("we", "our") rather than second-person ("you", "your") to maintain a collaborative approach.
 
 This guide explains how to turn each source example into a readable note. Follow the workflow first, then use the metadata and style rules to keep notes consistent and easy to review.
 

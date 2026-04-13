@@ -11,7 +11,7 @@ In Python, a `for` loop is used to iterate over a sequence (like a list, string,
 
 ## Using `range()` for Repeats
 
-When you need to repeat an action a specific number of times, use `range()`. It creates an immutable sequence of numbers on the fly. It is memory efficient because it generates each number only when the loop asks for it.
+When we need to repeat an action a specific number of times, use `range()`. It creates an immutable sequence of numbers on the fly. It is memory efficient because it generates each number only when the loop asks for it.
 
 ```python
 for i in range(1, 4):
@@ -32,7 +32,7 @@ Unlike a list, `range()` does not store all its numbers in memory at once. Gener
 
 ## Iterating Over Lists
 
-You can loop through a list directly without needing to manage an index variable. This is more readable and less prone to errors than index-based counters.
+We can loop through a list directly without needing to manage an index variable. This is more readable and less prone to errors than index-based counters.
 
 ```python
 tech_stack = ["Python", "C", "Bash"]
@@ -51,7 +51,7 @@ Learning Bash...
 
 ## Mixed Types at Runtime
 
-Python is dynamically typed and doesn't enforce list element types at runtime. Even if you use a type hint like `list[str]`, you can still store integers or floats in that list without the interpreter stopping you.
+Python is dynamically typed and doesn't enforce list element types at runtime. Even if we use a type hint like `list[str]`, we can still store integers or floats in that list without the interpreter stopping we.
 
 ```python
 # Type hints are for developers and tools, not for the Python interpreter

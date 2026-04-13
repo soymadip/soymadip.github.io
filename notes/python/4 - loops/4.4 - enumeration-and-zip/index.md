@@ -7,11 +7,11 @@ source_filename: ["32 - enumerate.py", "33 - zip.py"]
 
 # Enumerate and Zip
 
-If you are coming from C, you might be tempted to use a counter variable or `range(len(list))` to access indices. In Python, we use `enumerate()` and `zip()` to handle these patterns more cleanly. Both functions return **iterators**, making them memory efficient.
+If we are coming from C, we might be tempted to use a counter variable or `range(len(list))` to access indices. In Python, we use `enumerate()` and `zip()` to handle these patterns more cleanly. Both functions return **iterators**, making them memory efficient.
 
 ## Enumerate: Iterating with an Index
 
-`enumerate()` adds a counter to an iterable, returning `(index, item)`. Use it when you need the value _and_ its position in the list.
+`enumerate()` adds a counter to an iterable, returning `(index, item)`. Use it when we need the value _and_ its position in the list.
 
 ```python
 tech_stack = ["Python", "C", "Bash"]
@@ -35,7 +35,7 @@ Writing `for i in range(len(list)): print(list[i])` is considered an anti-patter
 
 ## Zip: Parallel Iteration
 
-`zip()` pairs up elements from multiple iterables, returning tuples. Use it when you have related data stored in separate lists.
+`zip()` pairs up elements from multiple iterables, returning tuples. Use it when we have related data stored in separate lists.
 
 ```python
 users = ["Alice", "Bob", "Charlie"]
