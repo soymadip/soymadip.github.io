@@ -2,7 +2,7 @@
   "name": "soymadip.github.io",
   "private": true,
   "scripts": {
-    "build": "bun src/compile.js",
+    "build": "bun static/compile.js",
     "dev": "bun run build && bun x live-server -p 5677 --index build"
   },
   "dependencies": {

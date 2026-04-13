@@ -2,7 +2,7 @@
 [
   {
     "label": "Run Current file",
-    "command": "clear && ./src/run-code ${ZED_RELATIVE_FILE}",
+    "command": "clear && ./static/run-code ${ZED_RELATIVE_FILE}",
     "use_new_terminal": false,
     "allow_concurrent_runs": false,
     "reveal": "always",
