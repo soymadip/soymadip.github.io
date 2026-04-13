@@ -2,13 +2,10 @@
   "name": "soymadip.github.io",
   "private": true,
   "scripts": {
-    "build": "rm -rf build COMPILER/ && .github/scripts/compile.sh",
-    "dev": "$npm_execpath install && $npm_execpath run build && live-server --port=5677 --host=0.0.0.0 --no-browser build"
+    "build": "bun src/compile.js",
+    "dev": "bun run build && bun x live-server -p 5677 --index build"
   },
   "dependencies": {
     "portosaurus": "^1.18.16"
-  },
-  "devDependencies": {
-    "live-server": "^1.2.2"
   }
 }

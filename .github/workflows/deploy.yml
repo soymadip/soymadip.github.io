@@ -4,12 +4,10 @@ on:
   push:
     branches:
       - content
-  schedule:
-    - cron: "0 4,12,20 * * *"
   workflow_dispatch:
     inputs:
       force_deploy:
-        description: "Force deployment: Skip upstream checks"
+        description: "Force deployment"
         required: false
         default: true
         type: boolean
@@ -25,30 +23,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  update-check:
-    runs-on: ubuntu-latest
-    if: github.repository != 'soymadip/portosaurus'
-    outputs:
-      upstream_updated: ${{ steps.check-update.outputs.upstream_updated }}
-      upstream_version: ${{ steps.check-update.outputs.upstream_version }}
-      local_version: ${{ steps.check-update.outputs.local_version }}
-      dummy_version: ${{ steps.check-update.outputs.dummy_version }}
-
-    steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v4
-
-      - name: Fetch & Check Upstream for Updates
-        id: check-update
-        run: bash .github/scripts/check-update.sh
-        env:
-          _FORCE_DEPLOY: ${{ github.event.inputs.force_deploy }}
-          _GITHUB_EVENT_NAME: ${{ github.event_name }}
-          _GITHUB_REF_NAME: ${{ github.ref_name }}
-
   deploy:
-    needs: update-check
-    if: needs.update-check.outputs.upstream_updated == 'true'
     runs-on: ubuntu-latest
 
     environment:
@@ -63,11 +38,7 @@ jobs:
         with:
           bun-version: latest
 
-      - name: Update Compiler Scripts
-        if: github.repository != 'soymadip/tests'
-        run: bash .github/scripts/update-compiler.sh
-
-      - name: compile Content
+      - name: Compile Content
         run: bun run build
         env:
           _REPO_NAME: ${{ github.event.repository.name }}
@@ -78,54 +49,46 @@ jobs:
         with:
           path: build/
 
-      - name: Upload upstream artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: upstream
-          path: .github/
-          include-hidden-files: true
-          if-no-files-found: error
-
       - name: Check GitHub Pages status
         id: pages_check
-        run: bash .github/scripts/check-gh-pages-status.sh
+        run: |
+          # Check if GitHub Pages is enabled
+          echo ">>> Checking if GitHub Pages is enabled for this repository..."
+
+          PAGES_ENABLED=false
+
+          for i in {1..36}; do
+              echo "> Check attempt $i of 36..."
+
+              PAGES_STATUS=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
+                  -H "Accept: application/vnd.github.v3+json" \
+                  https://api.github.com/repos/${GITHUB_REPOSITORY}/pages)
+
+              if ! echo "$PAGES_STATUS" | grep -q "message.*Not Found"; then
+                  echo ">> GitHub Pages is enabled! Continuing with workflow."
+
+                  PAGES_ENABLED=true
+                  echo "pages_enabled=true" >> $GITHUB_OUTPUT
+                  break
+              else
+                  echo "> GitHub Pages is not yet enabled."
+                  echo "Please go to Settings > Pages and enable GitHub Pages (source: GitHub Actions)."
+                  echo "Waiting 5 seconds before checking again."
+
+                  # If this is the last attempt, stop waiting
+                  if [ $i -eq 36 ]; then
+                      echo ">> Maximum attempts reached. GitHub Pages is not enabled."
+                      echo "pages_enabled=false" >> $GITHUB_OUTPUT
+                      exit 1
+                  else
+                      sleep 5
+                  fi
+              fi
+          done
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Deploy to GitHub Pages
         if: steps.pages_check.outputs.pages_enabled != 'false'
         id: deployment
         uses: actions/deploy-pages@v4
-
-  update-repo:
-    needs: [update-check, deploy]
-    if: needs.update-check.outputs.upstream_updated == 'true'
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v4
-
-      - name: Download deployment artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: upstream
-          path: .upstream/
-
-      - name: Check file changes
-        id: files-changed
-        run: bash .github/scripts/check-file-changes.sh --dir ".upstream"
-
-      - name: Check Version change
-        id: version-changed
-        run: bash .github/scripts/check-version-changes.sh
-        env:
-          _HAS_UPDATE: ${{ needs.update-check.outputs.upstream_updated }}
-          _LATEST_VERSION: ${{ needs.update-check.outputs.upstream_version }}
-          _LOCAL_VERSION: ${{ needs.update-check.outputs.local_version }}
-          _DUMMY_VERSION: ${{ needs.update-check.outputs.dummy_version }}
-
-      - name: Commit & Push Changes
-        if: steps.files-changed.outputs.changed == 'true' || steps.version-changed.outputs.changed == 'true'
-        run: bash .github/scripts/commit-push-change.sh
-        env:
-          _GITHUB_ACTOR: ${{ github.actor }}
-          _REPO_OWNER: ${{ github.repository_owner }}
