@@ -96,6 +96,9 @@ Enter our age: 20
 Access granted.
 ```
 
----
-
-_Source files: [23 - conditionals-input.py](../../../../src/code/python/3-conditionals/23-conditionals-input.py), [24 - chai-price-calc.py](../../../../src/code/python/3-conditionals/24-chai-price-calc.py), [25 - nested-conditionals.py](../../../../src/code/python/3-conditionals/25-nested-conditionals.py), [26 - delivery-fees-wager.py](../../../../src/code/python/3-conditionals/26-delivery-fees-wager.py)_
+<SourcePreview sources={[
+{ path: "/code/python/3-conditionals/23-conditionals-input.py", label: "23 - conditionals-input.py" },
+{ path: "/code/python/3-conditionals/24-chai-price-calc.py", label: "24 - chai-price-calc.py" },
+{ path: "/code/python/3-conditionals/25-nested-conditionals.py", label: "25 - nested-conditionals.py" },
+{ path: "/code/python/3-conditionals/26-delivery-fees-wager.py", label: "26 - delivery-fees-wager.py" }
+]} />

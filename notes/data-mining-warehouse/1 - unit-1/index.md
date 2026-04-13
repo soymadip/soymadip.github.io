@@ -17,6 +17,4 @@ This section covers the core concepts of Data Warehousing, including its archite
 - **Schemas:** Star, Snowflake, and Galaxy Schema models.
 - **Process:** Steps in designing and implementing a DW.
 
----
-
-_Source file: [u1-questions.pdf](../../../src/code/data-mining-wearhouse/u1-questions.pdf)_
+<SourcePreview path="/code/data-mining-wearhouse/u1-questions.pdf" label="u1-questions.pdf" />

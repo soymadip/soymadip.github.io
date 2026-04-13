@@ -82,6 +82,4 @@ print(add_item_safe("Banana")) # New list each time
 ['Banana']
 ```
 
----
-
-_Source file: [42 - arguments.py](../../../../src/code/python/5-functions/42-arguments.py)_
+<SourcePreview path="/code/python/5-functions/42-arguments.py" label="42 - arguments.py" />

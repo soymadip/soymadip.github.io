@@ -17,6 +17,8 @@ This section introduces Data Mining, the Knowledge Discovery in Databases (KDD) 
 - **Functionalities:** Outlier analysis, association rules, and trend identification.
 - **Presentation:** IF-THEN rules and Decision Trees.
 
----
-
-_Source file: [u1-questions.pdf](../../../src/code/data-mining-wearhouse/u1-questions.pdf)_
+<SourcePreview sources={[
+{ path: "/code/data-mining-wearhouse/u1-questions.pdf", label: "Questions.pdf" },
+{ path: "/img/icon.png", label: "Icon.png" },
+{ path: "/archlinux.png", label: "Arch Logo" }
+]} />

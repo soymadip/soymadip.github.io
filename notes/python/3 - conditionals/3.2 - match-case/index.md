@@ -35,6 +35,5 @@ AC: Climate controlled.
 
 The underscore `_` is a special pattern that matches anything. It acts as the mandatory "wildcard" or fallback if nothing else matches, preventing our logic from falling through silently.
 
----
 
-_Source file: [27 - match-case.py](../../../../src/code/python/3-conditionals/27-match-case.py)_
+<SourcePreview path="/code/python/3-conditionals/27-match-case.py" label="27 - match-case.py" />

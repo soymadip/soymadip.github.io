@@ -68,7 +68,7 @@ jobs:
         run: bash .github/scripts/update-compiler.sh
 
       - name: compile Content
-        run: bash .github/scripts/compile.sh
+        run: bun run build
         env:
           _REPO_NAME: ${{ github.event.repository.name }}
           _REPO_OWNER: ${{ github.repository_owner }}

@@ -117,6 +117,4 @@ print(users.items())
 dict_items([('alice', 'standard'), ('bob', 'standard'), ('charlie', 'standard')])
 ```
 
----
-
-_Source file: [20 - dictionary.py](../../../../src/code/python/2-derived-data-types/20-dictionary.py)_
+<SourcePreview path="/code/python/2-derived-data-types/20-dictionary.py" label="20 - dictionary.py" />

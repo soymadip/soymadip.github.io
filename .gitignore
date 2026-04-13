@@ -5,6 +5,7 @@
 /build
 *tmp*
 *temp*
+*TEMP*
 *cache*
 *favicon/
 test*

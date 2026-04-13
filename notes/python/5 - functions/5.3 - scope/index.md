@@ -83,6 +83,7 @@ parent()
 Parent name: Bob
 ```
 
----
-
-_Source files: [40 - Scope & named spaces.py](../../../../src/code/python/5-functions/40-scope-named-spaces.py), [41 - non global and global scope.py](../../../../src/code/python/5-functions/41-non-global-and-global-scope.py)_
+<SourcePreview sources={[
+  { path: "/code/python/5-functions/40-scope-named-spaces.py", label: "40 - Scope & named spaces.py" },
+  { path: "/code/python/5-functions/41-non-global-and-global-scope.py", label: "41 - non global and global scope.py" }
+]} />

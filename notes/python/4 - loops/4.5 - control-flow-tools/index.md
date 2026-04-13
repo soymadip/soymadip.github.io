@@ -105,6 +105,4 @@ No eligible candidates found in the entire list.
 
 It is cleaner and more idiomatic than managing a manual boolean flag. It tells the reader: "If the loop finishes its work without finding what it's looking for, do this fallback action."
 
----
-
-_Source file: [35 - break, continue, skip.py](../../../../src/code/python/4-loops/35-break,-continue,-skip.py)_
+<SourcePreview path="/code/python/4-loops/35-break,-continue,-skip.py" label="35 - break, continue, skip.py" />

@@ -28,6 +28,4 @@ greet_user("Alice")
 Hello, Alice!
 ```
 
----
-
-_Source file: [38 - Functions.py](../../../../src/code/python/5-functions/38-functions.py)_
+<SourcePreview path="/code/python/5-functions/38-functions.py" label="38 - Functions.py" />
