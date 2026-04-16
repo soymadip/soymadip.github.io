@@ -54,8 +54,8 @@ notes/python/5 - Functions/
   - If a merge creates a gap, renumber only the **local siblings** (notes/exercises within that same folder) to fill the hole.
   - Use sub-numbering (e.g., `5.1`, `5.1.1`) to ensure perfect ordering and easy tracking.
 - **Source Footnote:** At the very end of every note and exercise, add a `SourcePreview` component.
-  - **Single File:** `<SourcePreview path="/code/<slugified-path>/<filename>" label="<original-filename>.<ext>" />`
-  - **Multiple Files:** `<SourcePreview sources={[{ path: "/code/...", label: "..." }, { path: "/code/...", label: "..." }]} />`
+  - **Single File:** `<SrcPv href="/code/<slugified-path>/<filename>" label="<original-filename>.<ext>" />`
+  - **Multiple Files:** `<SrcPv sources={[{ path: "/code/...", label: "..." }, { path: "/code/...", label: "..." }]} />`
   - **Slugification Rule:** Always slugify the URL path in the `path` prop (e.g., replace spaces with `-`, remove special characters, and lowercase). The `label` prop should remain the original filename for readability.
 - **Exercise Mapping:** Map source files that are clearly exercises to the standard exercise note format.
 - **Answer Questions:** If the source file has questions or comments (e.g., `# ...?` or `# why this?`), you MUST answer them. Fold the answers directly into the note narrative or use a brief FAQ if they are tangential. Never leave a source question unaddressed.

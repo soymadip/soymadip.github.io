@@ -59,7 +59,7 @@ We chose: yes
 
 Using `while True` with an internal `break` is often cleaner than initializing a dummy variable just to satisfy a condition. It keeps the "ask" logic and the "exit" logic clearly separated.
 
-<SourcePreview sources={[
+<SrcPv sources={[
 { path: "/code/python/4-loops/28-into-to-loops.py", label: "28 - into-to-loops.py" },
 { path: "/code/python/4-loops/34-while-loops.py", label: "34 - while loops.py" },
 { path: "/code/python/3-conditionals/23-conditionals-input.py", label: "23 - conditionals-input.py" }

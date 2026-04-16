@@ -96,7 +96,7 @@ Enter our age: 20
 Access granted.
 ```
 
-<SourcePreview sources={[
+<SrcPv sources={[
 { path: "/code/python/3-conditionals/23-conditionals-input.py", label: "23 - conditionals-input.py" },
 { path: "/code/python/3-conditionals/24-chai-price-calc.py", label: "24 - chai-price-calc.py" },
 { path: "/code/python/3-conditionals/25-nested-conditionals.py", label: "25 - nested-conditionals.py" },

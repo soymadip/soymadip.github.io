@@ -69,7 +69,7 @@ Item: 101 | Type: int
 Item: 3.14 | Type: float
 ```
 
-<SourcePreview sources={[
+<SrcPv sources={[
   { path: "/code/python/4-loops/29-loops.py", label: "29 - loops.py" },
   { path: "/code/python/4-loops/31-iterating-lists.py", label: "31 - iterating-lists.py" }
 ]} />

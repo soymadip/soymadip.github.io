@@ -117,4 +117,4 @@ print(users.items())
 dict_items([('alice', 'standard'), ('bob', 'standard'), ('charlie', 'standard')])
 ```
 
-<SourcePreview path="/code/python/2-derived-data-types/20-dictionary.py" label="20 - dictionary.py" />
+<SrcPv href="/code/python/2-derived-data-types/20-dictionary.py" label="20 - dictionary.py" />

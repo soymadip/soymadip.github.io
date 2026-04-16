@@ -26,4 +26,4 @@ Comprehensions are widely used for:
 
 In the following notes, we will dive deep into each type with practical examples and exercises.
 
-<SourcePreview path="/code/python/6-comprehensions/47-index.py" label="47-index.py" />
+<SrcPv href="/code/python/6-comprehensions/47-index.py" label="47-index.py" />

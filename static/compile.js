@@ -135,7 +135,7 @@ console.log(
 // Prepare Compiler (Incremental)
 if (!existsSync(COMPILER_DIR)) {
   console.log(`${C.cyan}>>> Cloning upstream repository...${C.reset}`);
-  await $`git clone --depth 1 -b compiler ${REPO_URL} ${COMPILER_DIR}`;
+  await $`git clone --depth 1 ${REPO_URL} ${COMPILER_DIR}`;
   compilerChanged = true;
 } else {
   console.log(`${C.cyan}>>> Updating existing compiler...${C.reset}`);

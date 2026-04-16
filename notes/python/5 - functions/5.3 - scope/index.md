@@ -83,7 +83,7 @@ parent()
 Parent name: Bob
 ```
 
-<SourcePreview sources={[
+<SrcPv sources={[
   { path: "/code/python/5-functions/40-scope-named-spaces.py", label: "40 - Scope & named spaces.py" },
   { path: "/code/python/5-functions/41-non-global-and-global-scope.py", label: "41 - non global and global scope.py" }
 ]} />

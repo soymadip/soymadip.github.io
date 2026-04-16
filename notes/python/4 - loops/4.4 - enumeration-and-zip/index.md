@@ -73,7 +73,7 @@ for num, char in zip(list_a, list_b):
 2 B
 ```
 
-<SourcePreview sources={[
+<SrcPv sources={[
   { path: "/code/python/4-loops/32-enumerate.py", label: "32 - enumerate.py" },
   { path: "/code/python/4-loops/33-zip.py", label: "33 - zip.py" }
 ]} />
