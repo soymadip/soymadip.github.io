@@ -4,7 +4,7 @@ import { readdirSync, statSync, existsSync, mkdirSync, rmSync } from "node:fs";
 
 // ------------------- Configuration ------------------
 
-const REPO_URL = "https://github.com/soymadip/portosaurus";
+const REPO_URL = "https://github.com/soymadip/portosaur";
 const SYNC_ITEMS = ["static", "src", "blog", "notes"];
 
 const COMPILER_DIR = join(process.cwd(), ".compiler");
@@ -74,7 +74,12 @@ async function smartSync(src, dest, shouldDelete = true) {
     if (shouldDelete && existsSync(dest)) {
       const destFiles = readdirSync(dest);
       for (const file of destFiles) {
-        if (file === ".git" || file === "index.mdx" || file === "authors.yml")
+        if (
+          file === ".git" ||
+          file === "index.mdx" ||
+          file === "index.md" ||
+          file === "authors.yml"
+        )
           continue;
 
         if (!srcFiles.includes(file)) {
@@ -135,7 +140,7 @@ console.log(
 // Prepare Compiler (Incremental)
 if (!existsSync(COMPILER_DIR)) {
   console.log(`${C.cyan}>>> Cloning upstream repository...${C.reset}`);
-  await $`git clone --depth 1 ${REPO_URL} ${COMPILER_DIR}`;
+  await $`git clone --depth 1 -b compiler ${REPO_URL} ${COMPILER_DIR}`;
   compilerChanged = true;
 } else {
   console.log(`${C.cyan}>>> Updating existing compiler...${C.reset}`);
@@ -195,7 +200,7 @@ if (currentConfigHash !== previousConfigHash) {
   let siteUrl, sitePath;
 
   if (!repoName || !repoOwner) {
-    if (process.env.GITHUB_ACTIONS !== "true") {
+    if (!process.env.CI) {
       console.log(
         `${C.red}>>> Warning: _REPO_NAME or _REPO_OWNER not set. Defaulting to localhost.${C.reset}`,
       );
@@ -205,10 +210,12 @@ if (currentConfigHash !== previousConfigHash) {
   } else {
     repoName = repoName.trim();
     repoOwner = repoOwner.trim();
-    siteUrl = `https://${repoOwner}.github.io`;
-    const githubPagesHost = `${repoOwner}.github.io`.toLowerCase();
+    const isGitLab = process.env.GITLAB_CI === "true";
+    const domain = isGitLab ? "gitlab.io" : "github.io";
+    siteUrl = `https://${repoOwner}.${domain}`;
+    const pagesHost = `${repoOwner}.${domain}`.toLowerCase();
     sitePath =
-      repoName.toLowerCase() === githubPagesHost ? "/" : `/${repoName}`;
+      repoName.toLowerCase() === pagesHost ? "/" : `/${repoName}`;
   }
 
   await replaceSiteConf("site_url", siteUrl, compilerConfigPath);
@@ -228,20 +235,13 @@ if (!compilerChanged && !contentChanged && existsSync(OUTPUT_DIR)) {
 // Build
 console.log(`\n${C.blue}>>> Compiling Portosaurus site...${C.reset}\n`);
 
-const installProc = Bun.spawn(["bun", "install"], {
-  cwd: COMPILER_DIR,
-  stdio: ["inherit", "inherit", "inherit"],
-  env: { ...process.env, FORCE_COLOR: "1" },
-});
-
-if ((await installProc.exited) !== 0) process.exit(1);
-
-const buildProc = Bun.spawn(["bun", "run", "build"], {
-  cwd: COMPILER_DIR,
-  stdio: ["inherit", "inherit", "inherit"],
-  env: { ...process.env, FORCE_COLOR: "1" },
-});
-if ((await buildProc.exited) !== 0) process.exit(1);
+try {
+  await $`cd ${COMPILER_DIR} && bun install`;
+  await $`cd ${COMPILER_DIR} && bun run build`;
+} catch (err) {
+  console.error(`${C.red}❌ Build failed: ${err.message}${C.reset}`);
+  process.exit(1);
+}
 
 // Copy Output
 console.log(`\n${C.blue}>>> Updating build directory...${C.reset}`);

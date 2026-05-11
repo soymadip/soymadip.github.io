@@ -1,11 +1,12 @@
 {
-  "name": "soymadip.github.io",
+  "name": "soymadip.gitlab.io",
   "private": true,
   "scripts": {
     "build": "bun static/compile.js",
-    "dev": "bun run build && bun x live-server -p 5677 --index build"
+    "dev": "bun run build && bun x live-server build --port=5677"
   },
   "dependencies": {
-    "portosaurus": "^1.18.16"
+    "portosaurus": "^1.18.16",
+    "live-server": "latest"
   }
 }
