@@ -6,7 +6,6 @@
     "dev": "bun run build && bun x live-server build --port=5677"
   },
   "dependencies": {
-    "portosaurus": "^1.18.16",
     "live-server": "latest"
   }
 }
