@@ -2,6 +2,8 @@ image: oven/bun:latest
 
 pages:
   stage: deploy
+  before_script:
+    - apt-get update && apt-get install -y git
   script:
     - bun install
     - bun run build
