@@ -19,6 +19,7 @@ resume file
 .docusaurus
 .cache-loader
 .antigravity/
+.idea/
 
 # Misc
 .DS_Store

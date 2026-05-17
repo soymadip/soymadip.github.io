@@ -4,6 +4,10 @@ gemini = "latest"
 uv = "latest"
 "pipx:pytest" = "latest"
 
+[env]
+GEMINI_WRITER_CHAT_ID = "7d9ffa0a-42a4-4dc6-8b98-32fb0e957306"
+COPILOT_AGENT_CHAT_ID = "ea27dbf4-6ff6-49bc-855d-1201c79ac7f8"
+
 [tasks.build]
 description = "Build the project"
 run = "bun run build"

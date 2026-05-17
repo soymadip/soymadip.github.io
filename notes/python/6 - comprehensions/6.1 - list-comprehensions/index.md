@@ -1,0 +1,64 @@
+---
+id: "list-comprehensions"
+title: "List Comprehensions"
+description: "Creating and transforming lists efficiently with single-line expressions."
+source_filename: "48-list-cmprhns.py"
+---
+
+# List Comprehensions
+
+List comprehensions are the most common type of comprehension in Python. They allow us to build new lists by applying an expression to each item in an existing iterable, optionally filtering items with a condition.
+
+## Basic Syntax
+
+The general formula for a list comprehension is:
+`new_list = [expression for item in iterable if condition]`
+
+We can think of it as a `for` loop compressed into a single line.
+
+```python
+menu = [
+    "pizza",
+    "hamburger",
+    "sushi",
+    "pasta",
+    "iced tea",
+    "Iced flavoured tea",
+]
+
+# Filtering: Keep only items with more than 10 characters
+iced_tea = [tea for tea in menu if len(tea) > 10]
+
+# Transforming: Double the string if it's longer than 5 characters
+# Note: String * 2 concatenates the string with itself
+double_tea = [tea_name * 2 for tea_name in menu if len(tea_name) > 5]
+
+print(iced_tea)
+print(double_tea)
+```
+
+**Output:**
+
+```text
+['Iced flavoured tea']
+['hamburgerhamburger', 'iced teaiced tea', 'Iced flavoured teaIced flavoured tea']
+```
+
+## Nested Loops and Complex Logic
+
+Comprehensions aren't limited to a single loop. We can use multiple `for` clauses to flatten lists or generate combinations (like Cartesian products).
+
+```python
+# Generate all (x, y) pairs where x and y are in [1,5] and x != y
+pairs = [(x, y) for x in range(1, 6) for y in range(1, 6) if x != y]
+
+# Flattening a nested list
+nested = [[1, 2], [3, 4]]
+flat = [num for sublist in nested for num in sublist]
+```
+
+:::tip Readability First
+While nested comprehensions are powerful, they can quickly become unreadable. If we find ourselves nesting more than two loops or adding complex logic, a standard `for` loop is often better for our teammates' sanity.
+:::
+
+<SrcPv href="/code/python/6-comprehensions/48-list-cmprhns.py" label="48-list-cmprhns.py" />

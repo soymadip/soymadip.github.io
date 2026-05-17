@@ -13,4 +13,11 @@
     "show_command": true,
     "save": "current",
   },
+  {
+    "label": "Open writing-agent chat",
+    "command": "copilot --resume=$COPILOT_AGENT_CHAT_ID",
+    "use_new_terminal": true,
+    "hide": "on_success",
+    "reveal_target": "center",
+  },
 ]

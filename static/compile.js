@@ -1,3 +1,5 @@
+#!/bin/env bun
+
 import { $ } from "bun";
 import { join, dirname, basename } from "node:path";
 import { readdirSync, statSync, existsSync, mkdirSync, rmSync } from "node:fs";
@@ -214,8 +216,7 @@ if (currentConfigHash !== previousConfigHash) {
     const domain = isGitLab ? "gitlab.io" : "github.io";
     siteUrl = `https://${repoOwner}.${domain}`;
     const pagesHost = `${repoOwner}.${domain}`.toLowerCase();
-    sitePath =
-      repoName.toLowerCase() === pagesHost ? "/" : `/${repoName}`;
+    sitePath = repoName.toLowerCase() === pagesHost ? "/" : `/${repoName}`;
   }
 
   await replaceSiteConf("site_url", siteUrl, compilerConfigPath);
