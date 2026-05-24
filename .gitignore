@@ -2,7 +2,7 @@
 /node_modules
 
 # Production
-/build
+build/
 *tmp*
 *temp*
 *TEMP*
@@ -14,6 +14,7 @@ TestimonialsSection/
 .compiler
 resume file
 /main.css
+.code
 .code/
 
 # Generated files
