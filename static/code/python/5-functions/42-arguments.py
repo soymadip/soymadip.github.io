@@ -74,3 +74,26 @@ def chai_order(order=None):
 
 chai_order()
 chai_order()
+
+
+# Enforcing kwargs
+#
+# In Python, a bare asterisk * in a function signature is used to enforce keyword-only arguments.
+# it acts as a boundary:
+#   - the args before the * can be passed as positional or by name.
+#   - but after *, we have to pass by name(kwargs)
+
+
+def greet(name, *, loud=False):
+    if loud:
+        print(f"HELLO {name.upper()}!")
+    else:
+        print(f"Hello {name}!")
+
+
+# This works:
+greet("Alice", loud=True)  # name is passed positionally, loud by name
+greet("Alice")  # loud falls back to default False
+
+# This throws a TypeError:
+greet("Alice", True)  # Python will not allow 'True' to be passed positionally

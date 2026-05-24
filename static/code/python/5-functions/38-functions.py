@@ -48,3 +48,15 @@ orders = [100, 200, 150]
 
 for price in orders:
     print(add_vat(price, 10))
+
+
+# any() function
+# built-in Python function that returns True if at least one element in an iterable (like a list or generator) is True.
+# If none of them are True, it returns False.
+
+shell_name: str = "zsh"
+
+# shell in shell_name returns True/False
+# when it gets to zsh, it returns True, the any stops returning True. This is called short-circuiting
+if any(shell in shell_name for shell in ["bash", "zsh", "dash", "ash", "sh"]):
+    shell_family = "posix"
