@@ -1,0 +1,215 @@
+---
+title: Machine Learning
+id: machine-learning
+sidebar_position: 5
+---
+
+## 1. What Do You Mean by Machine Learning? Discuss It
+
+Machine Learning (ML) is a branch of artificial intelligence (AI) that focuses on building systems that learn from data.
+
+In basic terms, ML is the process of training a piece of software, called a model, to make useful predictions or generate content from data.
+Instead of writing a traditional program with explicit, hard-coded rules to solve a problem, you feed an ML algorithm massive amounts of data. The algorithm analyzes this data, finds the underlying patterns, and builds a mathematical model to make predictions or decisions on its own.
+
+Think of it like teaching a child to recognize a dog. We don't explain the exact geometry of a dog's nose or the precise texture of its fur.
+Instead, you show them dozens of pictures of dogs. Eventually, the child's brain figures out the patterns that make a dog a dog. Machine learning works the exact same way.
+
+#### Types of ML
+
+1. **Supervised Learning**: The algorithm is trained on a labeled dataset
+2. **Unsupervised Learning**: The algorithm is given unlabeled data
+3. **Reinforcement Learning**: An autonomous agent learns to make decisions in a dynamic environment through trial and error.
+4. **Generative AI**: A class of models that creates content from user input.
+
+:::note[Model in ML]
+An ML model is the final output of a machine learning algorithm, representing the learned patterns and rules in a mathematical or statistical format.
+:::
+
+---
+
+## 2. Types of ML & Their Algorithms
+
+Machine Learning is catagorized into 3 main types:
+
+A. Supervised Learning
+B. Unsupervised Learning
+C. Reinforcement Learning
+
+### A. Supervised Learning
+
+Supervised learning is a machine learning technique that trains algorithms using labled data to map input features to known output labels. During training, the model learns the relationship between inputs and correct answers, allowing it to make predictions on new, unseen data with high accuracy.
+
+This approach is primarily divided into two categories:
+
+- **Classification**: Used when the output is a category or label, such as identifying whether an email is spam or predicting a specific image class.
+- **Regression**: Used when the output is a continuous numerical value, such as forecasting stock prices or estimating house values.
+
+#### Core Algorithms
+
+<u>**1. Linear Regression**</u>
+
+Linear regression is the most commonly used regression model in ML. It can be defined as a statistical model that analyse the linear relationship between the depended variable with given set of independent variables.
+
+A linear relationship between variables means that wehn the value of one or more independent variables changes, the value of the dependent variable also changes accordingly.
+
+Linear regression is further devided into 2 categories: simple linear regression and multiple linear regression.
+
+**Equation**: y = mx + c (where y is the dependent variable, x is the independent variable, m is the slope, and c is the intercept)
+
+<u>**2. Logistic Regression**</u>
+
+import LinearImg from "./assets/logistic-regression.jpg";
+
+<img src={LinearImg} height="400" alt="Logistic Regression" />
+
+Logistic regression is a supervised learning classification algorithm used to predict the probability of target variable. The nature of the target or dependent variable is in which there would be only 2 possible classes or categories.
+
+The dependent variable is binary in nature(either 1/yes/true or 0/no/false)
+
+In logistic regression, we use a function to find the dependent value(Y), The name of the function is **sigmoid function**: `Y = 1 / (1 + e^{-x})` (where x is the independent variable, Y is the dependent variable)
+
+<u>**3. Decision Tree**</u>
+
+A decision tree is a supervised learning algorithm used for both classification and regression tasks that organizes decisions in a hierarchical, tree-like structure resembling a flowchart.
+It works by recursively splitting the dataset into smaller, more homogeneous subsets based on feature values, starting from a root node (the entire dataset) and branching through internal nodes (attribute tests) until reaching leaf nodes (final predictions or class labels).
+
+import DecisionTreeImg from "./assets/decision-tree.jpeg";
+
+<img src={DecisionTreeImg} height="400" alt="Decision Tree" />
+
+<br />
+
+### B. Unsupervised Learning
+
+Unsupervised Learning is a type of machine learning where the model is trained using an **unlabeled dataset**. Unlike supervised learning, the model has no hints on how to categorize each piece of data, but instead it must infer its own rules.
+
+The system receives only input features and is tasked with modeling the underlying structure or relationships within the data. Its primary focus is data exploration and pattern discovery.
+
+This approach is primarily divided into two categories:
+
+- **Clustering**: Grouping similar data points together.
+- **Dimensionality Reduction**: Compressing heavy data by removing redundant features while keeping key information.
+
+#### Core Algorithms
+
+<u>1. **K-Means Clustering**</u>
+
+K-means clustering is an unsupervised machine learning algorithm that partitions
+unlabeled data into K non-overlapping clusters based on similarity, typically
+measured by Euclidean distance. It is widely used for its speed and simplicity
+in identifying patterns within large datasets.
+
+<u>2. **PCA (Principal Component Analysis)**</u>
+
+PCA is a Dimensionality reduction technique commonly used in machine learning and data analysis to reduce the numbeber of the features while preserving as much info as possible.
+
+It achieves by finding the principle components of the dtata which are orhogonal vectures capture the most significant varient in the data.
+
+### C. Reinforcement Learning
+
+Reinforcement learning is a type of machine learning where models make predictions by getting rewards or penalties
+based on actions performed within an environment. A reinforcement learning system
+generates a policy that defines the best strategy for getting the most rewards.
+
+Reinforcement learning is used to train robots to perform tasks, like walking around a
+room, and software programs like AlphaGo to play the game of Go.
+
+#### Core Algorithms
+
+- **Q-Learning**: Learns the optimal action-value function Q(s,a).
+
+- **Deep Q-Network (DQN)**: Uses neural networks to approximate Q-values, enabling learning from high-dimensional inputs like images.
+
+---
+
+## 3. Supervised Vs Unsupervised Learning
+
+### Core Comparison Table
+
+| Comparison Metric            | Supervised Learning                                                                         | Unsupervised Learning                                                                              |
+| ---------------------------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| **Data Nature**              | Uses Labeled Data.                                                                          | Uses Unlabeled Data .                                                                              |
+| **Primary Goal**             | To map inputs to known outputs to predict future data.                                      | To discover hidden patterns, structures in the dataset.                                            |
+| **Feedback Mechanism**       | Includes a direct feedback loop (the model compares its prediction against the true label). | No feedback loop (the model has no standard "correct answer" to check against).                    |
+| **Algorithms Used**          | Linear Regression, Logistic Regression, Support Vector Machines (SVM), Decision Trees.      | K-Means Clustering, Principal Component Analysis (PCA), Apriori Algorithm.                         |
+| **Computational Complexity** | Relatively less complex; easier to train because targets are explicitly defined.            | Highly complex; computationally intensive as the model evaluates all possible structural patterns. |
+| **Real-World Tasks**         | Classification and Regression.                                                              | Clustering, Dimensionality Reduction, and Association Rule Mining.                                 |
+| **Human Supervision**        | High; requires domain experts to manually label raw data before training.                   | Minimal; data does not require upfront manual labeling or human intervention.                      |
+
+---
+
+## 4. Discuss Unsupervised Leaning and How It Works
+
+Unsupervised Learning is a type of machine learning where the model is trained using an **unlabeled dataset**. Unlike supervised learning, the model has no hints on how to categorize each piece of data, but instead it must infer its own rules.
+
+The system receives only input features and is tasked with modeling the underlying structure or relationships within the data. Its primary focus is data exploration and pattern discovery.
+
+#### How It Works
+
+Since there are no correct answers or labels, the algorithm cannot use an error rate to correct itself. Instead, it relies on mathematical distance to organize data.
+
+<center>
+
+![](./assets/unsupervised-learning.png)
+
+</center>
+
+1. **Feature Mapping**: The algorithm places all the data points on a hidden mathematical graph based on their features.
+
+2. **Initialize Centroids**: The user specifies **K** (the number of groups wanted). The algorithm places **K** random starting points, called centroids, in the graph.
+
+3. **Distance Calculation**: The algorithm measures the distance between every data point and each centroid.
+
+4. **Cluster Assignment**: Each data point is assigned to its nearest centroid to form temporary groups..
+
+5. **Centroid Update**: The algorithm calculates the average position (mean) of all points in a group and moves the centroid to that new center.
+
+6. **Repeat**: Steps 3 to 5 repeat iteratively until the centroids stop moving, creating the final stabilized clusters..
+
+---
+
+## 5. What is PCA. Discuss about it. How is it work
+
+--
+
+## 6. What is Decision Tree? write down the algorithm
+
+--
+
+## 7. What do you mean by clustering? Diff types of clustering
+
+---
+
+## 8. Classification vs Regression
+
+---
+
+## 9. Linear vs logistic Regression
+
+---
+
+## 10. Types of clustering. with example
+
+---
+
+## 11. Discuss about 'ANN'. What do you mean by perceptron. and its layers
+
+---
+
+## 12. What do you mean by Reinforcement learning?
+
+---
+
+## 13. Discuss Genetic Algorithm. How it is work?
+
+---
+
+## 14. Steps for GA's. Discuss Briefly
+
+---
+
+## 15. what do you mean by fitness value and Convergence.
+
+---
+
+## 16. What do you mean by forward Pass and Backward pass in Amr.
