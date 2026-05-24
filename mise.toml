@@ -2,7 +2,7 @@
 bun = "latest"
 gemini = "latest"
 uv = "latest"
-"pipx:pytest" = "latest"
+"pipx:quikrun" = "latest"
 
 [env]
 GEMINI_WRITER_CHAT_ID = "7d9ffa0a-42a4-4dc6-8b98-32fb0e957306"

@@ -2,16 +2,15 @@
 [
   {
     "label": "Run Current file",
-    "command": "clear && ./static/run-code ${ZED_RELATIVE_FILE}",
+    "command": "quikrun ${ZED_RELATIVE_FILE}", // Needs https://pypi.org/p/quikrun/ to be installed
+    "save": "current",
     "use_new_terminal": false,
     "allow_concurrent_runs": false,
     "reveal": "always",
     "reveal_target": "dock",
     "hide": "never",
-    "shell": "system",
-    "show_summary": true,
-    "show_command": true,
-    "save": "current",
+    "show_summary": false,
+    "show_command": false,
   },
   {
     "label": "Open writing-agent chat",
