@@ -4,22 +4,35 @@ id: machine-learning
 sidebar_position: 5
 ---
 
+import Indent from "@site/src/components/Indent";
+
+import LogisticImg from "./assets/logistic-regression.jpg";
+import DcsnTreeImg from "./assets/decision-tree.jpeg";
+
 ## 1. What Do You Mean by Machine Learning? Discuss It
 
 Machine Learning (ML) is a branch of artificial intelligence (AI) that focuses on building systems that learn from data.
 
-In basic terms, ML is the process of training a piece of software, called a model, so that it can make useful predictions.
-Instead of writing a traditional program with hard-coded rules to solve a problem, we feed an ML algorithm massive amounts of data. The algorithm analyzes this data, finds the patterns, and builds a mathematical model to make predictions or decisions on its own.
+<Indent /> In basic terms, ML is the process of training a piece of software,
+called a model, so that it can make useful predictions. Instead of writing a
+traditional program with hard-coded rules to solve a problem, we feed an ML
+algorithm massive amounts of data. The algorithm analyzes this data, finds
+underlying patterns, & builds a mathematical model to make predictions or
+decisions on its own.
 
-Think of it like teaching a child to recognize a dog. We don't explain the exact geometry of a dog's nose or the precise texture of its fur.
-Instead, you show them dozens of pictures of dogs. Eventually, the child's brain figures out the patterns that make a dog a dog. Machine learning works the exact same way.
+<Indent /> Think of it like teaching a child to recognize a dog. We don't
+explain the exact geometry of a dog's nose or the precise texture of its fur.
+Instead, you show them dozens of pictures of dogs. Eventually, the child's brain
+figures out the patterns that make a dog a dog. Machine learning works the exact
+same way.
 
-<u>Types of ML:</u>
+<big>**Types of ML :-**</big>
 
 1. **Supervised Learning**: The algorithm is trained on a labeled dataset
 2. **Unsupervised Learning**: The algorithm is given unlabeled data
 3. **Reinforcement Learning**: An autonomous agent learns to make decisions in a dynamic environment through trial and error.
-4. **Generative AI**: A class of models that creates content from user input.
+
+---
 
 :::note[Model in ML]
 An ML model is the final output of a machine learning algorithm, representing the learned patterns and rules in a mathematical or statistical format.
@@ -56,14 +69,12 @@ Linear regression is further devided into 2 categories: simple linear regression
 
 **Equation**: y = mx + c (where y is the dependent variable, x is the independent variable, m is the slope, and c is the intercept)
 
-<u>**2. Logistic Regression**</u>
-
+<big>
+    <u>**2. Logistic Regression**</u>
+</big>
 <br />
 
-import LogisticImg from "./assets/logistic-regression.jpg";
-
 <img src={LogisticImg} height="400" alt="Logistic Regression" />
-
 <br />
 
 Logistic regression is a supervised learning classification algorithm used to predict the probability of target variable. The nature of the target or dependent variable is in which there would be only 2 possible classes or categories.
@@ -72,14 +83,14 @@ The dependent variable is binary in nature(either 1/yes/true or 0/no/false)
 
 In logistic regression, we use a function to find the dependent value(Y), The name of the function is **sigmoid function**: `Y = 1 / (1 + e^{-x})` (where x is the independent variable, Y is the dependent variable)
 
-<u>**3. Decision Tree**</u>
+<big>
+    <u>**3. Decision Tree**</u>
+</big>
 
 A decision tree is a supervised learning algorithm used for both classification and regression tasks that organizes decisions in a hierarchical, tree-like structure resembling a flowchart.
 It works by recursively splitting the dataset into smaller, more homogeneous subsets based on feature values, starting from a root node (the entire dataset) and branching through internal nodes (attribute tests) until reaching leaf nodes (final predictions or class labels).
 
-import DecisionTreeImg from "./assets/decision-tree.jpeg";
-
-<img src={DecisionTreeImg} height="400" alt="Decision Tree" />
+<img src={DcsnTreeImg} height="400" alt="Decision Tree" />
 
 <br />
 
