@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "build": "bun static/compile.js",
-    "dev": "bun run build && bun x live-server build --port=5677"
+    "dev": "bun run build && bun x live-server build --host=0.0.0.0 --port=5677"
   },
   "dependencies": {
     "live-server": "latest"
