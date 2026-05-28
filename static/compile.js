@@ -7,6 +7,7 @@ import { readdirSync, statSync, existsSync, mkdirSync, rmSync } from "node:fs";
 // ------------------- Configuration ------------------
 
 const REPO_URL = "https://github.com/soymadip/portosaur";
+const REPO_BRANCH = "compiler";
 const SYNC_ITEMS = ["static", "src", "blog", "notes"];
 
 const COMPILER_DIR = join(process.cwd(), ".compiler");
@@ -140,32 +141,64 @@ console.log(
 );
 
 // Prepare Compiler (Incremental)
-if (!existsSync(COMPILER_DIR)) {
-  console.log(`${C.cyan}>>> Cloning upstream repository...${C.reset}`);
-  await $`git clone --depth 1 -b compiler ${REPO_URL} ${COMPILER_DIR}`;
-  compilerChanged = true;
-} else {
-  console.log(`${C.cyan}>>> Updating existing compiler...${C.reset}`);
+const isGitRepo = existsSync(join(COMPILER_DIR, ".git"));
 
+if (isGitRepo) {
+  console.log(`${C.cyan}>>> Updating existing compiler...${C.reset}`);
   try {
     const headBefore = (await $`git -C ${COMPILER_DIR} rev-parse HEAD`.quiet())
       .text()
       .trim();
-    await $`git -C ${COMPILER_DIR} pull origin compiler`.quiet();
+    await $`git -C ${COMPILER_DIR} pull origin ${REPO_BRANCH}`.quiet();
     const headAfter = (await $`git -C ${COMPILER_DIR} rev-parse HEAD`.quiet())
       .text()
       .trim();
 
-    // Check if the git hash actually changed
     if (headBefore !== headAfter) {
       compilerChanged = true;
     }
   } catch (e) {
-    console.log(`${C.red}>>> Pull failed, resetting compiler...${C.reset}`);
-
+    console.log(`${C.red}>>> Pull failed, performing clean clone...${C.reset}`);
     rmSync(COMPILER_DIR, { recursive: true, force: true });
-    await $`git clone --depth 1 -b compiler ${REPO_URL} ${COMPILER_DIR}`;
+    await cloneCompiler();
     compilerChanged = true;
+  }
+} else {
+  console.log(
+    `${C.cyan}>>> Compiler directory not found or invalid, performing clean clone...${C.reset}`,
+  );
+
+  if (existsSync(COMPILER_DIR)) {
+    rmSync(COMPILER_DIR, { recursive: true, force: true });
+  }
+
+  await cloneCompiler();
+  compilerChanged = true;
+}
+
+async function cloneCompiler() {
+  const proc = Bun.spawn(
+    [
+      "git",
+      "clone",
+      "--depth",
+      "1",
+      "-b",
+      REPO_BRANCH,
+      REPO_URL,
+      COMPILER_DIR,
+    ],
+    {
+      stdio: ["inherit", "inherit", "inherit"],
+    },
+  );
+
+  const exitCode = await proc.exited;
+  
+  if (exitCode !== 0) {
+    throw new Error(
+      `Failed to clone compiler repository. Exit code: ${exitCode}`,
+    );
   }
 }
 
@@ -237,8 +270,19 @@ if (!compilerChanged && !contentChanged && existsSync(OUTPUT_DIR)) {
 console.log(`\n${C.blue}>>> Compiling Portosaurus site...${C.reset}\n`);
 
 try {
+  // bun install is quiet, so $ is fine
   await $`cd ${COMPILER_DIR} && bun install`;
-  await $`cd ${COMPILER_DIR} && bun run build`;
+
+  // Use spawn for the build to preserve TTY
+  const proc = Bun.spawn(["bun", "run", "build"], {
+    cwd: COMPILER_DIR,
+    stdio: ["inherit", "inherit", "inherit"],
+  });
+  const exitCode = await proc.exited;
+
+  if (exitCode !== 0) {
+    throw new Error(`Build process exited with code ${exitCode}`);
+  }
 } catch (err) {
   console.error(`${C.red}❌ Build failed: ${err.message}${C.reset}`);
   process.exit(1);
