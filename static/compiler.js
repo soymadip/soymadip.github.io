@@ -252,10 +252,13 @@ if (mode === "build") {
   console.log(`\n${C.blue}>>> Compiling Portosaurus site...${C.reset}\n`);
 
   try {
-    const proc = Bun.spawn(["bun", "x", "docusaurus", "build", "--out-dir", OUTPUT_DIR], {
-      cwd: COMPILER_DIR,
-      stdio: ["inherit", "inherit", "inherit"],
-    });
+    const proc = Bun.spawn(
+      ["bun", "x", "docusaurus", "build", "--out-dir", OUTPUT_DIR],
+      {
+        cwd: COMPILER_DIR,
+        stdio: ["inherit", "inherit", "inherit"],
+      },
+    );
     const exitCode = await proc.exited;
 
     if (exitCode !== 0) {
@@ -294,6 +297,7 @@ if (mode === "build") {
           if (statSync(srcPath).isFile()) {
             mkdirSync(dirname(destPath), { recursive: true });
             await Bun.write(destPath, Bun.file(srcPath));
+            console.log();
             console.log(`${C.green} 🔄 Synced: ${item}/${filename}${C.reset}`);
           }
         } else {
@@ -310,10 +314,13 @@ if (mode === "build") {
     }
   }
 
-  const proc = Bun.spawn(["bun", "x", "docusaurus", "start", "--host", "0.0.0.0"], {
-    cwd: COMPILER_DIR,
-    stdio: ["inherit", "inherit", "inherit"],
-  });
+  const proc = Bun.spawn(
+    ["bun", "x", "docusaurus", "start", "--host", "0.0.0.0"],
+    {
+      cwd: COMPILER_DIR,
+      stdio: ["inherit", "inherit", "inherit"],
+    },
+  );
 
   await proc.exited;
 }
