@@ -15,10 +15,4 @@ run = "bun run build"
 
 [tasks.dev]
 description = "Run the development server"
-run = '''
-watchexec \
-  --watch . \
-  --clear \
-  --restart \
-  'sleep 4 && bun run dev --no-browser'
-'''
+run = "bun run dev"

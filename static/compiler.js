@@ -2,7 +2,14 @@
 
 import { $ } from "bun";
 import { join, dirname, basename } from "node:path";
-import { readdirSync, statSync, existsSync, mkdirSync, rmSync } from "node:fs";
+import {
+  readdirSync,
+  statSync,
+  existsSync,
+  mkdirSync,
+  rmSync,
+  watch,
+} from "node:fs";
 
 // ------------------- Configuration ------------------
 
@@ -12,9 +19,6 @@ const SYNC_ITEMS = ["static", "src", "blog", "notes"];
 
 const COMPILER_DIR = join(process.cwd(), ".compiler");
 const OUTPUT_DIR = join(process.cwd(), "build");
-
-let contentChanged = false; // Tracks local modifications
-let compilerChanged = false; // Tracks Portosaurus engine updates
 
 // ------------------- Console Colors ------------------
 const C = {
@@ -26,6 +30,8 @@ const C = {
   bold: "\x1b[1m",
 };
 
+const mode = process.argv[2] === "dev" ? "dev" : "build";
+
 // ------------------- Helpers -------------------
 
 async function getChecksum(path) {
@@ -34,12 +40,12 @@ async function getChecksum(path) {
   return Bun.hash(await file.arrayBuffer()).toString();
 }
 
-async function smartSync(src, dest, shouldDelete = true) {
+async function smartSync(src, dest, shouldDelete = true, logActivity = true) {
   if (!existsSync(src)) {
     if (shouldDelete && existsSync(dest)) {
       rmSync(dest, { recursive: true, force: true });
-      console.log(`${C.red}   🗑️ Removed: ${basename(dest)}${C.reset}`);
-      contentChanged = true;
+      if (logActivity)
+        console.log(`${C.red}   🗑️ Removed: ${basename(dest)}${C.reset}`);
     }
     return;
   }
@@ -49,7 +55,6 @@ async function smartSync(src, dest, shouldDelete = true) {
 
   if (destExists && srcStat.isFile() !== statSync(dest).isFile()) {
     rmSync(dest, { recursive: true, force: true });
-    contentChanged = true;
   }
 
   if (srcStat.isFile()) {
@@ -59,19 +64,23 @@ async function smartSync(src, dest, shouldDelete = true) {
     if (srcHash !== destHash) {
       mkdirSync(dirname(dest), { recursive: true });
       await Bun.write(dest, Bun.file(src));
-      console.log(`${C.green}   ✅ Synced: ${basename(dest)}${C.reset}`);
-      contentChanged = true;
+      if (logActivity)
+        console.log(`${C.green}   ✅ Synced: ${basename(dest)}${C.reset}`);
     }
   } else {
     if (!existsSync(dest)) {
       mkdirSync(dest, { recursive: true });
-      contentChanged = true;
     }
     const srcFiles = readdirSync(src);
 
     for (const file of srcFiles) {
       if (file === ".placeholder" || file === ".git") continue;
-      await smartSync(join(src, file), join(dest, file), shouldDelete);
+      await smartSync(
+        join(src, file),
+        join(dest, file),
+        shouldDelete,
+        logActivity,
+      );
     }
 
     if (shouldDelete && existsSync(dest)) {
@@ -87,8 +96,8 @@ async function smartSync(src, dest, shouldDelete = true) {
 
         if (!srcFiles.includes(file)) {
           rmSync(join(dest, file), { recursive: true, force: true });
-          console.log(`${C.red}   🗑️ Removed: ${file}${C.reset}`);
-          contentChanged = true;
+          if (logActivity)
+            console.log(`${C.red}   🗑️ Removed: ${file}${C.reset}`);
         }
       }
     }
@@ -134,67 +143,16 @@ async function replaceSiteConf(fieldPath, newValue, configPath, force = false) {
   }
 }
 
-// -------------------- Main Logic ------------------
-
-console.log(
-  `${C.blue}${C.bold}>>> Starting Portosaurus Compilation...${C.reset}`,
-);
-
-// Prepare Compiler (Incremental)
-const isGitRepo = existsSync(join(COMPILER_DIR, ".git"));
-
-if (isGitRepo) {
-  console.log(`${C.cyan}>>> Updating existing compiler...${C.reset}`);
-  try {
-    const headBefore = (await $`git -C ${COMPILER_DIR} rev-parse HEAD`.quiet())
-      .text()
-      .trim();
-    await $`git -C ${COMPILER_DIR} pull origin ${REPO_BRANCH}`.quiet();
-    const headAfter = (await $`git -C ${COMPILER_DIR} rev-parse HEAD`.quiet())
-      .text()
-      .trim();
-
-    if (headBefore !== headAfter) {
-      compilerChanged = true;
-    }
-  } catch (e) {
-    console.log(`${C.red}>>> Pull failed, performing clean clone...${C.reset}`);
-    rmSync(COMPILER_DIR, { recursive: true, force: true });
-    await cloneCompiler();
-    compilerChanged = true;
-  }
-} else {
-  console.log(
-    `${C.cyan}>>> Compiler directory not found or invalid, performing clean clone...${C.reset}`,
-  );
-
-  if (existsSync(COMPILER_DIR)) {
-    rmSync(COMPILER_DIR, { recursive: true, force: true });
-  }
-
-  await cloneCompiler();
-  compilerChanged = true;
-}
-
 async function cloneCompiler() {
   const proc = Bun.spawn(
-    [
-      "git",
-      "clone",
-      "--depth",
-      "1",
-      "-b",
-      REPO_BRANCH,
-      REPO_URL,
-      COMPILER_DIR,
-    ],
+    ["git", "clone", "--depth", "1", "-b", REPO_BRANCH, REPO_URL, COMPILER_DIR],
     {
       stdio: ["inherit", "inherit", "inherit"],
     },
   );
 
   const exitCode = await proc.exited;
-  
+
   if (exitCode !== 0) {
     throw new Error(
       `Failed to clone compiler repository. Exit code: ${exitCode}`,
@@ -202,31 +160,52 @@ async function cloneCompiler() {
   }
 }
 
+// -------------------- Main Logic ------------------
+
+console.log(
+  `${C.blue}${C.bold}>>> Portosaurus Engine [Mode: ${mode.toUpperCase()}]${C.reset}`,
+);
+
+// Prepare Compiler
+const isGitRepo = existsSync(join(COMPILER_DIR, ".git"));
+
+if (isGitRepo) {
+  console.log(`${C.cyan}>>> Updating compiler...${C.reset}`);
+  try {
+    await $`git -C ${COMPILER_DIR} pull origin ${REPO_BRANCH}`.quiet();
+  } catch (e) {
+    console.log(`${C.red}>>> Pull failed, performing clean clone...${C.reset}`);
+    rmSync(COMPILER_DIR, { recursive: true, force: true });
+    await cloneCompiler();
+  }
+} else {
+  console.log(
+    `${C.cyan}>>> Compiler directory not found or invalid, performing clean clone...${C.reset}`,
+  );
+  if (existsSync(COMPILER_DIR)) {
+    rmSync(COMPILER_DIR, { recursive: true, force: true });
+  }
+  await cloneCompiler();
+}
+
 // Sync Content
 console.log(`${C.blue}>>> Syncing content...${C.reset}`);
 
 for (const item of SYNC_ITEMS) {
-  // src and static should merge, not overwrite/delete internal compiler files
   const shouldDelete = !["src", "static"].includes(item);
   await smartSync(
     join(process.cwd(), item),
     join(COMPILER_DIR, item),
     shouldDelete,
+    false, // quiet for initial sync
   );
 }
 
-// Track config changes manually (to avoid infinite sync loops due to dynamic edits)
+// Config Management
 const localConfigPath = join(process.cwd(), "config.js");
 const compilerConfigPath = join(COMPILER_DIR, "config.js");
-const configHashPath = join(COMPILER_DIR, "config.hash");
 
-const currentConfigHash = await getChecksum(localConfigPath);
-const previousConfigHash = existsSync(configHashPath)
-  ? await Bun.file(configHashPath).text()
-  : "";
-
-if (currentConfigHash !== previousConfigHash) {
-  contentChanged = true;
+if (existsSync(localConfigPath)) {
   await Bun.write(compilerConfigPath, Bun.file(localConfigPath));
 
   let repoName = process.env._REPO_NAME;
@@ -235,7 +214,7 @@ if (currentConfigHash !== previousConfigHash) {
   let siteUrl, sitePath;
 
   if (!repoName || !repoOwner) {
-    if (!process.env.CI) {
+    if (mode === "build" && !process.env.CI) {
       console.log(
         `${C.red}>>> Warning: _REPO_NAME or _REPO_OWNER not set. Defaulting to localhost.${C.reset}`,
       );
@@ -254,44 +233,87 @@ if (currentConfigHash !== previousConfigHash) {
 
   await replaceSiteConf("site_url", siteUrl, compilerConfigPath);
   await replaceSiteConf("site_path", sitePath, compilerConfigPath);
-
-  await Bun.write(configHashPath, currentConfigHash);
 }
 
-// Early Exit if nothing changed
-if (!compilerChanged && !contentChanged && existsSync(OUTPUT_DIR)) {
-  console.log(
-    `\n${C.green}${C.bold}>>> Skipping compilation: No local or upstream changes detected.${C.reset}\n`,
-  );
-  process.exit(0);
-}
-
-// Build
-console.log(`\n${C.blue}>>> Compiling Portosaurus site...${C.reset}\n`);
-
+// Install dependencies
+console.log(`${C.blue}>>> Installing dependencies...${C.reset}`);
 try {
-  // bun install is quiet, so $ is fine
-  await $`cd ${COMPILER_DIR} && bun install`;
-
-  // Use spawn for the build to preserve TTY
-  const proc = Bun.spawn(["bun", "run", "build"], {
-    cwd: COMPILER_DIR,
-    stdio: ["inherit", "inherit", "inherit"],
-  });
-  const exitCode = await proc.exited;
-
-  if (exitCode !== 0) {
-    throw new Error(`Build process exited with code ${exitCode}`);
-  }
+  await $`cd ${COMPILER_DIR} && bun install`.quiet();
 } catch (err) {
-  console.error(`${C.red}❌ Build failed: ${err.message}${C.reset}`);
+  console.error(
+    `${C.red}❌ Failed to install dependencies in .compiler${C.reset}`,
+  );
   process.exit(1);
 }
 
-// Copy Output
-console.log(`\n${C.blue}>>> Updating build directory...${C.reset}`);
-await smartSync(join(COMPILER_DIR, "build"), OUTPUT_DIR);
+// -------------------- Execution Phase ------------------
 
-console.log(
-  `\n${C.green}${C.bold}>>> Build completed successfully.${C.reset}\n`,
-);
+if (mode === "build") {
+  console.log(`\n${C.blue}>>> Compiling Portosaurus site...${C.reset}\n`);
+
+  try {
+    const proc = Bun.spawn(["bun", "x", "docusaurus", "build", "--out-dir", OUTPUT_DIR], {
+      cwd: COMPILER_DIR,
+      stdio: ["inherit", "inherit", "inherit"],
+    });
+    const exitCode = await proc.exited;
+
+    if (exitCode !== 0) {
+      throw new Error(`Build process exited with code ${exitCode}`);
+    }
+  } catch (err) {
+    console.error(`${C.red}❌ Build failed: ${err.message}${C.reset}`);
+    process.exit(1);
+  }
+
+  console.log(
+    `\n${C.green}${C.bold}>>> Build completed successfully.${C.reset}\n`,
+  );
+} else if (mode === "dev") {
+  console.log(
+    `\n${C.green}${C.bold}>>> Starting Development Server...${C.reset}\n`,
+  );
+
+  for (const item of SYNC_ITEMS) {
+    const itemPath = join(process.cwd(), item);
+    if (!existsSync(itemPath)) continue;
+
+    console.log(`${C.cyan}    Watching: ${item}/${C.reset}`);
+
+    try {
+      watch(itemPath, { recursive: true }, async (event, filename) => {
+        if (!filename) return;
+
+        // Exclude some internal files if needed
+        if (filename.includes(".git") || filename === ".placeholder") return;
+
+        const srcPath = join(itemPath, filename);
+        const destPath = join(COMPILER_DIR, item, filename);
+
+        if (existsSync(srcPath)) {
+          if (statSync(srcPath).isFile()) {
+            mkdirSync(dirname(destPath), { recursive: true });
+            await Bun.write(destPath, Bun.file(srcPath));
+            console.log(`${C.green} 🔄 Synced: ${item}/${filename}${C.reset}`);
+          }
+        } else {
+          if (existsSync(destPath)) {
+            rmSync(destPath, { recursive: true, force: true });
+            console.log(`${C.red} 🗑️ Removed: ${item}/${filename}${C.reset}`);
+          }
+        }
+      });
+    } catch (e) {
+      console.log(
+        `${C.red}Warning: Native recursive watch failed for ${item}. Updates might not sync automatically.${C.reset}`,
+      );
+    }
+  }
+
+  const proc = Bun.spawn(["bun", "x", "docusaurus", "start", "--host", "0.0.0.0"], {
+    cwd: COMPILER_DIR,
+    stdio: ["inherit", "inherit", "inherit"],
+  });
+
+  await proc.exited;
+}

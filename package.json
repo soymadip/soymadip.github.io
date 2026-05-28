@@ -2,10 +2,7 @@
   "name": "soymadip.gitlab.io",
   "private": true,
   "scripts": {
-    "build": "bun static/compile.js",
-    "dev": "bun run build && bun x live-server build --host=0.0.0.0 --port=5677"
-  },
-  "dependencies": {
-    "live-server": "latest"
+    "build": "bun static/compiler.js build",
+    "dev": "bun static/compiler.js dev"
   }
 }
