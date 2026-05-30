@@ -1,0 +1,143 @@
+---
+id: "modern-python-types"
+title: "Modern Python Types"
+description: "Mastering type hints for cleaner, more maintainable, and IDE-friendly Python code."
+---
+
+# Modern Python Types
+
+While Python is dynamically typed, modern Python (3.5+) uses **type hints** for static analysis. They act as built-in documentation and are meant for developers and tools (like VS Code or `mypy`), not for the Python interpreter. Since they do not slow down our code and are ignored during execution, they have no impact on runtime performance.
+
+## Why Use Type Hints?
+
+1.  **Catching Bugs Early:** Our IDE highlights type mismatches immediately, preventing common runtime errors.
+2.  **Better Autocomplete:** Our editor suggests the exact methods available for a variable.
+3.  **Self-Documenting Code:** Explains the "What" and "Why" of complex data structures to other developers.
+
+:::tip Runtime Enforcement
+Remember that Python will _not_ stop our code from running if we ignore type hints. Use a tool like `mypy` to actually enforce them.
+:::
+
+## Basic Type Hints
+
+We can hint variables and function parameters using a colon (`:`) and return values using an arrow (`->`).
+
+```python
+def greet(user: str) -> str:
+    return f"Hello, {user}!"
+
+print(greet("Aman"))
+```
+
+**Output:**
+
+```text
+Hello, Aman!
+```
+
+## Hinting Collections
+
+Since Python 3.9, we can use built-in collections `list[]`, `dict[]`, and `set[]` directly for hinting without extra imports. Specify the type of elements inside square brackets `[]`.
+
+### Lists and Sets
+
+```python
+scores: list[int] = [80, 90, 75]
+tags: set[str] = {"python", "coding", "tips"}
+
+print(f"Scores: {scores}")
+# Sets are unordered; we sort for consistent output
+print(f"Tags: {sorted(list(tags))}")
+```
+
+**Output:**
+
+```text
+Scores: [80, 90, 75]
+Tags: ['coding', 'python', 'tips']
+```
+
+### Dictionaries
+
+Dictionaries require two types: `dict[KeyType, ValueType]`.
+
+```python
+prices: dict[str, float] = {"apple": 0.5, "banana": 0.3}
+print(prices["apple"])
+```
+
+**Output:**
+
+```text
+0.5
+```
+
+### Tuples
+
+Tuples can have fixed types for each position, or use `...` for variable length.
+
+```python
+coordinate: tuple[float, float] = (12.5, 45.0)
+numbers: tuple[int, ...] = (1, 2, 3)
+
+print(coordinate)
+```
+
+**Output:**
+
+```text
+(12.5, 45.0)
+```
+
+## Nested Structures
+
+We can nest hints to describe complex data like API responses.
+
+```python
+# A list of dictionaries with mixed values
+users: list[dict[str, str | int]] = [
+    {"name": "Aman", "age": 25},
+    {"name": "Sonia", "age": 22}
+]
+
+def get_user_names(user_list: list[dict[str, str | int]]) -> list[str]:
+    return [user["name"] for user in user_list]
+
+print(get_user_names(users))
+```
+
+**Output:**
+
+```text
+['Aman', 'Sonia']
+```
+
+## Union and Optional Types
+
+Python 3.10+ uses the `|` operator for Union types (e.g., `int | str`) and to handle `None` (e.g., `str | None`).
+
+```python
+def process_data(data: int | str) -> None:
+    print(f"Processing: {data}")
+
+def find_user(user_id: int) -> str | None:
+    if user_id == 1:
+        return "Admin"
+    return None
+
+process_data(10)
+print(find_user(1))
+print(find_user(99))
+```
+
+**Output:**
+
+```text
+Processing: 10
+Admin
+None
+```
+
+---
+
+_Source file: N/A (General best practices)_

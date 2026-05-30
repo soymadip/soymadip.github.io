@@ -1,0 +1,130 @@
+---
+id: "strings"
+title: "Strings"
+description: "Understanding Python's string type, immutability, common methods, and slicing syntax."
+---
+
+# Strings
+
+Strings in Python are sequences of characters used to store text. They are one of the most versatile primitive types. They are **0-indexed** and their length can be found using `len(string)`.
+
+## Creating Strings
+
+We can use single or double quotes for strings. Triple quotes are used for multi-line strings.
+
+```python
+name = "Alice"
+greeting = 'Hello'
+multi_line = """This is a
+long string."""
+
+print(name, greeting)
+```
+
+```text
+Alice Hello
+```
+
+## Immutability
+
+Strings are **immutable**—we cannot change a character in place. If we're coming from C, we might be used to changing an array in place; in Python, we have to create a _new_ string instead.
+
+```python
+fruit = "Apple"
+# fruit[0] = "B"  # This would cause a TypeError
+
+# Instead, create a new one
+new_fruit = "B" + fruit[1:]
+print(new_fruit)
+```
+
+```text
+Bpple
+```
+
+## Common String Methods
+
+Python has hundreds of built-in methods for strings to handle common formatting and transformation tasks.
+
+```python
+text = "  Python is fun!  "
+
+print(text.lower())      # lowercase
+print(text.upper())      # uppercase
+print(text.strip())      # Remove whitespace from ends
+print(text.replace("fun", "powerful"))
+```
+
+```text
+  python is fun!
+  PYTHON IS FUN!
+Python is fun!
+  Python is powerful!
+```
+
+## Slicing Syntax
+
+Slicing uses the `[start:stop:step]` format. Remember that the "stop" number is exclusive (it stops _before_ that index).
+
+```python
+pie = "ApplePie"
+
+# Basic slicing: [start:stop]
+print(pie[2:6])     # 'pleP' (starts at 2, stops before 6)
+
+# Shortcuts
+print(pie[:5])      # 'Apple' (omitting start defaults to 0)
+print(pie[5:])      # 'Pie' (omitting stop goes to the end)
+print(pie[-3:])     # 'Pie' (counting from the end)
+
+# Reversing a string
+# We can use a negative step to traverse the string backwards.
+print(pie[::-1])
+```
+
+**Output:**
+
+```text
+pleP
+Apple
+Pie
+Pie
+eiPelppA
+```
+
+## Splitting and Unpacking
+
+Use `.split()` to break a string into a list. Use **unpacking** to assign parts directly to variables instead of indexing multiple times.
+
+```python
+# Pythonic: Split once and assign both variables
+name, age_str = "google-12".split('-')
+age = int(age_str)
+
+print(name, age)
+```
+
+```text
+google 12
+```
+
+## Direct Iteration
+
+Don't use an index counter to look at every character. Python strings are iterable collections, so we can loop through them directly.
+
+```python
+# The clean way to look at every character
+for char in "ABC":
+    print(char)
+```
+
+```text
+A
+B
+C
+```
+
+<SrcPv
+  href="/code/python/1-primitive-data-types/strings.py"
+  label="strings.py"
+/>

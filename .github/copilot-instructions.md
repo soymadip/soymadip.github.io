@@ -32,23 +32,23 @@ Convert `static/code/` examples into concise `notes/` pages targeted at an **int
 ### Topic Folder Pattern
 
 - Topic **has exercises** → create a folder `<number> - <name>/` with:
-  - `index.md` — theory, no `sidebar_position`
+  - `index.mdx` — theory, no `sidebar_position`
   - exercise files inside the folder
-- Topic **has no exercises** → standalone file `<number> - <name>.md`
+- Topic **has no exercises** → standalone file `<number> - <name>.mdxx`
 - Do not change code files unless a filename change is needed or explicitly asked. Code filenames shouldn't contain any spaces, special characters, in this case rename.
 
 ### Visual Example
 
 ```text
 notes/python/5 - Functions/
-├── index.md
+├── index.mdx
 ├── 5.1 - basics/
-│   ├── index.md
-│   └── 5.1.1 - Exercise 19.md
+│   ├── index.mdx
+│   └── 5.1.1 - Exercise 19.mdx
 ├── 5.2 - scope/
-│   ├── index.md
-│   └── 5.2.1 - Exercise 20.md
-└── 5.3 - recursion.md
+│   ├── index.mdx
+│   └── 5.2.1 - Exercise 20.mdx
+└── 5.3 - recursion.mdx
 ```
 
 ### Additional Rules
@@ -59,7 +59,7 @@ notes/python/5 - Functions/
   - Keep original filename in `label`.
 - **Answer Questions:** If the source has comments like `# why this?` or `# ...?`, answer them in the note. Never leave them unaddressed.
 - **Respect Placeholders:** If source has `# TBD` or `# Will do later` or any comment/docstring indicating to do later, skip that section entirely.
-- **Index Pages:** Top-level language `index.md` files are the **only** files that use `sidebar_position`. Section index pages get a short intro explaining the topic.
+- **Index Pages:** Top-level language `index.mdx` files are the **only** files that use `sidebar_position`. Section index pages get a short intro explaining the topic.
 - **Cleanup Pass**: When normalizing notes, fix `source_filename` typos.
 
 ## Regular Notes
@@ -73,7 +73,7 @@ id: "hyphenated-unique-id" # in language-level indexes, it should be language-na
 title: "Title Case Title"
 description: "One-line summary." # must
 source_filename: "original-filename.py"
-# sidebar_position: only on language-level index.md
+# sidebar_position: only on language-level index.mdx
 # sidebar_title: optional, if sidebar label should differ from title
 ```
 
@@ -91,7 +91,7 @@ source_filename: "original-filename.py"
 
 Follow all regular note rules, plus:
 
-- **Filename:** `<number> - Exercise <number> - <name>.md`
+- **Filename:** `<number> - Exercise <number> - <name>.mdx`
 - **H1:** `Ex <number>: <name>` (no syntax in heading)
 - **Sections:**
   - `## Problem` — task description, usually from source docstring

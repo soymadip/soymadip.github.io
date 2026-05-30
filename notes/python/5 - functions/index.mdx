@@ -1,0 +1,7 @@
+---
+id: "functions"
+title: "Functions"
+description: "Python notes for function definitions, scope, arguments, and best practices."
+---
+
+Python functions are named blocks of reusable code designed to perform specific tasks. This section covers basic definitions, scope management, flexible arguments, and handling multiple return values.

@@ -17,3 +17,7 @@ run = "bun run build"
 [tasks.dev]
 description = "Run the development server"
 run = "bun run dev"
+
+[tasks.format]
+description = "Format the code"
+run = "prettier '!notes/**/*mcq*.{md,mdx}' --write . "

@@ -1,0 +1,72 @@
+---
+id: "typecasting-type-conversion"
+title: "Typecasting (Type Conversion)"
+description: "Explicit and implicit type conversions in Python."
+---
+
+# Typecasting (Type Conversion)
+
+Typecasting is strictly changing data from one type to another. Python is strict about mixing text and numbers—it won't let us add them together unless we manually convert them first.
+
+## Automatic Conversion (Implicit)
+
+When we do math with different types, Python automatically "upgrades" the "smaller" type to a "larger" one (e.g., adding an integer to a float results in a float) to make sure no data is lost.
+
+```python
+a = 7       # whole number (int)
+b = 3.5     # decimal (float)
+
+# Python turns 'a' into a decimal before adding them
+c = a + b
+print(f"Result: {c} | Type: {type(c).__name__}")
+```
+
+```text
+Result: 10.5 | Type: float
+```
+
+## Manual Conversion (Explicit)
+
+Use manual casting functions when we need to force a type change, especially when working with user input or mixed data.
+
+### The Main Casting Functions
+
+- `str()`: Turns anything into text.
+- `int()`: Turns text or decimals into a whole number (removes the decimal part).
+- `float()`: Turns text or whole numbers into a decimal.
+
+```python
+user_input = "15"
+base_value = 10
+
+# Anti-pattern: This will crash (can't add string and int)
+# total = base_value + user_input
+
+# Pythonic: Manually convert the text to a number first
+total = base_value + int(user_input)
+print(f"Total: {total}")
+```
+
+```text
+Total: 25
+```
+
+### Avoiding the ValueError Trap
+
+Trying to turn text into a number will crash our program if the text isn't a standard number (like trying to turn "hello" into 5). When converting text to a whole number, it must look like a standard integer string.
+
+```python
+# This works fine
+print(int("42"))
+
+# This crashes because of the decimal point
+# print(int("42.5"))
+
+# The safe way: convert to a decimal first, then to a whole number
+print(int(float("42.5"))) # Result: 42
+```
+
+```text
+42
+42
+```

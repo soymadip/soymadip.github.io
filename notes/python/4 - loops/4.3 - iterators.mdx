@@ -1,0 +1,122 @@
+---
+id: "iterators"
+title: "Iterators"
+description: "Mastering the Iterator Protocol, lazy evaluation, and the difference between Iterables and Iterators."
+source_filename: "28.1-iterators.py"
+---
+
+# Iterators
+
+In Python, an Iterator is an object that allows us to traverse through all elements of a collection, regardless of its implementation. It is the engine behind `for` loops, `map()`, `filter()`, and list comprehensions.
+
+## Iterable vs. Iterator
+
+It's easy to confuse these two, but they serve different roles in the **Iterator Protocol**.
+
+| Term         | Definition                                                | Examples                                |
+| :----------- | :-------------------------------------------------------- | :-------------------------------------- |
+| **Iterable** | Any object we can loop over. It can produce an iterator.  | `list`, `str`, `tuple`, `dict`          |
+| **Iterator** | The stateful object that actually performs the traversal. | `map` object, `zip` object, `generator` |
+
+:::tip Vending Machine Analogy
+The **Iterable** is the Vending Machine. It holds all the items.
+The **Iterator** is the Mechanical Arm. It knows which item is next and hands it to us one by one.
+:::
+
+## The Iterator Protocol
+
+For an object to be considered an iterator in Python, it must implement two methods:
+
+1. `__iter__()`: Returns the iterator object itself. This allows an iterator to be used where an iterable is expected.
+2. `__next__()`: Returns the next item in the sequence. If there are no items left, it must raise `StopIteration`.
+
+### Manual Interaction
+
+We can manually interact with this protocol using the built-in `iter()` and `next()` functions:
+
+```python
+data = [10, 20]
+it = iter(data)  # Calls data.__iter__()
+
+print(next(it))  # Calls it.__next__() -> 10
+print(next(it))  # Calls it.__next__() -> 20
+```
+
+**Output:**
+
+```text
+10
+20
+```
+
+## Key Characteristics
+
+### Lazy Evaluation
+
+Iterators use **Lazy Evaluation**. They don't calculate or store all their values upfront. They only compute the "next" value when we explicitly ask for it. This allows for massive memory savings—we can iterate over a 10GB file or even an infinite sequence without crashing our RAM.
+
+### Exhaustion (One-Way Street)
+
+Iterators are consumable. Once we have traversed to the end, the iterator is "exhausted."
+
+:::warning Exhaustion Trap
+Calling `list(my_iterator)` or `sum(my_iterator)` consumes the entire stream. Any subsequent loops over that specific iterator object will be empty.
+:::
+
+```python
+nums = [1, 2, 3]
+mp = map(lambda x: x*x, nums)
+
+print(list(mp)) # [1, 4, 9] -> This "consumed" the iterator.
+
+# This loop will NOT run because mp is empty now:
+for i in mp:
+    print(i)
+```
+
+**Output:**
+
+```text
+[1, 4, 9]
+```
+
+## Custom Iterator Example
+
+Here is how we build an iterator from scratch by following the protocol.
+
+```python
+class PowerOfTwo:
+    """Iterator that yields powers of 2 up to a limit."""
+    def __init__(self, max_exponent):
+        self.max = max_exponent
+        self.current = 0
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.current <= self.max:
+            result = 2 ** self.current
+            self.current += 1
+            return result
+        raise StopIteration
+
+# Usage
+powers = PowerOfTwo(3)
+for p in powers:
+    print(p) # 1, 2, 4, 8
+```
+
+**Output:**
+
+```text
+1
+2
+4
+8
+```
+
+<SrcPv
+  href="/code/python/4-loops/28.1-iterators.py"
+  label="28.1-iterators.py"
+/>

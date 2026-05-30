@@ -1,0 +1,34 @@
+---
+id: "recursion"
+title: "Recursion"
+description: "How to implement functions that call themselves and use base cases."
+source_filename: "44.function-types.py"
+---
+
+# Recursion
+
+A recursive function is a function that calls itself to solve a smaller piece of a larger problem. It is like looking into a mirror that's looking into another mirror.
+
+Every recursive function MUST have a **Base Case**. This is the termination logic that stops the execution; without it, the function will call itself forever and crash with a `RecursionError` (Stack Overflow).
+
+```python
+def factorial(n):
+    # Base case: stop when n is 0
+    if n == 0:
+        return 1
+    # Recursive step: n * (n-1)!
+    return n * factorial(n - 1)
+
+print(factorial(5))
+```
+
+**Output:**
+
+```text
+120
+```
+
+<SrcPv
+  href="/code/python/5-functions/44.function-types.py"
+  label="44.function-types.py"
+/>

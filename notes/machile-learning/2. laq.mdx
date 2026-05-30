@@ -4,6 +4,7 @@ id: laq
 description: "Important Long Answer Questions for 2026"
 ---
 
+{/* prettier-ignore */}
 import Indent from "@site/src/components/Indent";
 
 import LogisticImg from "./assets/logistic-regression.jpg";
@@ -16,9 +17,9 @@ Machine Learning (ML) is a branch of artificial intelligence (AI) that focuses o
 <Indent /> In basic terms, ML is the process of training a piece of software,
 called a model, so that it can make useful predictions. Instead of writing a
 traditional program with hard-coded rules to solve a problem, we feed an ML
-model massive amounts of data. The model analyzes this data, finds
-underlying patterns, & builds a mathematical model to make predictions or
-decisions on its own.
+model massive amounts of data. The model analyzes this data, finds underlying
+patterns, & builds a mathematical model to make predictions or decisions on its
+own.
 
 <Indent /> Think of it like teaching a child to recognize a dog. We don't
 explain the exact geometry of a dog's nose or the precise texture of its fur.
@@ -28,11 +29,12 @@ same way.
 
 <big>**Types of ML :-**</big>
 
-<br /><br />
+<br />
+<br />
 
 1. **Supervised Learning**: The algorithm is trained on a labeled dataset
 2. **Unsupervised Learning**: The algorithm is given unlabeled data
-3. **Reinforcement Learning**: An autonomous agent learns to make decisions in a dynamic environment through trial and error.
+3. **Reinforcement Learning**: Agents learns to make decisions in a dynamic environment through trial and error.
 
 ---
 
@@ -52,16 +54,22 @@ C. Reinforcement Learning
 
 ### A. Supervised Learning
 
-Supervised learning is a machine learning technique that trains algorithms using labled data to map input features to known output labels. During training, the model learns the relationship between inputs and correct answers, allowing it to make predictions on new, unseen data with high accuracy.
+Supervised learning is a machine learning technique where algorithms are trained using **labled data** to map input features to known output labels.<br />
+During training, the model learns the relationship between inputs and correct answers, allowing it to make predictions on new, unseen data with high accuracy.
 
 This approach is primarily divided into two categories:
 
 - **Classification**: Used when the output is a category or label, such as identifying whether an email is spam or predicting a specific image class.
 - **Regression**: Used when the output is a continuous numerical value, such as forecasting stock prices or estimating house values.
 
-#### Core Algorithms
+<big>**Core Algorithms**</big>
 
-<u>**1. Linear Regression**</u>
+<br />
+<br />
+
+<u>
+    <big>**1. Linear Regression**</big>
+</u>
 
 Linear regression is the most commonly used regression model in ML. It can be defined as a statistical model that analyse the linear relationship between the depended variable with given set of independent variables.
 
@@ -98,9 +106,10 @@ It works by recursively splitting the dataset into smaller, more homogeneous sub
 
 ### B. Unsupervised Learning
 
-Unsupervised Learning is a type of machine learning where the model is trained using an **unlabeled dataset**. Unlike supervised learning, the model has no hints on how to categorize each piece of data, but instead it must infer its own rules.
+Unsupervised Learning is a type of machine learning where the model is trained using an **unlabeled dataset**.
 
-The system receives only input features and is tasked with modeling the underlying structure or relationships within the data. Its primary focus is data exploration and pattern discovery.
+Unlike supervised learning, the model has no hints on how to categorize each piece of data.
+The system receives only input features and has to find the patterns & relationships within the data. Its primary focus is data exploration and pattern discovery.
 
 This approach is primarily divided into two categories:
 
@@ -124,9 +133,9 @@ It achieves by finding the principle components of the dtata which are orhogonal
 
 ### C. Reinforcement Learning
 
-Reinforcement learning is a type of machine learning where models make predictions by getting rewards or penalties
-based on actions performed within an environment. A reinforcement learning system
-generates a policy that defines the best strategy for getting the most rewards.
+Reinforcement learning is a type of machine learning where models are trained in a dynamic environment. The model learns through getting rewards or penalties
+based on actions performed.<br />
+A reinforcement learning system generates a policy that defines the best strategy for getting the most rewards.
 
 Reinforcement learning is used to train robots to perform tasks, like walking around a
 room, and software programs like AlphaGo to play the game of Go.
@@ -543,7 +552,6 @@ The Backward Pass is the process of sending the error back through the network t
 **Example**
 
 If the ANN predicts "Pass" but the correct answer is "Fail", the error is calculated and the weights are adjusted so that future predictions become more accurate.
-
 
 ---
 

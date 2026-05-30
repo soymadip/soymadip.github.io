@@ -3,8 +3,7 @@ exports.usrConf = {
 
   dark_mode: true,
 
-  edit_url:
-    "https://github.com/soymadip/soymadip.github.io/edit/content",
+  edit_url: "https://github.com/soymadip/soymadip.github.io/edit/content",
 
   site_url: "auto",
   site_path: "auto",

@@ -1,0 +1,93 @@
+---
+id: "imports-and-modules"
+title: "Imports and Modules"
+description: "Mastering the different ways to import functions and objects from local files and submodules."
+source_filename:
+  - "47-importing-objects-or-functions/main.py"
+  - "47-importing-objects-or-functions/utils/discounts.py"
+  - "47-importing-objects-or-functions/recipies/flavours.py"
+---
+
+# Imports and Modules
+
+Python's modular system allows us to organize code into separate files (modules) and directories (packages). This keeps our scripts clean and reusable.
+
+## Common Import Patterns
+
+### 1. Simple Import
+
+Imports the entire module. We must use the module name to access its contents.
+
+```python
+import module
+module.method()
+```
+
+### 2. Localized Import
+
+Imports a specific object or function directly into our current namespace.
+
+```python
+from module import method
+method()
+```
+
+### 3. Aliased Import
+
+Renames the imported object to avoid naming conflicts or to shorten it.
+
+```python
+from module import brew as brr
+brr()
+```
+
+## Packages and Submodules
+
+A directory containing Python files is a **Package**. We can import from sub-directories using dot notation.
+
+```python
+# module/
+#    recipies/
+#        flavours.py
+
+from recipies.flavours import ginger_chai
+print(ginger_chai())
+```
+
+:::note **init**.py
+Since Python 3.3, directories are automatically treated as packages even without an `__init__.py` file. However, we might still see them in older codebases for initialization logic.
+:::
+
+## Relative vs. Absolute Imports
+
+Within a package, we can use relative imports to refer to sibling modules.
+
+- `.` refers to the current directory.
+- `..` refers to the parent directory.
+
+```python
+from .recipies import flavours
+print(flavours.adrak_chai())
+```
+
+## Best Practices
+
+- **Avoid Wildcard Imports:** `from module import *` is generally discouraged because it pollutes our namespace and makes it unclear where names come from.
+- **Import Order:** Standard library first, then third-party packages, then local imports.
+
+<SrcPv
+  sources={[
+    {
+      path: "/code/python/5-functions/47-importing-objects-or-functions/main.py",
+      label: "main.py",
+    },
+    {
+      path: "/code/python/5-functions/47-importing-objects-or-functions/utils/discounts.py",
+      label: "discounts.py",
+    },
+    {
+      path: "/code/python/5-functions/47-importing-objects-or-functions/recipies/flavours.py",
+      label: "flavours.py",
+    },
+  ]}
+/>

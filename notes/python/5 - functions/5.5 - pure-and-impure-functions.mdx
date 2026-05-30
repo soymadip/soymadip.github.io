@@ -1,0 +1,38 @@
+---
+id: "pure-and-impure-functions"
+title: "Pure and Impure Functions"
+description: "Understanding side effects and the benefits of stateless functions."
+source_filename: "44.function-types.py"
+---
+
+## Pure Functions
+
+A **Pure Function** is predictable: given the same input, it always returns the same output and has no side effects (it doesn't change anything in the outside world).
+
+```python
+# Pure: returns a result without changing anything outside
+def pure_chai(cups):
+    return cups
+```
+
+## Impure Functions
+
+An **Impure Function**, however, modifies external state or relies on global variables. These are generally harder to test and maintain because their results can change depending on the state of the program.
+
+```python
+total_chai = 10
+
+# Impure: modifies a global variable
+def impure_chai(cups: int) -> None:
+    global total_chai
+    total_chai += cups # Side effect: changing global state
+```
+
+:::info
+It's recommended to avoid usinng impure functions
+:::
+
+<SrcPv
+  href="/code/python/5-functions/44.function-types.py"
+  label="44.function-types.py"
+/>
