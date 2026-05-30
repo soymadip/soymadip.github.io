@@ -14,7 +14,7 @@ import {
 // ------------------- Configuration ------------------
 
 const REPO_URL = "https://github.com/soymadip/portosaur";
-const REPO_BRANCH = "compiler";
+const REPO_BRANCH = "legacy";
 const SYNC_ITEMS = ["static", "src", "blog", "notes"];
 
 const COMPILER_DIR = join(process.cwd(), ".compiler");

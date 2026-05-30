@@ -71,7 +71,7 @@ All string values in double quotes.
 ```yaml
 id: "hyphenated-unique-id" # in language-level indexes, it should be language-name
 title: "Title Case Title"
-description: "One-line summary."
+description: "One-line summary." # must
 source_filename: "original-filename.py"
 # sidebar_position: only on language-level index.md
 # sidebar_title: optional, if sidebar label should differ from title
