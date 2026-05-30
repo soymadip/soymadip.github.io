@@ -4,6 +4,7 @@ gemini = "latest"
 uv = "latest"
 "pipx:quikrun" = "latest"
 watchexec = "latest"
+"npm:prettier" = "latest"
 
 [env]
 GEMINI_WRITER_CHAT_ID = "7d9ffa0a-42a4-4dc6-8b98-32fb0e957306"
