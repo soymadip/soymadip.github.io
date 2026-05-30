@@ -253,7 +253,7 @@ if (mode === "build") {
 
   try {
     const proc = Bun.spawn(
-      ["bun", "x", "docusaurus", "build", "--out-dir", OUTPUT_DIR],
+      ["bun", "--bun", "x", "docusaurus", "build", "--out-dir", OUTPUT_DIR],
       {
         cwd: COMPILER_DIR,
         stdio: ["inherit", "inherit", "inherit"],
@@ -315,7 +315,7 @@ if (mode === "build") {
   }
 
   const proc = Bun.spawn(
-    ["bun", "x", "docusaurus", "start", "--host", "0.0.0.0"],
+    ["bun", "--bun", "x", "docusaurus", "start", "--host", "0.0.0.0"],
     {
       cwd: COMPILER_DIR,
       stdio: ["inherit", "inherit", "inherit"],
