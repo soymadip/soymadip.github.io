@@ -4,7 +4,7 @@ exports.usrConf = {
   dark_mode: true,
 
   edit_url:
-    "https://gitlab.com/soymadip/soymadip.gitlab.io/-/edit/content/notes/",
+    "https://github.com/soymadip/soymadip.github.io/edit/content",
 
   site_url: "auto",
   site_path: "auto",
