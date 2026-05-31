@@ -7,7 +7,7 @@ pin: true
 
 General information about the new portfolio.
 
-{/_ truncate _/}
+<!-- truncate -->
 
 <!-- DELETE THIS FILE -->
 
