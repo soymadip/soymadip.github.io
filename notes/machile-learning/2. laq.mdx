@@ -1,12 +1,10 @@
 ---
-title: Long Answer Questions
-id: laq
+title: "Long Answer Questions"
+id: "laq"
 description: "Important Long Answer Questions for 2026"
 ---
 
-{/* prettier-ignore */}
 import Indent from "@site/src/components/Indent";
-
 import LogisticImg from "./assets/logistic-regression.jpg";
 import DcsnTreeImg from "./assets/decision-tree.jpeg";
 
@@ -32,11 +30,9 @@ same way.
 <br />
 <br />
 
-1. **Supervised Learning**: The algorithm is trained on a labeled dataset
-2. **Unsupervised Learning**: The algorithm is given unlabeled data
-3. **Reinforcement Learning**: Agents learns to make decisions in a dynamic environment through trial and error.
-
----
+1. **Supervised Learning**: The algorithm is trained on a labeled dataset.
+2. **Unsupervised Learning**: The algorithm is given unlabeled data.
+3. **Reinforcement Learning**: Agents learn to make decisions in a dynamic environment through trial and error.
 
 :::note[Model in ML]
 An ML model is the final output of a machine learning algorithm, representing the learned patterns and rules in a mathematical or statistical format.
@@ -46,7 +42,7 @@ An ML model is the final output of a machine learning algorithm, representing th
 
 ## 2. Types of ML & Their Algorithms
 
-Machine Learning is catagorized into 3 main types:
+Machine Learning is categorized into 3 main types:
 
 A. Supervised Learning<br />
 B. Unsupervised Learning<br />
@@ -54,13 +50,13 @@ C. Reinforcement Learning
 
 ### A. Supervised Learning
 
-Supervised learning is a machine learning technique where algorithms are trained using **labled data** to map input features to known output labels.<br />
+Supervised learning is a machine learning technique where algorithms are trained using **labeled data** to map input features to known output labels.<br />
 During training, the model learns the relationship between inputs and correct answers, allowing it to make predictions on new, unseen data with high accuracy.
 
 This approach is primarily divided into two categories:
 
-- **Classification**: Classification is a supervised learning technique in Machine Learning that assigns data into predefined categories or classes.
-- **Regression**: Regression is a supervised learning technique in Machine Learning used to predict continuous numerical values based on input data. (for example, predicting house prices based on features like size, location, and age)
+- **Classification**: A supervised learning technique that assigns data into predefined categories or classes.
+- **Regression**: A supervised learning technique used to predict continuous numerical values based on input data. For example, predicting house prices based on features like size, location, and age.
 
 <big>**Core Algorithms**</big>
 
@@ -68,33 +64,33 @@ This approach is primarily divided into two categories:
 <br />
 
 <u>
-    <big>**1. Linear Regression**</big>
+  <big>**1. Linear Regression**</big>
 </u>
 
-Linear regression is the most commonly used regression model in ML. It can be defined as a statistical model that analyse the linear relationship between the depended variable with given set of independent variables.
+Linear regression is the most commonly used regression model in ML. It can be defined as a statistical model that analyzes the linear relationship between the dependent variable and a given set of independent variables.
 
-A linear relationship between variables means that wehn the value of one or more independent variables changes, the value of the dependent variable also changes accordingly.
+A linear relationship between variables means that when the value of one or more independent variables changes, the value of the dependent variable also changes accordingly.
 
-Linear regression is further devided into 2 categories: simple linear regression and multiple linear regression.
+Linear regression is further divided into 2 categories: simple linear regression and multiple linear regression.
 
-**Equation**: y = mx + c (where y is the dependent variable, x is the independent variable, m is the slope, and c is the intercept)
+**Equation**: `y = mx + c` (where y is the dependent variable, x is the independent variable, m is the slope, and c is the intercept)
 
 <big>
-    <u>**2. Logistic Regression**</u>
+  <u>**2. Logistic Regression**</u>
 </big>
 <br />
 
 <img src={LogisticImg} height="400" alt="Logistic Regression" />
 <br />
 
-Logistic regression is a supervised learning classification algorithm used to predict the probability of target variable. The nature of the target or dependent variable is in which there would be only 2 possible classes or categories.
+Logistic regression is a supervised learning classification algorithm used to predict the probability of a target variable. The nature of the target or dependent variable is binary, so there are only 2 possible classes or categories.
 
-The dependent variable is binary in nature(either 1/yes/true or 0/no/false)
+The dependent variable is binary in nature (either 1/yes/true or 0/no/false).
 
-In logistic regression, we use a function to find the dependent value(Y), The name of the function is **sigmoid function**: `Y = 1 / (1 + e^{-x})` (where x is the independent variable, Y is the dependent variable)
+In logistic regression, we use a function to find the dependent value (Y). The name of the function is **sigmoid function**: `Y = 1 / (1 + e^{-x})` (where x is the independent variable, Y is the dependent variable).
 
 <big>
-    <u>**3. Decision Tree**</u>
+  <u>**3. Decision Tree**</u>
 </big>
 
 A decision tree is a supervised learning algorithm used for both classification and regression tasks that organizes decisions in a hierarchical, tree-like structure resembling a flowchart.
@@ -106,10 +102,10 @@ It works by recursively splitting the dataset into smaller, more homogeneous sub
 
 ### B. Unsupervised Learning
 
-Unsupervised Learning is a type of machine learning where the model is trained using an **unlabeled dataset**.
+Unsupervised learning is a type of machine learning where the model is trained using an **unlabeled dataset**.
 
 Unlike supervised learning, the model has no hints on how to categorize each piece of data.
-The system receives only input features and has to find the patterns & relationships within the data. Its primary focus is data exploration and pattern discovery.
+The system receives only input features and has to find the patterns and relationships within the data. Its primary focus is data exploration and pattern discovery.
 
 This approach is primarily divided into two categories:
 
@@ -127,23 +123,21 @@ in identifying patterns within large datasets.
 
 <u>2. **PCA (Principal Component Analysis)**</u>
 
-PCA is a Dimensionality reduction technique commonly used in machine learning and data analysis to reduce the numbeber of the features while preserving as much info as possible.
+PCA is a dimensionality reduction technique commonly used in machine learning and data analysis to reduce the number of features while preserving as much information as possible.
 
-It achieves by finding the principle components of the dtata which are orhogonal vectures capture the most significant varient in the data.
+It achieves this by finding the principal components of the data, which are orthogonal vectors that capture the most significant variance in the data.
 
 ### C. Reinforcement Learning
 
-Reinforcement learning is a type of machine learning where models are trained in a dynamic environment. The model learns through getting rewards or penalties
-based on actions performed.<br />
-A reinforcement learning system generates a policy that defines the best strategy for getting the most rewards.
+Reinforcement learning is a type of machine learning where models are trained in a dynamic environment. The model learns through getting rewards or penalties based on actions performed.
 
-Reinforcement learning is used to train robots to perform tasks, like walking around a
-room, and software programs like AlphaGo to play the game of Go.
+The goal of the agent is to learn the best strategy (policy) that maximizes the total reward over time.
+
+Reinforcement learning is used to train robots to perform tasks, like walking around a room, and software programs like AlphaGo to play the game of Go.
 
 #### Core Algorithms
 
 - **Q-Learning**: Learns the optimal action-value function Q(s,a).
-
 - **Deep Q-Network (DQN)**: Uses neural networks to approximate Q-values, enabling learning from high-dimensional inputs like images.
 
 ---
@@ -153,7 +147,7 @@ room, and software programs like AlphaGo to play the game of Go.
 | Supervised Learning                                                                      | Unsupervised Learning                                                       |
 | ---------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
 | Uses labeled data.                                                                       | Uses unlabeled data.                                                        |
-| Learns by mapping inputs to known outputs.                                               | learns by discovering hidden patterns and structures in data.               |
+| Learns by mapping inputs to known outputs.                                               | Learns by discovering hidden patterns and structures in data.               |
 | Receives feedback by comparing predictions with actual labels.                           | No feedback mechanism as there are no known labels.                         |
 | Requires manually labeled data before training.                                          | Requires little to no manual labeling.                                      |
 | Generally less complex and easier to train.                                              | Generally more complex and computationally intensive to train.              |
@@ -162,9 +156,9 @@ room, and software programs like AlphaGo to play the game of Go.
 
 ---
 
-## 4. Discuss Unsupervised Leaning and How It Works
+## 4. Discuss Unsupervised Learning and How It Works
 
-Unsupervised Learning is a type of machine learning where the model is trained using an **unlabeled dataset**.
+Unsupervised learning is a type of machine learning where the model is trained using an **unlabeled dataset**.
 
 Unlike supervised learning, the model has no hints on how to categorize each piece of data.
 The system receives only input features and has to find the patterns & relationships within the data. Its primary focus is data exploration and pattern discovery.
@@ -180,26 +174,21 @@ Since there are no correct answers or labels, the algorithm cannot use an error 
 </center>
 
 1. **Feature Mapping**: The algorithm places all the data points on a hidden mathematical graph based on their features.
-
 2. **Centroids Initialization**: The user specifies **K** (the number of groups wanted). The algorithm places **K** random starting points, called _centroids_, in the graph.
-
 3. **Distance Calculation**: The algorithm measures the distance between every data point and each centroid.
-
-4. **Cluster Assignment**: Each data point is assigned to its nearest centroid to form temporary groups called _clusters_..
-
+4. **Cluster Assignment**: Each data point is assigned to its nearest centroid to form temporary groups called _clusters_.
 5. **Centroid Update**: The algorithm calculates the average position (mean) of all points in a group and moves the centroid to that new center.
-
-6. **Repeatation**: Steps 3 to 5 are repeated iteratively until the centroids stop moving, creating the final stabilized clusters..
+6. **Repetition**: Steps 3 to 5 are repeated iteratively until the centroids stop moving, creating the final stabilized clusters.
 
 ---
 
-## 5. What is PCA. How does it work
+## 5. What Is PCA. How Does It Work
 
-PCA (Principal Component Analysis) is a Dimensionality Reduction technique used to reduce the number of variables (dimensions) in a dataset while preserving most of the important information.
+PCA (Principal Component Analysis) is a dimensionality reduction technique used to reduce the number of variables (dimensions) in a dataset while preserving most of the important information.
 
 It helps simplify large and complex datasets, making them easier to analyze and process.
 
-**Why PCA is Used**
+**Why PCA Is Used**
 
 - Reduces the number of variables in a dataset.
 - Removes redundancy caused by correlated variables.
@@ -225,10 +214,9 @@ It helps simplify large and complex datasets, making them easier to analyze and 
 
 ---
 
-## 6. What do you mean by clustering? Types of clustering
+## 6. What Do You Mean by Clustering? Types of Clustering
 
-Clustering is the unsupervised learning technique that groups similar data objects into clusters
-so that objects within the same cluster are more similar to each other than those in different clusters.
+Clustering is the unsupervised learning technique that groups similar data objects into clusters so that objects within the same cluster are more similar to each other than those in different clusters.
 
 The main goal of clustering is to discover hidden patterns and structures in data.
 
@@ -237,7 +225,7 @@ The main goal of clustering is to discover hidden patterns and structures in dat
 In a shopping mall, customers can be grouped based on their purchasing behavior. Customers with similar buying habits belong to the same cluster.
 
 <big>
-    <u>**Types of Clustering**</u>
+  <u>**Types of Clustering**</u>
 </big>
 
 <br />
@@ -293,7 +281,6 @@ Decision
 Yes      No
 |         |
 Leaf Node  Leaf Node
-
 ```
 </center>
 
@@ -323,7 +310,7 @@ Leaf Node  Leaf Node
 
 ---
 
-## 9. Linear vs logistic Regression
+## 9. Linear vs Logistic Regression
 
 | Linear Regression                                                       | Logistic Regression                                                      |
 | ----------------------------------------------------------------------- | ------------------------------------------------------------------------ |
@@ -331,17 +318,18 @@ Leaf Node  Leaf Node
 | Output can be any real number.                                          | Output is a probability between 0 and 1.                                 |
 | Uses a **linear equation** to model the relationship between variables. | Uses the **sigmoid function** to model probabilities.                    |
 | Suitable for regression problems.                                       | Suitable for classification problems.                                    |
+| Performance is measured using MAE, MSE and R² Score.                    | Performance is measured using Accuracy, Precision, Recall, and F1-Score. |
 | Examples: House price prediction, sales forecasting.                    | Examples: Spam detection, disease diagnosis.                             |
-| Performance is measured using MAE, MSE, RMSE, and R² Score.             | Performance is measured using Accuracy, Precision, Recall, and F1-Score. |
 
 ---
 
-## 10. What do you mean by Reinforcement learning?
+## 10. What Do You Mean by Reinforcement Learning?
 
-Reinforcement Learning (RL) is a type of machine learning
-in which an agent learns by interacting with an environment and receiving rewards or penalties for its actions.
+Reinforcement learning is a type of machine learning where models are trained in a dynamic environment. The model learns through getting rewards or penalties based on actions performed.<br />
 
 The goal of the agent is to learn the best strategy (policy) that maximizes the total reward over time.
+
+Reinforcement learning is used to train robots to perform tasks, like walking around a room, and software programs like AlphaGo to play the game of Go.
 
 **How Reinforcement Learning Works**
 
@@ -375,10 +363,9 @@ A robot learning to move in a room:
 - Recommendation systems
 - Resource management
 
-
 ---
 
-## 11. What is 'ANN'. Perceptron. and its layers
+## 11. What Is 'ANN'. Perceptron. and Its Layers
 
 ### ANN
 
@@ -430,7 +417,7 @@ This is the final layer of the network. This layer produces the result or predic
 
 ---
 
-## 12. Discuss Genetic Algorithm. How it is work?
+## 12. Discuss Genetic Algorithm. How It Works?
 
 A Genetic Algorithm (GA) is a search and optimization technique in Artificial Intelligence inspired by the process of **natural selection and genetics**.
 
@@ -438,7 +425,8 @@ It is used to find the near-optimal solution to a problem by repeatedly improvin
 
 <big>**How Genetic Algorithm Works**</big>
 
-<br/><br/>
+<br />
+<br />
 
 :::note[Check Next Question]
 :::
@@ -449,32 +437,32 @@ It is used to find the near-optimal solution to a problem by repeatedly improvin
 
 ### A. Population Initialization
 
-Generate an initial population of random solutions (chromosomes).<br/>
+Generate an initial population of random solutions (chromosomes).<br />
 Each chromosome represents a possible solution.
 
 ### B. Fitness Evaluation
 
-Calculate the fitness value of each chromosome.<br/>
+Calculate the fitness value of each chromosome.<br />
 The fitness function measures how good a solution is.
 
 ### C. Selection
 
-Select the best chromosomes as parents based on their fitness.<br/>
+Select the best chromosomes as parents based on their fitness.<br />
 Better solutions have a higher chance of being selected.
 
 ### D. Crossover
 
-Combine two parent chromosomes to create new offspring with characteristics of both parents.<br/>
+Combine two parent chromosomes to create new offspring with characteristics of both parents.<br />
 This helps produce better solutions.
 
 ### E. Mutation
 
-Randomly change some genes in the offspring.<br/>
+Randomly change some genes in the offspring.<br />
 Mutation introduces diversity and prevents premature convergence.
 
 ### F. Replacement
 
-Replace weaker chromosomes with newly generated offspring.<br/>
+Replace weaker chromosomes with newly generated offspring.<br />
 Form a new population.
 
 ### G. Termination
@@ -486,7 +474,7 @@ Repeat the above steps until a stopping condition is met, such as:
 
 ---
 
-## 14. what do you mean by fitness value and Convergence.
+## 14. What Do You Mean by Fitness Value and Convergence?
 
 ### Fitness Value
 
@@ -521,7 +509,7 @@ In a route optimization problem:
 
 ---
 
-## 15. What do you mean by forward Pass and Backward pass in Amr.
+## 15. What Do You Mean by Forward Pass and Backward Pass in ANN?
 
 ### Forward Pass
 
@@ -556,7 +544,7 @@ If the ANN predicts "Pass" but the correct answer is "Fail", the error is calcul
 
 ---
 
-:::note[**Extra**: Difference between Forward and Backward Pass]
+:::note[Extra: Difference between Forward and Backward Pass]
 
 | Forward Pass                                  | Backward Pass                                 |
 | --------------------------------------------- | --------------------------------------------- |
@@ -565,4 +553,3 @@ If the ANN predicts "Pass" but the correct answer is "Fail", the error is calcul
 | Used for computation of output.               | Used for learning and reducing error.         |
 
 :::
-```
