@@ -27,6 +27,7 @@ const C = {
   green: "\x1b[32m",
   red: "\x1b[31m",
   cyan: "\x1b[36m",
+  yellow: "\x1b[33m",
   bold: "\x1b[1m",
 };
 
@@ -154,9 +155,15 @@ async function cloneCompiler() {
   const exitCode = await proc.exited;
 
   if (exitCode !== 0) {
-    throw new Error(
-      `Failed to clone compiler repository. Exit code: ${exitCode}`,
-    );
+    if (mode === "dev" && existsSync(COMPILER_DIR)) {
+      console.log(
+        `${C.yellow}>>>  Failed to clone compiler repository, proceeding with old copy...${C.reset}`,
+      );
+    } else {
+      throw new Error(
+        `Failed to clone compiler repository. Exit code: ${exitCode}`,
+      );
+    }
   }
 }
 
