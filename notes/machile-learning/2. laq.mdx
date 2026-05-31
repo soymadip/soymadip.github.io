@@ -236,7 +236,9 @@ The main goal of clustering is to discover hidden patterns and structures in dat
 
 In a shopping mall, customers can be grouped based on their purchasing behavior. Customers with similar buying habits belong to the same cluster.
 
- <big><u>**Types of Clustering**</u></big>
+<big>
+    <u>**Types of Clustering**</u>
+</big>
 
 <br />
 <br />
@@ -279,6 +281,33 @@ Assumes that data is generated from a statistical model and clusters data accord
 
 ## 7. What is Decision Tree? write down the algorithm
 
+A Decision Tree is a supervised machine learning algorithm used for classification and regression tasks.<br />
+It represents decisions and their possible outcomes in the form of a tree-like structure consisting of root nodes, internal nodes, branches, and leaf nodes.
+
+<center>
+```txt
+Root Node
+|
+Decision
+/    \
+Yes      No
+|         |
+Leaf Node  Leaf Node
+
+```
+</center>
+
+**Decision Tree Algorithm**
+
+1. Start with the complete training dataset.
+2. Select the best attribute using a measure such as Information Gain or Gini Index.
+3. Create a decision node based on the selected attribute.
+4. Split the dataset into subsets according to the attribute values.
+5. Repeat the process for each subset.
+6. If all records belong to the same class, create a leaf node.
+7. Continue until no further splitting is possible.
+8. The resulting tree is used for prediction and classification.
+
 ---
 
 ## 8. Classification vs Regression
@@ -307,15 +336,7 @@ Assumes that data is generated from a statistical model and clusters data accord
 
 ---
 
-## 10. Types of clustering. with example
-
-:::note[Repeated Question]
-Check out [Question Number 6](#6-what-do-you-mean-by-clustering-types-of-clustering)
-:::
-
----
-
-## 11. What is 'ANN'. Perceptron. and its layers
+## 10. What is 'ANN'. Perceptron. and its layers
 
 ### ANN
 
@@ -367,7 +388,7 @@ This is the final layer of the network. This layer produces the result or predic
 
 ---
 
-## 12. What do you mean by Reinforcement learning?
+## 11. What do you mean by Reinforcement learning?
 
 Reinforcement Learning (RL) is a type of machine learning
 in which an agent learns by interacting with an environment and receiving rewards or penalties for its actions.
@@ -408,19 +429,22 @@ A robot learning to move in a room:
 
 ---
 
-## 13. Discuss Genetic Algorithm. How it is work?
+## 12. Discuss Genetic Algorithm. How it is work?
 
 A Genetic Algorithm (GA) is a search and optimization technique in Artificial Intelligence inspired by the process of **natural selection and genetics**.
 
 It is used to find the near-optimal solution to a problem by repeatedly improving a set of candidate solutions.
 
-### How Genetic Algorithm Works
+<big>**How Genetic Algorithm Works**</big>
 
-<big>Check Next Question</big>
+<br/><br/>
+
+:::note[Check Next Question]
+:::
 
 ---
 
-## 14. Steps for GA's. Discuss Briefly
+## 13. Steps for GA's. Discuss Briefly
 
 ### A. Population Initialization
 
@@ -461,7 +485,7 @@ Repeat the above steps until a stopping condition is met, such as:
 
 ---
 
-## 15. what do you mean by fitness value and Convergence.
+## 14. what do you mean by fitness value and Convergence.
 
 ### Fitness Value
 
@@ -496,7 +520,7 @@ In a route optimization problem:
 
 ---
 
-## 16. What do you mean by forward Pass and Backward pass in Amr.
+## 15. What do you mean by forward Pass and Backward pass in Amr.
 
 ### Forward Pass
 
@@ -540,3 +564,4 @@ If the ANN predicts "Pass" but the correct answer is "Fail", the error is calcul
 | Used for computation of output.               | Used for learning and reducing error.         |
 
 :::
+```
