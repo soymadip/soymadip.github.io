@@ -5,6 +5,24 @@ description: "short notes on Various Topics."
 
 ## 1. Supervised Learning.
 
+Supervised learning is a machine learning technique where algorithms are trained using **labeled data** to map input features to known output labels.<br />
+During training, the model learns the relationship between inputs and correct answers, allowing it to make predictions on new, unseen data with high accuracy.
+
+This approach is primarily divided into two categories:
+
+- **Classification**: A supervised learning technique that assigns data into predefined categories or classes.
+- **Regression**: A supervised learning technique used to predict continuous numerical values based on input data. For example, predicting house prices based on features like size, location, and age.
+
+<big>**Core Algorithms**</big>
+
+<br />
+<br />
+
+1. **Linear Regression**: Linear Regression is a supervised machine learning algorithm used to predict continuous numerical values by finding a linear relationship between input variables and the output variable.
+2. **Logistic Regression**: Logistic Regression is a supervised machine learning algorithm used for classification problems, especially binary classification. It predicts the probability that an input belongs to a particular class.
+3. **Decision Tree**: Decision Tree is a supervised learning algorithm used for classification and regression tasks. It represents decisions and possible outcomes in a tree-like structure consising root, internal nodes, and leaf nodes.
+4. **Support Vector Machine/SVM**: Support Vector Machine (SVM) is a supervised machine learning algorithm used for classification and regression tasks. It classifies data by finding the optimal boundary (hyperplane) that best separates different classes.
+
 ---
 
 ## 2. Distance-Based Methods.
@@ -13,26 +31,238 @@ description: "short notes on Various Topics."
 
 ## 3. PCA (Principal Component Analysis).
 
+PCA (Principal Component Analysis) is a dimensionality reduction technique used to reduce the number of variables (dimensions) in a dataset while preserving most of the important information.
+
+It helps simplify large and complex datasets, making them easier to analyze and process.
+
+**Why PCA Is Used**
+
+- Reduces the number of variables in a dataset.
+- Removes redundancy caused by correlated variables.
+- Reduces computational complexity.
+- Helps in data visualization and preprocessing.
+
+**How PCA Works**
+
+1. Collect the dataset.
+2. Find the relationships between variables.
+3. Identify the directions with the highest variation in the data.
+4. Create new variables called Principal Components.
+5. Keep the most important components and remove less important ones.
+6. Obtain a smaller and simpler dataset.
+
+**Applications of PCA**
+
+- Image compression
+- Face recognition
+- Data visualization
+- Pattern recognition
+- Machine learning and data mining
+
 ---
 
 ## 4. Backpropagation.
+
+The Backward Pass is the process of sending the error back through the network to update weights and improve accuracy.
+
+<big>**Steps**</big>
+
+1. Compare the predicted output with the actual output.
+2. Calculate the error.
+3. Propagate the error backward through the network.
+4. Adjust weights and biases to reduce the error.
+5. Repeat until the network achieves good accuracy.
+
+**Example**
+
+If the ANN predicts "Pass" but the correct answer is "Fail", the error is calculated and the weights are adjusted so that future predictions become more accurate.
 
 ---
 
 ## 5. Multilayer Perceptron (MLP).
 
+A Multilayer Perceptron (MLP) is a type of Artificial Neural Network (ANN) that consists of multiple layers of interconnected neurons.
+It is widely used for classification, prediction, and pattern recognition problems.
+
+**An MLP contains three types of layers:**
+
+- **Input Layer** – Receives input data from a user or dataset.
+- **Hidden Layer(s)** – performs calculations and extracts important features.
+- **Output Layer** – Produces the final result.
+
+**Structure of MLP**
+
+<center>
+
+```
+Input Layer → Hidden Layer(s) → Output Layer
+```
+
+</center>
+
+**Working**
+
+1. Input data is fed into the input layer.
+2. Data passes through one or more hidden layers.
+3. Each neuron performs calculations using weights and activation functions.
+4. The output layer generates the final prediction.
+5. Learning is achieved using the Backpropagation Algorithm.
+
+**Advantages**
+
+- Can solve complex non-linear problems.
+- Learns patterns automatically from data.
+- High accuracy in classification and prediction tasks.
+
+**Applications**
+
+- Image recognition
+- Speech recognition
+- Medical diagnosis
+- Handwriting recognition
+
 ---
 
 ## 6. SVM (Support Vector Machine).
+
+Support Vector Machine (SVM) is a supervised machine learning algorithm used for classification and regression tasks.
+It classifies data by finding the optimal boundary (hyperplane) that best separates different classes.
+
+**Working**
+
+1. Plot the data points.
+2. Find a hyperplane that separates the classes.
+3. Choose the hyperplane with the maximum margin.
+4. Use the hyperplane to classify new data points.
+
+**Example**
+
+- Spam vs Not Spam emails
+- Pass vs Fail students
+- Cancer detection
+
+**Advantages**
+
+- High accuracy in classification.
+- Effective for high-dimensional data.
+- Works well with small and medium-sized datasets.
+
+**Applications**
+
+- Image classification
+- Text classification
+- Face recognition
+- Medical diagnosis
+
+---
+
+## 9. Naïve Bayes Theorem.
+
+**Naïve Bayes** is a supervised machine learning algorithm based on **Bayes' Theorem**. <br/>
+It is mainly used for classification problems such as spam detection, sentiment analysis, and document classification.
+
+It is called **"Naïve"** because it assumes that all features are independent of each other.
+
+### Bayes' Theorem
+
+$$
+P(A|B) = \frac{P(B|A) \times P(A)}{P(B)}
+$$
+
+**Where:**
+
+- $P(A|B)$ = Probability of A given B
+- $P(B|A)$ = Probability of B given A
+- $P(A)$ = Prior probability of A
+- $P(B)$ = Probability of B
+
+**Working**
+
+1. Collect training data.
+2. Calculate prior probabilities for each class.
+3. Calculate conditional probabilities for features.
+4. Apply Bayes' theorem.
+5. Assign the class with the highest probability.
+
+**Example**
+
+In email filtering:
+
+- If an email contains words like **"offer"**, **"prize"**, or **"win"**,
+- Naïve Bayes calculates the probability that the email is spam.
+- The email is classified into the class with the highest probability.
+
+**Advantages**
+
+- Simple and fast.
+- Works well with large datasets.
+- Effective for text classification problems.
+
+**Applications**
+
+- Spam email detection
+- Sentiment analysis
+- Document classification
+- Medical diagnosis
 
 ---
 
 ## 7. Crossover and Mutation.
 
+### Crossover
+
+Crossover is the process of combining two parent chromosomes to produce new offspring. It helps in exchanging useful characteristics between parents and creates better solutions.
+
+**Example**
+
+```
+Parent 1 : 1100
+Parent 2 : 0011
+
+After Crossover
+
+Child 1  : 1111
+Child 2  : 0000
+```
+
+**Advantages**
+
+- Produces new solutions.
+- Combines good features from parents.
+- Increases the chance of finding an optimal solution.
+
+### Mutation
+
+Mutation is the process of randomly changing one or more genes in a chromosome.
+It introduces diversity into the population and helps avoid getting stuck in local optimum solutions.
+
+**Example**
+
+```
+Before Mutation : 1100
+After Mutation  : 1110
+
+(One bit changes from 0 to 1)
+```
+
+**Advantages**
+
+- Maintains genetic diversity.
+- Prevents premature convergence.
+- Helps explore new solutions.
+
 ---
 
 ## 8. Activation Function.
 
----
+An **Activation Function** is a mathematical function used in an **Artificial Neural Network (ANN)** to determine the output of a neuron.<br/>
+It decides whether a neuron should be activated and pass information to the next layer.
 
-## 9. Naïve Bayes Theorem.
+Without an activation function, a neural network can only learn simple linear relationships.
+
+**Working**
+
+1. A neuron receives input values.
+2. Inputs are multiplied by weights and summed.
+3. The activation function is applied to the result.
+4. The output is passed to the next layer.
