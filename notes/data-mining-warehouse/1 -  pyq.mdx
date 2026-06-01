@@ -1,0 +1,335 @@
+---
+title: "PQY"
+description: "Previous Year Important Questions"
+---
+
+## Unit 1
+
+## 1. What do you mean by Data Warehouse? Key Features, Needs, Goals of it.
+
+A Data Warehouse is a centralized repository that stores large amounts of data collected from different sources of an organization.<br/>
+It is used for analysis, reporting, and decision-making rather than daily operations.
+
+**Key Features**:
+
+- **Subject-Oriented:** Organized by subject (e.g., sales, customers) rather than by department or process.
+- **Integrated:** Combines data from multiple sources into a consistent format.
+- **Time-Variant:** Stores historical data to identify trends over time.
+- **Non-Volatile:** Data is stable and not frequently changed. once entered, it is read-only.
+
+**Goals/Needs:**
+
+- **Integrate Data from Multiple Sources:** Combines data from different databases and systems into a single repository.
+- **Provide Historical Information:** Stores past data for trend analysis, forecasting, and strategic planning.
+- **Support Decision Making:** Provides accurate and historical data to help managers make better decisions.
+- **Enable Fast Query and Analysis:** Enables Fast queries for analysis and reporting.
+
+---
+
+## 2. Define OLAP.
+
+OLAP (Online Analytical Processing) is a technology used to analyze large volumes of data from different perspectives.<br/>
+It helps managers and analysts perform complex queries, reporting, trend analysis, and decision-making.
+
+**Example**: Analyzing yearly sales data to identify the best-performing products.
+
+---
+
+## 3. Differences b/t Operational Database Systems and a Data Warehouse.
+
+- Also known as OLTP (Online Transaction Processing) and OLAP (Online Analytical Processing).
+
+| Operational Database System (OLTP)                       | Data Warehouse (OLAP)                        |
+| -------------------------------------------------------- | -------------------------------------------- |
+| Stores current and detailed data.                        | Stores historical and summarized data.       |
+| Used for day-to-day business operations.                 | Used for analysis and decision-making.       |
+| Optimized for transaction processing.                    | Optimized for complex queries and reporting. |
+| Frequent insert, update, and delete operations are done. | Mostly read-only operations are done.        |
+| Queries are simple and fast                              | Queries are complex and analytical           |
+
+**Examples**
+
+- OLTP: A bank's transaction system records deposits, withdrawals, and balance updates every day.
+
+- OLAP: A bank manager analyzes customer transaction data from the last 5 years to identify trends and make business decisions.
+
+---
+
+## 5. Briefly explain the Data Warehouse models:
+
+### Enterprise Data Warehouse (EDW)
+
+A centralized warehouse for the entire organization that stores data from all departments. Used for overall business analysis.
+
+**E.g**, A company stores sales, HR, and finance data in one system.
+
+### Data Mart:
+
+A small part of a data warehouse focused on one specific department. It is easier and faster to use.
+
+**E.g**, Only sales department data stored for analysis.
+
+### Virtual Warehouse:
+
+A view of data from operational databases. Data is not physically stored separately. Quick to create but depends on original data sources.
+
+**Features:**
+
+- Requires less storage space.
+- Lower implementation cost.
+- Faster to set up.
+- Data is retrieved from operational systems in real time.
+
+**E.g**, Data shown directly from existing databases without full physical storage.
+
+---
+
+## 4. Draw and explain the Three-Tier Data Warehousing Architecture with a neat diagram.
+
+<center>
+
+```txt
+┌─────────────────────┐
+│      Top Tier       │
+│  Query, Reporting,  │
+│  Analysis & OLAP    │
+└─────────┬───────────┘
+│
+┌─────────▼───────────┐
+│    Middle Tier      │
+│     OLAP Server     │
+│ (ROLAP/MOLAP/HOLAP) │
+└─────────┬───────────┘
+│
+┌─────────▼───────────┐
+│    Bottom Tier      │
+│   Data Warehouse    │
+│  + Data Marts       │
+└─────────┬───────────┘
+│
+┌──────────────────┼──────────────────┐
+│                  │                  │
+┌──────▼──────┐   ┌──────▼──────┐   ┌──────▼──────┐
+│ Operational │   │ External    │   │ Legacy      │
+│ Databases   │   │ Sources     │   │ Systems     │
+└─────────────┘   └─────────────┘   └─────────────┘
+```
+
+</center>
+
+### 1. Bottom Tier – Data Warehouse Database
+
+It is the foundation of the architecture. Stores integrated and historical data.
+
+- Data is collected from operational databases, external sources, and legacy systems.
+- ETL (Extract, Transform, Load) processes clean and load the data into the warehouse.
+
+**Functions:**
+
+- Data extraction
+- Data cleaning
+- Data transformation
+- Data storage
+
+### 2. Middle Tier – OLAP Server
+
+Acts as a bridge between the data warehouse and users.
+
+- Provides fast access to data for analysis.
+- Supports multidimensional analysis.
+
+**Types of OLAP Servers:**
+
+- ROLAP (Relational OLAP)
+- MOLAP (Multidimensional OLAP)
+- HOLAP (Hybrid OLAP)
+
+**Functions:**
+
+- Query processing
+- Data aggregation
+- Analytical operations
+
+### 3. Top Tier – Front-End Tools
+
+Used directly by end users, managers, and analysts.
+
+- Provides tools for querying, reporting, data mining, and visualization.
+
+**Functions:**
+
+- Report generation
+- Dashboard creation
+- Data analysis
+- Decision support
+
+---
+
+---
+
+## Unit 2
+
+## 1. What do you mean by Data Mart? State its advantages and disadvantages.
+
+## 2. What do you mean by Data Mart? Briefly explain the following schemas with examples: (i) Snowflake Schema (ii) Star Schema (iii) Fact Constellation Schema.
+
+## 3. Differentiate between Star Schema and Snowflake Schema with diagrams.
+
+## 4. Explain ROLAP and MOLAP. Differentiate between them.
+
+---
+
+---
+
+## Unit 3
+
+## 1. What is Data Mining? various applications of it
+
+Data Mining is the process of extracting useful patterns, relationships, and hidden information from large amounts of data using statistical, machine learning, and database techniques.
+
+It helps organizations make better decisions by converting raw data into meaningful information.
+
+**Example:**
+
+An online shopping company analyzes customer purchase data to recommend products.
+
+### Applications
+
+**1. Market Analysis**
+
+Identifies which products that are frequently purchased together.<br/>
+Helps in product placement and promotions.
+
+**Example**: Customers who buy bread often buy butter.
+
+**2. Healthcare**
+
+Helps in disease diagnosis and treatment planning.<br/>
+Predicts patient health risks.
+
+**Example**: Predicting the risk of diabetes from patient records.
+
+**3. Retail and E-Commerce**
+
+Analyzes customer buying behavior.
+Provides personalized product recommendations.
+
+**Example**: Amazon recommending products based on previous purchases.
+
+**4. Education**
+
+Analyzes student performance.
+Identifies students who need additional support.
+
+**Example**: Predicting students at risk of failing.
+
+**5. Manufacturing**
+
+Improves product quality and production efficiency.
+Predicts equipment failures.
+
+**Example**: Detecting machine maintenance needs before breakdowns.
+
+**6. Fraud Detection**
+
+Detects suspicious activities in banking, insurance, and online transactions.
+
+**Example**: Finding fake insurance claims.
+
+---
+
+## 2. What is KDD? Steps of KDD. How is it different from the Data Mining?
+
+KDD or Knowledge Discovery in Databases refers to the complete process of finding knowledge from large datasets.
+
+### Steps in the KDD Process
+
+:::note
+aka: State the steps involved in Data Mining when viewed as a process of Knowledge Discovery.
+:::
+
+1. **Data Selection**: Relevant data is selected from various sources.
+
+2. **Data Cleaning**: Errors, duplicate records, and missing values are removed.
+
+3. **Data Transformation**: Data is converted into a format suitable for mining.
+
+4. **Data Mining**: Various Techniques are applied to discover patterns and relationships.
+
+5. **Pattern Evaluation**: Interesting and useful patterns are identified and evaluated.
+
+6. **Knowledge Presentation**: The discovered knowledge is presented to users for decision-making.
+
+### Differences between KDD and Data Mining
+
+| Data Mining                                    | KDD (Knowledge Discovery in Databases)                                          |
+| ---------------------------------------------- | ------------------------------------------------------------------------------- |
+| A step in the KDD process.                     | The complete process of discovering knowledge from data.                        |
+| Focuses on finding patterns and relationships. | Includes data selection, cleaning, transformation, data mining, and evaluation. |
+| Produces patterns from data.                   | Produces useful knowledge from data.                                            |
+
+---
+
+## 3. Differentiate between Data Warehousing and Data Mining.
+
+| Data Warehousing                            | Data Mining                                         |
+| ------------------------------------------- | --------------------------------------------------- |
+| Storing and managing large amounts of data. | Extracting useful patterns and knowledge from data. |
+| Acts as a repository of integrated data.    | Analyzes data to discover hidden information.       |
+| Focuses on data storage and organization.   | Focuses on data analysis and prediction.            |
+| Provides historical data for analysis.      | Provides insights for decision-making.              |
+| Example: Data Warehouse of a bank.          | Example: Detecting fraud from banking data.         |
+
+---
+
+## 4. What is Web Mining? It's applications. Compare Data Mining and Web Mining.
+
+Web Mining is the process of extracting useful information, patterns, and knowledge from web data such as web pages, hyperlinks, and user browsing behavior.
+
+It applies data mining techniques to data available on the World Wide Web.
+
+**Example:** Analyzing website visitor behavior to improve user experience.
+
+### Applications of Web Mining
+
+1. **E-Commerce**: Recommends products based on user browsing and purchase history.
+2. **Search Engines**: Improves search results by analyzing web content and links.
+3. **Digital Marketing**: Studies customer preferences and online behavior.
+4. **Website Personalization**: Provides customized content to users.
+5. **Fraud Detection**: Detects suspicious online activities and transactions.
+
+### Data Mining vs Web Mining
+
+| Data Mining                                     | Web Mining                                                          |
+| ----------------------------------------------- | ------------------------------------------------------------------- |
+| Extracts knowledge from general databases.      | Extracts knowledge from web data.                                   |
+| Uses structured data mainly.                    | Uses structured, semi-structured, and unstructured web data.        |
+| Data comes from databases and data warehouses.  | Data comes from websites, web logs, and hyperlinks.                 |
+| Focuses on discovering patterns in stored data. | Focuses on discovering patterns from web content and user behavior. |
+| Used in banking, healthcare, retail, etc.       | Used in search engines, e-commerce, and web analytics.              |
+
+---
+
+## 5. Explain each term
+
+### Web Content Mining
+
+Web Content Mining is the process of extracting useful information from the contents of web pages such as text, images, audio, video, and documents.
+
+**Example:** A search engine analyzes the content of web pages to provide relevant search results.
+
+### Web Structure Mining
+
+Web Structure Mining is the process of analyzing the structure of hyperlinks to discover how web pages are connected and to determine their importance.
+
+It studies how web pages are connected to each other through links.
+
+**Example:** Search engines use link analysis to determine the importance of web pages.
+
+### Web Usage Mining
+
+Web Usage Mining is the process of analyzing user behavior from web logs, browser history, cookies, and click data.
+
+It helps understand how users interact with websites.
+
+**Example:** An e-commerce website tracks pages visited by users to recommend products.
