@@ -195,7 +195,7 @@ An online shopping company analyzes customer purchase data to recommend products
 
 ### Applications
 
-**1. Market Analysis**
+**1. Market Basket Analysis**
 
 Identifies which products that are frequently purchased together.<br/>
 Helps in product placement and promotions.
@@ -333,3 +333,200 @@ Web Usage Mining is the process of analyzing user behavior from web logs, browse
 It helps understand how users interact with websites.
 
 **Example:** An e-commerce website tracks pages visited by users to recommend products.
+
+---
+
+---
+
+## Unit 4
+
+## 1. State the Apriori Property. What are the types of knowledge discovered during Data Mining?
+
+Apriori Property states that If an itemset is frequent, then all of its non-empty subsets must also be frequent.
+
+**Explanation:**
+
+- If a set of items appears frequently in transactions, then every subset of that set must also appear frequently.
+- This property helps reduce the number of candidate itemsets and improves mining efficiency.
+
+**Example:**
+
+If `{Bread, Butter, Milk}` is a frequent itemset, then the following subsets must also be frequent:
+
+```
+{Bread, Butter}
+{Bread, Milk}
+{Butter, Milk}
+{Bread}
+{Butter}
+{Milk}
+```
+
+## Types of Knowledge Discovered during Data Mining
+
+**1. Association**
+
+Finding things that appear together. Classic market basket analysis.
+
+Example: People who buy chips also buy soda.
+
+**2. Classification**
+
+Assigning data into predefined classes.
+
+The categories are already decided; we're learning how to sort new data into them.
+
+Example: Is this email spam or not spam?
+
+**3. Clustering**
+
+Grouping similar things together, but we don't define the groups in advance. <br/>
+The algorithm figures out the natural groups on its own.
+
+Example: Grouping customers by shopping habits without telling it what groups to create.
+
+**4. Prediction/Regression**
+
+Predicting values or trends.
+
+Example: Predicting future sales of a product.
+
+**5. Sequential patterns**
+
+Finds patterns that occur in a sequence. The timing and sequence is part of the pattern.
+
+Example: "People who buy a phone tend to buy a case within a week."
+
+**6. Anomaly detection**
+
+Spotting the weird stuff that doesn't fit. Used in fraud detection, network security, etc.
+
+Example: Detecting fraudulent credit card transactions.
+
+---
+
+## 2. Define the terms Support and Confidence with examples.
+
+**Support**
+
+Support measures how frequently an itemset appears in the transaction database.
+
+$$
+\text{Support}(A \rightarrow B)
+=
+\frac{\text{Number of transactions containing A and B}}
+{\text{Total number of transactions}}
+\times 100
+$$
+
+<br />
+
+**Confidence**
+
+Confidence measures how often item B appears in transactions that already contain item A.
+
+$$
+\text{Confidence}(A \rightarrow B)
+=
+\frac{\text{Number of transactions containing A and B}}
+{\text{Number of transactions containing A}}
+\times 100
+$$
+
+<br />
+
+### Example: Calculating Support and Confidence (Bread → Milk)
+
+**Transaction Database**
+
+| TID | Items               |
+| --- | ------------------- |
+| T1  | Bread, Milk         |
+| T2  | Bread, Butter       |
+| T3  | Bread, Milk, Butter |
+| T4  | Milk, Butter        |
+| T5  | Bread, Milk         |
+
+**Total Transactions = 5**
+
+**Rule: Bread → Milk**
+
+### Step 1: Calculate Support
+
+Transactions containing **Bread and Milk**:
+
+- T1
+- T3
+- T5
+
+Count = 3
+
+$$
+\text{Support}(Bread \rightarrow Milk)
+=
+\frac{3}{5}\times100
+=
+60\%
+$$
+
+
+### Step 2: Calculate Confidence
+
+Transactions containing **Bread**:
+
+- T1
+- T2
+- T3
+- T5
+
+Count = 4
+
+$$
+\text{Confidence}(Bread \rightarrow Milk)
+=
+\frac{3}{4}\times100
+=
+75\%
+$$
+
+
+### Result
+
+- **Support (Bread → Milk) = 60%**
+- **Confidence (Bread → Milk) = 75%**
+
+---
+
+---
+
+## 3. Consider the transaction database below. Using the Apriori Algorithm, find frequent itemsets with minimum support = 40% and generate association rules with minimum confidence = 80%.
+
+---
+
+---
+
+## Unit 5
+
+## 1. What is Clustering? Diff Types of Clustering Methods.
+
+---
+
+## 2. What are the features of a good cluster? Explain Hierarchical Clustering method.
+
+---
+
+## 3. Differentiate between K-Means Clustering and K-Medoid Clustering algorithms.
+
+---
+
+## 4. Define and explain Decision Tree with an example. State its advantages and disadvantages.
+
+---
+
+## 5. What is Naïve Bayesian Classification? How does it differ from Bayesian Classification?
+
+---
+
+## 6. Differentiate between Supervised Machine Learning and Unsupervised Machine Learning. How do you detect outliers from clusters?
+
+## 7. Apply K(=2)-Means algorithm on given data up to two iterations; initially choose first two objects as centroids.
