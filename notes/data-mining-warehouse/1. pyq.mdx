@@ -1,0 +1,164 @@
+---
+title: "PQY"
+description: "Previous Year Important Questions"
+---
+
+## Unit 1
+
+## 1. What do you mean by Data Warehouse? Key Features, Needs, Goals of it.
+
+A Data Warehouse is a centralized repository that stores large amounts of data collected from different sources of an organization.<br/>
+It is used for analysis, reporting, and decision-making rather than daily operations.
+
+**Key Features**:
+
+- **Subject-Oriented:** Organized by subject (e.g., sales, customers) rather than by department or process.
+- **Integrated:** Combines data from multiple sources into a consistent format.
+- **Time-Variant:** Stores historical data to identify trends over time.
+- **Non-Volatile:** Data is stable and not frequently changed. once entered, it is read-only.
+
+**Goals/Needs:**
+
+- **Integrate Data from Multiple Sources:** Combines data from different databases and systems into a single repository.
+- **Provide Historical Information:** Stores past data for trend analysis, forecasting, and strategic planning.
+- **Support Decision Making:** Provides accurate and historical data to help managers make better decisions.
+- **Enable Fast Query and Analysis:** Enables Fast queries for analysis and reporting.
+
+---
+
+## 2. Define OLAP.
+
+OLAP (Online Analytical Processing) is a technology used to analyze large volumes of data from different perspectives.<br/>
+It helps managers and analysts perform complex queries, reporting, trend analysis, and decision-making.
+
+**Example**: Analyzing yearly sales data to identify the best-performing products.
+
+---
+
+## 3. Differences b/t Operational Database Systems and a Data Warehouse.
+
+- Also known as OLTP (Online Transaction Processing) and OLAP (Online Analytical Processing).
+
+| Operational Database System (OLTP)                       | Data Warehouse (OLAP)                        |
+| -------------------------------------------------------- | -------------------------------------------- |
+| Stores current and detailed data.                        | Stores historical and summarized data.       |
+| Used for day-to-day business operations.                 | Used for analysis and decision-making.       |
+| Optimized for transaction processing.                    | Optimized for complex queries and reporting. |
+| Frequent insert, update, and delete operations are done. | Mostly read-only operations are done.        |
+| Queries are simple and fast                              | Queries are complex and analytical           |
+
+**Examples**
+
+- OLTP: A bank's transaction system records deposits, withdrawals, and balance updates every day.
+
+- OLAP: A bank manager analyzes customer transaction data from the last 5 years to identify trends and make business decisions.
+
+---
+
+## 5. Briefly explain the Data Warehouse models:
+
+### Enterprise Data Warehouse (EDW)
+
+A centralized warehouse for the entire organization that stores data from all departments. Used for overall business analysis.
+
+**E.g**, A company stores sales, HR, and finance data in one system.
+
+### Data Mart:
+
+A small part of a data warehouse focused on one specific department. It is easier and faster to use.
+
+**E.g**, Only sales department data stored for analysis.
+
+### Virtual Warehouse:
+
+A view of data from operational databases. Data is not physically stored separately. Quick to create but depends on original data sources.
+
+**Features:**
+
+- Requires less storage space.
+- Lower implementation cost.
+- Faster to set up.
+- Data is retrieved from operational systems in real time.
+
+**E.g**, Data shown directly from existing databases without full physical storage.
+
+---
+
+## 4. [VVI] Draw and explain the Three-Tier Data Warehousing Architecture with a neat diagram.
+
+<center>
+
+```
+┌─────────────────────┐
+│      Top Tier       │
+│  Query, Reporting,  │
+│  Analysis & OLAP    │
+└─────────┬───────────┘
+│
+┌─────────▼───────────┐
+│    Middle Tier      │
+│     OLAP Server     │
+│ (ROLAP/MOLAP/HOLAP) │
+└─────────┬───────────┘
+│
+┌─────────▼───────────┐
+│    Bottom Tier      │
+│   Data Warehouse    │
+│  + Data Marts       │
+└─────────┬───────────┘
+│
+┌──────────────────┼──────────────────┐
+│                  │                  │
+┌──────▼──────┐   ┌──────▼──────┐   ┌──────▼──────┐
+│ Operational │   │ External    │   │ Legacy      │
+│ Databases   │   │ Sources     │   │ Systems     │
+└─────────────┘   └─────────────┘   └─────────────┘
+```
+
+</center>
+
+### 1. Bottom Tier – Data Warehouse Database
+
+It is the foundation of the architecture. Stores integrated and historical data.
+
+- Data is collected from operational databases, external sources, and legacy systems.
+- ETL (Extract, Transform, Load) processes clean and load the data into the warehouse.
+
+**Functions:**
+
+- Data extraction
+- Data cleaning
+- Data transformation
+- Data storage
+
+### 2. Middle Tier – OLAP Server
+
+Acts as a bridge between the data warehouse and users.
+
+- Provides fast access to data for analysis.
+- Supports multidimensional analysis.
+
+**Types of OLAP Servers:**
+
+- ROLAP (Relational OLAP)
+- MOLAP (Multidimensional OLAP)
+- HOLAP (Hybrid OLAP)
+
+**Functions:**
+
+- Query processing
+- Data aggregation
+- Analytical operations
+
+### 3. Top Tier – Front-End Tools
+
+Used directly by end users, managers, and analysts.
+
+- Provides tools for querying, reporting, data mining, and visualization.
+
+**Functions:**
+
+- Report generation
+- Dashboard creation
+- Data analysis
+- Decision support
