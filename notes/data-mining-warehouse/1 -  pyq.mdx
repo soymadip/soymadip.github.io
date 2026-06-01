@@ -439,6 +439,8 @@ $$
 
 **Transaction Database**
 
+<center>
+
 | TID | Items               |
 | --- | ------------------- |
 | T1  | Bread, Milk         |
@@ -446,6 +448,8 @@ $$
 | T3  | Bread, Milk, Butter |
 | T4  | Milk, Butter        |
 | T5  | Bread, Milk         |
+
+</center>
 
 **Total Transactions = 5**
 
@@ -469,7 +473,6 @@ $$
 60\%
 $$
 
-
 ### Step 2: Calculate Confidence
 
 Transactions containing **Bread**:
@@ -488,7 +491,6 @@ $$
 =
 75\%
 $$
-
 
 ### Result
 
@@ -509,24 +511,204 @@ $$
 
 ## 1. What is Clustering? Diff Types of Clustering Methods.
 
+Clustering is the unsupervised learning technique that groups similar data objects into clusters so that objects within the same cluster are more similar to each other than those in different clusters.
+
+<big>
+    <u>**Types of Clustering**</u>
+</big>
+
+<br />
+<br />
+
+<big>**A. Partitioning Clustering**</big>
+
+Divides data into a predefined number of clusters.
+
+**Example**: K-Means Clustering.
+
+<big>**B. Hierarchical Clustering**</big>
+
+Creates a hierarchy of clusters in the form of a tree (dendrogram).
+
+Can be Agglomerative (bottom-up) or Divisive (top-down).
+
+**Example**: Hierarchical Agglomerative Clustering (HAC).
+
+<big>**C. Density-Based Clustering**</big>
+
+Forms clusters based on dense regions of data separated by sparse regions.
+
+Can identify clusters of arbitrary shapes and detect outliers.
+
+**Example**: DBSCAN (used to detect geographical hotspots from GPS location data).
+
+<big>**D. Grid-Based Clustering**</big>
+
+Divides the data space into a finite number of cells (grids) and forms clusters from them.
+
+**Example**: STING (Used in Geographic Information Systems for analyzing spatial data).
+
+<big>**E. Model-Based Clustering**</big>
+
+Assumes that data is generated from a statistical model and clusters data accordingly.
+
+**Example**: Gaussian Mixture Model (GMM) (used for image segmentation and pattern recognition).
+
 ---
 
 ## 2. What are the features of a good cluster? Explain Hierarchical Clustering method.
+
+A good cluster should have the following characteristics:
+
+1. **High Intra-cluster Similarity**: Objects within the same cluster should be very similar to each other.
+
+2. **Low Inter-cluster Similarity**: Objects belonging to different clusters should be as different as possible.
+
+3. **Compactness**: Data points in a cluster should be closely packed around the cluster center.
+
+4. **Well-Separated Clusters**: There should be clear boundaries between clusters, minimizing overlap.
+
+5. **Meaningfulness**: Clusters should represent useful and interpretable groups that make sense in the application domain.
+
+6. **Stability**: Small changes in data should not drastically change the clustering result.
+
+7. **Scalability**: The clustering method should be able to handle large datasets efficiently while maintaining cluster quality.
+
+<big>Hierarchical Clustering</big>
+
+<br />
+<br />
+
+Creates a hierarchy of clusters in the form of a tree (dendrogram).
+
+Can be Agglomerative (bottom-up) or Divisive (top-down).
+
+**Example**: Hierarchical Agglomerative Clustering (HAC).
 
 ---
 
 ## 3. Differentiate between K-Means Clustering and K-Medoid Clustering algorithms.
 
+| **K-Means Clustering**                                            | **K-Medoid Clustering**                                       |
+| ----------------------------------------------------------------- | ------------------------------------------------------------- |
+| Uses the **mean (average)** of data points as the cluster center. | Uses an **actual data point (medoid)** as the cluster center. |
+| Cluster center may not be a real data object.                     | Cluster center is always a real data object.                  |
+| Sensitive to outliers and noise.                                  | Less sensitive to outliers and noise.                         |
+| Faster and computationally efficient.                             | Slower due to higher computation.                             |
+| Suitable for large datasets.                                      | Suitable for smaller datasets and noisy data.                 |
+
 ---
 
 ## 4. Define and explain Decision Tree with an example. State its advantages and disadvantages.
+
+A Decision Tree is a supervised machine learning algorithm used for classification and regression tasks.
+It represents decisions and their possible outcomes in the form of a tree-like structure consisting of root nodes, internal nodes, branches, and leaf nodes.
+
+<center>
+
+```txt
+Root Node
+|
+Decision
+/    \
+Yes      No
+|         |
+Leaf Node  Leaf Node
+```
+
+</center>
+
+**Example**:
+
+```
+Outlook
+/    |     \
+Sunny Overcast Rain
+/          \      \
+Humidity       Play   Wind
+/    \               /   \
+High Normal         Strong Weak
+|      |             |      |
+Don't   Play        Don't    Play
+Play                Play
+```
+
+- If Outlook = Overcast → Play.
+- If Outlook = Sunny and Humidity = High → Don't Play.
+- If Outlook = Rain and Wind = Weak → Play.
+
+**Advantages of Decision Tree**
+
+- Easy to understand and interpret.
+- Can handle both numerical and categorical data.
+- Requires little data preparation.
+- Useful for classification and prediction problems.
+
+**Disadvantages of Decision Tree**
+
+- Can become complex for large datasets.
+- Prone to overfitting.
+- Small changes in data may produce different trees.
 
 ---
 
 ## 5. What is Naïve Bayesian Classification? How does it differ from Bayesian Classification?
 
+**Naïve Bayesian Classification** is a supervised machine learning algorithm based on **Bayes' Theorem**. <br/>
+It is mainly used for classification problems such as spam detection, document classification.
+
+It is called **"Naïve"** because it assumes that all features are independent of each other.
+
+**Bayes' Theorem**
+
+$$
+P(A|B) = \frac{P(B|A) \times P(A)}{P(B)}
+$$
+
+**Where:**
+
+- $P(A|B)$ = Probability of A given B
+- $P(B|A)$ = Probability of B given A
+- $P(A)$ = Prior probability of A
+- $P(B)$ = Probability of B
+
+**Features:**
+
+- Simple and fast classification algorithm.
+- Assumes independence among attributes.
+- Works well with large datasets.
+- Widely used in spam filtering and text classification.
+
+**Differences:**
+
+| Bayesian Classification                                      | Naïve Bayesian Classification                             |
+| ------------------------------------------------------------ | --------------------------------------------------------- |
+| Considers dependencies among attributes.                     | Assumes all attributes are independent.                   |
+| More complex to implement.                                   | Simple and easy to implement.                             |
+| Requires more computation.                                   | Computationally efficient.                                |
+| Gives more accurate results when feature dependencies exist. | May lose accuracy when attributes are strongly dependent. |
+| Difficult for large datasets.                                | Suitable for large datasets.                              |
+
 ---
 
 ## 6. Differentiate between Supervised Machine Learning and Unsupervised Machine Learning. How do you detect outliers from clusters?
 
-## 7. Apply K(=2)-Means algorithm on given data up to two iterations; initially choose first two objects as centroids.
+| Supervised Learning                                                                      | Unsupervised Learning                                                       |
+| ---------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| Uses labeled data.                                                                       | Uses unlabeled data.                                                        |
+| Learns by mapping inputs to known outputs.                                               | Learns by discovering hidden patterns and structures in data.               |
+| Receives feedback by comparing predictions with actual labels.                           | No feedback mechanism as there are no known labels.                         |
+| Requires manually labeled data before training.                                          | Requires little to no manual labeling.                                      |
+| Generally less complex and easier to train.                                              | Generally more complex and computationally intensive to train.              |
+| Used for Classification and Regression.                                                  | Used for Clustering, Dimensionality Reduction, and Association Rule Mining. |
+| Uses algorithms such as Linear Regression, Logistic Regression, SVM, and Decision Trees. | Uses algorithms such as K-Means Clustering, PCA, and Apriori Algorithm.     |
+
+### How to detect outliers from clusters?
+
+Outliers are data points that are significantly different from other points in a cluster.
+
+Methods to Detect Outliers:
+
+- **Distance-Based Method:** Objects located far away from cluster centers are considered outliers.
+- **Density-Based Method:** Points in low-density regions compared to neighboring points are treated as outliers.
+- **Cluster-Based Method:** Very small clusters or isolated points may indicate outliers.
