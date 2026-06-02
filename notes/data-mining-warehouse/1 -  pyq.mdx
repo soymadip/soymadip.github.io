@@ -171,11 +171,100 @@ Used directly by end users, managers, and analysts.
 
 ## 1. What do you mean by Data Mart? State its advantages and disadvantages.
 
-## 2. What do you mean by Data Mart? Briefly explain the following schemas with examples: (i) Snowflake Schema (ii) Star Schema (iii) Fact Constellation Schema.
+A small part of a data warehouse focused on one specific department.
+
+It contains only data required by specific groups of users, making it easier and faster to use.
+
+**E.g**, Only sales department data stored for analysis.
+
+**Advantages of Data Mart**
+
+- **Faster Access to Data** – Smaller size allows quicker queries and reports.
+- **Lower Cost** – Less expensive to implement and maintain than a full Data Warehouse.
+- **Department-Specific** – Provides relevant data for a particular department.
+- **Easy Implementation** – Can be developed in a shorter time.
+
+**Disadvantages of Data Mart**
+
+- **Limited Scope** – Contains data for only one department.
+- **Data Duplication** – Same data may be stored in multiple data marts.
+- **Integration Issues** – Difficult to combine data from different data marts.
+- **Inconsistent Data** – Different departments may maintain data differently.
+
+---
+
+## 2. Briefly explain the following schemas with examples: (i) Snowflake Schema (ii) Star Schema (iii) Fact Constellation Schema.
+
+i. **Star Schema**
+
+A star schema is a data warehouse design where one central fact table is shared by multiple dimension tables, forming a shape like a star.
+
+**Structure**: A central Fact Table containing numerical data (e.g., sales, profit) surrounded by Dimension Tables containing descriptive data (e.g., customer, product, time).
+
+**Use Case**: Best for simplicity and fast queries in small/medium systems.
+
+ii. **Snowflake Schema**
+
+A Snowflake Schema is an extension of the Star Schema where dimension tables are further divided into sub-dimension tables (normalized).
+
+iii. **Fact Constellation (Galaxy) Schema**
+
+A galaxy schema is a data warehouse design where common dimension tables are shared by multiple fact tables. It looks like a collection of star schemas connected together.
+
+**When is it used?**
+
+- When a system has multiple related business processes.
+- When different facts need to be analyzed together.
+- In large and complex organizations (e.g., analyzing sales + shipments + inventory together).
 
 ## 3. Differentiate between Star Schema and Snowflake Schema with diagrams.
 
+| Star Schema                          | Snowflake Schema                  |
+| ------------------------------------ | --------------------------------- |
+| Dimension tables are not normalized. | Dimension tables are normalized.  |
+| Simple structure.                    | More complex structure.           |
+| Faster query performance.            | Slower query performance.         |
+| More data redundancy.                | Less data redundancy.             |
+| Easy to design and maintain.         | Difficult to design and maintain. |
+
 ## 4. Explain ROLAP and MOLAP. Differentiate between them.
+
+**1. ROLAP (Relational Online Analytical Processing)**
+
+ROLAP stores data in relational databases (tables with rows and columns) and performs analysis using SQL queries.
+
+**Features:**
+
+- Uses relational database systems.
+- Can handle very large volumes of data.
+- Data is stored in tables.
+- Queries are executed using SQL.
+
+Example: Sales data stored in relational tables and analyzed through SQL queries.
+
+**2. MOLAP (Multidimensional Online Analytical Processing)**
+
+MOLAP stores data in multidimensional cubes and provides fast analytical processing.
+
+**Features:**
+
+- Uses multidimensional data cubes.
+- Faster query performance.
+- Data is pre-calculated and aggregated.
+- Suitable for complex analysis.
+
+Example: A sales cube showing sales by product, region, and time.
+
+### Differences between ROLAP and MOLAP
+
+| ROLAP                               | MOLAP                                  |
+| ----------------------------------- | -------------------------------------- |
+| Data stored in relational tables.   | Data stored in multidimensional cubes. |
+| Uses SQL queries for analysis.      | Uses pre-computed cubes for analysis.  |
+| Can handle very large data volumes. | Best for moderate-sized data.          |
+| Query processing is slower.         | Query processing is faster.            |
+| Requires less storage.              | Requires more storage.                 |
+| Easier to update data.              | Updating data is more complex.         |
 
 ---
 
