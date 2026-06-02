@@ -793,3 +793,22 @@ Methods to Detect Outliers:
 - **Distance-Based Method:** Objects located far away from cluster centers are considered outliers.
 - **Density-Based Method:** Points in low-density regions compared to neighboring points are treated as outliers.
 - **Cluster-Based Method:** Very small clusters or isolated points may indicate outliers.
+
+---
+
+| Partitioning Clustering                                     | Hierarchical Clustering                                                |
+| ----------------------------------------------------------- | ---------------------------------------------------------------------- |
+| Divides data into a predefined number (**K**) of clusters.  | Creates a hierarchy of clusters in a tree-like structure (Dendrogram). |
+| Requires the number of clusters to be specified in advance. | Does not require the number of clusters beforehand.                    |
+| Objects are assigned directly to clusters.                  | Clusters are formed by successive merging or splitting.                |
+| Computationally efficient for large datasets.               | More computationally expensive.                                        |
+| Produces a single partition of the data.                    | Produces multiple levels of clustering.                                |
+| Example: **K-Means, K-Medoids**.                            | Example: **Agglomerative, Divisive Clustering**.                       |
+
+| Classification                                             | Prediction                                                 |
+| ---------------------------------------------------------- | ---------------------------------------------------------- |
+| Used to assign data into predefined classes or categories. | Used to estimate or forecast a continuous numeric value.   |
+| Output is categorical (discrete).                          | Output is numeric (continuous).                            |
+| Based on labeled training data.                            | Based on historical data and trends.                       |
+| Answers the question: **"Which class does it belong to?"** | Answers the question: **"What value is likely to occur?"** |
+| Example: Spam/Not Spam, Pass/Fail.                         | Example: Predicting sales, stock prices, or temperature.   |
