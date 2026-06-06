@@ -20,4 +20,4 @@ run = "bun run dev"
 
 [tasks.format]
 description = "Format the code"
-run = "prettier '!notes/**/*mcq*.{md,mdx}' --write . "
+run = "prettier '!notes/**/*mcq*.{md,mdx}' '!/notes/**/*mcq/*.{md,mdx}' --write . "
