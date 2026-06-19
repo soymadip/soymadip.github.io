@@ -1,8 +1,15 @@
 {
-  "name": "soymadip.gitlab.io",
+  "name": "soymadip.github.io",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "bun static/compiler.js build",
-    "dev": "bun static/compiler.js dev"
+    "dev": "$npm_execpath install && porto dev",
+    "start": "$npm_execpath install && porto start",
+    "build": "$npm_execpath install && porto build",
+    "serve": "porto serve"
+  },
+  "dependencies": {
+    "@portosaur/cli": "^0.9.7",
+    "@portosaur/theme": "^0.9.7"
   }
 }

@@ -1,0 +1,140 @@
+# yaml-language-server: $schema=https://soymadip.github.io/portosaur/user/config/schema.json
+#
+
+# Custom variables for use in your content as {{custom.key}}
+vars:
+  twitter: "@soymadip"
+  github: "soymadip"
+  linkedin: "soymadip"
+
+# Site Metadata & SEO
+site:
+  # Auto set if deploying in Github/GitLab Pages
+  url: "auto"
+  path: "auto"
+
+theme:
+  footer:
+    disable_project_link: true
+
+# Page Content & Sections
+home_page:
+  hero:
+    title: "Soumadip Das"
+    profession: "FOSS Developer"
+    desc: "I tend to make solutions of real-life problems, that helps to make life less painful."
+    profile_pic: "https://avatars.githubusercontent.com/u/84225810?v=4"
+
+    social:
+      - name: "LinkedIn"
+        url: "https://www.linkedin.com/in/soymadip"
+
+      - name: "GitHub"
+        icon: "githubalt"
+        url: "https://github.com/soymadip"
+
+      - name: "Telegram"
+        url: "https://t.me/soymadip"
+
+  about:
+    enable: true
+    bio:
+      - "I'm a passionate FOSS developer with expertise in designing and building solutions for real-world problems."
+      - "My journey in software development started with a simple desire to automate repetitive tasks, specially in my PC."
+      - "I believe in the power of open-source software and the community around it. My goal is to contribute to FOSS and to continuously learn and improve my skills."
+    skills:
+      - "Python"
+      - "Bash"
+      - "Linux"
+      - "Git"
+      - "Docker"
+      - "C"
+      - "lua"
+      - "JavaScript"
+      - "CI/CD"
+
+  project_shelf:
+    enable: true
+    projects:
+      - title: "KireiSakra-Kit"
+        icon: https://raw.githubusercontent.com/soymadip/KireiSakura-Kit/refs/heads/main/Assets/icon.png
+        state: "active" # options: active, completed, maintenance, paused, archived, planned
+        desc: "A framework written in Bash for making powerful shell scripts."
+        tags: ["Bash", "Shell", "CLI"]
+        website: "https://kireisakura.soymadip.me"
+        repo: "https://github.com/soymadip/KireiSakura-Kit"
+
+      - title: "StaticShort"
+        icon: "https://raw.githubusercontent.com/soymadip/StaticShort/refs/heads/main/Assets/icon.svg"
+        bg: "#5c8f2d"
+        tags: ["tag1", "tag2", "tag3", "tag4", "tag5", "tag6", "tag7"]
+        featured: true
+        state: "completed"
+        desc: "A brief description of what this project does and the tech used."
+        website: "https://example.com"
+        repo: "https://github.com/yourname/project2"
+        demo: "https://example.com/demo"
+
+      - title: "Your Awesome Project 3"
+        icon: "https://github.com/soymadip/KireiSakura-Kit/blob/main/Assets/icon.png?raw=true"
+        bg: "#aa47be"
+        state: "completed"
+        desc: "A brief description of what this project does and the tech used."
+        website: "https://example.com"
+        repo: "https://github.com/yourname/project2"
+        demo: "https://example.com/demo"
+
+  experience:
+    enable: false
+    list:
+      - company: "Tech Solutions Inc."
+        role: "Senior Developer"
+        duration: "2022 - Present"
+        desc: "Leading the frontend team in building a high-performance dashboard."
+
+  # Reach me out section
+  social:
+    enable: true
+    links:
+      - name: "Email"
+        desc: "Send me an email"
+        url: "mailto:yourname@example.com"
+
+      - name: "LinkedIn"
+        desc: "Connect on LinkedIn"
+        url: "https://linkedin.com/in/soymadip"
+
+      - name: "Telegram"
+        desc: "Reach me on Telegram"
+        url: "https://t.me/soymadip"
+
+      - name: "Discord"
+        desc: "Become my friend"
+        url: "https://discord.com/users/yourid"
+
+      - name: "Twitter"
+        desc: "Find me on Twitter"
+        url: "https://twitter.com/soymadip"
+
+      - name: "GitLab"
+        desc: "View my GitLab profile"
+        url: "https://gitlab.com/soymadip"
+
+      - name: "Anilist"
+        desc: "If you are otaku, check out!"
+        url: "https://anilist.co/user/soymadip"
+
+tasks:
+  enable: true
+  list:
+    - title: "Build the future"
+      status: "done"
+      desc: "Implementing the core framework."
+
+# Functional Tools
+tools:
+  link_shortener:
+    enable: false
+    deploy_path: "/l"
+    short_links:
+      "example": "https://example.com"
