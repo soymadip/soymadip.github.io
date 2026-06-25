@@ -8,6 +8,8 @@ on:
       - "README.md"
       - ".gitignore"
 
+  workflow_dispatch:
+
 permissions:
   contents: read
   pages: write
@@ -35,7 +37,7 @@ jobs:
         uses: actions/cache@v5
         with:
           path: ~/.bun/install/cache
-          key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lockb') }}
+          key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lock') }}
           restore-keys: |
             ${{ runner.os }}-bun-
 
