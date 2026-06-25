@@ -1,16 +1,16 @@
 name: Deploy to GitHub Pages
 
 on:
-  push:
-    branches:
-      - content
-  workflow_dispatch:
-    inputs:
-      force_deploy:
-        description: "Force deployment"
-        required: false
-        default: true
-        type: boolean
+#   push:
+#     branches:
+#       - content
+#   workflow_dispatch:
+#     inputs:
+#       force_deploy:
+#         description: "Force deployment"
+#         required: false
+#         default: true
+#         type: boolean
 
 permissions:
   contents: write
