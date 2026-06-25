@@ -9,7 +9,7 @@
     "serve": "porto serve"
   },
   "dependencies": {
-    "@portosaur/cli": "^0.9.7",
-    "@portosaur/theme": "^0.9.7"
+    "@portosaur/cli": "^0.13.0",
+    "@portosaur/theme": "^0.13.0"
   }
 }

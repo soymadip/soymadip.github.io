@@ -1,0 +1,118 @@
+---
+title: "Variables and Data Types"
+slug: "variables-and-data-types"
+description: "Understanding Python's dynamic typing and its core built-in data types."
+---
+
+# Variables and Data Types
+
+In Python, we don't need to declare a variable's type (like `int` or `char` in C).  
+Python is **dynamically typed**, meaning it figures out the type of data based on the value we assign to it (`variable = value`).
+
+## Dynamic Typing Vs. Static Typing
+
+If you are coming from C, you might be used to writing `int a = 5;`. In Python, we just write `a = 5`. We can even change the type of data a variable holds later on, though it's usually better to keep it consistent.
+
+Use `type(variable)` to check what kind of data is currently stored.
+
+```python
+a = 10      # Initially an integer
+print(type(a))
+
+a = "Ten"   # Now it's a string
+print(type(a))
+```
+
+```text
+<class 'int'>
+<class 'str'>
+```
+
+:::note References
+Python variables are **references** to objects in memory, not the memory locations themselves.
+:::
+
+## Numeric Types
+
+Python's `int` and `float` types handle most scenarios automatically.
+
+- **Integers (`int`):** Whole numbers of arbitrary precision.
+- **Floats (`float`):** Double-precision floating-point numbers.
+- **Complex Numbers (`complex`):** Used for scientific computing, using `j` for the imaginary part.
+
+```python
+x = 10
+large_number = 10**100 # Googol
+price = 19.99
+z = 3 + 4j # Magnitude: abs(z)
+
+print(type(x))
+print(type(price))
+print(type(z))
+```
+
+```text
+<class 'int'>
+<class 'float'>
+<class 'complex'>
+```
+
+### Floating Point Precision
+
+Be careful with float comparisons. Due to how computers store decimals, `0.1 + 0.2` might not be exactly `0.3`.
+
+```python
+print(0.1 + 0.2 == 0.3)
+print(0.1 + 0.2)
+```
+
+```text
+False
+0.30000000000000004
+```
+
+## Booleans & None
+
+Logic in Python is handled by two main objects: `True` and `False`. There's also a special object called `None` which represents the absence of a value.
+
+### Truthiness
+
+Every object in Python can be evaluated in a boolean context. Empty containers (lists, strings, sets, dicts) and the number `0` are "Falsy".
+
+```python
+# Falsy values
+print(bool(0))        # False
+print(bool(""))       # False
+print(bool([]))       # False
+
+# Truthy values
+print(bool(1))        # True
+print(bool("Hello"))  # True
+```
+
+```text
+False
+False
+False
+True
+True
+```
+
+### The None Object
+
+`None` represents "nothing" or "empty". It is not the same as `0`, `False`, or an empty string. Always use `is None` for checks instead of `==`.
+
+```python
+status = None
+
+if status is None:
+    print("Status is not set yet.")
+```
+
+```text
+Status is not set yet.
+```
+
+---
+
+_Source file: 4 - variables-data-types.md_

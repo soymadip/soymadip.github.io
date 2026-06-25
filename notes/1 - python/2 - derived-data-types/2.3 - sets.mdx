@@ -1,0 +1,140 @@
+---
+title: "Sets"
+description: "Unordered collections of unique, hashable values for membership tests and deduplication."
+source:
+    - "/code/python/2-derived-data-types/19-sets.py"
+    - "/code/bash/1-variables.sh"
+---
+
+# Sets
+
+Sets are collections of unique elements. They are the go-to tool in Python when we need to remove duplicates or perform fast membership checks (`O(1)` time).
+
+Use `set()` to create an empty set, as `{}` creates an empty dictionary.
+
+## Core Set Operations
+
+Sets are **unordered** and elements must be **immutable** (like strings or integers). They are ideal for math-like operations.
+
+### Membership and Deduplication
+
+A set automatically removes any duplicate values we pass into it.
+
+```python
+# Duplicates are automatically removed
+ingredients = {"ginger", "cardamom", "ginger", "cloves"}
+print(ingredients)
+# Fast membership check
+print("ginger" in ingredients)
+```
+
+```text
+{'ginger', 'cloves', 'cardamom'}
+True
+```
+
+### Union and Intersection
+
+We can combine sets or find common elements using simple operators.
+
+```python
+A = {"apple", "banana"}
+B = {"banana", "cherry"}
+
+# Union (|): All unique items from both
+print(A | B)
+
+# Intersection (&): Only items present in both
+print(A & B)
+```
+
+```text
+{'cherry', 'banana', 'apple'}
+{'banana'}
+```
+
+### Difference and Symmetric Difference
+
+These help us find what is unique to one set or unique to both.
+
+```python
+A = {"apple", "banana"}
+B = {"banana", "cherry"}
+
+# Difference (-): Items in A but NOT in B
+print(A - B)
+
+# Symmetric Difference (^): Items in A or B, but NOT both
+print(A ^ B)
+```
+
+```text
+{'apple'}
+{'cherry', 'apple'}
+```
+
+## Adding and Removing Items
+
+- `add()`: Inserts a single item.
+- `update()`: Adds multiple items from another collection.
+- `discard()`: Removes an item safely (doesn't crash if the item is missing).
+
+```python
+# Type hinting: specify the element type inside set[]
+# See: [Modern Python Types](../1 - basics/1.9 - modern-python-types.md) for details
+spices: set[str] = {"pepper"}
+spices.add("salt")
+spices.update(["cumin", "turmeric"])
+
+# Use discard over remove to avoid KeyErrors
+spices.discard("cinnamon")
+
+print(spices)
+```
+
+**Output:**
+
+```text
+{'turmeric', 'salt', 'pepper', 'cumin'}
+```
+
+## Immutable Sets (frozenset)
+
+Standard sets are mutable. If we need a set that cannot be changed—for example, to use it as a key in a dictionary—use `frozenset`.
+
+```python
+# This set cannot be modified after creation
+immutable_spices = frozenset(["cardamom", "cloves"])
+
+print(immutable_spices)
+```
+
+```text
+frozenset({'cloves', 'cardamom'})
+```
+
+## Worth Mentioning: Set Relationships
+
+Beyond modification, sets have built-in methods to check how they relate to each other.
+
+- `isdisjoint()`: Returns `True` if two sets have no common elements.
+- `issubset()`: Returns `True` if all elements of one set are in another.
+- `issuperset()`: Returns `True` if one set contains all elements of another.
+
+```python
+A = {1, 2, 3}
+B = {4, 5, 6}
+C = {1, 2}
+
+print(A.isdisjoint(B)) # True (no overlap)
+print(C.issubset(A))   # True (C is inside A)
+print(A.issuperset(C)) # True (A contains C)
+```
+
+**Output:**
+
+```text
+True
+True
+True
+```

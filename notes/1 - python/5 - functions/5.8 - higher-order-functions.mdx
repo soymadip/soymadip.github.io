@@ -1,0 +1,70 @@
+---
+slug: "higher-order-functions"
+title: "Higher-Order Functions"
+description: "Mastering functions that take or return other functions."
+source: "/code/python/5-functions/45-higher-order-functions.py"
+---
+
+# Higher-Order Functions
+
+A **Higher-Order Function (HOF)** is a function that either:
+
+1.  Takes another function as an argument.
+2.  Returns a function as its result.
+
+This is possible because in Python, functions are **first-class objects**. We can pass them around just like integers, strings, or lists.
+
+## Functions as Arguments
+
+```python
+from typing import Callable
+
+def shout(text):
+  return text.upper()
+
+def hello(func: Callable[[str], str]) -> str:   # Callable that takes str as input and returns str
+   return func("hello")         # In runtime func becomes the passed function name
+
+print(hello(shout)) # HELLO
+```
+
+## Functions as Return Values (Closures)
+
+This pattern is fundamental for creating **Closures** and **Decorators**.
+
+```python
+from typing import Callable
+
+def to_the_power(power: int) -> Callable[[int], int]:
+    def result(num: int) -> int:
+        return num**power
+    return result
+
+square = to_the_power(2)
+print(square(10)) # 100
+```
+
+## Built-in HOFs
+
+| Function             | Purpose                                                |
+| :------------------- | :----------------------------------------------------- |
+| `map(func, iter)`    | Applies `func` to every item in the iterable.          |
+| `filter(func, iter)` | Returns items where `func` returns `True`.             |
+| `reduce(func, seq)`  | Performs a rolling computation (requires `functools`). |
+
+:::tip Pythonic Choice
+While `map()` and `filter()` are common in functional programming, Python developers typically prefer **List Comprehensions** for simple operations as they are often more readable.
+
+```python
+# Instead of map:
+squares = [num**2 for num in nums]
+
+# Instead of filter:
+evens = [x for x in lst if x % 2 == 0]
+```
+
+:::
+
+:::warning Exhaustion
+Built-in HOFs return **Iterators**. Once we pull the values out (e.g., via `list()`), the iterator is exhausted and cannot be reused.
+:::

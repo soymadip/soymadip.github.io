@@ -32,21 +32,21 @@ Convert `static/code/` examples into concise `notes/` pages targeted at an **int
 ### Topic Folder Pattern
 
 - Topic **has exercises** → create a folder `<number> - <name>/` with:
-  - `index.mdx` — theory, no `sidebar_position`
+  - `README.mdx` — theory, no `sidebar_position`
   - exercise files inside the folder
-- Topic **has no exercises** → standalone file `<number> - <name>.mdxx`
+- Topic **has no exercises** → standalone file `<number> - <name>.mdx`
 - Do not change code files unless a filename change is needed or explicitly asked. Code filenames shouldn't contain any spaces, special characters, in this case rename.
 
 ### Visual Example
 
 ```text
 notes/python/5 - Functions/
-├── index.mdx
+├── README.mdx
 ├── 5.1 - basics/
-│   ├── index.mdx
+│   ├── README.mdx
 │   └── 5.1.1 - Exercise 19.mdx
 ├── 5.2 - scope/
-│   ├── index.mdx
+│   ├── README.mdx
 │   └── 5.2.1 - Exercise 20.mdx
 └── 5.3 - recursion.mdx
 ```
@@ -66,15 +66,12 @@ notes/python/5 - Functions/
 
 ### Frontmatter (Mandatory)
 
-All string values in double quotes.
-
 ```yaml
-id: "hyphenated-unique-id" # in language-level indexes, it should be language-name
 title: "Title Case Title"
-description: "One-line summary." # must
-source_filename: "original-filename.py"
-# sidebar_position: only on language-level index.mdx
-# sidebar_title: optional, if sidebar label should differ from title
+slug: "hyphenated-slug" # if needed
+description: "One-line summary." # must be concise and informative, no more than 100ish characters
+source: "/code/path/to/source.py" # string if one file, array of string if multiple files
+sidebar_label: optional, if sidebar label should differ from title
 ```
 
 ### Content Rules
@@ -84,13 +81,13 @@ source_filename: "original-filename.py"
 - **Verification:** Run every code block with `uv run <file>.py` and show exact output.
 - Always use Title Case for all headings. No syntax or code in headings.
 - Use Docusaurus callouts (`:::tip`, `:::note`, `:::warning`) with Title Case labels.
-- No `sidebar_position` in individual notes or sub-section index files.
 - Sanitize filenames: replace `:` with `-`.
 
 ## Exercise Notes
 
 Follow all regular note rules, plus:
 
+- **slug**: `exercise-<number>` (e.g., `exercise-1`)
 - **Filename:** `<number> - Exercise <number> - <name>.mdx`
 - **H1:** `Ex <number>: <name>` (no syntax in heading)
 - **Sections:**

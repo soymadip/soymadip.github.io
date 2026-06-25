@@ -12,8 +12,10 @@ site:
   # Auto set if deploying in Github/GitLab Pages
   url: "auto"
   path: "auto"
+  edit_url: "https://github.com/soymadip/soymadip.github.io/edit/"
 
 theme:
+  color_scheme: catppuccin
   footer:
     disable_project_link: true
 
@@ -38,6 +40,7 @@ home_page:
 
   about:
     enable: true
+    image: "{{home_page.hero.profile_pic}}"
     bio:
       - "I'm a passionate FOSS developer with expertise in designing and building solutions for real-world problems."
       - "My journey in software development started with a simple desire to automate repetitive tasks, specially in my PC."
@@ -56,33 +59,34 @@ home_page:
   project_shelf:
     enable: true
     projects:
+      - title: "StaticShort"
+        icon: "https://raw.githubusercontent.com/soymadip/StaticShort/refs/heads/main/Assets/icon.svg"
+        bg: "#2e52ba"
+        tags: ["link-shortner", "static"]
+        featured: true
+        state: "completed"
+        desc: "A simple static URL shortner - no backend required, just static hosting!"
+        repo: "https://github.com/soymadip/StaticShort"
+        demo: "soymadip.github.io/StaticShort/"
+
+      - title: "Portosaur"
+        featured: true
+        icon: "https://raw.githubusercontent.com/soymadip/portosaur/refs/heads/main/packages/theme/assets/img/icon.png"
+        bg: "#388e3c"
+        state: "completed"
+        desc: "Complete portfolio and personal website solution for your digital personality."
+        website: "https://soymadip.github.io/portosaur/"
+        repo: "https://github.com/soymadip/portosaur"
+        demo: "https://soymadip.github.io/"
+
       - title: "KireiSakra-Kit"
         icon: https://raw.githubusercontent.com/soymadip/KireiSakura-Kit/refs/heads/main/Assets/icon.png
+        bg: "#aa47be"
         state: "active" # options: active, completed, maintenance, paused, archived, planned
         desc: "A framework written in Bash for making powerful shell scripts."
         tags: ["Bash", "Shell", "CLI"]
-        website: "https://kireisakura.soymadip.me"
+        website: "https://soymadip.github.io/KireiSakura-Kit/"
         repo: "https://github.com/soymadip/KireiSakura-Kit"
-
-      - title: "StaticShort"
-        icon: "https://raw.githubusercontent.com/soymadip/StaticShort/refs/heads/main/Assets/icon.svg"
-        bg: "#5c8f2d"
-        tags: ["tag1", "tag2", "tag3", "tag4", "tag5", "tag6", "tag7"]
-        featured: true
-        state: "completed"
-        desc: "A brief description of what this project does and the tech used."
-        website: "https://example.com"
-        repo: "https://github.com/yourname/project2"
-        demo: "https://example.com/demo"
-
-      - title: "Your Awesome Project 3"
-        icon: "https://github.com/soymadip/KireiSakura-Kit/blob/main/Assets/icon.png?raw=true"
-        bg: "#aa47be"
-        state: "completed"
-        desc: "A brief description of what this project does and the tech used."
-        website: "https://example.com"
-        repo: "https://github.com/yourname/project2"
-        demo: "https://example.com/demo"
 
   experience:
     enable: false

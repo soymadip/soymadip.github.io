@@ -1,0 +1,51 @@
+---
+slug: "dictionary-comprehensions"
+title: "Dictionary Comprehensions"
+description: "Building key-value pairs using concise curly brace syntax."
+source: "/code/python/6-comprehensions/50-dict-cmprhns.py"
+---
+
+# Dictionary Comprehensions
+
+Dictionary comprehensions allow us to create new dictionaries by specifying both a **key** and a **value** expression, separated by a colon `:`.
+
+## Mapping and Transforming Data
+
+We use dictionary comprehensions to transform existing dictionaries or build new ones from other iterables.
+
+```python
+tea_price_inr = {"Masala Chai": 10, "Green Chai": 50}
+
+# Convert prices from INR to USD (assuming 1 USD = 80 INR)
+tea_dollar = {key: val / 80 for key, val in tea_price_inr.items()}
+
+print(tea_dollar)
+```
+
+**Output:**
+
+```text
+{'Masala Chai': 0.125, 'Green Chai': 0.625}
+```
+
+## Creating Dicts from Iterables
+
+We can also create dictionaries from lists using logic to determine keys or values.
+
+```python
+names = ["Alice", "Bob", "Charlie"]
+
+# Create a mapping of Name -> Length
+name_lengths = {name: len(name) for name in names}
+print(name_lengths)
+```
+
+**Output:**
+
+```text
+{'Alice': 5, 'Bob': 3, 'Charlie': 7}
+```
+
+:::tip Items Method
+When iterating over an existing dictionary for a comprehension, always use `.items()` if we need to access both the key and the value simultaneously.
+:::

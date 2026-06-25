@@ -1,0 +1,123 @@
+---
+title: Font Comparison
+icon: FaFont
+description: Comparing UI font candidates for Portosaur
+unlisted: true
+---
+
+<style>{`
+  @import url('https://fonts.googleapis.com/css2?family=Alata&family=Outfit:wght@400;700;900&family=Geologica:wght@400;700;900&family=Space+Grotesk:wght@400;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,700;0,9..40,900&family=Plus+Jakarta+Sans:wght@400;700;800&family=Poppins:wght@400;700;900&display=swap');
+`}</style>
+
+# Font Comparison
+
+UI font candidates to replace **Alata** as the global UI font. Lexend is already used for docs/blog content, so this font only needs to shine in **navbar, headings, cards, sidebar, and buttons**.
+
+export const FontCard = ({ name, family, maxWeight = 900, note, tag, tagColor }) => (
+  <div style={{
+    padding: '1.5rem',
+    border: '1px solid var(--ifm-color-emphasis-200)',
+    borderRadius: '12px',
+    background: 'var(--ifm-card-background-color)',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.6rem',
+    position: 'relative',
+  }}>
+    {tag && (
+      <span style={{
+        position: 'absolute', top: '1rem', right: '1rem',
+        fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.06em',
+        textTransform: 'uppercase',
+        color: tagColor || 'var(--ifm-color-primary)',
+        background: 'color-mix(in srgb, currentColor 12%, transparent)',
+        padding: '0.2rem 0.55rem', borderRadius: '99px',
+      }}>{tag}</span>
+    )}
+
+    <div style={{
+      fontSize: '0.7rem', fontWeight: 700, opacity: 0.45,
+      letterSpacing: '0.08em', textTransform: 'uppercase',
+      fontFamily: 'system-ui',
+    }}>{name}</div>
+
+    <div style={{ fontFamily: family, fontWeight: maxWeight, fontSize: '2rem', lineHeight: 1.1, letterSpacing: '-0.01em' }}>
+      Quick Brown Fox
+    </div>
+
+    <div style={{ fontFamily: family, fontWeight: 700, fontSize: '1.2rem', lineHeight: 1.3 }}>
+      Heading Bold (700) — AaBbCcDd
+    </div>
+
+    <div style={{ fontFamily: family, fontWeight: 400, fontSize: '0.95rem', lineHeight: 1.65, opacity: 0.8 }}>
+      The quick brown fox jumps over the lazy dog. <br/>
+      0 1 2 3 4 5 6 7 8 9 — Navbar · Sidebar · Cards · Buttons
+    </div>
+
+    {note && (
+      <div style={{
+        fontSize: '0.75rem', opacity: 0.5, marginTop: '0.25rem',
+        fontStyle: 'italic', fontFamily: 'system-ui',
+      }}>{note}</div>
+    )}
+
+  </div>
+);
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.25rem', marginTop: '1.5rem' }}>
+
+<FontCard
+    name="Alata — Was"
+    family='"Alata", sans-serif'
+    maxWeight={400}
+    note="Only weight 400. Bold is faked by the browser."
+    tag="Old"
+    tagColor="var(--ifm-color-danger)"
+/>
+
+<FontCard
+    name="Outfit — Current"
+    family='"Outfit", sans-serif'
+    note="Closest to Alata. Clean geometric, variable 100–900."
+    tag="Current"
+    tagColor="var(--ifm-color-primary)"
+/>
+
+<FontCard
+    name="Geologica"
+    family='"Geologica", sans-serif'
+    note="Humanist sans with a precise, technical feel. Variable 100–900. Distinctive without being loud."
+/>
+
+<FontCard
+    name="Space Grotesk"
+    family='"Space Grotesk", sans-serif'
+    maxWeight={700}
+    note="Quirky geometric details (r, G, 5). Max weight 700 — no true Black. Great for dev portfolios."
+/>
+
+<FontCard
+    name="DM Sans"
+    family='"DM Sans", sans-serif'
+    note="Elegant and editorial. Pairs beautifully with Lexend. Used by premium doc sites."
+/>
+
+<FontCard
+    name="Plus Jakarta Sans"
+    family='"Plus Jakarta Sans", sans-serif'
+    maxWeight={800}
+    note="Refined humanist geometric. Max weight 800. Polished and warm."
+/>
+
+<FontCard
+    name="Poppins"
+    family='"Poppins", sans-serif'
+    note="Rounded and friendly. Very popular. Warmer feel than the others."
+/>
+
+</div>
+
+{/* 
+<Btn href="https://example.com" disabled primary hintTop>
+    This is button
+</Btn>*/}

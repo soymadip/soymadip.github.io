@@ -1,0 +1,261 @@
+---
+title: UI Components Demo
+description: A step-by-step practical demonstration of Btn and Dropdown components from basic to advanced.
+unlisted: true
+---
+
+# UI Components Playground
+
+This page demonstrates the `<Btn>` and `<Dropdown>` components in a structured, progressive layout, going from basic usage to advanced use cases.
+
+---
+
+## 1. Btn Component
+
+The `<Btn>` component is a versatile element that handles semantic coloring, custom icons, and automatic secure link routing.
+
+### Basic Button
+
+A standard button defaults to the `neutral` variant.
+
+<div style={{ display: "flex", gap: "8px", marginBottom: "24px" }}>
+    <Btn>Default Button</Btn>
+    <Btn disabled>Disabled Button</Btn>
+</div>
+
+### Color Variants
+
+Choose from multiple semantic colors to establish visual hierarchy.
+
+<div
+    style={{
+        display: "flex",
+        gap: "8px",
+        flexWrap: "wrap",
+        marginBottom: "24px",
+    }}
+>
+    <Btn primary>Primary</Btn>
+    <Btn secondary>Secondary</Btn>
+    <Btn success>Success</Btn>
+    <Btn info>Info</Btn>
+    <Btn warning>Warning</Btn>
+    <Btn danger>Danger</Btn>
+    <Btn>Neutral</Btn>
+</div>
+
+### Btn with Icons
+
+You can easily pass Emojis or image URLs to the `icon` prop. The button automatically scales and aligns the icon.
+
+<div
+    style={{
+        display: "flex",
+        gap: "12px",
+        flexWrap: "wrap",
+        marginBottom: "24px",
+    }}
+>
+    <Btn icon="🚀" primary>
+        Launch App
+    </Btn>
+    <Btn icon="⚙️">Settings</Btn>
+    <Btn
+        icon="https://github.githubassets.com/favicons/favicon.svg"
+    >
+        GitHub
+    </Btn>
+</div>
+
+### Btn with Tooltip (Hint)
+
+Pass a string to the `desc` or `hint` prop to automatically show a styled tooltip when hovering over the button.
+
+<div
+    style={{
+        display: "flex",
+        gap: "12px",
+        flexWrap: "wrap",
+        marginBottom: "24px",
+    }}
+>
+    <Btn
+        primary
+        hint="This action triggers a background deployment process."
+    >
+        Deploy (Tooltip Top)
+    </Btn>
+    <Btn
+        danger
+        desc="Warning: This action is destructive and cannot be undone!"
+    >
+        Delete (Tooltip Bottom)
+    </Btn>
+    <Btn success hint="Saves progress locally.">
+        Save (Tooltip Right)
+    </Btn>
+    <Btn success hint="Saves progress locally.">
+        Save (Tooltip left)
+    </Btn>
+</div>
+
+### Customizing Btn Appearance
+
+You can pass inline styles or classes directly using the `style` prop to adjust padding, borders, or backgrounds.
+
+<div
+    style={{
+        display: "flex",
+        gap: "12px",
+        flexWrap: "wrap",
+        marginBottom: "24px",
+    }}
+>
+    <Btn
+        style={{
+            borderRadius: "50px",
+            padding: "12px 24px",
+            textTransform: "uppercase",
+            fontSize: "0.75rem",
+            fontWeight: "bold",
+        }}
+        primary
+    >
+        Pill Button
+    </Btn>
+    <Btn
+        style={{
+            background: "linear-gradient(135deg, #cba6f7, #89b4fa)",
+            border: "none",
+            color: "#1e1e2e",
+        }}
+    >
+        Gradient Button
+    </Btn>
+</div>
+
+### Btn Link
+
+Combining link redirection (`href`), custom variants, and icons for a functional profile contact block:
+
+<div
+    style={{
+        display: "flex",
+        gap: "12px",
+        padding: "16px",
+        background: "var(--ifm-dropdown-background-color)",
+        borderRadius: "8px",
+        marginBottom: "32px",
+    }}
+>
+    <Btn info icon="🐦" href="https://twitter.com">
+        Follow Updates
+    </Btn>
+    <Btn primary icon="✉️" href="mailto:hello@example.com">
+        Get in Touch
+    </Btn>
+    <Btn icon="🐙" href="https://github.com">
+        Browse Source
+    </Btn>
+</div>
+
+---
+
+## 2. Dropdown Component
+
+The `<Dropdown>` component attaches a smooth, hover-triggered overlay menu to a target element, complete with click toggling and a hover-delay safety net.
+
+### Basic Dropdown (Simple Label)
+
+The simplest way to use a dropdown is by providing a `label` prop. It automatically creates a default button trigger.
+
+<Dropdown
+    label="Quick Links"
+    primary
+    icon="⚡"
+    items={[
+        { label: "Home Page", icon: "🏠", href: "/blog" },
+        { label: "Documentation", icon: "📚", href: "/blog" },
+    ]}
+/>
+
+### Dropdown with Custom Triggers
+
+If you want to customize the button variant or use HTML elements as triggers, pass them to the `trigger` prop.
+
+<div style={{ display: 'flex', gap: '24px', alignItems: 'center', marginBottom: '24px' }}>
+  {/* Customized Button trigger */}
+  <Dropdown
+    trigger={<Btn success icon="⬇️">Download File</Btn>}
+    items={[
+      { id: 'pdf', label: 'Portable Document (.pdf)', icon: '📄' },
+      { id: 'zip', label: 'Compressed Source (.zip)', icon: '📦' }
+    ]}
+  />
+
+{/* Custom styled text trigger */}
+
+  <Dropdown
+    trigger={
+      <span style={{ cursor: 'pointer', fontWeight: '600', color: 'var(--ifm-color-primary)' }}>
+        ⚙️ Settings Manager
+      </span>
+    }
+    items={[
+      { id: 'profile', label: 'Edit Profile', icon: '👤' },
+      { id: 'billing', label: 'Manage Billing', icon: '💳' }
+    ]}
+  />
+</div>
+
+### Active Items and Custom Actions
+
+Dropdown list items support an `active` state (highlighting the selection) and direct `onClick` actions.
+
+<div style={{ marginBottom: "24px" }}>
+    <Dropdown
+        label="Select Theme"
+        items={[
+            { id: "light", label: "Light Mode", icon: "☀️" },
+            {
+                id: "dark",
+                label: "Dark Mode (Active)",
+                icon: "🌙",
+                active: true,
+            },
+            { id: "system", label: "System Theme", icon: "💻" },
+        ]}
+    />
+</div>
+
+### Advanced Use Case: Unified Download Center
+
+Here is a complete setup mimicking a professional release dashboard, combining a direct primary download button, a version selection dropdown, and an archive dropdown side-by-side:
+
+<div style={{ display: 'flex', gap: '12px', alignItems: 'center', padding: '16px', background: 'var(--ifm-dropdown-background-color)', borderRadius: '8px' }}>
+  <Btn primary icon="🚀" href="https://example.com/latest">
+    Download Latest (v2.0)
+  </Btn>
+
+<Dropdown
+    trigger={
+        <Btn success icon="📦">
+            Formats
+        </Btn>
+    }
+    items={[
+        { id: "mac", label: "macOS (.dmg)", icon: "🍎" },
+        { id: "win", label: "Windows (.exe)", icon: "🪟" },
+        { id: "linux", label: "Linux (.AppImage)", icon: "🐧" },
+    ]}
+/>
+
+  <Dropdown
+    label="Legacy Versions"
+    divider
+    items={[
+      { id: '1.9', label: 'Version 1.9', icon: '📄' },
+      { id: '1.8', label: 'Version 1.8', icon: '📄' }
+    ]}
+  />
+</div>

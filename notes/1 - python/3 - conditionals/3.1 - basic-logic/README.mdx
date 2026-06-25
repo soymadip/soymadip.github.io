@@ -1,0 +1,95 @@
+---
+title: "Basic Logic"
+description: "Handling multi-way decisions, nested branches, and input normalization."
+source:
+    - "/code/python/3-conditionals/23-conditionals-input.py"
+    - "/code/python/3-conditionals/24-chai-price-calc.py"
+    - "/code/python/3-conditionals/25-nested-conditionals.py"
+    - "/code/python/3-conditionals/26-delivery-fees-wager.py"
+topic_list: false
+---
+
+# Conditionals and Input
+
+Conditionals allow our program to make decisions using `if`, `elif`, and `else` to control the flow of execution. Only the first **True** branch in a chain will execute.
+
+## Normalizing Input
+
+When accepting text from a user, always use `.strip().lower()` to clean it up first. This prevents bugs caused by extra spaces or unexpected capitalization during comparisons.
+
+```python
+# Assuming user enters " Medium "
+user_input = input("Choose a size (Small/Medium/Large): ").strip().lower()
+
+if user_input == "small":
+    price = 10
+elif user_input == "medium":
+    price = 30
+else:
+    price = 50
+
+print(f"Price: {price}")
+```
+
+```text
+Choose a size (Small/Medium/Large):  Medium
+Price: 30
+```
+
+:::tip
+For repeating a prompt until the user gives a valid answer, see Validation Loops.
+:::
+
+## Nested Conditionals
+
+Use nested `if` statements for checks that depend on a previous result.
+
+```python
+device_status = "active"
+temp = 38
+
+if device_status == "active":
+    if temp > 35:
+        print("Warning: High temperature!")
+    else:
+        print("Temperature is normal")
+else:
+    print("System is offline.")
+```
+
+```text
+Warning: High temperature!
+```
+
+## The Ternary Operator
+
+For simple assignments, a one-line ternary expression is more **Pythonic**. It allows for simple `if/else` assignments that read like an English sentence.
+
+```python
+order_total = 320
+
+# format: [value_if_true] if [condition] else [value_if_false]
+delivery_fee = 0 if order_total > 300 else 30
+
+print(f"Delivery fee: {delivery_fee}")
+```
+
+```text
+Delivery fee: 0
+```
+
+## Converting Types for Comparisons
+
+Remember that `input()` always returns a string. We must explicitly cast it for numeric comparisons.
+
+```python
+# Assuming user enters "20"
+age = int(input("Enter our age: "))
+if age >= 18:
+    print("Access granted.")
+```
+
+```text
+Enter our age: 20
+Access granted.
+```

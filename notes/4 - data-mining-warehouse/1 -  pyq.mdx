@@ -1,0 +1,814 @@
+---
+title: "PYQ"
+description: "Previous Year Important Questions"
+---
+
+## Unit 1
+
+## 1. What do you mean by Data Warehouse? Key Features, Needs, Goals of it.
+
+A Data Warehouse is a centralized repository that stores large amounts of data collected from different sources of an organization.<br/>
+It is used for analysis, reporting, and decision-making rather than daily operations.
+
+**Key Features**:
+
+- **Subject-Oriented:** Organized by subject (e.g., sales, customers) rather than by department or process.
+- **Integrated:** Combines data from multiple sources into a consistent format.
+- **Time-Variant:** Stores historical data to identify trends over time.
+- **Non-Volatile:** Data is stable and not frequently changed. once entered, it is read-only.
+
+**Goals/Needs:**
+
+- **Integrate Data from Multiple Sources:** Combines data from different databases and systems into a single repository.
+- **Provide Historical Information:** Stores past data for trend analysis, forecasting, and strategic planning.
+- **Support Decision Making:** Provides accurate and historical data to help managers make better decisions.
+- **Enable Fast Query and Analysis:** Enables Fast queries for analysis and reporting.
+
+---
+
+## 2. Define OLAP.
+
+OLAP (Online Analytical Processing) is a technology used to analyze large volumes of data from different perspectives.<br/>
+It helps managers and analysts perform complex queries, reporting, trend analysis, and decision-making.
+
+**Example**: Analyzing yearly sales data to identify the best-performing products.
+
+---
+
+## 3. Differences b/t Operational Database Systems and a Data Warehouse.
+
+- Also known as OLTP (Online Transaction Processing) and OLAP (Online Analytical Processing).
+
+| Operational Database System (OLTP)                       | Data Warehouse (OLAP)                        |
+| -------------------------------------------------------- | -------------------------------------------- |
+| Stores current and detailed data.                        | Stores historical and summarized data.       |
+| Used for day-to-day business operations.                 | Used for analysis and decision-making.       |
+| Optimized for transaction processing.                    | Optimized for complex queries and reporting. |
+| Frequent insert, update, and delete operations are done. | Mostly read-only operations are done.        |
+| Queries are simple and fast                              | Queries are complex and analytical           |
+
+**Examples**
+
+- OLTP: A bank's transaction system records deposits, withdrawals, and balance updates every day.
+
+- OLAP: A bank manager analyzes customer transaction data from the last 5 years to identify trends and make business decisions.
+
+---
+
+## 5. Briefly explain the Data Warehouse models:
+
+### Enterprise Data Warehouse (EDW)
+
+A centralized warehouse for the entire organization that stores data from all departments. Used for overall business analysis.
+
+**E.g**, A company stores sales, HR, and finance data in one system.
+
+### Data Mart:
+
+A small part of a data warehouse focused on one specific department. It is easier and faster to use.
+
+**E.g**, Only sales department data stored for analysis.
+
+### Virtual Warehouse:
+
+A view of data from operational databases. Data is not physically stored separately. Quick to create but depends on original data sources.
+
+**Features:**
+
+- Requires less storage space.
+- Lower implementation cost.
+- Faster to set up.
+- Data is retrieved from operational systems in real time.
+
+**E.g**, Data shown directly from existing databases without full physical storage.
+
+---
+
+## 4. Draw and explain the Three-Tier Data Warehousing Architecture with a neat diagram.
+
+<center>
+
+```txt
+┌─────────────────────┐
+│      Top Tier       │
+│  Query, Reporting,  │
+│  Analysis & OLAP    │
+└─────────┬───────────┘
+│
+┌─────────▼───────────┐
+│    Middle Tier      │
+│     OLAP Server     │
+│ (ROLAP/MOLAP/HOLAP) │
+└─────────┬───────────┘
+│
+┌─────────▼───────────┐
+│    Bottom Tier      │
+│   Data Warehouse    │
+│  + Data Marts       │
+└─────────┬───────────┘
+│
+┌──────────────────┼──────────────────┐
+│                  │                  │
+┌──────▼──────┐   ┌──────▼──────┐   ┌──────▼──────┐
+│ Operational │   │ External    │   │ Legacy      │
+│ Databases   │   │ Sources     │   │ Systems     │
+└─────────────┘   └─────────────┘   └─────────────┘
+```
+
+</center>
+
+### 1. Bottom Tier – Data Warehouse Database
+
+It is the foundation of the architecture. Stores integrated and historical data.
+
+- Data is collected from operational databases, external sources, and legacy systems.
+- ETL (Extract, Transform, Load) processes clean and load the data into the warehouse.
+
+**Functions:**
+
+- Data extraction
+- Data cleaning
+- Data transformation
+- Data storage
+
+### 2. Middle Tier – OLAP Server
+
+Acts as a bridge between the data warehouse and users.
+
+- Provides fast access to data for analysis.
+- Supports multidimensional analysis.
+
+**Types of OLAP Servers:**
+
+- ROLAP (Relational OLAP)
+- MOLAP (Multidimensional OLAP)
+- HOLAP (Hybrid OLAP)
+
+**Functions:**
+
+- Query processing
+- Data aggregation
+- Analytical operations
+
+### 3. Top Tier – Front-End Tools
+
+Used directly by end users, managers, and analysts.
+
+- Provides tools for querying, reporting, data mining, and visualization.
+
+**Functions:**
+
+- Report generation
+- Dashboard creation
+- Data analysis
+- Decision support
+
+---
+
+---
+
+## Unit 2
+
+## 1. What do you mean by Data Mart? State its advantages and disadvantages.
+
+A small part of a data warehouse focused on one specific department.
+
+It contains only data required by specific groups of users, making it easier and faster to use.
+
+**E.g**, Only sales department data stored for analysis.
+
+**Advantages of Data Mart**
+
+- **Faster Access to Data** – Smaller size allows quicker queries and reports.
+- **Lower Cost** – Less expensive to implement and maintain than a full Data Warehouse.
+- **Department-Specific** – Provides relevant data for a particular department.
+- **Easy Implementation** – Can be developed in a shorter time.
+
+**Disadvantages of Data Mart**
+
+- **Limited Scope** – Contains data for only one department.
+- **Data Duplication** – Same data may be stored in multiple data marts.
+- **Integration Issues** – Difficult to combine data from different data marts.
+- **Inconsistent Data** – Different departments may maintain data differently.
+
+---
+
+## 2. Briefly explain the following schemas with examples: (i) Snowflake Schema (ii) Star Schema (iii) Fact Constellation Schema.
+
+i. **Star Schema**
+
+A star schema is a data warehouse design where one central fact table is shared by multiple dimension tables, forming a shape like a star.
+
+**Structure**: A central Fact Table containing numerical data (e.g., sales, profit) surrounded by Dimension Tables containing descriptive data (e.g., customer, product, time).
+
+**Use Case**: Best for simplicity and fast queries in small/medium systems.
+
+ii. **Snowflake Schema**
+
+A Snowflake Schema is an extension of the Star Schema where dimension tables are further divided into sub-dimension tables (normalized).
+
+iii. **Fact Constellation (Galaxy) Schema**
+
+A galaxy schema is a data warehouse design where common dimension tables are shared by multiple fact tables. It looks like a collection of star schemas connected together.
+
+**When is it used?**
+
+- When a system has multiple related business processes.
+- When different facts need to be analyzed together.
+- In large and complex organizations (e.g., analyzing sales + shipments + inventory together).
+
+## 3. Differentiate between Star Schema and Snowflake Schema with diagrams.
+
+| Star Schema                          | Snowflake Schema                  |
+| ------------------------------------ | --------------------------------- |
+| Dimension tables are not normalized. | Dimension tables are normalized.  |
+| Simple structure.                    | More complex structure.           |
+| Faster query performance.            | Slower query performance.         |
+| More data redundancy.                | Less data redundancy.             |
+| Easy to design and maintain.         | Difficult to design and maintain. |
+
+## 4. Explain ROLAP and MOLAP. Differentiate between them.
+
+**1. ROLAP (Relational Online Analytical Processing)**
+
+ROLAP stores data in relational databases (tables with rows and columns) and performs analysis using SQL queries.
+
+**Features:**
+
+- Uses relational database systems.
+- Can handle very large volumes of data.
+- Data is stored in tables.
+- Queries are executed using SQL.
+
+Example: Sales data stored in relational tables and analyzed through SQL queries.
+
+**2. MOLAP (Multidimensional Online Analytical Processing)**
+
+MOLAP stores data in multidimensional cubes and provides fast analytical processing.
+
+**Features:**
+
+- Uses multidimensional data cubes.
+- Faster query performance.
+- Data is pre-calculated and aggregated.
+- Suitable for complex analysis.
+
+Example: A sales cube showing sales by product, region, and time.
+
+### Differences between ROLAP and MOLAP
+
+| ROLAP                               | MOLAP                                  |
+| ----------------------------------- | -------------------------------------- |
+| Data stored in relational tables.   | Data stored in multidimensional cubes. |
+| Uses SQL queries for analysis.      | Uses pre-computed cubes for analysis.  |
+| Can handle very large data volumes. | Best for moderate-sized data.          |
+| Query processing is slower.         | Query processing is faster.            |
+| Requires less storage.              | Requires more storage.                 |
+| Easier to update data.              | Updating data is more complex.         |
+
+---
+
+---
+
+## Unit 3
+
+## 1. What is Data Mining? various applications of it
+
+Data Mining is the process of extracting useful patterns, relationships, and hidden information from large amounts of data using statistical, machine learning, and database techniques.
+
+It helps organizations make better decisions by converting raw data into meaningful information.
+
+**Example:**
+
+An online shopping company analyzes customer purchase data to recommend products.
+
+### Applications
+
+**1. Market Basket Analysis**
+
+Identifies which products that are frequently purchased together.<br/>
+Helps in product placement and promotions.
+
+**Example**: Customers who buy bread often buy butter.
+
+**2. Healthcare**
+
+Helps in disease diagnosis and treatment planning.<br/>
+Predicts patient health risks.
+
+**Example**: Predicting the risk of diabetes from patient records.
+
+**3. Retail and E-Commerce**
+
+Analyzes customer buying behavior.
+Provides personalized product recommendations.
+
+**Example**: Amazon recommending products based on previous purchases.
+
+**4. Education**
+
+Analyzes student performance.
+Identifies students who need additional support.
+
+**Example**: Predicting students at risk of failing.
+
+**5. Manufacturing**
+
+Improves product quality and production efficiency.
+Predicts equipment failures.
+
+**Example**: Detecting machine maintenance needs before breakdowns.
+
+**6. Fraud Detection**
+
+Detects suspicious activities in banking, insurance, and online transactions.
+
+**Example**: Finding fake insurance claims.
+
+---
+
+## 2. What is KDD? Steps of KDD. How is it different from the Data Mining?
+
+KDD or Knowledge Discovery in Databases refers to the complete process of finding knowledge from large datasets.
+
+### Steps in the KDD Process
+
+:::note
+aka: State the steps involved in Data Mining when viewed as a process of Knowledge Discovery.
+:::
+
+1. **Data Selection**: Relevant data is selected from various sources.
+
+2. **Data Cleaning**: Errors, duplicate records, and missing values are removed.
+
+3. **Data Transformation**: Data is converted into a format suitable for mining.
+
+4. **Data Mining**: Various Techniques are applied to discover patterns and relationships.
+
+5. **Pattern Evaluation**: Interesting and useful patterns are identified and evaluated.
+
+6. **Knowledge Presentation**: The discovered knowledge is presented to users for decision-making.
+
+### Differences between KDD and Data Mining
+
+| Data Mining                                    | KDD (Knowledge Discovery in Databases)                                          |
+| ---------------------------------------------- | ------------------------------------------------------------------------------- |
+| A step in the KDD process.                     | The complete process of discovering knowledge from data.                        |
+| Focuses on finding patterns and relationships. | Includes data selection, cleaning, transformation, data mining, and evaluation. |
+| Produces patterns from data.                   | Produces useful knowledge from data.                                            |
+
+---
+
+## 3. Differentiate between Data Warehousing and Data Mining.
+
+| Data Warehousing                            | Data Mining                                         |
+| ------------------------------------------- | --------------------------------------------------- |
+| Storing and managing large amounts of data. | Extracting useful patterns and knowledge from data. |
+| Acts as a repository of integrated data.    | Analyzes data to discover hidden information.       |
+| Focuses on data storage and organization.   | Focuses on data analysis and prediction.            |
+| Provides historical data for analysis.      | Provides insights for decision-making.              |
+| Example: Data Warehouse of a bank.          | Example: Detecting fraud from banking data.         |
+
+---
+
+## 4. What is Web Mining? It's applications. Compare Data Mining and Web Mining.
+
+Web Mining is the process of extracting useful information, patterns, and knowledge from web data such as web pages, hyperlinks, and user browsing behavior.
+
+It applies data mining techniques to data available on the World Wide Web.
+
+**Example:** Analyzing website visitor behavior to improve user experience.
+
+### Applications of Web Mining
+
+1. **E-Commerce**: Recommends products based on user browsing and purchase history.
+2. **Search Engines**: Improves search results by analyzing web content and links.
+3. **Digital Marketing**: Studies customer preferences and online behavior.
+4. **Website Personalization**: Provides customized content to users.
+5. **Fraud Detection**: Detects suspicious online activities and transactions.
+
+### Data Mining vs Web Mining
+
+| Data Mining                                     | Web Mining                                                          |
+| ----------------------------------------------- | ------------------------------------------------------------------- |
+| Extracts knowledge from general databases.      | Extracts knowledge from web data.                                   |
+| Uses structured data mainly.                    | Uses structured, semi-structured, and unstructured web data.        |
+| Data comes from databases and data warehouses.  | Data comes from websites, web logs, and hyperlinks.                 |
+| Focuses on discovering patterns in stored data. | Focuses on discovering patterns from web content and user behavior. |
+| Used in banking, healthcare, retail, etc.       | Used in search engines, e-commerce, and web analytics.              |
+
+---
+
+## 5. Explain each term
+
+### Web Content Mining
+
+Web Content Mining is the process of extracting useful information from the contents of web pages such as text, images, audio, video, and documents.
+
+**Example:** A search engine analyzes the content of web pages to provide relevant search results.
+
+### Web Structure Mining
+
+Web Structure Mining is the process of analyzing the structure of hyperlinks to discover how web pages are connected and to determine their importance.
+
+It studies how web pages are connected to each other through links.
+
+**Example:** Search engines use link analysis to determine the importance of web pages.
+
+### Web Usage Mining
+
+Web Usage Mining is the process of analyzing user behavior from web logs, browser history, cookies, and click data.
+
+It helps understand how users interact with websites.
+
+**Example:** An e-commerce website tracks pages visited by users to recommend products.
+
+---
+
+---
+
+## Unit 4
+
+## 1. State the Apriori Property. What are the types of knowledge discovered during Data Mining?
+
+Apriori Property states that If an itemset is frequent, then all of its non-empty subsets must also be frequent.
+
+**Explanation:**
+
+- If a set of items appears frequently in transactions, then every subset of that set must also appear frequently.
+- This property helps reduce the number of candidate itemsets and improves mining efficiency.
+
+**Example:**
+
+If `{Bread, Butter, Milk}` is a frequent itemset, then the following subsets must also be frequent:
+
+```
+{Bread, Butter}
+{Bread, Milk}
+{Butter, Milk}
+{Bread}
+{Butter}
+{Milk}
+```
+
+## Types of Knowledge Discovered during Data Mining
+
+**1. Association**
+
+Finding things that appear together. Classic market basket analysis.
+
+Example: People who buy chips also buy soda.
+
+**2. Classification**
+
+Assigning data into predefined classes.
+
+The categories are already decided; we're learning how to sort new data into them.
+
+Example: Is this email spam or not spam?
+
+**3. Clustering**
+
+Grouping similar things together, but we don't define the groups in advance. <br/>
+The algorithm figures out the natural groups on its own.
+
+Example: Grouping customers by shopping habits without telling it what groups to create.
+
+**4. Prediction/Regression**
+
+Predicting values or trends.
+
+Example: Predicting future sales of a product.
+
+**5. Sequential patterns**
+
+Finds patterns that occur in a sequence. The timing and sequence is part of the pattern.
+
+Example: "People who buy a phone tend to buy a case within a week."
+
+**6. Anomaly detection**
+
+Spotting the weird stuff that doesn't fit. Used in fraud detection, network security, etc.
+
+Example: Detecting fraudulent credit card transactions.
+
+---
+
+## 2. Define the terms Support and Confidence with examples.
+
+**Support**
+
+Support measures how frequently an itemset appears in the transaction database.
+
+```math
+\text{Support}(A \rightarrow B)
+=
+\frac{\text{Number of transactions containing A and B}}
+{\text{Total number of transactions}}
+\times 100
+```
+
+<br />
+
+**Confidence**
+
+Confidence measures how often item B appears in transactions that already contain item A.
+
+```math
+\text{Confidence}(A \rightarrow B)
+=
+\frac{\text{Number of transactions containing A and B}}
+{\text{Number of transactions containing A}}
+\times 100
+```
+
+<br />
+
+### Example: Calculating Support and Confidence (Bread → Milk)
+
+**Transaction Database**
+
+<center>
+
+| TID | Items               |
+| --- | ------------------- |
+| T1  | Bread, Milk         |
+| T2  | Bread, Butter       |
+| T3  | Bread, Milk, Butter |
+| T4  | Milk, Butter        |
+| T5  | Bread, Milk         |
+
+</center>
+
+**Total Transactions = 5**
+
+**Rule: Bread → Milk**
+
+### Step 1: Calculate Support
+
+Transactions containing **Bread and Milk**:
+
+- T1
+- T3
+- T5
+
+Count = 3
+
+```math
+\text{Support}(Bread \rightarrow Milk)
+=
+\frac{3}{5}\times100
+=
+60\%
+```
+
+### Step 2: Calculate Confidence
+
+Transactions containing **Bread**:
+
+- T1
+- T2
+- T3
+- T5
+
+Count = 4
+
+```math
+\text{Confidence}(Bread \rightarrow Milk)
+=
+\frac{3}{4}\times100
+=
+75\%
+```
+
+### Result
+
+- **Support (Bread → Milk) = 60%**
+- **Confidence (Bread → Milk) = 75%**
+
+---
+
+---
+
+## Unit 5
+
+## 1. What is Clustering? Diff Types of Clustering Methods.
+
+Clustering is the unsupervised learning technique that groups similar data objects into clusters so that objects within the same cluster are more similar to each other than those in different clusters.
+
+<big>
+  <u>**Types of Clustering**</u>
+</big>
+
+<br />
+<br />
+
+<big>**A. Partitioning Clustering**</big>
+
+Divides data into a predefined number of clusters.
+
+**Example**: K-Means Clustering.
+
+<big>**B. Hierarchical Clustering**</big>
+
+Creates a hierarchy of clusters in the form of a tree (dendrogram).
+
+Can be Agglomerative (bottom-up) or Divisive (top-down).
+
+**Example**: Hierarchical Agglomerative Clustering (HAC).
+
+<big>**C. Density-Based Clustering**</big>
+
+Forms clusters based on dense regions of data separated by sparse regions.
+
+Can identify clusters of arbitrary shapes and detect outliers.
+
+**Example**: DBSCAN (used to detect geographical hotspots from GPS location data).
+
+<big>**D. Grid-Based Clustering**</big>
+
+Divides the data space into a finite number of cells (grids) and forms clusters from them.
+
+**Example**: STING (Used in Geographic Information Systems for analyzing spatial data).
+
+<big>**E. Model-Based Clustering**</big>
+
+Assumes that data is generated from a statistical model and clusters data accordingly.
+
+**Example**: Gaussian Mixture Model (GMM) (used for image segmentation and pattern recognition).
+
+---
+
+## 2. What are the features of a good cluster? Explain Hierarchical Clustering method.
+
+A good cluster should have the following characteristics:
+
+1. **High Intra-cluster Similarity**: Objects within the same cluster should be very similar to each other.
+
+2. **Low Inter-cluster Similarity**: Objects belonging to different clusters should be as different as possible.
+
+3. **Compactness**: Data points in a cluster should be closely packed around the cluster center.
+
+4. **Meaningfulness**: Clusters should represent useful groups that make sense in the application domain.
+
+5. **Stability**: Small changes in data should not drastically change the clustering result.
+
+6. **Scalability**: The clustering method should be able to handle large datasets efficiently while maintaining cluster quality.
+
+<big>Hierarchical Clustering</big>
+
+<br />
+<br />
+
+Creates a hierarchy of clusters in the form of a tree (dendrogram).
+
+Can be Agglomerative (bottom-up) or Divisive (top-down).
+
+**Example**: Hierarchical Agglomerative Clustering (HAC).
+
+---
+
+## 3. Differentiate between K-Means Clustering and K-Medoid Clustering algorithms.
+
+| **K-Means Clustering**                                            | **K-Medoid Clustering**                                       |
+| ----------------------------------------------------------------- | ------------------------------------------------------------- |
+| Uses the **mean (average)** of data points as the cluster center. | Uses an **actual data point (medoid)** as the cluster center. |
+| Cluster center may not be a real data object.                     | Cluster center is always a real data object.                  |
+| Sensitive to outliers and noise.                                  | Less sensitive to outliers and noise.                         |
+| Faster and computationally efficient.                             | Slower due to higher computation.                             |
+| Suitable for large datasets.                                      | Suitable for smaller datasets and noisy data.                 |
+
+---
+
+## 4. Define and explain Decision Tree with an example. State its advantages and disadvantages.
+
+A Decision Tree is a supervised machine learning algorithm used for classification and regression tasks.
+It represents decisions and their possible outcomes in the form of a tree-like structure consisting of root nodes, internal nodes, branches, and leaf nodes.
+
+<center>
+
+```txt
+Root Node
+|
+Decision
+/    \
+Yes      No
+|         |
+Leaf Node  Leaf Node
+```
+
+</center>
+
+**Example**:
+
+```
+Outlook
+/    |     \
+Sunny Overcast Rain
+/          \      \
+Humidity       Play   Wind
+/    \               /   \
+High Normal         Strong Weak
+|      |             |      |
+Don't   Play        Don't    Play
+Play                Play
+```
+
+- If Outlook = Overcast → Play.
+- If Outlook = Sunny and Humidity = High → Don't Play.
+- If Outlook = Rain and Wind = Weak → Play.
+
+**Advantages of Decision Tree**
+
+- Easy to understand and interpret.
+- Can handle both numerical and categorical data.
+- Requires little data preparation.
+- Useful for classification and prediction problems.
+
+**Disadvantages of Decision Tree**
+
+- Can become complex for large datasets.
+- Prone to overfitting.
+- Small changes in data may produce different trees.
+
+---
+
+## 5. What is Naïve Bayesian Classification? How does it differ from Bayesian Classification?
+
+**Naïve Bayesian Classification** is a supervised machine learning algorithm based on **Bayes' Theorem**. <br/>
+It is mainly used for classification problems such as spam detection, document classification.
+
+It is called **"Naïve"** because it assumes that all features are independent of each other.
+
+**Bayes' Theorem**
+
+```math
+P(A|B) = \frac{P(B|A) \times P(A)}{P(B)}
+```
+
+**Where:**
+
+- $P(A|B)$ = Probability of A given B
+- $P(B|A)$ = Probability of B given A
+- $P(A)$ = Prior probability of A
+- $P(B)$ = Probability of B
+
+**Features:**
+
+- Simple and fast classification algorithm.
+- Assumes independence among attributes.
+- Works well with large datasets.
+- Widely used in spam filtering and text classification.
+
+**Differences:**
+
+| Bayesian Classification                                      | Naïve Bayesian Classification                             |
+| ------------------------------------------------------------ | --------------------------------------------------------- |
+| Considers dependencies among attributes.                     | Assumes all attributes are independent.                   |
+| More complex to implement.                                   | Simple and easy to implement.                             |
+| Requires more computation.                                   | Computationally efficient.                                |
+| Gives more accurate results when feature dependencies exist. | May lose accuracy when attributes are strongly dependent. |
+| Difficult for large datasets.                                | Suitable for large datasets.                              |
+
+---
+
+## 6. Differentiate between Supervised Machine Learning and Unsupervised Machine Learning. How do you detect outliers from clusters?
+
+| Supervised Learning                                                                      | Unsupervised Learning                                                       |
+| ---------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| Uses labeled data.                                                                       | Uses unlabeled data.                                                        |
+| Learns by mapping inputs to known outputs.                                               | Learns by discovering hidden patterns and structures in data.               |
+| Receives feedback by comparing predictions with actual labels.                           | No feedback mechanism as there are no known labels.                         |
+| Requires manually labeled data before training.                                          | Requires little to no manual labeling.                                      |
+| Generally less complex and easier to train.                                              | Generally more complex and computationally intensive to train.              |
+| Used for Classification and Regression.                                                  | Used for Clustering, Dimensionality Reduction, and Association Rule Mining. |
+| Uses algorithms such as Linear Regression, Logistic Regression, SVM, and Decision Trees. | Uses algorithms such as K-Means Clustering, PCA, and Apriori Algorithm.     |
+
+### How to detect outliers from clusters?
+
+Outliers are data points that are significantly different from other points in a cluster.
+
+Methods to Detect Outliers:
+
+- **Distance-Based Method:** Objects located far away from cluster centers are considered outliers.
+- **Density-Based Method:** Points in low-density regions compared to neighboring points are treated as outliers.
+- **Cluster-Based Method:** Very small clusters or isolated points may indicate outliers.
+
+---
+
+| Partitioning Clustering                                     | Hierarchical Clustering                                                |
+| ----------------------------------------------------------- | ---------------------------------------------------------------------- |
+| Divides data into a predefined number (**K**) of clusters.  | Creates a hierarchy of clusters in a tree-like structure (Dendrogram). |
+| Requires the number of clusters to be specified in advance. | Does not require the number of clusters beforehand.                    |
+| Objects are assigned directly to clusters.                  | Clusters are formed by successive merging or splitting.                |
+| Computationally efficient for large datasets.               | More computationally expensive.                                        |
+| Produces a single partition of the data.                    | Produces multiple levels of clustering.                                |
+| Example: **K-Means, K-Medoids**.                            | Example: **Agglomerative, Divisive Clustering**.                       |
+
+| Classification                                             | Prediction                                                 |
+| ---------------------------------------------------------- | ---------------------------------------------------------- |
+| Used to assign data into predefined classes or categories. | Used to estimate or forecast a continuous numeric value.   |
+| Output is categorical (discrete).                          | Output is numeric (continuous).                            |
+| Based on labeled training data.                            | Based on historical data and trends.                       |
+| Answers the question: **"Which class does it belong to?"** | Answers the question: **"What value is likely to occur?"** |
+| Example: Spam/Not Spam, Pass/Fail.                         | Example: Predicting sales, stock prices, or temperature.   |

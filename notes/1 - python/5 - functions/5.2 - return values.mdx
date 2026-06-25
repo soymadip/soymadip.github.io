@@ -1,0 +1,63 @@
+---
+slug: "functions-return-values"
+title: "Return Values"
+description: "Mastering early exits and returning multiple values using tuples."
+source: "/code/python/5-functions/43.multiple-returns.py"
+---
+
+# Return Values
+
+The `return` statement sends a result back from a function to the caller. It also acts as a hard stop — once a function hits a `return`, execution ends immediately.
+
+## Early Exit (Short-Circuiting)
+
+Use `return` inside a conditional to bail out early before running the main logic. This avoids deep nesting and makes the intent clear.
+
+```python
+def chai_status(cups: int = 0):
+    if cups == 0:
+        return "Sorry, chai over"  # Early exit
+
+    return "Chai is ready"
+    print("This will never be printed")
+
+print(chai_status(0))
+print(chai_status(5))
+```
+
+**Output:**
+
+```text
+Sorry, chai over
+Chai is ready
+```
+
+## Returning Multiple Values
+
+Python lets us return multiple values separated by commas. They are automatically packed into a **tuple**, so the caller gets one object back.
+
+```python
+def chai_report():
+    return 100, 20  # (sold, remaining)
+
+sold, remains = chai_report()
+print(f"Sold: {sold}, Remaining: {remains}")
+```
+
+**Output:**
+
+```text
+Sold: 100, Remaining: 20
+```
+
+### Unpacking Pitfalls
+
+Unpacking requires the exact number of variables as values in the tuple. Use `_` to discard values we don't need.
+
+```python
+def chai_report_long():
+    return 100, 20, 10  # (sold, remaining, waste)
+
+# Ignore the last value
+sold, remains, _ = chai_report_long()
+```

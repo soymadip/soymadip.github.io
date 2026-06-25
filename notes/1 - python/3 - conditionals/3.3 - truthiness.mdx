@@ -1,0 +1,94 @@
+---
+title: "Truthiness"
+description: "Understanding implicit boolean conversion and falsy values in Python."
+source: "/code/python/3-conditionals/22-truthyness.py"
+---
+
+# Truthiness
+
+In Python, every `if` statement evaluates to either `True` or `False`. However, Python doesn't require us to pass an actual boolean — it will **convert whatever we give it to a boolean internally**. That conversion is called **truthiness**.
+
+## Implicit Conversion
+
+When we write a simple conditional, Python internally applies the `bool()` function:
+
+```python
+if 1:
+    print("yes")  # Prints: Python converted 1 → True internally
+```
+
+```text
+yes
+```
+
+This is equivalent to:
+
+```python
+if bool(1) == True:
+    print("yes")
+```
+
+We can check any value's truthiness using the `bool()` function:
+
+```python
+print(bool(1))         # True
+print(bool(0))         # False
+print(bool("hello"))   # True
+print(bool(""))        # False
+```
+
+```text
+True
+False
+True
+False
+```
+
+## Falsy Values
+
+Python has a short list of **falsy values** — everything else is truthy.
+
+| Value       | Falsy? |
+| :---------- | :----- |
+| `False`     | ✓      |
+| `None`      | ✓      |
+| `0` (int)   | ✓      |
+| `0.0`       | ✓      |
+| `""` (str)  | ✓      |
+| `[]` (list) | ✓      |
+| `{}` (dict) | ✓      |
+| `set()`     | ✓      |
+| `()`        | ✓      |
+
+## The Mental Model
+
+The key distinction is between **truthiness** and **equality**:
+
+- `if x:` asks **"Is x truthy?"** — almost everything passes except 0, None, "", [], etc.
+- `if x == True:` asks **"Does x literally equal True?"** — only `True` and `1` pass
+
+```python
+# Truthiness (implicit conversion)
+if 1:
+    print("truthy")  # Prints
+
+if 2:
+    print("also truthy")  # Prints — 2 is not equal to True, but it's truthy
+
+if "hi":
+    print("string is truthy")  # Prints
+
+# Equality (explicit comparison)
+if 1 == True:
+    print("yes")  # Prints — bool(1) is True
+
+if 2 == True:
+    print("no")  # Does NOT print — 2 is truthy, but ≠ True
+
+if "hi" == True:
+    print("no")  # Does NOT print — "hi" is truthy, but ≠ True
+```
+
+:::note
+The `==` operator is completely separate from truthiness — it checks if two things are equal, with no conversion. Use `==` when you need exact equality; rely on truthiness when filtering or branching based on "emptiness" or "presence."
+:::

@@ -1,0 +1,77 @@
+---
+slug: "exercise-20-loyalty-points-tracker"
+title: "Exercise 20: Loyalty points tracker"
+description: "Practice using global and nonlocal keywords to track spending and points."
+source: "/code/python/5-functions/41.5-ex-20.py"
+---
+
+# Ex 20: Loyalty Points Tracker
+
+## Problem
+
+Build a loyalty points tracker for a retail store. The system needs to track points across all customers and handle bonuses for large transactions.
+
+## Rules
+
+- Define a global variable `loyalty_points`.
+- Create `process_transactions(transactions: list[int]) -> int`.
+- Use a nested function `apply_bonus()` to add ₹50 to the `total` if it's over ₹1000.
+- Use `nonlocal` and `global` appropriately.
+
+## Boilerplate
+
+Copy below code and paste to our IDE for head start.
+
+```python
+# Write our code inside this function
+loyalty_points: int = 0
+
+def process_transactions(transactions: list[int]) -> int:
+    pass # remove this
+
+# Call with test data
+print(process_transactions([400, 700]))
+```
+
+## Expected Output
+
+```python
+1150
+```
+
+## Solution
+
+Only view the solution after trying our best.
+
+<details>
+<summary>Show solution</summary>
+
+```python
+loyalty_points: int = 0
+
+def process_transactions(transactions: list[int]) -> int:
+    total = sum(transactions)
+
+    def apply_bonus():
+        # Update the parent function's variable
+        nonlocal total
+        if total > 1000:
+            total += 50
+
+    apply_bonus()
+
+    # Update the global points tracker
+    global loyalty_points
+    loyalty_points += total // 100
+
+    return total
+
+# Test data
+print(process_transactions([400, 700]))
+```
+
+### Details
+
+The `nonlocal` keyword is required to modify a variable in the nearest enclosing scope that is not global. Without it, `apply_bonus` would create a new local `total` instead of modifying the one in `process_transactions`.
+
+</details>

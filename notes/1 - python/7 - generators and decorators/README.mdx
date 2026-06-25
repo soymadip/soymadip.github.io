@@ -1,0 +1,86 @@
+---
+slug: "generators"
+title: "Generators"
+description: "Using yield to create lazy iterators and infinite sequences."
+source:
+  - "/code/python/7-generators-and-decoretors/52-generators.py"
+  - "/code/python/7-generators-and-decoretors/53-infinite-generators.py"
+topic_list: false
+---
+
+# Generators
+
+Generators are functions that behave like iterators: they pause, return a value with `yield`, and resume later. This lets us iterate large or infinite sequences without allocating memory for the entire collection.
+
+## Why Use Generators
+
+- Memory Efficient: Produce values on demand instead of building large lists.
+- Composable: Can be chained with other iterators and generator expressions.
+- Natural Fit For Streams: Reading large files, network streams, or infinite sequences.
+
+## Basic Generator Example
+
+```python
+from typing import Generator
+
+def count_num_fast(num: int) -> Generator[int]:
+    for i in range(1, num + 1):
+        yield i
+
+counts = count_num_fast(4)
+
+print(next(counts))  # 1
+print(next(counts))  # 2
+print(next(counts))  # 3
+print(next(counts))  # 4
+print(next(counts))  # will raise StopIteration
+```
+
+**Exact Output (uv run):**
+
+```text
+1
+2
+3
+4
+Traceback (most recent call last):
+  File "/home/soymadip/Projects/soymadip.gitlab.io/static/code/python/7-generators-and-decoretors/52-generators.py", line 52, in <module>
+    print(next(counts))  # will give error
+          ~~~~^^^^^^^^
+StopIteration
+```
+
+:::note StopIteration
+Calling `next()` on a generator after it is exhausted raises `StopIteration`. In typical code we either catch this exception or iterate with a `for` loop which handles exhaustion automatically.
+:::
+
+## Infinite Generators
+
+Generators can produce potentially infinite sequences. Use them with caution and always consume a finite slice when needed.
+
+```python
+def infinite_chai():
+    count = 1
+    while True:
+        yield count
+        count += 1
+
+refill = infinite_chai()
+for _ in range(10):
+    print(next(refill))
+```
+
+**Exact Output (uv run):**
+
+```text
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+```
