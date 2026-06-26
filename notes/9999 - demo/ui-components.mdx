@@ -1,5 +1,5 @@
 ---
-title: UI Components Demo
+title: Buttons and dropdown
 description: A step-by-step practical demonstration of Btn and Dropdown components from basic to advanced.
 unlisted: true
 ---
@@ -19,8 +19,8 @@ The `<Btn>` component is a versatile element that handles semantic coloring, cus
 A standard button defaults to the `neutral` variant.
 
 <div style={{ display: "flex", gap: "8px", marginBottom: "24px" }}>
-    <Btn>Default Button</Btn>
-    <Btn disabled>Disabled Button</Btn>
+  <Btn>Default Button</Btn>
+  <Btn disabled>Disabled Button</Btn>
 </div>
 
 ### Color Variants
@@ -28,20 +28,20 @@ A standard button defaults to the `neutral` variant.
 Choose from multiple semantic colors to establish visual hierarchy.
 
 <div
-    style={{
-        display: "flex",
-        gap: "8px",
-        flexWrap: "wrap",
-        marginBottom: "24px",
-    }}
+  style={{
+    display: "flex",
+    gap: "8px",
+    flexWrap: "wrap",
+    marginBottom: "24px",
+  }}
 >
-    <Btn primary>Primary</Btn>
-    <Btn secondary>Secondary</Btn>
-    <Btn success>Success</Btn>
-    <Btn info>Info</Btn>
-    <Btn warning>Warning</Btn>
-    <Btn danger>Danger</Btn>
-    <Btn>Neutral</Btn>
+  <Btn primary>Primary</Btn>
+  <Btn secondary>Secondary</Btn>
+  <Btn success>Success</Btn>
+  <Btn info>Info</Btn>
+  <Btn warning>Warning</Btn>
+  <Btn danger>Danger</Btn>
+  <Btn>Neutral</Btn>
 </div>
 
 ### Btn with Icons
@@ -49,22 +49,18 @@ Choose from multiple semantic colors to establish visual hierarchy.
 You can easily pass Emojis or image URLs to the `icon` prop. The button automatically scales and aligns the icon.
 
 <div
-    style={{
-        display: "flex",
-        gap: "12px",
-        flexWrap: "wrap",
-        marginBottom: "24px",
-    }}
+  style={{
+    display: "flex",
+    gap: "12px",
+    flexWrap: "wrap",
+    marginBottom: "24px",
+  }}
 >
-    <Btn icon="🚀" primary>
-        Launch App
-    </Btn>
-    <Btn icon="⚙️">Settings</Btn>
-    <Btn
-        icon="https://github.githubassets.com/favicons/favicon.svg"
-    >
-        GitHub
-    </Btn>
+  <Btn icon="🚀" primary>
+    Launch App
+  </Btn>
+  <Btn icon="⚙️">Settings</Btn>
+  <Btn icon="https://github.githubassets.com/favicons/favicon.svg">GitHub</Btn>
 </div>
 
 ### Btn with Tooltip (Hint)
@@ -72,31 +68,28 @@ You can easily pass Emojis or image URLs to the `icon` prop. The button automati
 Pass a string to the `desc` or `hint` prop to automatically show a styled tooltip when hovering over the button.
 
 <div
-    style={{
-        display: "flex",
-        gap: "12px",
-        flexWrap: "wrap",
-        marginBottom: "24px",
-    }}
+  style={{
+    display: "flex",
+    gap: "12px",
+    flexWrap: "wrap",
+    marginBottom: "24px",
+  }}
 >
-    <Btn
-        primary
-        hint="This action triggers a background deployment process."
-    >
-        Deploy (Tooltip Top)
-    </Btn>
-    <Btn
-        danger
-        desc="Warning: This action is destructive and cannot be undone!"
-    >
-        Delete (Tooltip Bottom)
-    </Btn>
-    <Btn success hint="Saves progress locally.">
-        Save (Tooltip Right)
-    </Btn>
-    <Btn success hint="Saves progress locally.">
-        Save (Tooltip left)
-    </Btn>
+  <Btn primary hint="This action triggers a background deployment process.">
+    Deploy (Tooltip Top - Default)
+  </Btn>
+  <Btn
+    danger
+    hintBottom="Warning: This action is destructive and cannot be undone!"
+  >
+    Delete (Tooltip Bottom)
+  </Btn>
+  <Btn success hintRight="Saves progress locally.">
+    Save (Tooltip Right)
+  </Btn>
+  <Btn success hintLeft="Saves progress locally.">
+    Save (Tooltip left)
+  </Btn>
 </div>
 
 ### Customizing Btn Appearance
@@ -104,34 +97,34 @@ Pass a string to the `desc` or `hint` prop to automatically show a styled toolti
 You can pass inline styles or classes directly using the `style` prop to adjust padding, borders, or backgrounds.
 
 <div
-    style={{
-        display: "flex",
-        gap: "12px",
-        flexWrap: "wrap",
-        marginBottom: "24px",
-    }}
+  style={{
+    display: "flex",
+    gap: "12px",
+    flexWrap: "wrap",
+    marginBottom: "24px",
+  }}
 >
-    <Btn
-        style={{
-            borderRadius: "50px",
-            padding: "12px 24px",
-            textTransform: "uppercase",
-            fontSize: "0.75rem",
-            fontWeight: "bold",
-        }}
-        primary
-    >
-        Pill Button
-    </Btn>
-    <Btn
-        style={{
-            background: "linear-gradient(135deg, #cba6f7, #89b4fa)",
-            border: "none",
-            color: "#1e1e2e",
-        }}
-    >
-        Gradient Button
-    </Btn>
+  <Btn
+    style={{
+      borderRadius: "50px",
+      padding: "12px 24px",
+      textTransform: "uppercase",
+      fontSize: "0.75rem",
+      fontWeight: "bold",
+    }}
+    primary
+  >
+    Pill Button
+  </Btn>
+  <Btn
+    style={{
+      background: "linear-gradient(135deg, #cba6f7, #89b4fa)",
+      border: "none",
+      color: "#1e1e2e",
+    }}
+  >
+    Gradient Button
+  </Btn>
 </div>
 
 ### Btn Link
@@ -139,24 +132,24 @@ You can pass inline styles or classes directly using the `style` prop to adjust 
 Combining link redirection (`href`), custom variants, and icons for a functional profile contact block:
 
 <div
-    style={{
-        display: "flex",
-        gap: "12px",
-        padding: "16px",
-        background: "var(--ifm-dropdown-background-color)",
-        borderRadius: "8px",
-        marginBottom: "32px",
-    }}
+  style={{
+    display: "flex",
+    gap: "12px",
+    padding: "16px",
+    background: "var(--ifm-dropdown-background-color)",
+    borderRadius: "8px",
+    marginBottom: "32px",
+  }}
 >
-    <Btn info icon="🐦" href="https://twitter.com">
-        Follow Updates
-    </Btn>
-    <Btn primary icon="✉️" href="mailto:hello@example.com">
-        Get in Touch
-    </Btn>
-    <Btn icon="🐙" href="https://github.com">
-        Browse Source
-    </Btn>
+  <Btn info icon="🐦" href="https://twitter.com">
+    Follow Updates
+  </Btn>
+  <Btn primary icon="✉️" href="mailto:hello@example.com">
+    Get in Touch
+  </Btn>
+  <Btn icon="🐙" href="https://github.com">
+    Browse Source
+  </Btn>
 </div>
 
 ---
@@ -170,13 +163,13 @@ The `<Dropdown>` component attaches a smooth, hover-triggered overlay menu to a 
 The simplest way to use a dropdown is by providing a `label` prop. It automatically creates a default button trigger.
 
 <Dropdown
-    label="Quick Links"
-    primary
-    icon="⚡"
-    items={[
-        { label: "Home Page", icon: "🏠", href: "/blog" },
-        { label: "Documentation", icon: "📚", href: "/blog" },
-    ]}
+  label="Quick Links"
+  primary
+  icon="⚡"
+  items={[
+    { label: "Home Page", icon: "🏠", href: "/blog" },
+    { label: "Documentation", icon: "📚", href: "/blog" },
+  ]}
 />
 
 ### Dropdown with Custom Triggers
@@ -213,19 +206,19 @@ If you want to customize the button variant or use HTML elements as triggers, pa
 Dropdown list items support an `active` state (highlighting the selection) and direct `onClick` actions.
 
 <div style={{ marginBottom: "24px" }}>
-    <Dropdown
-        label="Select Theme"
-        items={[
-            { id: "light", label: "Light Mode", icon: "☀️" },
-            {
-                id: "dark",
-                label: "Dark Mode (Active)",
-                icon: "🌙",
-                active: true,
-            },
-            { id: "system", label: "System Theme", icon: "💻" },
-        ]}
-    />
+  <Dropdown
+    label="Select Theme"
+    items={[
+      { id: "light", label: "Light Mode", icon: "☀️" },
+      {
+        id: "dark",
+        label: "Dark Mode (Active)",
+        icon: "🌙",
+        active: true,
+      },
+      { id: "system", label: "System Theme", icon: "💻" },
+    ]}
+  />
 </div>
 
 ### Advanced Use Case: Unified Download Center
@@ -238,16 +231,16 @@ Here is a complete setup mimicking a professional release dashboard, combining a
   </Btn>
 
 <Dropdown
-    trigger={
-        <Btn success icon="📦">
-            Formats
-        </Btn>
-    }
-    items={[
-        { id: "mac", label: "macOS (.dmg)", icon: "🍎" },
-        { id: "win", label: "Windows (.exe)", icon: "🪟" },
-        { id: "linux", label: "Linux (.AppImage)", icon: "🐧" },
-    ]}
+  trigger={
+    <Btn success icon="📦">
+      Formats
+    </Btn>
+  }
+  items={[
+    { id: "mac", label: "macOS (.dmg)", icon: "🍎" },
+    { id: "win", label: "Windows (.exe)", icon: "🪟" },
+    { id: "linux", label: "Linux (.AppImage)", icon: "🐧" },
+  ]}
 />
 
   <Dropdown
