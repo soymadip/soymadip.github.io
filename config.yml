@@ -71,7 +71,7 @@ home_page:
 
       - title: "Portosaur"
         featured: true
-        icon: "https://raw.githubusercontent.com/soymadip/portosaur/refs/heads/main/packages/theme/assets/img/icon.png"
+        icon: "https://raw.githubusercontent.com/soymadip/portosaur/refs/heads/main/packages/theme/static/img/icon.png"
         bg: "#388e3c"
         state: "completed"
         desc: "Complete portfolio and personal website solution for your digital personality."
