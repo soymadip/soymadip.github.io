@@ -15,7 +15,7 @@ site:
   edit_url: "https://github.com/soymadip/soymadip.github.io/edit/"
 
 theme:
-  # color_scheme: catppuccin
+  color_scheme: catppuccin
   footer:
     disable_project_link: true
 
