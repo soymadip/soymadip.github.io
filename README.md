@@ -2,7 +2,9 @@
   soymadip.github.io
 </h1>
 
+<div align="center">
 Welcome to my digital personality and portfolio zone!
+</div>
 
 ## About This Repository
 
