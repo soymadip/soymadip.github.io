@@ -18,7 +18,7 @@ resume file
 .code/
 
 # Generated files
-.docusaurus
+.portosaur
 .cache-loader
 .antigravity/
 .idea/
