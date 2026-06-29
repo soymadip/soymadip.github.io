@@ -9,10 +9,10 @@ vars:
 
 # Site Metadata & SEO
 site:
-  # Auto set if deploying in Github/GitLab Pages
   url: "auto"
   base_url: "auto"
   edit_url: "https://github.com/soymadip/soymadip.github.io/edit/"
+  tagline: "My digital space, personal knowledge base & blogging platform"
 
 theme:
   color_scheme: catppuccin
