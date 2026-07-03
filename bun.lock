@@ -5,8 +5,8 @@
     "": {
       "name": "soymadip.github.io-new",
       "dependencies": {
-        "@portosaur/cli": "latest",
-        "@portosaur/theme": "latest",
+        "@portosaur/cli": "^0.19.0",
+        "@portosaur/theme": "^0.19.0",
       },
     },
   },

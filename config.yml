@@ -69,6 +69,16 @@ home_page:
         repo: "https://github.com/soymadip/StaticShort"
         demo: "soymadip.github.io/StaticShort/"
 
+      - title: "QuikRun"
+        icon: "https://soymadip.github.io/quikrun/icon.svg"
+        bg: "#2d497a"
+        tags: ["code-runner", "cli"]
+        featured: true
+        state: "completed"
+        desc: "A CLI tool for running code files instantly without complex commands in terminal"
+        repo: "https://github.com/soymadip/quikrun"
+        website: "https://soymadip.github.io/quikrun/"
+
       - title: "Portosaur"
         featured: true
         icon: "https://raw.githubusercontent.com/soymadip/portosaur/refs/heads/main/packages/theme/static/img/icon.png"

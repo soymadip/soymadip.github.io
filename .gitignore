@@ -22,6 +22,7 @@ resume file
 .cache-loader
 .antigravity/
 .idea/
+uv.lock
 
 # Misc
 .DS_Store
