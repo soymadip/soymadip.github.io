@@ -8,7 +8,7 @@ menu: list[str] = [
 ]
 
 # var = [expression for item in iterable if condition
-iced_tea: list = [tea for tea in menu if len(tea) > 10]
+iced_tea: list = [item for item in menu if "tea" in item]
 
 # we can do this too. Nice note, any str * 2 will concatenate the same str
 double_tea: list[str] = [tea_name * 2 for tea_name in menu if len(tea_name) > 5]

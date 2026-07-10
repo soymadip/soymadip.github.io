@@ -5,6 +5,10 @@ They:
     Iterate without loading everything into memory (ex. reading large files)
     return = Pouring bucket
     yield = drip faucet
+
+Diff b/w Generators and Normal Functions:
+    - Normal functions execute once and terminate after returning a value.
+    - Generators yield/send a value, pause execution while preserving their state, and continue from where they stopped when next() is called.
 """
 
 
@@ -25,7 +29,7 @@ They:
 
 # -------------------------------------------
 
-from typing import Generator
+from collections.abc import Generator
 
 
 # Now we will make generator,
@@ -34,6 +38,8 @@ def count_num_fast(num: int) -> Generator[int]:
     for i in range(1, num + 1):
         yield i
 
+
+print(count_num_fast(2))  # Gives generator object address
 
 # # if we give 100000000, dont get error
 # for i in count_num_fast(int(input("Enter a number: "))):

@@ -4,7 +4,7 @@
 # - If we are sotring Key:value pair, it's dict
 
 
-tea_price_inr = {"Masalla Chai": 10, "Green Chai": 50}
+tea_price_inr: dict[str, int] = {"Masalla Chai": 10, "Green Chai": 50}
 
 tea_dollar = {key: val / 80 for key, val in tea_price_inr.items()}
 
@@ -14,7 +14,6 @@ tea_dollar = {key: val / 80 for key, val in tea_price_inr.items()}
 print(tea_dollar)
 
 # example:
-
 
 # Build a dict where keys are numbers 1–10 and values are
 #     their **factor lists**  →  {1: [1], 2: [1,2], 3: [1,3], 6: [1,2,3,6], ...}

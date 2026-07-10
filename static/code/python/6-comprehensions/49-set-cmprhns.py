@@ -10,7 +10,7 @@ fav_chais: list[str] = [
 
 
 # We use set for unique values
-unq_chai: list = list({chai for chai in fav_chais})
+unq_chai = {chai for chai in fav_chais}
 
 print(unq_chai)
 
@@ -23,8 +23,6 @@ reciepies = {
     "Spicy Chai": ["ginger", "black paper", "clove"],
 }
 
-unq_spices = list(
-    {spice for ingredients in reciepies.values() for spice in ingredients}
-    #  The var    first loop -> returns lists     second loop for iterating
-    # returning    of spices                         over the lists.
-)
+unq_spices = {spice for ingredients in reciepies.values() for spice in ingredients}
+#                       The var     first loop -> returns lists     second loop for iterating
+#                      returning     of spices                         over the lists.

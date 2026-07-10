@@ -15,3 +15,15 @@ for idx, name in enumerate(menu):
 # we can also start number (index starts with 1 instead of 0)
 for idx, name in enumerate(menu, start=1):
     print(f"{idx}: {name}")
+
+
+# Enumerate with both key, value of dict:
+stock = {"masala": 20, "adrak": 30, "ginger": 4}
+
+for i, (key, value) in enumerate(stock.items(), start=1):  # We need to use (key,value) because dict.items() returns tuple. python automatically unpacks it
+    print(f"{i}. {key}: {value}")
+
+
+# Btw we can bypass unpacking too:
+for both in stock.items():
+    print(both)  # Output: ('masala', 10)

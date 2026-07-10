@@ -1,0 +1,8 @@
+notes/**/*mcq*.md
+notes/**/*mcq*.mdx
+notes/**/*mcq/**
+**/*previous-year*.md
+**/*previous-year*.mdx
+
+static/
+.code/

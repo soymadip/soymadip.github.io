@@ -127,7 +127,7 @@ home_page:
         url: "https://discord.com/users/yourid"
 
       - name: "Twitter"
-        desc: "Find me on Twitter"
+        desc: "Follow me on Twitter"
         url: "https://twitter.com/soymadip"
 
       - name: "GitLab"
