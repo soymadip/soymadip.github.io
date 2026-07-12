@@ -48,7 +48,7 @@ chai_shop.stock = {"masala": 20, "adrak": 30, "ginger": 4}
 
 print(chai_shop.stock)
 
-chai_shop.stock["masala"] += 5 # This doesnt actually call the setter. getter is called -> it gives reference to dict _stock, then python evaluates like dict updating.
+chai_shop.stock["masala"] += 5 # This doesn't actually call the setter. getter is called -> it gives reference to dict _stock, then python evaluates like dict updating.
 
 chai_shop.show_menu()
 chai_shop.order("masala", 70)

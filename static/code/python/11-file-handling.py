@@ -19,7 +19,7 @@ with open("file.txt", "w") as file:
     file.write("Google is an absolute shit\n")    # we need the newline as it's not added by default
 # The file is closed here.
 
-   # we need the newline as it's not added by default
+# we need the newline as it's not added by default
 # We should use exception handling when working with files
 # Like below, if file.txt doesnt exist, it will raise FileNotFoundError
 try:
