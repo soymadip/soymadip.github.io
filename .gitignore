@@ -14,8 +14,6 @@ TestimonialsSection/
 .compiler
 resume file
 /main.css
-.code
-.code/
 
 # Generated files
 .portosaur
@@ -34,3 +32,4 @@ uv.lock
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+learning_journal.json
