@@ -39,3 +39,19 @@ Just do some fucking
 
 print("-------")
 print(multi)
+
+
+# ----------------- String Methods -----------------
+
+# center()
+# It takes a string and pads it with a character of your choice on both sides so that the total text block reaches a specific width
+
+string = "google"
+
+# by default only length is given, it pads with whitespace
+print(
+    string.center(50)  # output: '                      google                      '
+)
+
+# we can give custom character:
+print(string.center(20, "-"))  # output: '-------google-------'
