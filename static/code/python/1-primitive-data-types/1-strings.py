@@ -30,7 +30,6 @@ msg = "Hello World"
 
 
 # MultiLine strings
-
 multi: str = """Hi i am google
 I am a total shit
 
@@ -40,6 +39,13 @@ Just do some fucking
 print("-------")
 print(multi)
 
+
+# ------- Unpacking -------------
+
+x, y = ('googpe', 'shit')
+
+# we can use any iterable
+x, y = ['googpe', 'shit']
 
 # ----------------- String Methods -----------------
 
@@ -55,3 +61,20 @@ print(
 
 # we can give custom character:
 print(string.center(20, "-"))  # output: '-------google-------'
+
+
+# split()
+# This method returns a list of substrings split with given delimitatior 
+
+print("Google shit".split()) # by default uses space to dplit
+
+print('i_am'.split('_'))   # splits using _ now
+
+# we can directly assign with unpacking
+x, y = 'i_am_2'.split('_',1) # max 1 split, default all.
+
+
+# rplit()
+# same as split() but starts spliting from right side.
+# Use for cases like extension extraction.
+
