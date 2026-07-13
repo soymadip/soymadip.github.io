@@ -1,5 +1,4 @@
-
-
-border: str = "*" * 40
+border: str = "=" * 40
 
 from .ask import ask
+from header import header
