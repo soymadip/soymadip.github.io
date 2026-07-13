@@ -1,4 +1,4 @@
-def header(heading: str = "", bar_symbol: str = "-", bar_len: int = 30) -> None:
+def header(heading: str = "", bar_symbol: str = "=", bar_len: int = 40) -> None:
     if len(heading) > bar_len:
         bar_len = len(heading) + 6
 
