@@ -42,10 +42,10 @@ print(multi)
 
 # ------- Unpacking -------------
 
-x, y = ('googpe', 'shit')
+x, y = ("googpe", "shit")
 
 # we can use any iterable
-x, y = ['googpe', 'shit']
+x, y = ["googpe", "shit"]
 
 # ----------------- String Methods -----------------
 
@@ -63,18 +63,44 @@ print(
 print(string.center(20, "-"))  # output: '-------google-------'
 
 
+# ----------------------------------------------------
+
 # split()
-# This method returns a list of substrings split with given delimitatior 
+# This method returns a list of substrings split with given delimitatior
 
-print("Google shit".split()) # by default uses space to dplit
+print("Google shit".split())  # by default uses space to dplit
 
-print('i_am'.split('_'))   # splits using _ now
+print("i_am".split("_"))  # splits using _ now
 
 # we can directly assign with unpacking
-x, y = 'i_am_2'.split('_',1) # max 1 split, default all.
+x, y = "i_am_2".split("_", 1)  # max 1 split, default all.
 
 
 # rplit()
 # same as split() but starts spliting from right side.
 # Use for cases like extension extraction.
 
+
+# --------------------------------------------------
+
+# strip()
+# this method strips leading & trailing whitespaces, newline(\n), tab(\t), carriage return(\r) characters from string.
+# Or any given character
+
+string = " google "
+
+print(f"'{string.strip()}'")  #  strips space.  output: 'google'
+
+
+# we can also give which char to strip
+
+string = "-google-"
+
+print(f"'{string.strip('-')}'")  #  strips space.  output: 'google'
+
+
+# There are more variants:
+#
+# lstrip() - Removes whitespaces/given char from beginning
+# rstrip() - Removes whitespaces/given char from end
+#
