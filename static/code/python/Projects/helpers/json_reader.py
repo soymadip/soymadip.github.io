@@ -10,7 +10,7 @@ class jsonReader:
         # Create config file if doens't exist
         if not os.path.exists(self.config_file):
             try:
-                with open(self.config_file, "w") as fconfig:
+                with open(self.config_file, "w", encoding="utf-8") as fconfig:
                     json.dump({}, fconfig)
             # except Json
             except Exception as e:
@@ -23,7 +23,7 @@ class jsonReader:
             self.write({})
 
         try:
-            with open(self.config_file, "r") as fconfig:
+            with open(self.config_file, "r", encoding="utf-8") as fconfig:
                 config = json.load(fconfig)
         except Exception as e:
             print(f"Can't load config: {e}")
@@ -33,7 +33,7 @@ class jsonReader:
 
     def write(self, data):
         try:
-            with open(self.config_file, "w") as fconfig:
+            with open(self.config_file, "w", encoding="utf-8") as fconfig:
                 json.dump(data, fconfig, indent=2)
         except Exception as e:
             print(f"Error: {e}")
