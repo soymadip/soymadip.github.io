@@ -86,6 +86,8 @@ x, y = "i_am_2".split("_", 1)  # max 1 split, default all.
 # strip()
 # this method strips leading & trailing whitespaces, newline(\n), tab(\t), carriage return(\r) characters from string.
 # Or any given character
+#
+# strip() TREATES THE GIVEN CHARACTERS AS SEPARATE, SO DONT USE THIS FOR STRIPPING ENTIRE WORD
 
 string = " google "
 
@@ -96,7 +98,7 @@ print(f"'{string.strip()}'")  #  strips space.  output: 'google'
 
 string = "-google-"
 
-print(f"'{string.strip('-')}'")  #  strips space.  output: 'google'
+print(f"'{string.strip('-')}'")  #  strips -.  output: 'google'
 
 
 # There are more variants:
@@ -104,3 +106,14 @@ print(f"'{string.strip('-')}'")  #  strips space.  output: 'google'
 # lstrip() - Removes whitespaces/given char from beginning
 # rstrip() - Removes whitespaces/given char from end
 #
+
+
+# To remove entire word from beginning/end use these:
+#
+# removeprefix('word') - removes 'word' from BEGINNING of string (prefix)
+# removesuffix('word') - removes 'word' from ENDING of string (suffix)
+
+
+# so what if we wanna remove a word all places in a string?
+#
+# use str.replace("word", '')

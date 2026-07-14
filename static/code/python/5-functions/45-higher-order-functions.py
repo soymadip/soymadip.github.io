@@ -9,7 +9,7 @@
 
 # Key characteristics and examples include:
 
-#     Taking functions as arguments: Functions like map(), filter(), and sorted() apply a given function to elements of an iterable without explicit loops.
+#     Taking functions as arguments: Functions like map(), filter(), and sort(), sorted() apply a given function to elements of an iterable without explicit loops.
 #                                    For instance, map(lambda x: x ** 2, [1, 2, 3]) squares each number in the list.
 
 
@@ -21,7 +21,7 @@
 # decorators(will study later), are syntactic sugar for higher-order functions.
 
 
-# -------------------------------- 1. Accepts a function
+# ------------ 1. Accepts a function  --------------------
 
 # Func for upper a text
 from typing import Callable
@@ -48,7 +48,7 @@ print(hello(shout))  # HELLO
 print(hello(quiet))  # hello
 
 
-# -------------------------------- 2. Returns a function
+# ---------- 2. Returns a function ----------------------
 
 # dividend / divisor =  quotient
 # 10       /    2    =  5
@@ -70,7 +70,7 @@ print(f"Quad of 3 is: {quad(3)}")  # 3^4 = 81
 
 # -------------------- Commonly used higher order functions -------------
 
-# -------------------- map()
+# -- map() --
 # Applies a specific function to every item in an iterable and returns an iterator.
 # map() returns a map object, an iterator (of type map). Why? because of efficiency. Iterator calculates next value when asked. ALSO, THIS IS ONE TIME USE
 # We need to convert to list to see all values when printing.
@@ -88,7 +88,7 @@ print(mlist)
 #     The Loop: When the for loop started, it asked mpobj for the next value. mpobj essentially replied, "I'm already finished," so the loop body never executed.
 
 
-# -------------------- filter()
+# -- filter() --
 # Constructs an iterator of the items from given iterable which given function returns True for.
 # syntax: filter(func | lambda, iterable)
 # It returns a filter object, an iterator (of type filter).
@@ -102,7 +102,23 @@ evens = list(filter(lambda x: x % 2 == 0, lst))
 print(evens)
 
 
-# ------------------------------- reduce()
+# --- all() ---
+# returns True if all elements in a given iterable (like a list, tuple, or set) are truthy.
+# If even one element is falsy, it returns False
+
+print(all([True, True]))   # True
+print(all([True, False]))  # False
+
+numbers: list = [2, 4, 6, 8, 10]
+
+# Check if all numbers are even
+print(all(num % 2 == 0 for num in numbers))  # Output: True
+
+
+# -- sort() --
+
+
+# -- reduce() --
 # Applies a function to a sequence and returns a single value.
 # It is a part of the `functools` module in Python
 # Returns only single value
