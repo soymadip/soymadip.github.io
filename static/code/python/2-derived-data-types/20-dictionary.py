@@ -34,6 +34,7 @@ ss = {"key": "value", "key2": "value2"}["key2"]  # stores 'value2' in ss
 
 
 # ------------------------- Exercise ---------------------------
+#
 # Step 1: Create a customer dictionary with name, age, and city
 customer: dict[str, str | int] = {"name": "John Doe", "age": 32, "city": "New York"}
 
@@ -71,3 +72,4 @@ print(customer)
 
 # Step 10: Print final dictionary
 print(customer)
+

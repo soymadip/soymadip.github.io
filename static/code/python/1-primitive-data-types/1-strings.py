@@ -63,6 +63,28 @@ print(
 print(string.center(20, "-"))  # output: '-------google-------'
 
 
+# Comparing String
+
+str1 = "google"
+str2 = "Google"
+
+
+print(str1.__str__, str2.__str__)
+
+# has same content string?
+if str2.lower() == str1:  # comparison is case-sensitive so needs to be lowered
+    print("same but neeeds to be lowered")
+
+
+# which one is bigger?
+print(str1 > str2)  # True
+
+# Why? Python compares each letter in a string from left to right.
+# And it uses unicode values.
+# In unicode, UpperCase letters have LOWER numbers than lowercase. So...
+# 'N' (71) is actually smaller than 'a' (103).
+
+
 # ----------------------------------------------------
 
 # split()

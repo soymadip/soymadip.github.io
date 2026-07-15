@@ -1,6 +1,8 @@
 available_itms: list[str] = ["samosa", "burger", "cookies"]
 
 
+
+
 while True:
     user_snack: str = input("Please enter your perffered snack: ").lower().strip()
     print()
