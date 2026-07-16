@@ -68,4 +68,4 @@ print(f"square of 3 is: {square(3)}")  # 3^3 = 27
 print(f"Quad of 3 is: {quad(3)}")  # 3^4 = 81
 
 
-# -------------------- Commonly used in-built higher order functions -------------
+# Commonly used in-built higher order functions are discused in builtin-methods file
