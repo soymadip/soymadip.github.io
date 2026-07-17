@@ -2,7 +2,9 @@
 # Built-in Functions & Methods (Iterables & Higher-Order)
 # ========================================================
 
-# --- all() ---
+#
+#### ======= all() ============
+#
 # returns True if all elements in a given iterable (like a list, tuple, or set) are truthy.
 # If even one element is falsy, it returns False
 
@@ -15,7 +17,9 @@ numbers: list = [2, 4, 6, 8, 10]
 print(all(num % 2 == 0 for num in numbers))  # Output: True
 
 
-# --- any() ---
+#
+#### ======= any() ============
+#
 # returns True if any element in a given iterable (like a list, tuple, or set) is truthy.
 # If all elements are falsy, it returns False
 
@@ -29,7 +33,9 @@ numbers_any: list = [2, 4, 6, 8, 10]
 print(any(num % 2 == 0 for num in numbers_any))  # Output: True
 
 
-# -- filter() --
+#
+#### ======= filter() ============
+#
 # Constructs an iterator of the items from given iterable which given function returns True for.
 # syntax: filter(func | lambda, iterable)
 # It returns a filter object, an iterator (of type filter).
@@ -43,7 +49,9 @@ evens = list(filter(lambda x: x % 2 == 0, lst))
 print(evens)
 
 
-# -- map() --
+#
+#### ======= map() ============
+#
 # Applies a specific function to every item in an iterable and returns an iterator.
 # map() returns a map object, an iterator (of type map). Why? because of efficiency. Iterator calculates next value when asked. ALSO, THIS IS ONE TIME USE
 # We need to convert to list to see all values when printing.
@@ -61,7 +69,9 @@ print(mlist)
 #     The Loop: When the for loop started, it asked mpobj for the next value. mpobj essentially replied, "I'm already finished," so the loop body never executed.
 
 
-# -- reduce() --
+#
+#### ======= reduce() ============
+#
 # Applies a function to a sequence and returns a single value.
 # It is a part of the `functools` module in Python
 # Returns only single value
@@ -75,7 +85,8 @@ sum_val = reduce(lambda x, y: x + y, gg)
 print(f"sum is: {sum_val}")
 
 
-# ----- list.sort() --------
+#
+#### ======= list.sort() ============
 #
 # sort() is a list method and sorts list IN-PLACE
 
@@ -160,8 +171,9 @@ students_tie.sort(
 
 print()
 
+
 #
-# ------- sorted() ----------
+#### ======= sorted() ============
 #
 # sorted() is a builtin method that works in ANY ITERABLE
 # it creates a new sorted LIST instead of changing the original
@@ -194,7 +206,7 @@ print(
 
 
 #
-# ------- min() and max() ----------
+#### ======= min() and max() ============
 #
 # min() returns the smallest item in an iterable or the smallest of two or more arguments.
 # max() returns the largest item in an iterable or the largest of two or more arguments.
