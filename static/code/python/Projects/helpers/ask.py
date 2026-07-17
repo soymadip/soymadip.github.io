@@ -36,14 +36,34 @@ else:
         return ch
 
 
+def _normalize_options(opts: Any) -> List[Tuple[Any, str]]:
+    """Helper to convert lists, lists of tuples, and dicts into a standard List[Tuple] format."""
+    if not opts:
+        return []
+    if isinstance(opts, dict):
+        return list(opts.items())
+    if isinstance(opts, str):
+        return [(opts, opts)]
+
+    normalized = []
+    for item in opts:
+        if isinstance(item, tuple) and len(item) == 2:
+            normalized.append(item)
+        else:
+            normalized.append((item, str(item)))
+    return normalized
+
+
 @overload
 def ask(
     question: str,
     response_type: type[bool],
-    options: Optional[Union[Iterable[str], Dict[bool, str]]] = None,
+    options: Optional[
+        Union[Iterable[Union[str, Tuple[bool, str]]], Dict[bool, str]]
+    ] = None,
     validator: Optional[Callable[[bool], Union[str, bool, None]]] = None,
     menu_msg: str = "Enter a number",
-    allow_empty: bool = True,
+    allow_empty: bool = False,
     press_any_key: bool = False,
     return_index: Literal[False] = False,
     final_options: Optional[
@@ -56,10 +76,10 @@ def ask(
 def ask(
     question: str,
     response_type: type[T] = str,
-    options: Optional[Union[Iterable[str], Dict[T, str]]] = None,
+    options: Optional[Union[Iterable[Union[T, Tuple[T, str]]], Dict[T, str]]] = None,
     validator: Optional[Callable[[T], Union[str, bool, None]]] = None,
     menu_msg: str = "Enter a number",
-    allow_empty: bool = True,
+    allow_empty: bool = False,
     press_any_key: bool = False,
     return_index: Literal[False] = False,
     final_options: Optional[
@@ -72,10 +92,12 @@ def ask(
 def ask(
     question: str,
     response_type: type = str,
-    options: Optional[Union[Iterable[str], Dict[Any, str]]] = None,
+    options: Optional[
+        Union[Iterable[Union[Any, Tuple[Any, str]]], Dict[Any, str]]
+    ] = None,
     validator: Optional[Callable[[int], Union[str, bool, None]]] = None,
     menu_msg: str = "Enter a number",
-    allow_empty: bool = True,
+    allow_empty: bool = False,
     press_any_key: bool = False,
     *,
     return_index: Literal[True],
@@ -88,10 +110,10 @@ def ask(
 def ask(
     question: str,
     response_type: type = str,
-    options: Optional[Union[Iterable[str], Dict[Any, str]]] = None,
+    options: Optional[Union[Iterable[Any], Dict[Any, str]]] = None,
     validator: Optional[Callable[..., Any]] = None,
     menu_msg: str = "Enter a number",
-    allow_empty: bool = True,
+    allow_empty: bool = False,
     press_any_key: bool = False,
     return_index: bool = False,
     final_options: Optional[
@@ -107,39 +129,20 @@ def ask(
         print()
         return response_type("") if response_type is not bool else True
 
-    opt_list: List[Tuple[Any, str]] = []
-    has_base_options = False
-
-    if options is not None:
-        if isinstance(options, dict):
-            opt_list = list(options.items())
-        else:
-            opt_list = [(opt, opt) for opt in options]
-        if opt_list:
-            has_base_options = True
-
+    # Normalize both options and final_options into a standard List[Tuple[key, display_text]]
+    opt_list = _normalize_options(options)
+    has_base_options = bool(opt_list)
     base_options_count = len(opt_list)
 
-    if final_options is not None:
-        if isinstance(final_options, dict):
-            final_opt_list = list(final_options.items())
-        else:
-            normalized_final = (
-                [final_options] if isinstance(final_options, str) else final_options
-            )
+    final_opt_list = _normalize_options(final_options)
 
-            final_opt_list = []
-            if return_index or response_type is int:
-                for idx, f_opt in enumerate(normalized_final, start=1):
-                    display = f_opt[1] if isinstance(f_opt, tuple) else f_opt
-                    final_opt_list.append((-idx, display))
-            else:
-                for f_opt in normalized_final:
-                    if isinstance(f_opt, tuple):
-                        final_opt_list.append(f_opt)
-                    else:
-                        final_opt_list.append((f_opt, f_opt))
-        opt_list.extend(final_opt_list)
+    # Process final options indexing logic
+    if return_index or response_type is int:
+        final_opt_list = [
+            (-idx, display) for idx, (_, display) in enumerate(final_opt_list, start=1)
+        ]
+
+    opt_list.extend(final_opt_list)
 
     while True:
         print(f"{question}\n")
@@ -188,14 +191,13 @@ def ask(
                             except ValueError, TypeError:
                                 converted_answer = chosen_num
                     else:
-                        if (
-                            options is not None
-                            and isinstance(options, dict)
-                            and (chosen_num <= base_options_count)
-                        ):
+                        if isinstance(selected_key, response_type):
                             converted_answer = selected_key
                         else:
-                            converted_answer = response_type(selected_key)
+                            try:
+                                converted_answer = response_type(selected_key)
+                            except ValueError, TypeError:
+                                converted_answer = selected_key
 
                 elif response_type is bool:
                     cleaned_ans = answer.lower()

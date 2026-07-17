@@ -16,11 +16,13 @@ resume file
 /main.css
 
 # Generated files
+.cache/*
 .portosaur
 .cache-loader
 .antigravity/
 .idea/
 uv.lock
+
 
 # Misc
 .DS_Store

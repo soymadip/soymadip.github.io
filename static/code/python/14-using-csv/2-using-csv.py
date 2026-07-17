@@ -96,6 +96,8 @@ rows_csv: list[dict[str, str | int | float]] = [
 with open("new.csv", "w", encoding="utf-8") as file:
     writer = csv.DictWriter(file, fieldnames=["Name", "Age", "City"])
 
+    writer.writeheader()
+
     # Write single row
     writer.writerow({"Name": "rupali", "Age": "66", "City": "reading-shelf"})
 
