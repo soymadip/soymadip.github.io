@@ -64,7 +64,7 @@ print(
 # --------------------------------
 # Handling json file
 
-# Reading and Loading json from a file
+# Reading and Loading json from a file/stream
 try:
     with open("data.json", "r") as json_file:
         data = json.load(json_file)  # no s in json.load()..
@@ -75,7 +75,7 @@ print()
 print(data)
 
 
-# Writing back to file
+# Writing back to file/stream
 try:
     with open("ss.json", "x") as file:
         json.dump(data, file)
