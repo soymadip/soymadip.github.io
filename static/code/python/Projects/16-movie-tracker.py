@@ -228,6 +228,12 @@ def main() -> None:
                 ask("\nPress any key to return to main menu..", press_any_key=True)
 
             case "update":
+                if not movies:
+                    header("Update a Movie")
+                    print("\nNo movies to update yet!")
+                    ask("", press_any_key=True)
+                    continue
+
                 while True:
                     header("Update a Movie")
                     selected = (
