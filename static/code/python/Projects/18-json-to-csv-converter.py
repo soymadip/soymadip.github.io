@@ -55,12 +55,10 @@ def main() -> None:
         print("Source Json File is Empty!")
         sys.exit(2)
 
-    if isinstance(json_data, list):
-        flattened_json = [flatten_json(dict) for dict in json_data]
-    elif isinstance(json_data, dict):
-        flattened_json = flatten_json(json_data)
-    else:
-        print("Error: Failed to Flatten Json!")
+    flattened_json = flatten_json(json_data)
+
+    if not flattened_json:
+        print("Failed to Flatten JSON!")
         sys.exit(3)
 
     # Create Parent Directory if doesn't exist
@@ -86,7 +84,6 @@ def main() -> None:
         sys.exit(4)
 
     print(json.dumps(flattened_json, indent=2))
-    
 
 
 if __name__ == "__main__":
