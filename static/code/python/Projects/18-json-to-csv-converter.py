@@ -41,10 +41,9 @@ def main() -> None:
 
     output_csv = source_json.with_suffix(".csv")
 
-    json_data = None
-
     print()
 
+    json_data = None
     try:
         with open(source_json, "r", encoding="utf-8") as file:
             json_data = json.load(file)
@@ -85,6 +84,9 @@ def main() -> None:
     except Exception as e:
         print(f"Error: {e}")
         sys.exit(4)
+
+    print(json.dumps(flattened_json, indent=2))
+    
 
 
 if __name__ == "__main__":
