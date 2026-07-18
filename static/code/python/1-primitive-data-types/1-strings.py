@@ -85,6 +85,22 @@ print(str1 > str2)  # True
 # 'N' (71) is actually smaller than 'a' (103).
 
 
+# --------------------------------------------------
+
+# startswith()
+# returns True if string starts with given prefix
+
+print("Google shit".startswith("Go"))  # True
+print("Google shit".startswith("go"))  # False
+
+# --------------------------------------------------
+
+# endswith()
+# returns True if string ends with given suffix
+
+print("Google shit".endswith("shit"))  # True
+print("Google shit".endswith("Shit"))  # False
+
 # ----------------------------------------------------
 
 # split()
