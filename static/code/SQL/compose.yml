@@ -1,33 +1,33 @@
 services:
   mysql:
-    image: mysql:latest
-    command:  mysqld --performance-schema=OFF --innodb-buffer-pool-size=64M --max-connections=10
+    image: mariadb:latest
+    command: mariadbd --performance-schema=OFF --innodb-buffer-pool-size=64M --max-connections=10
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: ${DB_SU_PASSWORD}
-      MYSQL_DATABASE: ${DB_DATABASE}
+      MARIADB_ROOT_PASSWORD: ${DB_SU_PASSWORD}
+      MARIADB_DATABASE: ${DB_DATABASE}
     ports:
       - "3306:3306"
     volumes:
-      - mysql_data:/var/lib/mysql
+      - mariadb_data:/var/lib/mysql
 
-  pgsql:
-    image: postgres:latest
-    restart: always
-    environment:
-      POSTGRES_PASSWORD: ${DB_SU_PASSWORD}
-      POSTGRES_DB: ${DB_DATABASE}
-    ports:
-      - '5432:5432'
-    volumes:
-      - pgsql_data:/var/lib/postgresql
+  # pgsql:
+  #   image: postgres:latest
+  #   restart: always
+  #   environment:
+  #     POSTGRES_PASSWORD: ${DB_SU_PASSWORD}
+  #     POSTGRES_DB: ${DB_DATABASE}
+  #   ports:
+  #     - '5432:5432'
+  #   volumes:
+  #     - pgsql_data:/var/lib/postgresql
 
   dbx:
     image: t8y2/dbx:latest
     restart: always
     depends_on:
       - mysql
-      - pgsql
+      # - pgsql
     ports:
       - "4224:4224"
     extra_hosts:
@@ -38,6 +38,6 @@ services:
       - dbx_data:/app/data
 
 volumes:
-  mysql_data:
+  mariadb_data:
   pgsql_data:
   dbx_data:
