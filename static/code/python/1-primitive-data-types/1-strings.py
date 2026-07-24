@@ -93,6 +93,12 @@ print(str1 > str2)  # True
 print("Google shit".startswith("Go"))  # True
 print("Google shit".startswith("go"))  # False
 
+# this takes touple input too for checking in order.
+exts: tuple = (".py", ".js", ".rs", ".mojo")
+
+print("starts with exts?", "google is shit".startswith(exts))  # False
+print("starts with exts?", ".mojo is python".startswith(exts))  # True
+
 # --------------------------------------------------
 
 # endswith()
@@ -100,6 +106,12 @@ print("Google shit".startswith("go"))  # False
 
 print("Google shit".endswith("shit"))  # True
 print("Google shit".endswith("Shit"))  # False
+
+# this takes touple input too for checking in order.
+exts = (".py", ".js", ".rs", ".mojo")
+
+print("ends with exts?", "file.rs".endswith(exts))  # True
+
 
 # ----------------------------------------------------
 
