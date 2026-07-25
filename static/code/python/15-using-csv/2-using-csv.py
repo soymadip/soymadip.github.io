@@ -77,6 +77,12 @@ with open("new.csv", "a", newline="", encoding="utf-8") as file:
     # Write single row
     writer.writerow(["rupali", "66", "reading-shelf"])
 
+# WHY THE newline='' ?
+# by default python converts \n chars in data to \r\n in windows and \r in macos (darwin).
+# CSV module itself has hardcoded same behavior.
+# so like for windows it gives \r\n then python again converts.
+# making \r\r\n
+# To avoid this, we tell python to not to do any newline translation 
 
 # Writing a dictionary
 #
@@ -93,7 +99,7 @@ rows_csv: list[dict[str, str | int | float]] = [
     },
 ]
 
-with open("new.csv", "w", encoding="utf-8") as file:
+with open("new.csv", "w", encoding="utf-8", newline="") as file:
     writer = csv.DictWriter(file, fieldnames=["Name", "Age", "City"])
 
     writer.writeheader()
