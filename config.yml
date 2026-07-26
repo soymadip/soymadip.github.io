@@ -29,13 +29,15 @@ home_page:
 
     social:
       - name: "LinkedIn"
+        icon: "si:linkedin"
         url: "https://www.linkedin.com/in/soymadip"
 
       - name: "GitHub"
-        icon: "githubalt"
+        icon: "si:github"
         url: "https://github.com/soymadip"
 
       - name: "Telegram"
+        icon: "telegram"
         url: "https://t.me/soymadip"
 
   about:
@@ -112,7 +114,7 @@ home_page:
     links:
       - name: "Email"
         desc: "Send me an email"
-        url: "mailto:yourname@example.com"
+        url: "mailto:soumadip+prflo@zohomail.in"
 
       - name: "LinkedIn"
         desc: "Connect on LinkedIn"

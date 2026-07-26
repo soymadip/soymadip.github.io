@@ -12,7 +12,7 @@ current times:
 
 """
 
-from datetime import date, datetime, time
+from datetime import UTC, date, datetime, time
 
 # --------------------- Basic Date-Time Objects --------------------------
 
@@ -25,7 +25,7 @@ lunch_time: time = time(13, 30)
 print(f"A Time: {lunch_time}")  # 13:30:00
 
 # Creating Date-Time
-appoinment: datetime = datetime(2026, 10, 15, 12, 34)
+appoinment: datetime = datetime(2026, 10, 15, 12, 34, tzinfo=UTC)
 
 print(
     f"A DateTime: {appoinment}"  # 2026-10-15 12:34:00  (anything not specified will go to 00)
@@ -106,17 +106,34 @@ else:
     print(f"Birthday is coming in: {remaining.days}days, {remaining.seconds} seconds ")
 
 
-# ------------------ Measuring time ------------------
+# ------------------ Measuring time something takes ------------------
 
 import time as tm
-
 
 print("\nStarted counter")
 start = tm.perf_counter()
 
-tm.sleep(3) # sleep 3 seconds
+tm.sleep(3)  # sleep 3 seconds
 end = tm.perf_counter()
 
 took = end - start
 
 print(f"Time took: {int(took)} seconds")
+
+
+# ------------------ Unix Timstamp / Epoch ------------------
+"""
+Unix timestamp or Epoch is seconds passed from january 1st, 1970
+"""
+
+# Creating timestamp
+epoch = datetime.now(tz=UTC).timestamp()
+
+print(f"Current epoch: {epoch}")
+
+
+# formatting timestamp
+
+timestamp = 1716928400.123
+
+epoch = datetime.fromtimestamp(timestamp, tz=UTC)
