@@ -1,8 +1,6 @@
 # dicts instead of repeated match case
 
 
-from dis import disco
-
 users = [
     {"id": 1, "total": 100, "cupon": "p20"},
     {"id": 2, "total": 100, "cupon": "p60"},
