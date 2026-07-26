@@ -1,0 +1,37 @@
+
+
+##  Summary
+
+There are 4 layers of file operations in python
+
+| Module               | Purpose                                                              |
+| -------------------- | -------------------------------------------------------------------- |
+| **`pathlib`**        | Manipulating paths and individual files/directories                  |
+| **`shutil`**         | High-level file operations (copy, move, directory trees, archives)   |
+| **`os` / `os.path`** | Low-level OS functions (mostly superseded by `pathlib` for new code) |
+| **`tempfile`**       | Temporary file creation and management                               |
+
+
+For day-to-day work, `pathlib` + `shutil` cover about 95% of what we'll need.
+
+```txt
+Filesystem
+│
+├── Path object
+│      │
+│      ├── exists()
+│      ├── rename()
+│      ├── unlink()
+│      ├── mkdir()
+│      ├── iterdir()
+│      └── ...
+│
+└── shutil
+       │
+       ├── copy()
+       ├── copy2()
+       ├── copytree()
+       ├── move()
+       └── rmtree()
+```
+
