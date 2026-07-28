@@ -39,7 +39,6 @@ def main() -> None:
     largest = (None, 0)
 
     for item in target_dir.rglob("*"):
-        print(item)
         if item.is_dir():
             continue
 

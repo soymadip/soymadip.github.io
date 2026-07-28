@@ -1,4 +1,4 @@
-"""
+r"""
 ## Pathlib
 
 Before Python 3.4, path manipulation was commonly done using the `os.path` module.
@@ -21,6 +21,7 @@ chat:
 # In ancient times, we used to use os.path for path manipulation
 # This has some problems like it's not object oriented, or cumbersome.
 import os
+from shutil import rmtree
 
 path: str = os.path.join("home", "soymadip", "file.txt")
 
@@ -78,73 +79,13 @@ print(dir_path == new_path)  # False
 #
 # getting path parts
 # useful for processing path components
-# 
+#
 print(dir_path.parts)  # prints a tuple
 
-# ==================================================================================================================
-# ==================================================================================================================
-# ==================================================================================================================
+# delete all python cache dirs except those in .venv
+for cache in Path(".").rglob("__pycache__"):
+    if ".venv" in cache.parts:
+        continue
 
-
-
-# ------- Checking the existance ------------
-
-print(dir_path.exists())  # Returns True if file exists
-
-
-#
-# ------- Checking the path is file or directory ---------
-
-if dir_path.is_dir():
-    print("is a dir")  # check if directory, (even if it's a symlink)
-
-if dir_path.is_file():
-    print("is a file")  # check if a file (even if it's a symlink)
-
-if dir_path.is_symlink():
-    print("is a symlink")  # check if a symlink (dir/file)
-
-
-# ---------- Making directories -----------
-
-# Create a dir if doesn't exists
-# Throws FileExistsError if dir already exists
-#
-# Path(".cache").mkdir()
-
-# Pass exists_ok=True to skip if exists
-Path(".cache").mkdir(exist_ok=True)
-
-# Pass parents=True to create parents dirs if doesn't exists
-Path(".cache/parent/subdir").mkdir(parents=True, exist_ok=True)
-
-
-#
-# -------- Renaming Files/Directories ------------
-#
-# Throws FileNotFoundError if target file/dir doesn't exist
-
-# Rename file
-Path("ss.txt").rename("ss.json")
-
-# Rename Directory
-Path(".docs").rename("google-is-shit")
-
-
-#
-# -------- Deleting Files/Dirs ------------
-
-# Delete a file
-Path("file.txt").unlink()
-
-# Deleting a empty dir
-
-dir2_path = Path(".dir")
-
-dir2_path.rmdir()  # Throws OsError if dir is not empty
-
-# deleting non-empty dir
-# we need to use shutil module to do this
-import shutil
-
-shutil.rmtree(dir2_path)  # equivalent to rm -rf dir_path
+    print("Deleting", cache)
+    rmtree(cache)

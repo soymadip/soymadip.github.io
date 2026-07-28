@@ -66,7 +66,7 @@ for item in docs.iterdir():
 
 
 #
-# ------------ pattern search - glob*() --------------------
+# ------------ pattern search - glob() --------------------
 
 # path.glob() is used to search files & dir with specific pattern within a directory
 # It returns a iterator
@@ -76,7 +76,7 @@ cache_dir = Path(".cache/")
 print()
 
 for item in cache_dir.glob("*.json"):  # return only json files
-    print(item)
+    print(item)  # gives relative path
 
 # make the glob matching case insensitive
 for item in cache_dir.glob("code*", case_sensitive=False):
@@ -114,4 +114,3 @@ for root, dirs, files in cache_dir.walk():
 
 
 # --------------- Walk() --------------------
-

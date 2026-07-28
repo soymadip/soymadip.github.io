@@ -59,11 +59,18 @@ if target.exists():
 # ------------------ Delete a file/dir ------------------------------
 
 file4 = Path(".cache/file2.txt")
-dir4 = Path('.cache/config')
+dir4 = Path(".cache/config")
 
 # delete a file
 file4.unlink()
 
+# dont raise FileNotFoundError if file is missing
+file4.unlink(missing_ok=True)
+
+
 # delete a EMPTY directory
 # if dir is not empty, it will raise OSError
 dir4.rmdir()
+
+
+# ====== For non empty dir/file we should use shutil =======
