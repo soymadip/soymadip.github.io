@@ -36,7 +36,7 @@ If something envolves copying data, there shutil should be used
 """
 
 from pathlib import Path
-from shutil import copy, copy2, copyfile, copytree, disk_usage, move, rmtree
+from shutil import copy, copy2, copyfile, copytree, disk_usage, get_terminal_size, ignore_patterns, make_archive, move, rmtree, unpack_archive, which, chown
 
 # -------------- copy() - simplest copy -----------
 
@@ -110,6 +110,8 @@ copytree(src_dir, dest_dir)
 # We can use the `dirs_exist_ok` param to overwrite it
 copytree(src_dir, dest_dir, dirs_exist_ok=True)
 
+# Ignore patterns
+copytree(src_dir, dest_dir, ignore=ignore_patterns('.git', '.venv', '__pycache__'))
 
 rmtree(dest_dir)
 
@@ -163,3 +165,34 @@ print(usage)
 print(
     f"Total: {format(usage.total)}, Used: {format(usage.used)}, Free: {format(usage.free)}"
 )
+
+# -------------------- which() - find executable path -------------------
+# Internally it searches PATH env
+
+ss =  which('mise')  # gives full path to executable if found, else None
+
+print(ss)
+
+
+# --------------------- unpack_archive - extract an archive --------------------
+# Extracts an archive to a directory
+unpack_archive("path/to/archive.zip", "path/to/destination")
+
+# --------------------- make_archive - create an archive --------------------
+# Creates an archive from a directory
+
+#              path                  format          dest_dir
+make_archive("path/to/archive", "zip", "path/to/destination")
+
+
+# -------------------- chown() - change file ownership --------------------#
+
+chown("path/to/file", user='soymadip', group='soymadip')
+
+
+# -------------------- get_terminal_size() - get terminal size --------------------#
+
+term = get_terminal_size()
+
+print(term.columns)
+print(term.lines)

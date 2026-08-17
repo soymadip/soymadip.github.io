@@ -5,6 +5,7 @@
 build/
 *tmp*
 *temp*
+!*tempfile.*
 *TEMP*
 *cache*
 *favicon/

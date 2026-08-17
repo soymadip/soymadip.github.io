@@ -1,4 +1,0 @@
-// Folder-specific settings
-{
-  "file_scan_exclusions": ["static/code/python", ".venv"],
-}
