@@ -88,6 +88,8 @@ for item in cache_dir.glob("code*", case_sensitive=False):
 #      *             All files and directories inside folder (top-level only).
 #    *.json          Only files ending in .json inside folder.
 # file_[0-9].txt     Files matching wildcards/ranges (e.g., file_1.txt, file_2.txt).
+# file_[265].txt     Match Specific chars (e.g., file_2.txt, file_65.txt).
+#    ss?.py          Match exactly once char after ss. (eg. ss1.py, ssp.py, ss_.py)
 #
 
 

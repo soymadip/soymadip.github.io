@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 #
@@ -8,7 +9,20 @@ a_dir = Path("docs")
 print(a_dir.exists())  # True if a_dir exists
 
 
+# --------- Create symlink  & hard link ------------
 #
+pth = Path("google")
+
+pth.symlink_to("docs")  # creates a symlink named 'google' pointing to 'docs'
+pth.hardlink_to("docs")  # creates a hard link named 'google' pointing to 'docs'
+
+print(pth.is_symlink())  # True
+
+
+# Note: os module has a symlink method too.
+os.symlink("target", "link_name")
+
+
 # ---------- Check if the Path is file/dir/symlink or absolute path------------
 
 a_file = Path("~/.cache/zsh/history").expanduser()
