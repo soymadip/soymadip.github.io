@@ -29,6 +29,14 @@ print(f"Last modified: {file_info.st_mtime} [ unix timestamp (epoch) ]")
 
 
 """
+We can use lstat() to get the metadata of a symlink itself, without following it.
+equivalent to stat(follow_symlinks=False)
+
+good to know, in old code it's used.
+"""
+
+
+"""
 commonly used info:
 
 | Attribute  | What It Means                                                     | Unit / Format                  |

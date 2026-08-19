@@ -2,7 +2,6 @@
 In a python program, we use all combined. not just of of the modules
 """
 
-import os
 import shutil
 from pathlib import Path
 from tempfile import TemporaryDirectory
@@ -44,7 +43,7 @@ def find_largest_file(dir: Path) -> Path:
         if not item.is_file():
             continue
 
-        size = item.stat().st_size
+        size = item.stat(follow_symlinks=False).st_size
 
         if size > largest_file[1]:
             largest_file = (item, size)
@@ -164,7 +163,7 @@ def print_dir_tree(
 
     root = Path(root)
 
-    for current, _, files in root.walk(follow_symlinks=False):
+    for current, _, files in root.walk():
         level: int = len(current.relative_to(root).parts)
         indent: str = "    " * level
 
@@ -177,8 +176,36 @@ def print_dir_tree(
 # print_dir_tree("notes/3 - machile-learning")
 
 
-# ---------------------
+# --------------------- Find symlinks in a directory -------------------
 
-ss = Path(".")
 
-ss.unlink(missing_ok=True)
+def find_symlinks(directory: Path | str = ".") -> dict[Path, Path]:
+
+    directory = Path(directory)
+    symlinks: dict[Path, Path] = {}
+
+    if not (directory.exists() or directory.is_dir()):
+        raise ValueError("directory must be a valid directory path")
+
+    for item in directory.rglob("*"):
+        if item.is_symlink():
+            symlinks[item] = item.readlink()
+
+    return symlinks
+
+
+# -------------- Broken symlink finder-------------------
+
+
+def find_broken_symlinks(directory: str | Path = ".") -> list[Path]:
+    brokens: list[Path] = []
+    directory = Path(directory)
+
+    if not (directory.exists() or directory.is_dir()):
+        raise ValueError("directory must be a valid directory path")
+
+    for item in directory.rglob("*"):
+        if item.is_symlink() and not item.exists():
+            brokens.append(item)
+
+    return brokens

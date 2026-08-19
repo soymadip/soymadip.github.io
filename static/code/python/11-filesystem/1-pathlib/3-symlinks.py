@@ -9,14 +9,14 @@ a_dir = Path("docs")
 print(a_dir.exists())  # True if a_dir exists
 
 
-# --------- Create symlink  & hard link ------------
+# --------- Create symlink ------------
 #
 pth = Path("google")
 
 pth.symlink_to("docs")  # creates a symlink named 'google' pointing to 'docs'
-pth.hardlink_to("docs")  # creates a hard link named 'google' pointing to 'docs'
 
 print(pth.is_symlink())  # True
+print(pth.readlink())
 
 
 # Note: os module has a symlink method too.
@@ -32,13 +32,15 @@ if a_dir.is_dir():
     print("is a dir")  # check if directory, (even if it's a symlink)
 
 if a_file.is_file():
-    print("is a file")  # check if a file (even if it's a symlink)
+    print("is a file")  # check if a file (follows symlink by default.)
 
 if a_file.is_absolute():
     print("is a absolute path")  # check if the path absolute path
 
 if a_file.is_symlink():
-    print("is a symlink")  # check if a symlink (dir/file)
+    print(
+        "is a symlink to ", a_file.readlink()
+    )  # check if a symlink (dir/file) & print real path
 
 
 #
