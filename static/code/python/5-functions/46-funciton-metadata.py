@@ -13,7 +13,7 @@ help(func_name)  # help returns the docstring and signature
 
 
 # documenting your code
-def gen_bil(chai=0, samosa=0) -> tuple[int, str]:
+def gen_bil(chai: int = 0, samosa: int = 0) -> tuple[int, str]:
     """
     calculate total bill for chai & samosa.
 
@@ -26,4 +26,4 @@ def gen_bil(chai=0, samosa=0) -> tuple[int, str]:
     return total, "Thanks for eating!"
 
 
-gen_bil(5, 90)
+ss = gen_bil(5, 90)

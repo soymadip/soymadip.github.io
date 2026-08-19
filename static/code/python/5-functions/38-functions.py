@@ -1,4 +1,4 @@
-def print_order(name, chai_type):  # parameter
+def print_order(name: str, chai_type: str) -> None:  # parameter
     print(f"{name} orderded {chai_type} chai!")
 
 
@@ -7,7 +7,7 @@ print_order("Hitesh", "Ginger")
 print_order("Jia", "Tulsi")
 
 
-def fetch_sales():
+def fetch_sales() -> None:
     print("Fetching the sales data")
 
 
@@ -30,7 +30,7 @@ generate_report()
 
 
 # Readability
-def calculate_bill(cups, price_per_cup):
+def calculate_bill(cups: int, price_per_cup: int) -> int:
     return cups * price_per_cup
 
 

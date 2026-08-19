@@ -52,7 +52,7 @@ The inode stores metadata about the directory.
 
 original = Path("ss/ss.txt")
 
-link = original.with_name("ss.c")  # now ss/ss.c
+link: Path = original.with_name("ss.c")  # now ss/ss.c
 
 link.hardlink_to(original)  # creates a hardlink from ss/ss.c to ss/ss.txt
 
