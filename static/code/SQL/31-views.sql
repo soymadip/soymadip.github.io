@@ -31,3 +31,26 @@ FROM departments AS dept
 LEFT JOIN students AS st 
 ON dept.dept_id = st.dept_id
 GROUP BY dept.dept_id, dept.dept_name;
+
+
+-- Student Info View
+CREATE VIEW student_details AS 
+SELECT st.id, st.name, dept.dept_name, dept.dept_id 
+FROM students as st 
+LEFT JOIN departments as dept 
+ON st.dept_id = dept.dept_id;
+
+-- ------------------- Query just like a table -------------------------
+SELECT * FROM student_details;
+
+
+-- --------------- Drop a View ------------
+DROP VIEW student_details;
+
+
+-- ----------- Update Existing View -----------
+
+CREATE OR REPLACE VIEW student_details AS
+SELECT s.id, s.name, d.dept_name
+FROM students s
+JOIN departments d ON s.dept_id = d.dept_id;
