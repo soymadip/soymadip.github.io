@@ -15,7 +15,6 @@ from typing import override
 
 from watchdog.events import FileSystemEventHandler
 from watchdog.observers import Observer
-from watchdog.observers.api import BaseObserver
 
 # There are two main classes: Observer and EventHandler
 #
