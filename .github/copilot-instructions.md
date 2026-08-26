@@ -4,7 +4,7 @@ name: writing-agent
 
 # Instructions
 
-## What this repository is
+## What This Repository Is
 
 This repo is a personal website built with Portosaur(https://gitlab.com/soymadip/portosaur).
 
