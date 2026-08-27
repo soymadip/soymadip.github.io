@@ -36,4 +36,4 @@ def crt_usr(
     }
 
 
-usr1 = crt_usr("soymadip", 12, fav_color=(12, 12, 34))
+usr1 = crt_usr("soymadip", 12, fav_color=(102, 120, 255))

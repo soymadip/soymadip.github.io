@@ -2,7 +2,6 @@
 Type hinting is a way to specify the expected type of a variable
 
 Types are not enforced by the interpreter but are used by static type checkers like Ruff, mypy etc.
-
 """
 
 # ----------------- primitives ------------------
@@ -30,6 +29,13 @@ tpl: tuple[int, str] = (12, "soymadip")
 # to allow unlimited lengths, use tuple[type1, ...]
 tpl2: tuple[int | str | float, ...] = (12, "soymadip", 80.5)
 
+
+# For generic iterable, Iterable
+
+from collections.abc import Iterable
+
+itr: Iterable[str] = ["a", "b", "c"]
+itr1: Iterable[str] = {"a", "b", "c"}
 
 #
 # ------------------ Functions ------------------
