@@ -12,7 +12,7 @@ from functools import partial
 from uuid import UUID, uuid4
 
 # We need to install pydantic[email] for these
-from pydantic import Annotated, BaseModel, EmailStr, HttpUrl, SecretStr
+from pydantic import BaseModel, EmailStr, HttpUrl, SecretStr
 
 # impoat field
 from pydantic.fields import Field

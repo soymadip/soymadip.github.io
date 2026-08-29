@@ -53,6 +53,7 @@ from pydantic import BaseModel, Field
 
 
 # Then We inherit from BaseModel
+# Each class is called a "model"
 class User(BaseModel):
     uid: int
     name: str

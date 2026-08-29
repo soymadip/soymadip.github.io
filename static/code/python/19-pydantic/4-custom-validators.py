@@ -12,6 +12,7 @@ from pydantic import (
     HttpUrl,
     SecretStr,
     field_validator,
+    model_validator,
 )
 from pydantic.fields import Field
 
@@ -22,6 +23,7 @@ class User(BaseModel):
     age: int
     email: EmailStr
     password: SecretStr
+    password_confirm: SecretStr
 
     website: HttpUrl | None = None
     bio: str = ""
@@ -60,16 +62,27 @@ class User(BaseModel):
         # if the value does start, return as is
         return value
 
+    #
+    #
+    # We use model_validator to check a model's fields after instantiation
+    @model_validator(mode="after")
+    def pass_match(self):
+        if self.password != self.password_confirm:
+            raise ValueError("password and password_confirm must match")
+
+        return self  # model validator should return self
+
 
 #
 #
 # create a user
-usr1: User = User(
+usr1 = User(
     username="9google",
     age=23,
     email="ss@gmail.com",
     password="google is shit",  # pyright: ignore[reportArgumentType]
-    website=" google.com",  # pyright: ignore[reportArgumentType]
+    password_confirm="google is shit",  # pyright: ignore[reportArgumentType]
+    website="google.com",  # pyright: ignore[reportArgumentType]
 )
 
 print(usr1, end="\n\n")
