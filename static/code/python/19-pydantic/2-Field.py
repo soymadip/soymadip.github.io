@@ -53,3 +53,11 @@ print(my_post.tags)
 # --------------------- Adding Constraints -----------------
 
 from typing import Annotated
+
+
+class User(BaseModel):
+    uid: Annotated[int, Field(ge=0)]
+    usename: Annotated[str, Field(min_length=3, max_length=20)]
+    age: Annotated[int, Field(ge=13)]
+
+    slug: Annotated[str, Field(pattern=r"^[a-z0-9]+(?:-[a-z0-9]+)*$")]

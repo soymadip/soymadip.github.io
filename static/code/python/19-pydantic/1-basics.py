@@ -5,6 +5,9 @@ Instead of writing manual checks to make sure incoming data (like JSON from an A
 Pydantic handles it automatically using standard Python type hints.
 
 It also does settings management
+
+
+NOTE: we are using pydantic v2, v1 has different methods that are deprecated now
 """
 
 # ------------ Without Pydantic --------
