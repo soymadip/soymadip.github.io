@@ -49,7 +49,7 @@ print(user)
 # This becomes easier with Pydantic's BaseModel
 
 # we import BaseModel from pydantic
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 
 
 # Then We inherit from BaseModel
@@ -96,7 +96,7 @@ class Product(BaseModel):
 
 
 product1 = Product(uid=1, name="fuck charger", price=1000)
-product2 = Product(uid=2, name="sonaii", price=99.9, in_stock=False)
+product2 = Product(uid=2, name="doll", price=99.9, in_stock=False)
 
 # This gives Error
 # product2 = Product(name="sonaii")

@@ -6,7 +6,7 @@ from datetime import UTC, datetime
 from functools import partial
 from typing import Literal
 
-from pydantic import BaseModel, EmailStr, Field
+from pydantic import BaseModel, EmailStr, Field, SecretStr
 
 
 class Comment(BaseModel):
@@ -19,7 +19,7 @@ class Author(BaseModel):
     username: str
     email: EmailStr
     age: int
-    password: str
+    password: SecretStr
 
 
 class BlogPost(BaseModel):
@@ -48,9 +48,9 @@ post_data = {
     "status": "published",
     "tags": ["pydantic", "models", "nested"],
     "author": {
-        "username": "coreyms",
-        "email": "CoreyMSchafer@gmail.com",
-        "age": 39,
+        "username": "soymadips",
+        "email": "sd@gg.com",
+        "age": 999,
         "password": "secret123",
     },
     "comments": [
@@ -70,4 +70,8 @@ post_data = {
 
 post = BlogPost(**post_data)
 
-print(post)
+# Instead of using dict unpacking,
+# Wwe SHOULD use model_validate (or model_validate_json for json data)
+post = BlogPost.model_validate(post_data)
+
+print(post.model_dump_json(indent=2))
