@@ -8,6 +8,7 @@
 -- VARCHAR(n): Variable-length character string with a maximum length of n characters, used for text data.
 -- ENUM('value1', 'value2', 'value3'): Used to define a set of predefined-permitted values.
 -- DATE: Used for storing date values.
+-- DATETIME: Used for storing date and time values.
 -- TIMESTAMP: Stores date and time, automatically set to current timestamp when a row is created.
 
 
@@ -23,18 +24,20 @@
 --                 eg, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, is_active BOOLEAN DEFAULT TRUE 
 
 
-USE startersql;
+-- In Vscode we are using startersql db for connection.
+-- But in MySQL Workbench we need to create a database first and then use it. 
+-- USE startersql;
 
 -- ----------------------- Create a Table ------------------------
 
 CREATE TABLE IF NOT EXISTS users (
--- key name,    data type,                        constraints
-    id          INT                               AUTO_INCREMENT PRIMARY KEY,
-    name        VARCHAR(100)                      NOT NULL,
-    email       VARCHAR(100)                      UNIQUE NOT NULL,
-    gender      ENUM('Male', 'Female', 'Other'),
-    dob         DATE,
-    created_at  TIMESTAMP                         DEFAULT CURRENT_TIMESTAMP
+-- key name,       data type,                        constraints
+    id             INT                               AUTO_INCREMENT PRIMARY KEY,
+    name           VARCHAR(100)                      NOT NULL,
+    email          VARCHAR(100)                      UNIQUE NOT NULL,
+    gender         ENUM('Male', 'Female', 'Other'),
+    date_of_birth  DATE,
+    created_at     DATETIME                          DEFAULT CURRENT_TIMESTAMP
 );
 
 
@@ -45,4 +48,3 @@ SHOW TABLES;
 
 -- Show columns in users table
 SELECT * FROM users;
-
