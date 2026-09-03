@@ -7,6 +7,7 @@ class User(BaseModel):
     model_config = ConfigDict(
         populate_by_name=True,  # tell pydantic to accept both field names and aliases
         strict=True,  # disable field cohorsion ()
+        from_attributes=True,  # allow pydantic to read data from objects too
     )
 
     uid: UUID = Field(alias="id", default_factory=uuid4)

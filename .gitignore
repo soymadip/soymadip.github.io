@@ -15,6 +15,7 @@ TestimonialsSection/
 .compiler
 resume file
 /main.css
+!*template*
 
 # Generated files
 .cache/*

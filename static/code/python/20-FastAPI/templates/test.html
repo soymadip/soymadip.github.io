@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <h1>Current Request Data</h1>
+    </br>
+    <p><b>Agent:</b> {{ request.headers.get('user-agent') }}</p>
+    <p><b>Cookies:</b> {{ request.cookies }}</p>
+    <p><b>Host IP:</b> {{ request.client.host }}</p>
+    <p><b>Endpoint:</b> {{ request.url }}</p>
+    </br>
+{% endblock content %}
