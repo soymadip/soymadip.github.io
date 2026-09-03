@@ -1,0 +1,22 @@
+services:
+  db:
+    image: mariadb:latest
+    container_name: learn-mariadb
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: my-secret-pw
+      MARIADB_DATABASE: practice_db
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  adminer:
+    image: adminer:latest
+    container_name: db-gui
+    restart: always
+    ports:
+      - "8080:8080"
+
+volumes:
+  db_data:
