@@ -1,0 +1,9 @@
+[project]
+name = "8-adding-db"
+version = "0.1.0"
+description = "Adding database to app"
+requires-python = ">=3.14"
+dependencies = [
+    "fastapi[standard]>=0.141.1",
+    "sqlalchemy>=2.0.52",
+]

@@ -7,5 +7,11 @@ dependencies = [
     "fastapi[standard]>=0.141.1",
     "psutil>=7.2.2",
     "pydantic[email]>=2.13.4",
+    "sqlalchemy>=2.0.52",
     "watchdog>=6.0.0",
+]
+
+[tool.uv.workspace]
+members = [
+    "static/code/python/20-FastAPI/8-adding-db",
 ]
