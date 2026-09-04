@@ -1,3 +1,42 @@
+-- ----------------------- Creating First Table ------------------------
+
+-- Syntax:
+-- CREATE TABLE table_name (
+--     col1_name data_type constraints,
+--     col2_name data_type constraints,
+--     ...
+-- );
+
+
+CREATE TABLE student(
+    id INT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    age INT NOT NULL
+)
+
+
+
+CREATE TABLE IF NOT EXISTS users (
+-- key name,       data type,                        constraints
+    id             INT                               AUTO_INCREMENT PRIMARY KEY,
+    name           VARCHAR(100)                      NOT NULL,
+    email          VARCHAR(100)                      UNIQUE NOT NULL,
+    gender         ENUM('Male', 'Female', 'Other'),
+    date_of_birth  DATE,
+    created_at     DATETIME                          DEFAULT CURRENT_TIMESTAMP
+);
+
+
+-- ----------------------- Show Tables ------------------------
+
+-- Show All tables in selected database
+SHOW TABLES;
+
+-- Show columns in users table
+SELECT * FROM student;
+
+
+
 -- --------------------- Selecting Data from Table ------------------------
 --
 
