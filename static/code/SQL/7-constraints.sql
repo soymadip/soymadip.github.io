@@ -32,7 +32,7 @@ CREATE TABLE student (
 );
 
 
------- FOREIGN KEY --------
+-- ---- FOREIGN KEY --------
 
 -- makes a column in one table refer to the primary key of another table. This is used to link two tables together.
 
@@ -47,7 +47,7 @@ CREATE TABLE emp (
 
 
 
--------- DEFAULT --------
+-- ------ DEFAULT --------
 
 -- sets a default value for a column when no value is specified during insertion.
 
@@ -58,7 +58,7 @@ CREATE TABLE student (
 );
 
 
--------- CHECK ---------
+-- ------ CHECK ---------
 
 -- it can limit the values (or range of values) that can be placed in a column.
 
