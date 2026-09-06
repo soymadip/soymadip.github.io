@@ -34,6 +34,7 @@ CREATE TABLE student (
 -- ----------------- FOREIGN KEY ----------------
 
 -- makes a column in one table refer to the primary key of another table. This is used to link two tables together.
+-- More Later in lesson 21.
 
 -- Syntax: FOREIGN KEY (column_name) REFERENCES other_table(column_name)
 
