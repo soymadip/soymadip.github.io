@@ -57,3 +57,38 @@ SELECT * FROM student WHERE city IN ('Delhi', 'Bengal');
 -- Eg: list students with marks not equal to 80
 SELECT * FROM student WHERE NOT marks = 80;
 
+
+-- ------------------------ LIKE Operator ------------------------
+
+-- Used to search for a specified pattern in a column.
+-- The pattern can include wildcards:
+--    %   Represents zero or more characters.
+--    _   Represents a single character.
+
+
+-- select students whose name starts with A
+SELECT * FROM student WHERE name LIKE 'A%';
+
+-- select students whose name has ga 
+SELECT * FROM student WHERE name LIKE '%ga%';
+
+-- select students whose name ends with S
+SELECT * FROM student WHERE name LIKE '%s';
+
+
+
+-- -------------- Grouoping with Parentheses -------------
+
+-- Parentheses can be used to group conditions and control the order of evaluation in complex queries.
+
+-- Find employees who are either:
+--   - from Kolkata and work in Engineering
+-- OR
+--   - from Mumbai and work in Finance
+--
+SELECT * FROM employees WHERE 
+    (city = 'Kolkata' AND department = 'Engineering')
+    OR
+    (city = 'Mumbai' AND department = 'Finance');
+
+
