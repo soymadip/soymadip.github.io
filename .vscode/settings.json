@@ -1,6 +1,12 @@
 {
     "dbcode.resultLocation": "panel",
     "dbcode.ai.inlineCompletion": false,
+    "dbcode.formatting.keywordCase": "upper",
+    "dbcode.formatting.dataTypeCase": "upper",
+    "dbcode.formatting.functionCase": "upper",
+    "dbcode.formatting.linesBetweenQueries": 3,
+    "dbcode.rowsToLoad": 200,
+    "dbcode.orderByPrimaryKey": "Ascending",
     "[sql]": {
         "editor.defaultFormatter": "dbcode.dbcode"
     }

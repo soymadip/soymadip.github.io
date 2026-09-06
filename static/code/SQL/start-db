@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 
+export COMPOSE_PROJECT_NAME="practice_db"
+
+export MARIADB_DATABASE="$COMPOSE_PROJECT_NAME"
 export MARIADB_ROOT_PASSWORD="my-secret-pw"
-export MARIADB_DATABASE="practice_db"
 
 export PMA_USER="root"
 export PMA_PASSWORD="$MARIADB_ROOT_PASSWORD"
 
-ARGS="up --no-recreate --remove-orphans"
+export ARGS="up --no-recreate --remove-orphans"
 
 # Check for Podman
 if command -v podman >/dev/null 2>&1; then
