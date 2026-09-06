@@ -1,20 +1,19 @@
--------------------- Constraints --------------------
-
+--
 -- Constraints are used to specify  rules for data in tables.
 
 
------ NOT NULL --------
---
+-- ---------------- NOT NULL -----------------
+
 -- calumns can't have NULL value. 
 
 
------ UNIQUE --------
---
+------------------- UNIQUE -----------------
+
 -- all values in the column must be unique/different. No duplicate values are allowed.
 
 
------ PRIMARY KEY --------
--- 
+-- ------------- PRIMARY KEY ------------------
+
 -- makes a column unique and not null. but can be only used for one
 
 CREATE TABLE student (
@@ -32,7 +31,7 @@ CREATE TABLE student (
 );
 
 
--- ---- FOREIGN KEY --------
+-- ----------------- FOREIGN KEY ----------------
 
 -- makes a column in one table refer to the primary key of another table. This is used to link two tables together.
 
@@ -47,7 +46,7 @@ CREATE TABLE emp (
 
 
 
--- ------ DEFAULT --------
+-- ---------------- DEFAULT --------------------
 
 -- sets a default value for a column when no value is specified during insertion.
 
@@ -58,7 +57,7 @@ CREATE TABLE student (
 );
 
 
--- ------ CHECK ---------
+-- ----------------- CHECK -------------------
 
 -- it can limit the values (or range of values) that can be placed in a column.
 
