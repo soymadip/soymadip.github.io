@@ -13,7 +13,9 @@ services:
 
   phpmyadmin:
     container_name: learn-phpmyadmin
-    image: phpmyadmin:latest
+    build:  
+      context: ./.pma
+      dockerfile: Dockerfile
     restart: always
     ports:
       - "8080:80"
@@ -21,6 +23,9 @@ services:
       PMA_HOST: mariadb
       PMA_USER: ${PMA_USER}
       PMA_PASSWORD: ${PMA_PASSWORD}
+    volumes:
+      - phpmyadmin_data:/var/lib/phpmyadmin
 
 volumes:
   db_data:
+  phpmyadmin_data:

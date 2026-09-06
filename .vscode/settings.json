@@ -6,7 +6,6 @@
     "dbcode.formatting.functionCase": "upper",
     "dbcode.formatting.linesBetweenQueries": 3,
     "dbcode.rowsToLoad": 200,
-    "dbcode.orderByPrimaryKey": "Ascending",
     "[sql]": {
         "editor.defaultFormatter": "dbcode.dbcode"
     }
