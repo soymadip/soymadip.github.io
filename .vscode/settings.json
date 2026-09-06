@@ -1,0 +1,7 @@
+{
+    "dbcode.resultLocation": "panel",
+    "dbcode.ai.inlineCompletion": false,
+    "[sql]": {
+        "editor.defaultFormatter": "dbcode.dbcode"
+    }
+}
