@@ -21,7 +21,7 @@ CREATE TABLE dept (
     name VARCHAR(50) NOT NULL
 );
 
-CREATE TABLE teacher (
+CREATE TABLE IF NOT EXISTS teacher (
     id INT PRIMARY KEY,
     name VARCHAR(50) NOT NULL,
     dept_id INT,
@@ -66,12 +66,12 @@ CREATE TABLE teacher (
 -- then all teachers' dept should also be updated to computer science.
 
 
-CREATE TABLE dept (
+CREATE TABLE IF NOT EXISTS dept (
     id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(50) NOT NULL
 );
 
-CREATE TABLE teacher (
+CREATE TABLE IF NOT EXISTS teacher (
     id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(50) NOT NULL,
 
@@ -81,10 +81,20 @@ CREATE TABLE teacher (
     rating INT CHECK (rating BETWEEN 1 AND 5)
 );
 
-INSERT INTO dept(id, name) values (2, 'CSE');
-INSERT INTO teacher(id, name, dept_id, rating) values (1, 'soymadip das1', 2, 5);
+INSERT INTO dept(name) values
+    ('CSE'),
+    ('IT'),
+    ('ECE'),
+    ('EEE');
+
+INSERT INTO teacher(name, dept_id, rating) values 
+    ('soymadip das', 2, 5),
+    ('John Doe', 3, 4),
+    ('Jane Smith', 4, 3),
+    ('Patrik Jane', 2, 2);
 
 
+UPDATE dept SET id = 8 WHERE name = 'IT';  -- This will update teachers with it dept_id too.
 
 -- ------------ On delete Setting NULL -----------------
 

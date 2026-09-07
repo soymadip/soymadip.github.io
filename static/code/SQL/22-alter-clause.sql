@@ -4,10 +4,11 @@
 -- It can be used to add, drop, or modify columns in an existing table.
 
 
--- Syntax: ALTER TABLE table_name action;
+-- Syntax:
+ALTER TABLE table_name action;
+
 
 -- Action can be:
-
 
 -- --------------- ADD COLUMN -----------------
 
@@ -60,10 +61,17 @@ ALTER TABLE table_name CHANGE COLUMN old_column_name new_column_name new_datatyp
 -- Add age column to student table
 ALTER TABLE student ADD COLUMN age INT;  -- New column's values will be NULL by default
 
+-- Modify age column to be varchat
+ALTER TABLE student MODIFY COLUMN age VARCHAR(2);
 
--- Drop age column from student table
-ALTER TABLE student DROP COLUMN age;
 
--- Now marks column can not have NULL values
-ALTER TABLE student MODIFY COLUMN marks INT NOT NULL;
+-- Change age column name to stu_age and type to int
+ALTER TABLE student CHANGE COLUMN age stu_age INT DEFAULT 20;
 
+-- Drop stu_age column from student table
+ALTER TABLE student DROP COLUMN stu_age;
+
+-- Rename Table
+ALTER TABLE student RENAME TO stu;
+
+ALTER TABLE stu RENAME TO student;
