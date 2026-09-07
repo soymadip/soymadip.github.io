@@ -12,3 +12,10 @@ SELECT * FROM student WHERE marks > 80 ORDER BY marks DESC;
 
 -- Eg: List top 3 students
 SELECT * FROM student ORDER BY marks DESC LIMIT 3;
+
+
+-- --------- USING MULTIPLE sorting CONDITION -----------
+
+-- Display employees from the highest salary to the lowest salary.
+-- When salaries are equal, show the more experienced employee first.
+SELECT * FROM employees ORDER BY salary DESC, experience DESC;
