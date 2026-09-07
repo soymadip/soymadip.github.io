@@ -27,6 +27,14 @@ CREATE TABLE IF NOT EXISTS users (
 );
 
 
+-- ---- Copy from other table ---------
+
+CREATE TABLE users_copy LIKE users; -- copies fields, constrants. MYSQL SPECIFIC
+
+-- Copy data from users to users_copy
+INSERT INTO users_copy SELECT * FROM users; --- Kinda Universal
+
+
 -- ----------------------- Show Tables ------------------------
 
 -- Show All tables in selected database
