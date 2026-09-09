@@ -4,7 +4,7 @@
 
 -- ---------------- NOT NULL -----------------
 
--- calumns can't have NULL value. 
+-- calumns can't have NULL value.
 
 
 ------------------- UNIQUE -----------------
@@ -25,8 +25,8 @@ CREATE TABLE student (
     roll_no INT,
     name VARCHAR(50) NOT NULL,
     email VARCHAR(50) UNIQUE,
-    
-    -- We add primary key at end for making multiple columns as primary key 
+
+    -- We add primary key at end for making multiple columns as primary key
     PRIMARY KEY (roll_no, email)
 );
 
@@ -43,7 +43,7 @@ CREATE TABLE emp (
      
     -- We add foreign key at end
     FOREIGN KEY (cust_id) REFERENCES customer(cust_id)
-);  
+);
 
 
 
@@ -65,12 +65,11 @@ CREATE TABLE student (
 CREATE TABLE city (
     id INT PRIMARY KEY,
     city VARCHAR(50) NOT NULL,
-    
+
     -- Inline check
     age INT CHECK (age >= 18),
 
     -- Or dedicated
-     -- Syntax: CONSTRAINT constraint_name CHECK (condition)
+    -- Syntax: CONSTRAINT constraint_name CHECK (condition)
     CONSTRAINT age_check CHECK (age >= 18 AND city="Delhi")
 );
-
