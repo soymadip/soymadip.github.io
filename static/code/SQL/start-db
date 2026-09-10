@@ -1,12 +1,9 @@
 #!/usr/bin/env bash
 
 export COMPOSE_PROJECT_NAME="practice-db"
-export ARGS="up --remove-orphans"
 
 export MYSQL_DATABASE="$COMPOSE_PROJECT_NAME"
 export MYSQL_ROOT_PASSWORD="my-secret-pw"
-export MYSQL_USER="prac_user"
-export MYSQL_PASSWORD="my-secret-pw"
 
 
 
@@ -14,28 +11,42 @@ SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
 cd "$SCRIPT_DIR" || exit 1
 mkdir -p .dbx
 
+# Select a Compose command.
+COMPOSE=()
 
-# Check for Podman
 if command -v podman >/dev/null 2>&1; then
   if podman compose version >/dev/null 2>&1; then
     echo "Using: podman compose"
-    exec podman compose $ARGS "$@"
+    COMPOSE=(podman compose)
   elif command -v podman-compose >/dev/null 2>&1; then
     echo "Using: podman-compose"
-    exec podman-compose $ARGS "$@"
+    COMPOSE=(podman-compose)
   fi
 fi
 
-# Check for Docker
-if command -v docker >/dev/null 2>&1; then
+# Check for Docker when Podman was not selected.
+if ((${#COMPOSE[@]} == 0)) && command -v docker >/dev/null 2>&1; then
   if docker compose version >/dev/null 2>&1; then
     echo "Using: docker compose"
-    exec docker compose $ARGS "$@"
+    COMPOSE=(docker compose)
   elif command -v docker-compose >/dev/null 2>&1; then
     echo "Using: docker-compose"
-    exec docker-compose $ARGS "$@"
+    COMPOSE=(docker-compose)
   fi
 fi
 
-echo "Error: Neither Podman nor Docker with compose support was found." >&2
-exit 1
+if ((${#COMPOSE[@]} == 0)); then
+  echo "Error: Neither Podman nor Docker with compose support was found." >&2
+  exit 1
+fi
+
+case "${1:-}" in
+  down|stop|restart|ps|logs)
+    command="$1"
+    shift
+    exec "${COMPOSE[@]}" "$command" "$@"
+    ;;
+  *)
+    exec "${COMPOSE[@]}" up --remove-orphans "$@"
+    ;;
+esac
