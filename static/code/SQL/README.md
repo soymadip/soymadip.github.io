@@ -4,17 +4,27 @@ We will be using MySQL...
 
 ## DB Setup
 
-Instead of installing locally, we will be using Conntainers to setup MySQL.
+Instead of installing it locally, we will use containers to set up MySQL.
 
 1. Install Podman (recommended) or Docker
-0. If installed Docker, Start docker daemon service.
-0. In the Terminal enter: `./start-db`
+2. If Docker is installed, start the Docker daemon.
+3. In the terminal, run: `./start-db`
+
+- Access at [`localhost:3306`](http://localhost:3306)
+- Default Database name: `practice-db`
 
 
-### Access
+## DB GUI Setup
 
-- Access mariadb/mysql at `localhost:3306`
-- Access phpmyadmin at `localhost:8080`
+1. Head to [`localhost:4224`](http://localhost:4224).
+2. Select the `New Connection` option in the center or top-left.
+3. Select `MySQL` and click Next.
+4. Enter these details:
+    - Connection name: `LearnDB`
+    - Host: `mysql`
+    - Port: `3306`
+    - User: `prac_user`
+    - Password: `my-secret-pw`
 
 
 ## IDE Setup
@@ -22,10 +32,9 @@ Instead of installing locally, we will be using Conntainers to setup MySQL.
 Instead of zed, I suggest using VsCode or any derivative IDE.
 
 1. Install DBCode extension.
-0. From sidebar click on dbcode icon and  click on add conection.
-0. Select MariaDB,
-   - give connection name like `LearnDB`,
-   - host: `localhost`
-   - username: `root`
-   - password: `my-secret-pw`
-   - select a database.
+2. From the sidebar, click the DBCode icon and select **Add Connection**.
+3. Select `MySQL`:
+    - Host: `localhost`
+    - Username: `prac_user`
+    - Password: `my-secret-pw`
+   - Database: `practice-db`

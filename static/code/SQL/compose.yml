@@ -1,31 +1,28 @@
 services:
-  mariadb:
-    container_name: learn-mariadb
-    image: mariadb:latest
+  mysql:
+    image: mysql:latest
     restart: always
     environment:
-      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
-      MARIADB_DATABASE: ${MARIADB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     ports:
       - "3306:3306"
     volumes:
-      - db_data:/var/lib/mysql
+      - mysql_data:/var/lib/mysql
 
-  phpmyadmin:
-    container_name: learn-phpmyadmin
-    build:  
-      context: ./.pma
-      dockerfile: Dockerfile
+  dbx:
+    image: t8y2/dbx:latest
     restart: always
+    depends_on:
+      - mysql
     ports:
-      - "8080:80"
+      - "4224:4224"
     environment:
-      PMA_HOST: mariadb
-      PMA_USER: ${PMA_USER}
-      PMA_PASSWORD: ${PMA_PASSWORD}
+      DBX_DISABLE_PASSWORD: "1"
     volumes:
-      - phpmyadmin_data:/var/lib/phpmyadmin
+      - ./.dbx:/app/data
 
 volumes:
-  db_data:
-  phpmyadmin_data:
+  mysql_data:

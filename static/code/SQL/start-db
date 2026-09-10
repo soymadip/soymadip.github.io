@@ -1,35 +1,40 @@
 #!/usr/bin/env bash
 
-export COMPOSE_PROJECT_NAME="practice_db"
+export COMPOSE_PROJECT_NAME="practice-db"
+export ARGS="up --remove-orphans"
 
-export MARIADB_DATABASE="$COMPOSE_PROJECT_NAME"
-export MARIADB_ROOT_PASSWORD="my-secret-pw"
+export MYSQL_DATABASE="$COMPOSE_PROJECT_NAME"
+export MYSQL_ROOT_PASSWORD="my-secret-pw"
+export MYSQL_USER="prac_user"
+export MYSQL_PASSWORD="my-secret-pw"
 
-export PMA_USER="root"
-export PMA_PASSWORD="$MARIADB_ROOT_PASSWORD"
 
-export ARGS="up --no-recreate --remove-orphans"
+
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
+cd "$SCRIPT_DIR" || exit 1
+mkdir -p .dbx
+
 
 # Check for Podman
 if command -v podman >/dev/null 2>&1; then
-    if podman compose version >/dev/null 2>&1; then
-        echo "Using: podman compose"
-        exec podman compose $ARGS "$@"
-    elif command -v podman-compose >/dev/null 2>&1; then
-        echo "Using: podman-compose"
-        exec podman-compose $ARGS "$@"
-    fi
+  if podman compose version >/dev/null 2>&1; then
+    echo "Using: podman compose"
+    exec podman compose $ARGS "$@"
+  elif command -v podman-compose >/dev/null 2>&1; then
+    echo "Using: podman-compose"
+    exec podman-compose $ARGS "$@"
+  fi
 fi
 
 # Check for Docker
 if command -v docker >/dev/null 2>&1; then
-    if docker compose version >/dev/null 2>&1; then
-        echo "Using: docker compose"
-        exec docker compose $ARGS "$@"
-    elif command -v docker-compose >/dev/null 2>&1; then
-        echo "Using: docker-compose"
-        exec docker-compose $ARGS "$@"
-    fi
+  if docker compose version >/dev/null 2>&1; then
+    echo "Using: docker compose"
+    exec docker compose $ARGS "$@"
+  elif command -v docker-compose >/dev/null 2>&1; then
+    echo "Using: docker-compose"
+    exec docker-compose $ARGS "$@"
+  fi
 fi
 
 echo "Error: Neither Podman nor Docker with compose support was found." >&2
