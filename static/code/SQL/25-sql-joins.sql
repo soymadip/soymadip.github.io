@@ -13,9 +13,9 @@
 -- ------------------------- Types of Joins -------------------------
 
 -- Creating two tables.
-DROP DATABASE IF EXISTS join_example;
-CREATE DATABASE join_example;
-USE join_example;
+DROP DATABASE IF EXISTS join_ex;
+CREATE DATABASE join_ex;
+USE join_ex;
 
 
 CREATE TABLE student(
@@ -74,7 +74,8 @@ LEFT JOIN tableB
 ON tableA.column_name = tableB.column_name;
 
 -- Ex:
-SELECT * FROM student LEFT JOIN course ON student.student_id = course.student_id;
+SELECT * FROM student 
+LEFT JOIN course ON student.student_id = course.student_id;
 
 -- right student_id & course column will be NULL for students who are not in the course table.
  
@@ -97,16 +98,48 @@ ON student.student_id = course.student_id;
 -- left student_id & name column will be NULL for students who are not in the student table.
 
 
--- --------------- FULL Outer Join ---------------
+-- --------------- FULL Join ---------------
 
 -- Returns all records when there is a match in either left or right table.
+-- MySQL doesn't have native FULL JOIN.
+-- So we take left join & right join and UNION them.
 
--- Syntax:
-SELECT columns FROM tableA
-FULL OUTER JOIN tableB
-ON tableA.column_name = tableB.column_name;
+SELECT * FROM student LEFT JOIN course  ON student.student_id = course.student_id
+UNION  -- gives unique values
+SELECT * FROM student RIGHT JOIN course ON student.student_id = course.student_id;
+
+
+-- ---------------------- LEFT Exclusive JOIN -----------------------------
+
+-- When we want to get records that exist ONLY in the left table and have no matching record in the right table.
 
 -- Ex:
-SELECT * FROM student
-FULL OUTER JOIN course
-ON student.student_id = course.student_id;
+SELECT * FROM student LEFT JOIN course ON student.student_id = course.student_id WHERE course.student_id IS NULL;
+
+-- ---------------------- RIGHT Exclusive JOIN -----------------------------
+
+-- When we want to get records that exist ONLY in the right table and have no matching record in the left table.
+
+-- Ex:
+SELECT * FROM student RIGHT JOIN course ON student.student_id = course.student_id WHERE student.student_id IS NULL;
+
+
+-- ---------------------- FULL Exclusive JOIN -----------------------------
+
+-- When we want to get records that are unique to EITHER the left table OR the right table, excluding any records they have in common.
+
+-- Ex (Standard SQL):
+SELECT * FROM student FULL OUTER JOIN course ON student.student_id = course.student_id WHERE student.student_id IS NULL OR course.student_id IS NULL;
+
+-- Ex (MariaDB / MySQL Workaround):
+-- Note: MySQL and MariaDB do not support `FULL OUTER JOIN` directly.
+-- You achieve it by combining a LEFT Exclusive JOIN and a RIGHT Exclusive JOIN using UNION:
+SELECT * FROM student LEFT JOIN course ON student.student_id = course.student_id WHERE course.student_id IS NULL
+UNION
+SELECT * FROM student RIGHT JOIN course ON student.student_id = course.student_id WHERE student.student_id IS NULL;
+
+
+-- ------------------- Self Join ----------------------
+
+-- It is regular join but the table being joined with itself.
+

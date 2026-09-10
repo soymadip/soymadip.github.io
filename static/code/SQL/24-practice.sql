@@ -9,7 +9,7 @@ CREATE TABLE employees (
     department TEXT,
     salary INTEGER,
     city TEXT,
-    email TEXT UNIQUE,
+    email VARCHAR(200) UNIQUE,
     experience INTEGER DEFAULT 0
 );
 
