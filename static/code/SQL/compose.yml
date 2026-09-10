@@ -1,6 +1,7 @@
 services:
   mysql:
     image: mysql:latest
+    command:  mysqld --performance-schema=OFF --innodb-buffer-pool-size=64M --max-connections=20
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_SU_PASSWORD}
