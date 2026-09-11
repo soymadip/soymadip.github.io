@@ -56,9 +56,9 @@ INNER JOIN tableB
 ON tableA.column_name = tableB.column_name;
 
 -- Ex: Get name of students and their courses (common in both tables).
-SELECT * FROM student AS s
-INNER JOIN course AS c
-ON s.student_id = c.student_id;
+SELECT * FROM student AS st
+INNER JOIN course AS crs
+ON st.student_id = crs.student_id;
 
 -- Only students which aare in both tables are printed.
 
@@ -69,13 +69,16 @@ ON s.student_id = c.student_id;
 -- If there is no match, the result is NULL on the right side.
 
 -- Syntax:
-SELECT columns FROM tableA
+SELECT columns
+FROM tableA
 LEFT JOIN tableB
 ON tableA.column_name = tableB.column_name;
 
 -- Ex:
-SELECT * FROM student 
-LEFT JOIN course ON student.student_id = course.student_id;
+SELECT *
+FROM student 
+LEFT JOIN course 
+ON student.student_id = course.student_id;
 
 -- right student_id & course column will be NULL for students who are not in the course table.
  
@@ -86,12 +89,14 @@ LEFT JOIN course ON student.student_id = course.student_id;
 -- If there is no match, the result is NULL on the left side.
 
 -- Syntax:
-SELECT columns FROM tableA
-RIGHT JOIN tableB
+SELECT columns
+FROM tableA  -- LEFT TABLE. this table gets all rows
+RIGHT JOIN tableB  -- RIGHT TABLE, only mutual rows with left table are printed
 ON tableA.column_name = tableB.column_name;
 
 -- Ex:
-SELECT * FROM student
+SELECT *
+FROM student
 RIGHT JOIN course
 ON student.student_id = course.student_id;
 
@@ -104,9 +109,15 @@ ON student.student_id = course.student_id;
 -- MySQL doesn't have native FULL JOIN.
 -- So we take left join & right join and UNION them.
 
-SELECT * FROM student LEFT JOIN course  ON student.student_id = course.student_id
-UNION  -- gives unique values
-SELECT * FROM student RIGHT JOIN course ON student.student_id = course.student_id;
+     SELECT *
+     FROM student 
+     LEFT JOIN course  
+     ON student.student_id = course.student_id
+UNION         -- gives unique values
+     SELECT *
+     FROM student 
+     RIGHT JOIN course 
+     ON student.student_id = course.student_id;
 
 
 -- ---------------------- LEFT Exclusive JOIN -----------------------------
@@ -114,14 +125,22 @@ SELECT * FROM student RIGHT JOIN course ON student.student_id = course.student_i
 -- When we want to get records that exist ONLY in the left table and have no matching record in the right table.
 
 -- Ex:
-SELECT * FROM student LEFT JOIN course ON student.student_id = course.student_id WHERE course.student_id IS NULL;
+SELECT * 
+FROM student 
+LEFT JOIN course 
+ON student.student_id = course.student_id 
+WHERE course.student_id IS NULL;
 
 -- ---------------------- RIGHT Exclusive JOIN -----------------------------
 
 -- When we want to get records that exist ONLY in the right table and have no matching record in the left table.
 
 -- Ex:
-SELECT * FROM student RIGHT JOIN course ON student.student_id = course.student_id WHERE student.student_id IS NULL;
+SELECT * 
+FROM student 
+RIGHT JOIN course 
+ON student.student_id = course.student_id 
+WHERE student.student_id IS NULL;
 
 
 -- ---------------------- FULL Exclusive JOIN -----------------------------
@@ -129,7 +148,11 @@ SELECT * FROM student RIGHT JOIN course ON student.student_id = course.student_i
 -- When we want to get records that are unique to EITHER the left table OR the right table, excluding any records they have in common.
 
 -- Ex (Standard SQL):
-SELECT * FROM student FULL OUTER JOIN course ON student.student_id = course.student_id WHERE student.student_id IS NULL OR course.student_id IS NULL;
+SELECT * 
+FROM student 
+FULL OUTER JOIN course 
+ON student.student_id = course.student_id 
+WHERE student.student_id IS NULL OR course.student_id IS NULL;
 
 -- Ex (MariaDB / MySQL Workaround):
 -- Note: MySQL and MariaDB do not support `FULL OUTER JOIN` directly.
@@ -140,6 +163,31 @@ SELECT * FROM student RIGHT JOIN course ON student.student_id = course.student_i
 
 
 -- ------------------- Self Join ----------------------
+-- A regular join where a table is joined with itself.
+-- 
+-- Used when:
+--   1. Comparing rows within the same table.
+--   2. Querying hierarchical data in one table (e.g., Employee -> Manager).
+-- 
+-- Note: Table aliases (AS table1, AS table2) are REQUIRED so SQL can treat them as two distinct instances.
 
--- It is regular join but the table being joined with itself.
+-- Ex:
+CREATE TABLE  employee(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(50),
+    manager_id int 
+) AUTO_INCREMENT=101;
+
+INSERT INTO employee(id,name, manager_id) VALUES
+    (101, 'adam', 103),
+    (102, 'bob', 104),
+    (103, 'casey', null),
+    (104, 'donald', 103);
+
+
+-- Find out which employee has which manager.
+SELECT emp.name, mgr.name 
+FROM employee AS emp
+LEFT JOIN employee AS mgr
+ON emp.manager_id = mgr.id;
 
