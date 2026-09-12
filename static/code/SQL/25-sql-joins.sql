@@ -1,3 +1,40 @@
+
+-- ------------------------- Types of Joins -------------------------
+
+-- Creating two tables.
+DROP DATABASE IF EXISTS join_ex;
+CREATE DATABASE join_ex;
+USE join_ex;
+
+
+CREATE TABLE students(
+    student_id INT PRIMARY KEY,
+    name VARCHAR(100)
+);
+
+CREATE TABLE courses(
+    student_id INT PRIMARY KEY,
+    course VARCHAR(100)
+);
+
+
+INSERT INTO students(student_id, name) VALUES
+    (101, 'amit'),
+    (102, 'rohit'),
+    (103, 'sita'),
+    (104, 'john tucker');
+
+
+INSERT INTO courses(student_id, course) VALUES
+    (102, 'english'),
+    (105, 'science'),
+    (103, 'math'),
+    (107, 'computer science');
+
+SELECT * FROM courses;
+SELECT * FROM students;
+
+
 -- ================== SQL Joins ==================
 
 -- Join is used to combine rows from two or more tables based on a related column between them.
@@ -12,37 +49,6 @@
 
 -- ------------------------- Types of Joins -------------------------
 
--- Creating two tables.
-DROP DATABASE IF EXISTS join_ex;
-CREATE DATABASE join_ex;
-USE join_ex;
-
-
-CREATE TABLE student(
-    student_id INT PRIMARY KEY,
-    name VARCHAR(100)
-);
-
-CREATE TABLE course(
-    student_id INT PRIMARY KEY,
-    course VARCHAR(100)
-);
-
-
-INSERT INTO student(student_id, name) VALUES
-    (101, 'amit'),
-    (102, 'rohit'),
-    (103, 'sita'),
-    (104, 'john tucker');
-
-
-INSERT INTO course(student_id, course) VALUES
-    (102, 'english'),
-    (105, 'science'),
-    (103, 'math'),
-    (107, 'computer science');
-
-
 
 -- --------------- Inner Join ---------------
 
@@ -56,8 +62,8 @@ INNER JOIN tableB
 ON tableA.column_name = tableB.column_name;
 
 -- Ex: Get name of students and their courses (common in both tables).
-SELECT * FROM student AS st
-INNER JOIN course AS crs
+SELECT * FROM students AS st
+INNER JOIN courses AS crs
 ON st.student_id = crs.student_id;
 
 -- Only students which aare in both tables are printed.
@@ -76,9 +82,9 @@ ON tableA.column_name = tableB.column_name;
 
 -- Ex:
 SELECT *
-FROM student 
-LEFT JOIN course 
-ON student.student_id = course.student_id;
+FROM students
+LEFT JOIN courses
+ON students.student_id = courses.student_id;
 
 -- right student_id & course column will be NULL for students who are not in the course table.
  
@@ -96,9 +102,9 @@ ON tableA.column_name = tableB.column_name;
 
 -- Ex:
 SELECT *
-FROM student
-RIGHT JOIN course
-ON student.student_id = course.student_id;
+FROM students
+RIGHT JOIN courses
+ON students.student_id = courses.student_id;
 
 -- left student_id & name column will be NULL for students who are not in the student table.
 
@@ -110,14 +116,14 @@ ON student.student_id = course.student_id;
 -- So we take left join & right join and UNION them.
 
      SELECT *
-     FROM student 
-     LEFT JOIN course  
-     ON student.student_id = course.student_id
+     FROM students 
+     LEFT JOIN courses  
+     ON students.student_id = courses.student_id
 UNION         -- gives unique values
      SELECT *
-     FROM student 
-     RIGHT JOIN course 
-     ON student.student_id = course.student_id;
+     FROM students 
+     RIGHT JOIN courses 
+     ON students.student_id = courses.student_id;
 
 
 -- ---------------------- LEFT Exclusive JOIN -----------------------------
@@ -126,10 +132,10 @@ UNION         -- gives unique values
 
 -- Ex:
 SELECT * 
-FROM student 
-LEFT JOIN course 
-ON student.student_id = course.student_id 
-WHERE course.student_id IS NULL;
+FROM students 
+LEFT JOIN courses 
+ON students.student_id = courses.student_id 
+WHERE courses.student_id IS NULL;
 
 -- ---------------------- RIGHT Exclusive JOIN -----------------------------
 
@@ -137,10 +143,10 @@ WHERE course.student_id IS NULL;
 
 -- Ex:
 SELECT * 
-FROM student 
-RIGHT JOIN course 
-ON student.student_id = course.student_id 
-WHERE student.student_id IS NULL;
+FROM students 
+RIGHT JOIN courses 
+ON students.student_id = courses.student_id 
+WHERE students.student_id IS NULL;
 
 
 -- ---------------------- FULL Exclusive JOIN -----------------------------
@@ -149,21 +155,21 @@ WHERE student.student_id IS NULL;
 
 -- Ex (Standard SQL):
 SELECT * 
-FROM student 
-FULL OUTER JOIN course 
-ON student.student_id = course.student_id 
-WHERE student.student_id IS NULL OR course.student_id IS NULL;
+FROM students
+FULL OUTER JOIN courses 
+ON students.student_id = courses.student_id 
+WHERE students.student_id IS NULL OR courses.student_id IS NULL;
 
 -- Ex (MariaDB / MySQL Workaround):
 -- Note: MySQL and MariaDB do not support `FULL OUTER JOIN` directly.
 -- You achieve it by combining a LEFT Exclusive JOIN and a RIGHT Exclusive JOIN using UNION:
-    SELECT * FROM student AS stu
-    LEFT JOIN course AS crs
+    SELECT * FROM students AS stu
+    LEFT JOIN courses AS crs
     ON stu.student_id = crs.student_id
     WHERE crs.student_id IS NULL
 UNION
-    SELECT * FROM student AS stu
-    RIGHT JOIN course AS stu
+    SELECT * FROM students AS stu
+    RIGHT JOIN courses AS crs
     ON stu.student_id = crs.student_id 
     WHERE stu.student_id IS NULL;
 
@@ -193,7 +199,7 @@ INSERT INTO employee(id,name, manager_id) VALUES
 
 -- Find out which employee has which manager.
 SELECT emp.name, mgr.name 
-FROM employee AS emp
-LEFT JOIN employee AS mgr
+FROM employees AS emp
+LEFT JOIN employees AS mgr
 ON emp.manager_id = mgr.id;
 
