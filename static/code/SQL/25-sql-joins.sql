@@ -47,7 +47,7 @@ INSERT INTO course(student_id, course) VALUES
 -- --------------- Inner Join ---------------
 
 -- Returns records that have matching values in both tables.
---
+-- 
 -- As we get common data, A/B table directions doesn't matter.
 
 -- Syntax:
@@ -157,9 +157,15 @@ WHERE student.student_id IS NULL OR course.student_id IS NULL;
 -- Ex (MariaDB / MySQL Workaround):
 -- Note: MySQL and MariaDB do not support `FULL OUTER JOIN` directly.
 -- You achieve it by combining a LEFT Exclusive JOIN and a RIGHT Exclusive JOIN using UNION:
-SELECT * FROM student LEFT JOIN course ON student.student_id = course.student_id WHERE course.student_id IS NULL
+    SELECT * FROM student AS stu
+    LEFT JOIN course AS crs
+    ON stu.student_id = crs.student_id
+    WHERE crs.student_id IS NULL
 UNION
-SELECT * FROM student RIGHT JOIN course ON student.student_id = course.student_id WHERE student.student_id IS NULL;
+    SELECT * FROM student AS stu
+    RIGHT JOIN course AS stu
+    ON stu.student_id = crs.student_id 
+    WHERE stu.student_id IS NULL;
 
 
 -- ------------------- Self Join ----------------------
