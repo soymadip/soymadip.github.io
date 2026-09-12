@@ -2,16 +2,11 @@
 
 export COMPOSE_PROJECT_NAME="practice-db"
 
-export MYSQL_DATABASE="$COMPOSE_PROJECT_NAME"
-export MYSQL_ROOT_PASSWORD="my-secret-pw"
+export DB_DATABASE="$COMPOSE_PROJECT_NAME"
+export DB_SU_PASSWORD="my-secret-pw"
 
-
-
-SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
-cd "$SCRIPT_DIR" || exit 1
-mkdir -p .dbx
-
-# Select a Compose command.
+#
+# Build Compose Command
 COMPOSE=()
 
 if command -v podman >/dev/null 2>&1; then
@@ -41,12 +36,12 @@ if ((${#COMPOSE[@]} == 0)); then
 fi
 
 case "${1:-}" in
-  down|stop|restart|ps|logs)
-    command="$1"
-    shift
-    exec "${COMPOSE[@]}" "$command" "$@"
-    ;;
-  *)
-    exec "${COMPOSE[@]}" up --remove-orphans "$@"
-    ;;
+down | stop | restart | ps | logs)
+  command="$1"
+  shift
+  exec "${COMPOSE[@]}" "$command" "$@"
+  ;;
+*)
+  exec "${COMPOSE[@]}" up --pull always --remove-orphans "$@"
+  ;;
 esac
