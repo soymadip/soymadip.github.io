@@ -28,9 +28,9 @@ Instead of installing it locally, we will use containers to set up MySQL.
     - Password: `my-secret-pw`
 
 
-## IDE Setup
+## IDE Setup (Optional)
 
-I recommend to use DBX (Above DB GUI). If urgently needed, use VS Code or any derivative IDE.
+I recommend to use DBX (Above DB GUI). If urgently needed, then use VS Code or any derivative IDE.
 
 1. Install DBCode extension.
 2. From the sidebar, click the DBCode icon and select **Add Connection**.
