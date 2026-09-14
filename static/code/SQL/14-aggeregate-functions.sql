@@ -22,5 +22,12 @@ SELECT MAX(marks) FROM student;
 -- Average marks of students in the student table.
 SELECT AVG(marks) FROM student;
 
-
 SELECT SUM(ammount) FROM sales;
+
+
+
+-- we can't use these in where clause,
+-- because where is evaluated before table is aggregated..
+-- where filters by applying condition each row by row.
+-- so when where asks like more than AVG(marks), all the rows and avg is not yet calculated.
+
