@@ -8,7 +8,7 @@
 -- BLOB:            string(0-65,535), Can store Binary Large Object, used for storing large binary data such as images or files.
 -- BIT(n):          Stores x-bit values, x can range upto 64. usage: BIT(2) can store 00, 01, 10, 11. BIT(4) can store 0000, 0001, 0010, 0011, 0100, ....
 -- INT:             string(-2,147,483,648 to 2,147,483,647), used for whole numbers.
--- DECIMAL(M,D):    Stores exact Decimal Numbers, What we put in is what we get. M is digits before . and D is after point
+-- DECIMAL(M,D):    Stores exact Decimal Numbers, What we put in is what we get. M is total num of digits allowed (both left & right) and D is after point
 -- FLOAT:           Decimal Numbers, with precision to 23 digits. Used for storing approximate numeric values.
 -- DOUBLE:          Decimal Numbers, with precision to 53 digits.
 -- BOOLEAN:         Stores TRUE(0) or FALSE(1) values. In MySQL, it is a synonym for TINYINT(1).
