@@ -71,30 +71,46 @@ INSERT INTO scholarship_applications
 
 -- Q29
 -- Display every student name in uppercase and every city in lowercase.
+SELECT UPPER(student_name) AS name, LOWER(city) AS city FROM students;
 
 -- Q30
 -- Create a student label in this shape:
 -- STUDENT_ID - STUDENT_NAME - CITY
+SELECT CONCAT_WS(' - ', student_id, student_name, city) AS student_label FROM students;
 
 -- Q31
 -- Display each student's name and the number of characters in the name.
 -- Sort from the longest name to the shortest.
+SELECT student_name, CHAR_LENGTH(student_name) AS name_len FROM students ORDER BY name_len DESC;
 
 -- Q32
 -- Display each scholarship name in uppercase and each amount rounded to the
 -- nearest thousand.
+SELECT UPPER(scholarship_name), ROUND(amount, -3) FROM scholarship_applications;
 
 -- Q33
 -- Display each student and a department label. Students without a department
 -- must show 'Unassigned' instead of NULL.
+SELECT st.student_name, COALESCE(depts.department_name, 'Unassigned')
+FROM students as st
+LEFT JOIN departments as depts
+ON st.department_id = depts.department_id;
 
 -- Q34
 -- Find students whose name contains at least five characters and whose marks
 -- are at least 80.
+SELECT * FROM students WHERE CHAR_LENGTH(student_name) >= 5 AND marks >= 80;
 
 -- Q35
 -- Display each scholarship application with a label of 'Large' when its
 -- amount is at least 40000 and 'Regular' otherwise.
+SELECT 
+    *,
+    CASE
+      WHEN amount >= 40000 THEN 'Large'
+      ELSE 'Regular'
+    END AS Label
+FROM scholarship_applications;
 
 -- Q36
 -- Display every student and classify marks as follows:
@@ -102,10 +118,19 @@ INSERT INTO scholarship_applications
 --   75 through 89.99: 'Good'
 --   below 75: 'Needs Improvement'
 -- Use a scalar conditional function.
+SELECT 
+    *,
+    CASE
+      WHEN marks >= 90 THEN 'Excellent'
+      WHEN marks >= 75 AND marks <= 89.99 THEN 'Good'
+      ELSE 'Needs Improvement'
+    END AS Remarks
+FROM students;
 
 -- Q37
 -- Count students by the first letter of their names. Extract the letter
 -- before grouping.
+
 
 -- Q38
 -- Display each alumni record with a label combining the person's name,
