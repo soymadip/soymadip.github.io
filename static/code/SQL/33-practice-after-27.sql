@@ -130,49 +130,107 @@ FROM students;
 -- Q37
 -- Count students by the first letter of their names. Extract the letter
 -- before grouping.
+SELECT LEFT(student_name, 1) AS first_letter, COUNT(student_name) FROM students GROUP BY first_letter;
+
+-- LEFT is not supported everywhere, SUBSTRING with 1,1 is workover.
+SELECT SUBSTRING(student_name, 1,1) AS first_letter, COUNT(student_name) FROM students GROUP BY first_letter;
 
 
 -- Q38
 -- Display each alumni record with a label combining the person's name,
 -- department, and graduation year.
+SELECT *, CONCAT_WS(' ', person_name, department_name, graduation_year) AS Label FROM alumni;
 
 -- Q39
 -- Display the average scholarship amount rounded to two decimal places for
 -- each scholarship name.
+SELECT ROUND(AVG(amount), 2) AS avg_scholarship FROM scholarship_applications;
 
 -- Q40
 -- Create a report showing student name, uppercase city, rounded marks, and
 -- an assigned/unassigned department label. Use at least four scalar
 -- functions in the query.
-
+SELECT 
+    st.student_name,
+    UPPER(st.city) AS city,
+    ROUND(st.marks) AS marks,
+    CASE 
+        WHEN st.department_id IS NULL THEN 'Unassigned'
+        ELSE 'Assigned'
+    END AS department
+FROM students as st; 
 
 -- ===================== UNION AND UNION ALL =====================
 
 -- Q1
 -- Produce one list of names containing both current students and alumni.
 -- Remove duplicate names.
+SELECT student_name FROM students
+UNION 
+SELECT person_name FROM alumni;
 
 -- Q2
 -- Produce the same list, but preserve duplicate names this time.
--- Observe the difference between UNION and UNION ALL.
+SELECT student_name FROM students
+UNION ALL
+SELECT person_name FROM alumni;
+
 
 -- Q3
 -- Create one two-column list containing every current student and alumni:
 -- person_name and source ('Student' or 'Alumni').
 -- The two SELECT statements must have compatible column types.
+SELECT 
+    person_name,
+    CASE
+      WHEN graduation_year IS NULL THEN 'Student'
+      ELSE 'Alumni'
+    END AS source
+ FROM (
+    SELECT student_name AS person_name, NULL AS graduation_year FROM students
+    UNION 
+    SELECT person_name, graduation_year FROM alumni
+) as combined
+ORDER BY source, person_name;
+
+-- Better, without subquery 
+SELECT student_name AS person_name, 'Student' AS source FROM students
+UNION 
+SELECT person_name, 'Alumni' AS source FROM alumni;
+
 
 -- Q4
 -- Find every city represented by either current students or alumni.
 -- Alumni do not have a city, so decide what comparable data should be
 -- returned and explain the limitation in a comment.
+SELECT NULL AS city FROM alumni
+UNION
+SELECT city FROM students;
+
 
 -- Q5
 -- Return the names that appear in both students and alumni.
 -- Use UNION or UNION ALL as part of your reasoning, not a new topic.
+SELECT * FROM (
+    SELECT student_name AS name FROM students
+    UNION ALL
+    SELECT person_name AS name FROM alumni
+) as combined
+GROUP BY name 
+HAVING count(*) > 1
+ORDER BY name;
+
 
 -- Q6
 -- Build a single department-name list from departments and alumni.
 -- Keep duplicates in one query and remove them in another query.
+SELECT department_name FROM departments
+UNION
+SELECT department_name FROM alumni;
+
+SELECT department_name FROM departments
+UNION ALL
+SELECT department_name FROM alumni;
 
 
 -- ===================== SUBQUERIES IN WHERE =====================
@@ -180,26 +238,52 @@ FROM students;
 -- Q7
 -- Find students whose marks are greater than the average marks of all
 -- students. Do not calculate the average manually.
+SELECT * FROM students WHERE marks > (SELECT AVG(marks) FROM students);
 
 -- Q8
 -- Find students whose marks equal the highest mark in the table.
 -- Return the student's name and marks.
+SELECT student_name, marks FROM students WHERE marks = (SELECT MAX(marks) FROM students);
 
 -- Q9
 -- Find students who applied for a scholarship worth more than the average
 -- scholarship amount.
+SELECT st.student_id, st.student_name, sca.scholarship_name, sca.amount
+FROM students as st
+LEFT JOIN  scholarship_applications sca
+ON sca.student_id = st.student_id
+where sca.amount > (SELECT AVG(amount) FROM scholarship_applications)
+
 
 -- Q10
 -- Find students who have submitted at least one scholarship application.
 -- Use an IN subquery and return each student only once.
+SELECT * FROM students where student_id IN(SELECT DISTINCT student_id from scholarship_applications);
 
 -- Q11
 -- Find departments that have at least one student whose marks are above 90.
 -- Return department names, not only department IDs.
+SELECT dept.department_id, dept.department_name
+FROM students as st
+LEFT JOIN departments AS dept
+ON st.department_id = dept.department_id
+where dept.department_id IS NOT NULL 
+GROUP BY dept.department_id, dept.department_name
+HAVING COUNT(st.student_id) >= 1
 
 -- Q12
 -- Find students who are not from the department with the highest average
 -- marks. Use a subquery for the highest average department result.
+SELECT * FROM students WHERE department_id != (
+    SELECT st.department_id
+    FROM students as st
+    LEFT JOIN  departments as dept
+    ON st.department_id = dept.department_id
+    WHERE st.department_id IS NOT NULL
+    GROUP BY dept.department_id
+    ORDER BY AVG(st.marks) DESC
+    LIMIT 1
+);
 
 
 -- ===================== SUBQUERIES IN FROM =====================
@@ -209,6 +293,7 @@ FROM students;
 -- with marks of 80 or above. From that result, display the average marks
 -- by department.
 -- Give the derived table an alias.
+
 
 -- Q14
 -- Use a derived table to calculate the highest mark in each department,
