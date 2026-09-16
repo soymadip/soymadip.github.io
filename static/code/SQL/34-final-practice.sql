@@ -149,9 +149,9 @@ SELECT *
 FROM employees as em
 LEFT JOIN departments as dept
 ON em.department_id = dept.department_id
-WHERE
-    em.active
-    AND
+WHERE 
+    em.active 
+    AND 
     dept.office_city IN('Kolkata', 'Delhi')
     AND
     em.salary BETWEEN 60000 AND 90000;
@@ -200,7 +200,7 @@ HAVING COUNT(emp.employee_id) >= 2 AND AVG(emp.salary) > 60000;
 -- Q7
 -- Show each client and the total amount of successful payments received.
 -- Clients without successful payments must remain visible with total 0.
-SELECT
+SELECT 
     clnt.client_id,
     clnt.client_name,
     COALESCE(
@@ -212,8 +212,8 @@ SELECT
     ),
     0
     ) AS total_payed
-FROM clients as clnt
-LEFT JOIN payments as pmt
+FROM clients as clnt 
+LEFT JOIN payments as pmt 
 ON pmt.client_id = clnt.client_id
 GROUP BY clnt.client_id, clnt.client_name
 ORDER BY total_payed;
@@ -221,7 +221,7 @@ ORDER BY total_payed;
 -- Q8
 -- Show each project and total assigned hours. Include projects with no
 -- assignments and replace NULL totals with 0.
-SELECT
+SELECT 
     prj.project_id,
     prj.project_name,
     COALESCE(SUM(asg.hours_worked),0) AS total_hours_worked
@@ -247,7 +247,7 @@ HAVING SUM(prj.budget) > 300000;
 -- Q10
 -- Display every project with its client name, department name, budget, and
 -- office city.
-SELECT
+SELECT 
     prj.project_id,
     prj.project_name,
     cln.client_name,
@@ -255,7 +255,7 @@ SELECT
     prj.budget,
     dept.office_city
 FROM projects as prj
-LEFT JOIN clients as cln
+LEFT JOIN clients as cln 
 ON prj.client_id = cln.client_id
 LEFT JOIN departments AS dept
 ON prj.department_id = dept.department_id
@@ -287,7 +287,7 @@ HAVING assigned_projects > 1;
 
 -- Q13
 -- Find projects that have no assigned employees.
-SELECT
+SELECT 
     prj.project_id,
     prj.project_name,
     COUNT(asg.employee_id) AS assigned_employees
@@ -317,7 +317,7 @@ SELECT
     asg.role_name,
     asg.hours_worked
 FROM project_assignments as asg
-LEFT JOIN employees as emp
+LEFT JOIN employees as emp 
 ON asg.employee_id = emp.employee_id
 LEFT JOIN projects as prj
 ON asg.project_id = prj.project_id
@@ -363,8 +363,8 @@ SELECT * FROM clients where client_name = 'soymadip'
 -- Q20
 -- Give all active Engineering employees a 7 percent raise, then display the
 -- changed rows before and after the update.
-SELECT *
-FROM employees as emp
+SELECT * 
+FROM employees as emp 
 LEFT JOIN departments AS dept
 ON emp.department_id = dept.department_id
 WHERE emp.active AND dept.department_name = 'Engineering';
@@ -397,57 +397,127 @@ INSERT INTO prj_cp select * FROM projects;
 -- Create a temporary practice table, insert a few rows, and TRUNCATE it.
 -- Confirm that the table still exists but contains no rows.
 
+CREATE TABLE temp_practice (
+    id INT PRIMARY KEY,
+    item_name VARCHAR(50)
+);
+
+INSERT INTO temp_practice (id, item_name)
+VALUES 
+    (1, 'Notebook'),
+    (2, 'Pen'),
+    (3, 'Eraser');
+
+TRUNCATE TABLE temp_practice;
+SELECT * FROM temp_practice;
 
 -- Q25
 -- Return one unique list of people made from employees and contractors.
 -- The result must contain person_name and source_type.
+SELECT employee_name as person_name, 'employee' AS source_type FROM employees
+UNION
+SELECT person_name, 'contractor' AS source_type FROM contractors;
 
 -- Q26
 -- Return the same people list while preserving duplicate names.
 -- Explain why UNION ALL returns a different row count.
+SELECT employee_name as person_name, 'employee' AS source_type FROM employees
+UNION ALL
+SELECT person_name, 'contractor' AS source_type FROM contractors;
+
+-- there are no way duplicates because of source_type so giving same?
 
 -- Q27
 -- Return one unique list of department names appearing in departments or
 -- contractors.
-
-
+SELECT department_name FROM departments
+UNION
+SELECT department_name FROM contractors;
 
 -- Q28
 -- Find employees whose salary is above the average salary of all employees.
+SELECT * FROM employees where salary > (SELECT AVG(salary) FROM employees);
 
 -- Q29
 -- Find projects whose budget is greater than the average project budget.
+SELECT * FROM projects WHERE budget > (SELECT AVG(budget) FROM projects);
 
 -- Q30
 -- Find clients who have at least one paid payment. Use an IN subquery and
 -- return each client once.
+SELECT * FROM clients WHERE client_id IN(
+    SELECT clnt.client_id 
+    FROM clients as clnt
+    LEFT JOIN payments as pmt
+    ON pmt.client_id = clnt.client_id
+    WHERE pmt.payment_status = 'paid'
+    GROUP BY clnt.client_id
+    HAVING COUNT(pmt.payment_id)
+);
 
 -- Q31
 -- Find employees who work in the department with the highest annual budget.
+SELECT * FROM employees  WHERE department_id IN(
+    SELECT department_id FROM departments WHERE annual_budget = (SELECT MAX(annual_budget) FROM departments)
+)
 
 -- Q32
 -- Using a derived table in FROM, calculate the average salary by department,
 -- then return only departments whose average is above 70000.
+SELECT * FROM (
+    SELECT dept.department_name,  avg(emp.salary) AS avg_salary
+    FROM departments as dept
+    LEFT JOIN employees as emp
+    ON emp.department_id = dept.department_id
+    GROUP BY emp.department_id, dept.department_name
+) AS tmp
+WHERE avg_salary > 70000;
+
 
 -- Q33
 -- Display every employee and the highest salary in the entire employees
 -- table beside each employee using a scalar subquery in SELECT.
+SELECT *,(SELECT MAX(salary) FROM employees) AS highes_salary FROM employees;
 
 -- Q34
 -- Find projects whose budget is higher than every project in the Marketing
 -- department. Use a subquery and make the empty-result behavior sensible.
+SELECT * FROM projects WHERE budget > (
+    SELECT COALESCE(MAX(proj.budget), 0) 
+    FROM projects as proj 
+    JOIN departments as dept 
+    ON projects.department_id = dept.department_id
+    where dept.department_name = 'Marketing'
+)
 
 -- Q35
 -- Find the highest-paid employee in each department. Return the department,
 -- employee name, and salary. Employees tied for highest salary should all
 -- be returned.
-
-
+SELECT emp1.department_id, emp1.employee_name, emp1.employee_name FROM employees as emp1 WHERE salary = (
+    SELECT MAX(emp2.salary) FROM employees as emp2 where emp2.department_id = emp1.department_id
+);
 
 -- Q36
 -- Create a view named project_report containing project name, client name,
 -- department name, budget, and total assigned hours. Projects with no
 -- assignments must show zero hours.
+CREATE VIEW project_report AS 
+-- SELECT 
+--     prj.project_name,
+--     clnt.client_name,
+--     dept.department_name,
+--     prj.budget,
+--     COALESCE(asg.hours_worked, 0) AS total_hours_worked
+-- FROM projects as prj
+-- LEFT JOIN departments as dept
+-- ON prj.department_id = dept.department_id
+-- LEFT JOIN clients as clnt 
+-- ON prj.client_id = clnt.client_id
+-- LEFT JOIN project_assignments as asg
+-- ON asg.project_id = prj.project_id;
+
+-- why 2 rows?
 
 -- Q37
 -- Query project_report to find projects with budget above 150000 and total
