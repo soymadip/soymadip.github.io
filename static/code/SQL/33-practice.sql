@@ -264,12 +264,15 @@ SELECT * FROM students where student_id IN(SELECT DISTINCT student_id from schol
 -- Find departments that have at least one student whose marks are above 90.
 -- Return department names, not only department IDs.
 SELECT dept.department_id, dept.department_name
-FROM students as st
+FROM  students as st
 LEFT JOIN departments AS dept
 ON st.department_id = dept.department_id
-where dept.department_id IS NOT NULL 
+WHERE dept.department_id IS NOT NULL 
 GROUP BY dept.department_id, dept.department_name
-HAVING COUNT(st.student_id) >= 1
+HAVING COUNT(st.student_id) >= 1;
+
+-- easier
+SELECT department_id, department_name FROM departments WHERE department_id IN(SELECT department_id FROM students WHERE marks > 90);
 
 -- Q12
 -- Find students who are not from the department with the highest average
@@ -293,7 +296,7 @@ SELECT * FROM students WHERE department_id != (
 -- with marks of 80 or above. From that result, display the average marks
 -- by department.
 -- Give the derived table an alias.
-SELECT department_id, round(avg(department_id)) AS avg_marks FROM (SELECT * FROM students WHERE marks >= 80) AS tmp GROUP BY department_id;
+SELECT department_id, round(avg(marks)) AS avg_marks FROM (SELECT * FROM students WHERE marks >= 80) AS tmp GROUP BY department_id;
 
 -- Q14
 -- Use a derived table to calculate the highest mark in each department,
@@ -315,10 +318,10 @@ HAVING max_marks > 85;
 SELECT student_name, COUNT(application_id) FROM (
     SELECT st.student_id, st.student_name, sa.application_id
     FROM students as st 
-    JOIN scholarship_applications AS sa 
+    LEFT JOIN scholarship_applications AS sa 
     ON st.student_id = sa.student_id
 ) as temp
-GROUP BY student_id
+GROUP BY student_id, student_name;
 
 -- Q16
 -- Find the department with the highest average student marks by first
@@ -345,11 +348,8 @@ SELECT *, (SELECT MAX(marks) FROM students) AS highest_marks FROM students
 -- using a scalar subquery in the SELECT list. Departments with no students
 -- must still appear.
 SELECT *, (
-    SELECT COUNT(st.student_id)
-    FROM departments as dept
-    LEFT JOIN students as st
-    ON st.department_id = dept.department_id
-) AS student_count FROM departments;
+    SELECT COUNT(*) FROM students WHERE department_id = dept.department_id
+) AS student_count FROM departments as dept;
 
 
 -- ===================== VIEWS =====================
@@ -464,6 +464,7 @@ SELECT
     person_name,
     'Alumni' AS academic_group,
     graduation_year AS year_value
- FROM alumni
-ORDER BY person_name, year_value;
+ FROM alumni;
+
+select * from student_record ORDER BY person_name, year_value;
 
