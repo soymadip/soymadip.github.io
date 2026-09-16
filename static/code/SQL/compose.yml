@@ -1,7 +1,7 @@
 services:
   mysql:
     image: mariadb:latest
-    command: mariadbd --performance-schema=OFF --innodb-buffer-pool-size=64M --max-connections=10
+    command: mariadbd --performance-schema=OFF --innodb-buffer-pool-size=64M --max-connections=20
     restart: always
     environment:
       MARIADB_ROOT_PASSWORD: ${DB_SU_PASSWORD}
