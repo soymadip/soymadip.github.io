@@ -293,32 +293,63 @@ SELECT * FROM students WHERE department_id != (
 -- with marks of 80 or above. From that result, display the average marks
 -- by department.
 -- Give the derived table an alias.
-
+SELECT department_id, round(avg(department_id)) AS avg_marks FROM (SELECT * FROM students WHERE marks >= 80) AS tmp GROUP BY department_id;
 
 -- Q14
 -- Use a derived table to calculate the highest mark in each department,
 -- then display only departments whose highest mark is above 85.
+SELECT department_name, MAX(marks) AS max_marks FROM (
+    SELECT st.student_name, dept.department_name, st.marks 
+    FROM students as st
+    LEFT JOIN departments as dept
+    ON dept.department_id = st.department_id
+) as tmp
+GROUP BY department_name
+HAVING max_marks > 85;
 
+    
 -- Q15
 -- Use a derived table to count applications per student. Include the
 -- student's name in the final result and show students with no applications.
 -- Do not use a view for this question.
+SELECT student_name, COUNT(application_id) FROM (
+    SELECT st.student_id, st.student_name, sa.application_id
+    FROM students as st 
+    JOIN scholarship_applications AS sa 
+    ON st.student_id = sa.student_id
+) as temp
+GROUP BY student_id
 
 -- Q16
 -- Find the department with the highest average student marks by first
 -- creating a grouped derived table and then filtering that result.
-
+SELECT department_name, avg(marks) FROM (
+    SELECT dept.department_id, dept.department_name, st.student_id, st.marks
+    FROM departments as dept 
+    JOIN students as st 
+    ON st.department_id = dept.department_id
+) as tmp
+GROUP BY department_id, department_name
+ORDER BY AVG(marks) DESC
+LIMIT 1
 
 -- ===================== SUBQUERIES IN SELECT =====================
 
 -- Q17
 -- Display every student and the highest mark in the entire students table
 -- beside each row.
+SELECT *, (SELECT MAX(marks) FROM students) AS highest_marks FROM students
 
 -- Q18
 -- Display every department and the number of students in that department
 -- using a scalar subquery in the SELECT list. Departments with no students
 -- must still appear.
+SELECT *, (
+    SELECT COUNT(st.student_id)
+    FROM departments as dept
+    LEFT JOIN students as st
+    ON st.department_id = dept.department_id
+) AS student_count FROM departments;
 
 
 -- ===================== VIEWS =====================
@@ -326,25 +357,53 @@ SELECT * FROM students WHERE department_id != (
 -- Q19
 -- Create a view named student_details that exposes student ID, student name,
 -- department name, city, and marks. Query the view as if it were a table.
+CREATE VIEW student_details AS 
+SELECT st.student_id, st.student_name, dept.department_name, st.city, st.marks
+FROM students as st 
+LEFT JOIN  departments as dept
+ON st.department_id = dept.department_id;
+
+SELECT * FROM student_details;
 
 -- Q20
 -- Create a view named department_summary that shows every department and
 -- its student count, including departments with zero students.
+CREATE VIEW department_summary AS 
+SELECT dept.department_id, dept.department_name, COUNT(st.student_id) AS student_count
+FROM departments as dept
+LEFT JOIN students as st 
+ON st.department_id = dept.department_id
+GROUP BY dept.department_id, dept.department_name;
+
+SELECT * FROM department_summary;
 
 -- Q21
 -- Query department_summary to find departments with at least two students.
+SELECT * FROM department_summary WHERE student_count >= 2;
 
 -- Q22
 -- Replace student_details so that it exposes only student name,
 -- department name, and marks. Query the updated view.
+CREATE OR REPLACE VIEW student_details AS
+SELECT st.student_name, dept.department_name,  st.marks
+FROM students as st 
+LEFT JOIN  departments as dept
+ON st.department_id = dept.department_id;
+
+SELECT * FROM student_details;
 
 -- Q23
 -- Update one student's marks, then query student_details again. Confirm
 -- that a normal view reflects current table data.
+UPDATE student_details SET marks = 22.00 WHERE student_name = 'Boby'
+ 
+SELECT * FROM student_details where student_name = 'boby';
+SELECT * FROM students where student_name = 'boby';
 
 -- Q24
 -- Drop student_details without dropping the students table. Verify that
 -- querying the view fails while querying students still works.
+DROP VIEW student_details;
 
 
 -- ===================== MIXED CHALLENGES =====================
@@ -352,18 +411,59 @@ SELECT * FROM students WHERE department_id != (
 -- Q25
 -- Find students who scored above the average mark of their own department.
 -- This requires comparing each student with a grouped result.
+SELECT * FROM students AS st where marks > (SELECT avg(marks) FROM students where department_id = st.department_id)
+
+SELECT *
+FROM  students as st 
+JOIN (
+    SELECT department_id, AVG(marks)  as avg_dept_marks
+    FROM students
+    GROUP BY department_id
+) as avg_dept
+ON st.department_id = avg_dept.department_id
+WHERE st.marks > avg_dept.avg_dept_marks;
+
 
 -- Q26
 -- Create a view named scholarship_report that shows each student name,
 -- department name, total scholarship amount, and application count.
 -- Students without applications must remain visible with zero amount and
 -- zero applications.
+-- CREATE VIEW scholarship_report AS
+CREATE OR REPLACE VIEW scholarship_report AS 
+SELECT
+    st.student_name,
+    dept.department_name,
+    COALESCE(SUM(scr.amount), 0) AS total_scholarship_amount,
+    COUNT(scr.application_id) AS application_count 
+FROM students as st
+LEFT JOIN departments as dept 
+ON st.department_id = dept.department_id
+LEFT JOIN scholarship_applications as scr
+ON st.student_id = scr.student_id
+GROUP BY st.student_id, st.student_name;
 
 -- Q27
 -- Use scholarship_report to find students whose total scholarship amount
 -- is greater than the overall average scholarship amount.
+SELECT * FROM scholarship_report WHERE total_scholarship_amount > (SELECT AVG(total_scholarship_amount) FROM scholarship_report)
 
 -- Q28
 -- Combine current students and alumni into one view with columns:
 -- person_name, academic_group, and year_value. Query the view ordered by
 -- person_name and year_value.
+ 
+create OR REPLACE view student_record AS
+SELECT
+    st.student_name as person_name,
+    'Student' AS academic_group,
+    NULL AS year_value
+FROM students as st
+UNION
+SELECT
+    person_name,
+    'Alumni' AS academic_group,
+    graduation_year AS year_value
+ FROM alumni
+ORDER BY person_name, year_value;
+
