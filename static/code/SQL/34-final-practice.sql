@@ -145,108 +145,258 @@ INSERT INTO payments (client_id, amount, payment_status) VALUES
 -- Q1
 -- Display active employees from Kolkata or Delhi whose salary is between
 -- 60000 and 90000. Sort by salary descending, then name ascending.
+SELECT *
+FROM employees as em
+LEFT JOIN departments as dept
+ON em.department_id = dept.department_id
+WHERE
+    em.active
+    AND
+    dept.office_city IN('Kolkata', 'Delhi')
+    AND
+    em.salary BETWEEN 60000 AND 90000;
+
 
 -- Q2
 -- Display the third and fourth highest-paid active employees using ORDER BY,
 -- LIMIT, and OFFSET.
+SELECT * FROM employees ORDER BY salary DESC LIMIT 2 OFFSET 2;
 
 -- Q3
 -- Return each client city only once, then return the cities in alphabetical
 -- order.
+SELECT DISTINCT city from clients ORDER BY city;
 
 -- Q4
 -- Find projects whose names contain the word 'Platform' or 'Research'.
+SELECT * FROM projects WHERE project_name LIKE '%Platrofm%' OR project_name LIKE '%Research%';
 
-
--- ===================== AGGREGATES AND GROUPING =====================
 
 -- Q5
 -- Show each department's employee count, average salary, minimum salary,
 -- and maximum salary. Include departments with no employees.
+SELECT
+    dept.department_name,
+    COUNT(emp.employee_id) AS employee_count1,
+    AVG(emp.salary) AS avg_salary,
+    MIN(emp.salary) AS min_salary,
+    MAX(emp.salary) AS max_salary
+FROM departments as dept
+LEFT JOIN employees as emp
+ON emp.department_id = dept.department_id
+GROUP BY dept.department_id, dept.department_name;
 
 -- Q6
 -- Find departments with at least two active employees and an average salary
 -- above 60000. Use HAVING for group-level conditions.
+SELECT  dept.department_name, COUNT(emp.employee_id)
+FROM departments as dept
+LEFT JOIN  employees as emp
+ON emp.department_id = dept.department_id
+WHERE emp.active
+GROUP BY dept.department_id, dept.department_name
+HAVING COUNT(emp.employee_id) >= 2 AND AVG(emp.salary) > 60000;
 
 -- Q7
 -- Show each client and the total amount of successful payments received.
 -- Clients without successful payments must remain visible with total 0.
+SELECT
+    clnt.client_id,
+    clnt.client_name,
+    COALESCE(
+    SUM(
+        CASE
+          WHEN pmt.payment_status = 'paid' THEN pmt.amount
+          ELSE 0
+        END
+    ),
+    0
+    ) AS total_payed
+FROM clients as clnt
+LEFT JOIN payments as pmt
+ON pmt.client_id = clnt.client_id
+GROUP BY clnt.client_id, clnt.client_name
+ORDER BY total_payed;
 
 -- Q8
 -- Show each project and total assigned hours. Include projects with no
 -- assignments and replace NULL totals with 0.
+SELECT
+    prj.project_id,
+    prj.project_name,
+    COALESCE(SUM(asg.hours_worked),0) AS total_hours_worked
+FROM projects as prj
+LEFT JOIN project_assignments as asg
+ON asg.project_id = prj.project_id
+GROUP BY prj.project_id, prj.project_name;
+
 
 -- Q9
 -- Find departments whose projects have a combined budget greater than
 -- 300000. Do not count a department's employee salary budget here.
-
-
--- ===================== RELATIONSHIPS AND JOINS =====================
+SELECT
+    dept.department_id,
+    dept.department_name,
+    SUM(prj.budget) AS total_budget
+FROM departments as dept
+LEFT JOIN projects as prj
+ON prj.department_id = dept.department_id
+GROUP BY dept.department_id, dept.department_name
+HAVING SUM(prj.budget) > 300000;
 
 -- Q10
 -- Display every project with its client name, department name, budget, and
 -- office city.
+SELECT
+    prj.project_id,
+    prj.project_name,
+    cln.client_name,
+    dept.department_name,
+    prj.budget,
+    dept.office_city
+FROM projects as prj
+LEFT JOIN clients as cln
+ON prj.client_id = cln.client_id
+LEFT JOIN departments AS dept
+ON prj.department_id = dept.department_id
 
 -- Q11
 -- Display every employee with their manager's name. Employees without a
 -- manager and employees without a department must still appear.
+SELECT
+    emp.employee_id,
+    emp.employee_name,
+    mgr.employee_name AS manager_name
+FROM employees as emp
+LEFT JOIN employees AS mgr
+ON emp.manager_id = mgr.employee_id;
 
 -- Q12
 -- Find employees assigned to more than one project. Return each employee
 -- once with their assignment count.
+SELECT
+    emp.employee_id,
+    emp.employee_name,
+    COUNT(asg.project_id) AS assigned_projects
+FROM employees AS emp
+LEFT JOIN project_assignments as asg
+ON asg.employee_id = emp.employee_id
+WHERE asg.project_id IS NOT NULL
+GROUP BY emp.employee_id, emp.employee_name
+HAVING assigned_projects > 1;
 
 -- Q13
 -- Find projects that have no assigned employees.
+SELECT
+    prj.project_id,
+    prj.project_name,
+    COUNT(asg.employee_id) AS assigned_employees
+FROM projects as prj
+LEFT JOIN project_assignments as asg
+ON asg.project_id = prj.project_id
+WHERE asg.employee_id IS NULL
+GROUP BY prj.project_id, prj.project_name;
 
 -- Q14
 -- Find active employees who are not assigned to any project.
+SELECT
+    emp.employee_id,
+    emp.employee_name
+FROM employees as emp
+LEFT JOIN project_assignments as asg
+ON asg.employee_id = emp.employee_id
+WHERE emp.active AND asg.project_id IS NULL
+
 
 -- Q15
 -- Display employee name, project name, role, and hours worked for every
 -- assignment. Sort by project name and hours descending.
+SELECT
+    emp.employee_name,
+    prj.project_name,
+    asg.role_name,
+    asg.hours_worked
+FROM project_assignments as asg
+LEFT JOIN employees as emp
+ON asg.employee_id = emp.employee_id
+LEFT JOIN projects as prj
+ON asg.project_id = prj.project_id
+ORDER BY prj.project_name, asg.hours_worked DESC;
 
 -- Q16
 -- Generate every possible department-project pair for departments whose
 -- annual budget is at least 500000. How many rows should be returned?
+SELECT
+    dept.department_name,
+    proj.project_name
+FROM departments as dept
+LEFT JOIN projects as proj
+ON proj.department_id = dept.department_id
+WHERE dept.annual_budget >= 500000;
 
 -- Q17
 -- List every employee who earns more than their manager. Return both names
 -- and both salaries.
-
-
--- ===================== DML AND CONSTRAINT PRACTICE =====================
+SELECT emp.employee_name, emp.salary
+FROM employees AS emp
+LEFT JOIN employees AS mgr
+ON emp.manager_id = mgr.employee_id
+WHERE mgr.employee_id IS NOT NULL AND emp.salary > mgr.salary;
 
 -- Q18
 -- Insert a new client and project for that client. Leave the client status
 -- out of the INSERT and observe the default value.
+INSERT INTO clients(client_name, city) VALUES ('soymadip', 'Kolkata');
+INSERT INTO projects(project_name, client_id, department_id, budget) VALUES(
+    'Fuck Toy',6, 4, 100000
+);
+
+SELECT * FROM clients where client_name = 'soymadip'
 
 -- Q19
 -- Attempt to insert an employee with an email already in use. Explain the
 -- constraint error in a comment, then remove the failed statement so the
 -- rest of this file can run.
 
+-- gives duplicate error because it's unique
+
 -- Q20
 -- Give all active Engineering employees a 7 percent raise, then display the
 -- changed rows before and after the update.
+SELECT *
+FROM employees as emp
+LEFT JOIN departments AS dept
+ON emp.department_id = dept.department_id
+WHERE emp.active AND dept.department_name = 'Engineering';
+
+UPDATE employees SET salary = salary * 1.07 WHERE department_id = (select department_id from departments WHERE department_name = 'Engineering');
 
 -- Q21
--- Delete failed payments, but first preview exactly which rows will be
--- removed.
+-- Delete failed payments
+DELETE FROM payments WHERE payment_status = 'failed';
 
 -- Q22
 -- Add a phone_number column to clients, populate every existing row, change
 -- it to NOT NULL, rename it to contact_number, then remove it.
+ALTER TABLE clients ADD COLUMN phone_number INT CHECK(CHAR_LENGTH(phone_number) = 10);
+
+UPDATE clients SET phone_number = 1234856902;
+
+ALTER TABLE clients RENAME COLUMN phone_number TO contact_number;
+ALTER TABLE clients MODIFY COLUMN contact_number INT NOT NULL;
+
+ALTER TABLE clients DROP COLUMN contact_number;
 
 -- Q23
 -- Create a backup table containing the current projects structure and rows.
 -- Verify that the backup has the same number of rows as projects.
+CREATE TABLE prj_cp LIKE projects;
+INSERT INTO prj_cp select * FROM projects;
 
 -- Q24
 -- Create a temporary practice table, insert a few rows, and TRUNCATE it.
 -- Confirm that the table still exists but contains no rows.
 
-
--- ===================== UNION AND UNION ALL =====================
 
 -- Q25
 -- Return one unique list of people made from employees and contractors.
@@ -261,7 +411,6 @@ INSERT INTO payments (client_id, amount, payment_status) VALUES
 -- contractors.
 
 
--- ===================== SUBQUERIES =====================
 
 -- Q28
 -- Find employees whose salary is above the average salary of all employees.
@@ -294,7 +443,6 @@ INSERT INTO payments (client_id, amount, payment_status) VALUES
 -- be returned.
 
 
--- ===================== VIEWS =====================
 
 -- Q36
 -- Create a view named project_report containing project name, client name,
@@ -326,7 +474,6 @@ INSERT INTO payments (client_id, amount, payment_status) VALUES
 -- only the view has been removed.
 
 
--- ===================== FINAL REPORTING CHALLENGES =====================
 
 -- Q43
 -- Produce a department performance report containing:
