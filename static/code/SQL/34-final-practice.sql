@@ -502,38 +502,87 @@ SELECT emp1.department_id, emp1.employee_name, emp1.employee_name FROM employees
 -- Create a view named project_report containing project name, client name,
 -- department name, budget, and total assigned hours. Projects with no
 -- assignments must show zero hours.
+-- CREATE VIEW project_report AS
 CREATE VIEW project_report AS 
--- SELECT 
---     prj.project_name,
---     clnt.client_name,
---     dept.department_name,
---     prj.budget,
---     COALESCE(asg.hours_worked, 0) AS total_hours_worked
--- FROM projects as prj
--- LEFT JOIN departments as dept
--- ON prj.department_id = dept.department_id
--- LEFT JOIN clients as clnt 
--- ON prj.client_id = clnt.client_id
--- LEFT JOIN project_assignments as asg
--- ON asg.project_id = prj.project_id;
+SELECT
+    prj.project_name,
+    clnt.client_name,
+    dept.department_name,
+    prj.budget,
+    asg.total_hours
+FROM projects as prj
+LEFT JOIN clients as clnt 
+ON prj.client_id = clnt.client_id
+LEFT JOIN departments as dept
+ON prj.department_id = dept.department_id
+LEFT JOIN (
+    SELECT DISTINCT project_id, SUM(hours_worked) AS total_hours
+    FROM project_assignments 
+    GROUP BY project_id
+) AS asg
+ON asg.project_id = prj.project_id;
 
--- why 2 rows?
 
 -- Q37
 -- Query project_report to find projects with budget above 150000 and total
 -- assigned hours below 50.
+SELECT * FROM project_report WHERE budget > 150000 AND total_hours < 50;
 
 -- Q38
 -- Create a view named employee_workload containing every employee's name,
 -- department name, project count, and total project hours. Employees with no
 -- projects must remain visible.
+CREATE VIEW employee_workload AS 
+SELECT
+    emp.employee_name,
+    dept.department_name,
+    COALESCE(asg.project_count, 0) AS project_count,
+    COALESCE(asg.total_hours,0) AS total_hours
+FROM employees as emp 
+LEFT JOIN departments as dept
+ON emp.department_id = dept.department_id
+LEFT JOIN (
+    SELECT employee_id, SUM(hours_worked) AS total_hours, COUNT(project_id) AS project_count
+    FROM project_assignments 
+    GROUP BY employee_id
+) AS asg
+ON emp.employee_id = asg.employee_id;
+
 
 -- Q39
 -- Use employee_workload to find active employees with no project assignments.
+SELECT * FROM employee_workload WHERE project_count > 0;
 
 -- Q40
 -- Replace project_report so it also exposes client city and payment total.
 -- Keep projects visible even when they have no payments.
+-- CREATE OR REPLACE VIEW project_report AS 
+SELECT
+    prj.project_name,
+    clnt.client_name,
+    clnt.city,
+    dept.department_name,
+    pymt.total_payment,
+    prj.budget,
+    asg.total_hours
+FROM projects as prj
+LEFT JOIN clients as clnt 
+ON prj.client_id = clnt.client_id
+LEFT JOIN departments as dept
+ON prj.department_id = dept.department_id
+LEFT JOIN (
+    SELECT DISTINCT project_id, SUM(hours_worked) AS total_hours
+    FROM project_assignments 
+    GROUP BY project_id
+) AS asg
+ON asg.project_id = prj.project_id
+LEFT JOIN (
+    SELECT client_id, SUM(amount) AS total_payment
+    FROM payments
+    GROUP BY client_id
+) AS pymt
+ON clnt.client_id = pymt.client_id
+
 
 -- Q41
 -- Update a source table, query the view again, and verify that the view
