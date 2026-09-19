@@ -3,7 +3,7 @@
 -- database and table creation, constraints, keys, INSERT/UPDATE/DELETE,
 -- ALTER/TRUNCATE, filtering, ordering, LIMIT/OFFSET, aggregates, GROUP BY,
 -- HAVING, joins, COALESCE, UNION, subqueries, and views.
---
+-- 
 -- Do not solve the questions in this file. Build each query yourself.
 
 DROP DATABASE IF EXISTS final_sql_practice;
@@ -17,7 +17,7 @@ CREATE TABLE departments (
     department_id INT AUTO_INCREMENT PRIMARY KEY,
     department_name VARCHAR(60) NOT NULL UNIQUE,
     office_city VARCHAR(60) NOT NULL,
-    annual_budget INT NOT NULL CHECK (annual_budget > 0)
+    annual_budget INT NOT NULL CHECK(annual_budget > 0)
 );
 
 CREATE TABLE employees (
@@ -726,21 +726,26 @@ FROM contractors;
 SELECT DISTINCT person_name
 FROM combined WHERE 
     combined.person_name IN(SELECT employees.employee_name  FROM employees) 
-    AND 
-    combined.person_name IN(SELECT contractors.person_name from contractors)
+    AND combined.person_name IN(SELECT contractors.person_name from contractors);
+
 
 -- Q48
--- Explain in comments why each of these needs a different SQL feature:
---   a) filtering individual payments
---   b) filtering grouped client totals
---   c) finding employees above the company average
---   d) preserving departments with no employees
-
--- Q49
 -- Design a view for a manager that hides employee email and salary but shows
 -- employee name, department, manager, active status, and assignment count.
+create view  for_manager AS 
+SELECT
+    emp.employee_id,
+    emp.employee_name,
+    dpt.department_name,
+    mgr.employee_name AS manager_name,
+    emp.active,
+    COALESCE(COUNT(asg.project_id), 0) AS project_count
+FROM employees as emp
+LEFT JOIN employees as mgr
+ON emp.manager_id = mgr.employee_id
+LEFT JOIN departments as dpt 
+ON emp.department_id = dpt.department_id
+LEFT JOIN project_assignments as asg 
+ON asg.employee_id = emp.employee_id
+GROUP BY employee_id, employee_name, department_name, manager_name, active 
 
--- Q50
--- Final challenge: create a single report for each department showing the
--- highest-paid employee, number of projects, total project hours, and total
--- project budget. Preserve departments with no employees or projects.
