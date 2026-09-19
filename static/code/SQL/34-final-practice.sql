@@ -581,39 +581,153 @@ LEFT JOIN (
     FROM payments
     GROUP BY client_id
 ) AS pymt
-ON clnt.client_id = pymt.client_id
+ON clnt.client_id = pymt.client_id;
 
 
 -- Q41
 -- Update a source table, query the view again, and verify that the view
 -- reflects current data.
+UPDATE clients SET client_name = 'soymadip' WHERE client_name = 'Northwind Labs';
+SELECT * FROM  project_report;
 
 -- Q42
 -- Drop employee_workload, then verify that employees still exists and that
 -- only the view has been removed.
-
-
+DROP VIEW employee_workload;
+SELECT * FROM employees;
 
 -- Q43
 -- Produce a department performance report containing:
 -- department name, employee count, active employee count, project count,
 -- total project budget, and total assigned hours. Include empty departments.
 
+CREATE VIEW department_performance AS 
+SELECT 
+    dept.department_name,
+    emps.emp_count,
+    emps.active_emp_count,
+    prjt.project_count,
+    prjt.total_prj_budget,
+    asg.total_hours
+FROM departments as dept
+LEFT JOIN (
+    SELECT
+        dt.department_id,
+        COALESCE(COUNT(ep.employee_id),0) AS emp_count,
+        COALESCE(COUNT(
+            CASE WHEN ep.active THEN ep.employee_id ELSE NULL END
+        ), 0) AS active_emp_count
+    FROM departments as dt
+    LEFT JOIN  employees as ep
+    ON ep.department_id = dt.department_id
+    GROUP BY dt.department_id
+) AS emps
+ON dept.department_id = emps.department_id
+LEFT JOIN  (
+    SELECT 
+        dp.department_id,
+        COALESCE(COUNT(prj.project_id), 0) AS project_count,
+        COALESCE(SUM(prj.budget), 0) AS total_prj_budget
+    FROM departments as dp 
+    LEFT JOIN  projects as prj
+    ON dp.department_id = prj.department_id
+    GROUP BY dp.department_id
+) AS prjt
+ON dept.department_id = prjt.department_id
+LEFT JOIN  (
+    SELECT 
+        pj2.project_id, 
+        pj2.department_id, 
+        COALESCE(sum(pa.hours_worked), 0) AS total_hours
+    FROM projects as pj2
+    LEFT JOIN  project_assignments as pa 
+    ON pj2.project_id = pa.project_id
+    GROUP BY pj2.project_id
+) AS asg
+ON dept.department_id = asg.department_id;
+
+
 -- Q44
 -- Find clients whose paid payments are greater than the average paid amount
 -- per client. Clients with no paid payments should not qualify.
+SELECT 
+    clnts.client_id,
+    clnts.client_name,
+    pymt.total_paid
+FROM clients as clnts
+LEFT JOIN (
+    SELECT    
+        ct.client_id,
+        COALESCE(SUM(pt.amount), 0) AS total_paid,
+        AVG(pt.amount)
+    FROM clients as ct
+    LEFT JOIN payments as pt
+    ON ct.client_id = pt.client_id
+    GROUP BY ct.client_id
+) AS pymt
+ON pymt.client_id = clnts.client_id
+WHERE pymt.total_paid > (
+    SELECT AVG(amount)
+    FROM payments WHERE payment_status = 'paid'
+) AND pymt.total_paid > 0
+ORDER BY clnts.client_id;
+
 
 -- Q45
 -- Return the top two projects by budget, but only among projects with at
 -- least one assignment. Use grouping, HAVING, ORDER BY, and LIMIT.
+SELECT * 
+FROM projects AS prj
+WHERE prj.project_id in (
+    select 
+        pr.project_id
+    from projects AS pr
+    LEFT JOIN project_assignments as asg
+    ON asg.project_id = pr.project_id
+    GROUP BY pr.project_id
+    HAVING count(*) > 0
+)
+ORDER BY prj.budget DESC 
+LIMIT 2;
 
 -- Q46
 -- Return employees who are assigned to a project owned by a client from a
 -- different city than the employee's department office city.
+SELECT DISTINCT
+    emp.*,
+    dept.office_city,
+    clnt.city
+FROM employees as emp
+LEFT JOIN (
+    SELECT prj.project_id, asg.employee_id, prj.client_id
+    FROM projects as prj
+    LEFT JOIN  project_assignments as asg
+    ON prj.project_id = asg.project_id
+) AS pri
+ON emp.employee_id = pri.employee_id
+LEFT JOIN  departments as dept 
+ON emp.department_id = dept.department_id
+LEFT JOIN clients as clnt 
+ON pri.client_id = clnt.client_id
+WHERE dept.office_city != clnt.city
+ORDER BY emp.employee_id;
 
 -- Q47
 -- Build a unique people report by combining employees and contractors, then
 -- identify names that occur in both source tables.
+
+CREATE OR REPLACE VIEW  combined AS 
+SELECT employee_name AS person_name, 'employee' AS source
+FROM employees
+UNION 
+SELECT person_name AS person_name, 'contractor' AS job
+FROM contractors;
+
+SELECT DISTINCT person_name
+FROM combined WHERE 
+    combined.person_name IN(SELECT employees.employee_name  FROM employees) 
+    AND 
+    combined.person_name IN(SELECT contractors.person_name from contractors)
 
 -- Q48
 -- Explain in comments why each of these needs a different SQL feature:
