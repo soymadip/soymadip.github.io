@@ -21,6 +21,7 @@ CREATE TABLE employees (
 	department_id INT,
 	manager_id INT,
 	salary INT NOT NULL,
+
 	FOREIGN KEY (department_id) REFERENCES departments(department_id),
 	FOREIGN KEY (manager_id) REFERENCES employees(employee_id)
 );
@@ -84,14 +85,14 @@ INSERT INTO employee_projects (employee_id, project_id, hours_worked) VALUES
 
 -- Q1
 -- Display each employee together with the name of their department.
-SELECT emp.employee_id, emp.employee_name, dept.department_name FROM employees as emp 
-LEFT JOIN departments as dept 
+SELECT emp.employee_id, emp.employee_name, dept.department_name FROM employees as emp
+LEFT JOIN departments as dept
 ON emp.department_id = dept.department_id;
 
 -- Q2
 -- Display each employee's name, department, location, and salary.
-SELECT emp.employee_name, dept.department_name,dept.location, emp.salary FROM employees as emp 
-LEFT JOIN departments as dept 
+SELECT emp.employee_name, dept.department_name,dept.location, emp.salary FROM employees as emp
+LEFT JOIN departments as dept
 ON emp.department_id = dept.department_id;
 
 -- Q3
@@ -105,7 +106,7 @@ WHERE dept.department_name = 'Engineering';
 -- Q4
 -- Display every department, including departments that have no employees.
 SELECT dept.department_name, COUNT(emp.employee_id) AS employee_count FROM departments as dept
-LEFT JOIN employees as emp 
+LEFT JOIN employees as emp
 ON emp.department_id = dept.department_id
 GROUP BY dept.department_id;
 
@@ -131,8 +132,8 @@ SELECT * FROM projects;
 
 -- Q8
 -- Display each employee's name and the projects they work on.
-SELECT emp.employee_id, emp.employee_name, proj.project_name 
-FROM employees as emp 
+SELECT emp.employee_id, emp.employee_name, proj.project_name
+FROM employees as emp
 LEFT JOIN  employee_projects as eproj
 ON emp.employee_id = eproj.employee_id
 LEFT JOIN projects as proj
@@ -142,7 +143,7 @@ ON  proj.project_id = eproj.project_id;
 -- Q9
 -- Display the employee name, project name, and hours worked for every
 -- employee-project assignment.
-SELECT emp.employee_name, proj.project_name, epj.hours_worked 
+SELECT emp.employee_name, proj.project_name, epj.hours_worked
 FROM employees as emp
 join employee_projects as epj
 ON epj.employee_id = emp.employee_id
@@ -151,25 +152,25 @@ ON epj.project_id = proj.project_id;
 
 -- Q10
 -- Find employees who work on the Payment System project.
-SELECT emp.employee_name FROM employees as emp 
-JOIN employee_projects as epj 
+SELECT emp.employee_name FROM employees as emp
+JOIN employee_projects as epj
 ON epj.employee_id = emp.employee_id
-JOIN projects as proj 
+JOIN projects as proj
 ON epj.project_id = proj.project_id
 where proj.project_name = 'Payment System';
 
 -- Q11
 -- Find employees who are not assigned to any project.
-SELECT * FROM employees as emp 
-LEFT JOIN  employee_projects as epoj 
+SELECT * FROM employees as emp
+LEFT JOIN  employee_projects as epoj
 ON epoj.employee_id = emp.employee_id
 where epoj.employee_id IS NULL;
 
 -- Q12
 -- Find projects that have no employees assigned to them.
-SELECT proj.project_name 
+SELECT proj.project_name
 FROM projects as proj
-LEFT JOIN employee_projects as empj 
+LEFT JOIN employee_projects as empj
 ON empj.project_id = proj.project_id
 GROUP BY proj.project_name
 HAVING COUNT(empj.employee_id) = 0;
@@ -181,7 +182,7 @@ HAVING COUNT(empj.employee_id) = 0;
 -- Count the employees in each department, including empty departments.
 SELECT dpts.department_name, COUNT(emp.employee_id) AS employee_count
 FROM departments as dpts
-LEFT JOIN  employees as emp 
+LEFT JOIN  employees as emp
 ON dpts.department_id = emp.department_id
 GROUP BY dpts.department_name
 ORDER BY COUNT(emp.employee_id) DESC;
@@ -270,7 +271,7 @@ WHERE emp.salary > mgr.salary;
 -- List employees who work on a project with a budget greater than 100000.
 -- Return each employee only once, even if they work on multiple matching
 -- projects.
-SELECT DISTINCT emp.employee_name, prj.budget 
+SELECT DISTINCT emp.employee_name, prj.budget
 FROM employees as emp
 JOIN employee_projects as eprj
 ON eprj.employee_id = emp.employee_id
@@ -284,9 +285,8 @@ ORDER BY prj.budget DESC;
 -- Display every employee and the number of projects assigned to them.
 -- Employees with no projects must show zero.
 SELECT emp.employee_id ,emp.employee_name, COALESCE(COUNT(epj.project_id), 0) AS assigned_projects
-FROM employees as emp 
-LEFT JOIN  employee_projects as epj 
+FROM employees as emp
+LEFT JOIN  employee_projects as epj
 ON epj.employee_id = emp.employee_id
 GROUP BY emp.employee_name, emp.employee_id
 ORDER BY assigned_projects DESC;
-
