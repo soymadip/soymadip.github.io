@@ -1,11 +1,29 @@
 -- ==================== ALTER Clause ====================
 
--- ALTER TABLE statement is used to change the schema of an existing table.
--- It can be used to add, drop, or modify columns in an existing table.
 
+
+-- ------------- ALTER DATABASE ----------------
+--
+-- This statement is used to change the schema of an existing database.
+-- It can be used to add, drop, or modify tables in an existing database.
+
+ALTER DATABASE database_name action;
+
+-- Example:
+
+ALTER DATABASE mydatabase RENAME TO newdatabase; -- Rename the database to newdatabase
+ALTER DATABASE mydatabase SET READ ONLY = 1; -- Set the database to read-only
+
+
+
+-- ------------- ALTER TABLE ----------------
+--
+-- This statement is used to change the schema of an existing table.
+-- It can be used to add, drop, or modify columns in an existing table.
 
 -- Syntax:
 ALTER TABLE table_name action;
+
 
 
 -- Action can be:

@@ -7,10 +7,10 @@
 
 CREATE TABLE emp (
     emp_id int PRIMARY KEY,
-     
+
     -- We add foreign key at end
     FOREIGN KEY (cust_id) REFERENCES customer(cust_id)
-);  
+);
 
 
 
@@ -24,10 +24,11 @@ CREATE TABLE dept (
 CREATE TABLE IF NOT EXISTS teacher (
     id INT PRIMARY KEY,
     name VARCHAR(50) NOT NULL,
-    dept_id INT,
-    
-    -- Foreign key to the dept table's primary key
-    FOREIGN KEY (dept_id) REFERENCES dept(id)
+    dept_id INT REFERENCES dept(id), -- Foreign key to the dept table's primary key
+
+    -- We can also add foreign key constraint later (recommended)
+    -- Use full for composite foreign key (multiple columns)
+    CONSTRAINT fk_dept FOREIGN KEY (dept_id) REFERENCES dept(id)
 );
 
 -- To visualize it, use ER diagram.
@@ -87,7 +88,7 @@ INSERT INTO dept(name) values
     ('ECE'),
     ('EEE');
 
-INSERT INTO teacher(name, dept_id, rating) values 
+INSERT INTO teacher(name, dept_id, rating) values
     ('soymadip das', 2, 5),
     ('John Doe', 3, 4),
     ('Jane Smith', 4, 3),
