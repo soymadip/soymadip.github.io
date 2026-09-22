@@ -36,6 +36,7 @@ services:
       DBX_DISABLE_PASSWORD: "1"
     volumes:
       - dbx_data:/app/data
+      - .:/app/code
 
 volumes:
   mariadb_data:
