@@ -88,7 +88,7 @@ INSERT INTO dept(name) values
     ('ECE'),
     ('EEE');
 
-INSERT INTO teacher(name, dept_id, rating) values
+INSERT INTO teacher(name, dept_id, rating) VALUES
     ('soymadip das', 2, 5),
     ('John Doe', 3, 4),
     ('Jane Smith', 4, 3),
