@@ -6,7 +6,7 @@ from pydantic import BaseModel, ConfigDict, EmailStr, Field, SecretStr
 class User(BaseModel):
     model_config = ConfigDict(
         populate_by_name=True,  # tell pydantic to accept both field names and aliases
-        strict=True,  # disable field cohorsion ()
+        strict=True,  # disable field cohorsion (auto try to convert from str '1' to int 1 )
         from_attributes=True,  # allow pydantic to read data from objects too
     )
 
