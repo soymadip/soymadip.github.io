@@ -12,6 +12,7 @@ int main() {
 
     */
 
+  const int max_core = 10;
 
   return 0;
 }
