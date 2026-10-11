@@ -15,3 +15,7 @@ lst2.append(5)
 lst += lst2
 
 print(lst)  # ['me', 'my_bou', 'my_gf', 1, 2, 3, 4, 5, 5]
+
+
+# accessing index of an item.
+print(lst2.index(3))
