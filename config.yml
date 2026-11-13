@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=https://soymadip.github.io/portosaur/user/config/schema.json
 #
 
-# Custom variables for use in your content as {{custom.key}}
+# User variables for use in your values as {{vars.key}}
 vars:
   twitter: "@soymadip"
   github: "soymadip"
@@ -11,7 +11,7 @@ vars:
 site:
   url: "auto"
   base_url: "auto"
-  edit_url: "https://github.com/soymadip/soymadip.github.io/edit/"
+  edit_url: "https://github.com/soymadip/soymadip.github.io/edit/main/"
   tagline: "My digital space, personal knowledge base & blogging platform"
 
 theme:

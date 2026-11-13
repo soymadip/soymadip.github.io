@@ -31,7 +31,7 @@ If you'd like to explore the code or run this site locally:
 
    ```bash
    git clone https://github.com/soymadip/soymadip.github.io.git
-   cd soymadip.github.io-new
+   cd soymadip.github.io
    ```
 
 2. **Start the development server:**
